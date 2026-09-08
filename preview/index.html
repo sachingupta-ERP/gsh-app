@@ -1,0 +1,2624 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+<title>Gopeshwar Stationary House</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root{
+  --paper:#F6F1E7; --paper-raised:#FDFBF5; --ink:#1C1A2E; --ink-soft:#4A465F; --ink-faint:#8A8598; --rule:#DCD4C0;
+  --indigo:#3B3486; --indigo-deep:#241F5C; --indigo-tint:#ECEAF7;
+  --emerald:#1F6F54; --emerald-tint:#E4F1EC; --amber:#A9631A; --amber-tint:#FBEFDD; --rose:#A6304A; --rose-tint:#F7E7EA;
+  --r-sm:6px; --r-md:10px; --r-lg:16px;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;background:#0f0e1a;font-family:'Space Grotesk',system-ui,sans-serif;}
+.device{width:390px;height:844px;margin:0 auto;background:var(--paper);position:relative;overflow:hidden;color:var(--ink);}
+.mono{font-family:'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums;}
+.screen{position:absolute;inset:0;display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .25s ease;}
+.screen.active{opacity:1;pointer-events:auto;}
+
+/* ---------- LOGIN ---------- */
+#login{background:linear-gradient(180deg,#1C1A2E 0%,#241F5C 55%,#3B3486 100%);color:#F6F1E7;padding:0;}
+.login-scrim{position:absolute;inset:0;background:
+  radial-gradient(60% 40% at 20% 10%, rgba(246,241,231,0.06), transparent),
+  repeating-linear-gradient(115deg, rgba(246,241,231,0.02) 0 2px, transparent 2px 40px);}
+.login-content{position:relative;z-index:1;flex:1;display:flex;flex-direction:column;padding:64px 28px 32px;}
+.brand-mark{font-size:11px;letter-spacing:.14em;color:#C9C4E8;margin-bottom:4px;}
+.brand-name{font-size:26px;font-weight:700;line-height:1.15;}
+.tagline{margin-top:10px;font-size:12.5px;color:#B7B2DA;}
+.login-hero{margin-top:auto;}
+.login-hero h1{font-size:22px;line-height:1.3;font-weight:600;margin:0 0 8px;}
+.login-hero p{font-size:13.5px;color:#C9C4E8;margin:0 0 28px;}
+.field{background:rgba(246,241,231,0.08);border:1px solid rgba(246,241,231,0.18);border-radius:var(--r-md);
+  padding:14px 16px;margin-bottom:12px;}
+.field label{display:block;font-size:11px;color:#B7B2DA;margin-bottom:4px;}
+.field input{background:transparent;border:none;color:#F6F1E7;font-family:'IBM Plex Mono',monospace;font-size:16px;width:100%;outline:none;letter-spacing:.02em;}
+.field input::placeholder{color:#7F7AA6;}
+.btn{border:none;border-radius:var(--r-md);padding:14px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14.5px;
+  cursor:pointer;width:100%;transition:transform .12s ease, filter .12s ease;}
+.btn:active{transform:scale(0.98);}
+.btn-primary{background:#F6F1E7;color:var(--indigo-deep);}
+.btn-primary:disabled{opacity:.4;cursor:not-allowed;}
+.btn-ghost{background:transparent;color:#C9C4E8;border:1px solid rgba(246,241,231,0.25);margin-top:10px;}
+.role-pill{display:inline-flex;gap:6px;margin-top:14px;}
+.pill{padding:6px 12px;border-radius:20px;font-size:11.5px;border:1px solid rgba(246,241,231,0.25);color:#C9C4E8;}
+.pill.active{background:#F6F1E7;color:var(--indigo-deep);border-color:#F6F1E7;}
+.err{color:#F3B0BE;font-size:12px;margin:-4px 0 10px;min-height:14px;}
+.step-dots{display:flex;gap:6px;margin-bottom:20px;}
+.step-dots span{width:22px;height:3px;border-radius:2px;background:rgba(246,241,231,0.2);}
+.step-dots span.done{background:#F6F1E7;}
+
+/* ---------- ONBOARDING ---------- */
+#onboarding{background:var(--paper);}
+.ob-skip{align-self:flex-end;padding:20px 20px 0;font-size:12.5px;color:var(--ink-faint);cursor:pointer;}
+.ob-card{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 36px;text-align:center;}
+.ob-icon{width:72px;height:72px;border-radius:20px;background:var(--indigo-tint);display:flex;align-items:center;justify-content:center;font-size:30px;margin-bottom:26px;}
+.ob-card h2{font-size:20px;margin:0 0 10px;}
+.ob-card p{font-size:13.5px;color:var(--ink-soft);line-height:1.5;margin:0;}
+.ob-foot{padding:20px 28px 34px;}
+.ob-progress{display:flex;gap:6px;justify-content:center;margin-bottom:18px;}
+.ob-progress span{width:7px;height:7px;border-radius:50%;background:var(--rule);}
+.ob-progress span.on{background:var(--indigo);}
+
+/* ---------- COMMAND CENTER ---------- */
+#cc{background:var(--paper);}
+.cc-scroll{flex:1;overflow-y:auto;padding-bottom:84px;}
+.cc-head{padding:20px 20px 14px;}
+.cc-greet{font-size:12px;color:var(--ink-faint);}
+.cc-title{font-size:19px;font-weight:600;margin-top:2px;}
+.cc-ai-status{display:flex;align-items:center;gap:6px;margin-top:10px;font-size:11.5px;color:var(--indigo);}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--emerald);}
+
+.section-label{padding:0 20px;font-size:11px;letter-spacing:.06em;color:var(--ink-faint);margin:22px 0 10px;}
+.today-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 20px;}
+.stat-card{background:var(--paper-raised);border:1px solid var(--rule);border-radius:var(--r-lg);padding:14px;}
+.stat-label{font-size:11px;color:var(--ink-faint);}
+.stat-value{font-family:'IBM Plex Mono',monospace;font-size:19px;font-weight:600;margin-top:4px;}
+.stat-value.up{color:var(--emerald);}
+.stat-delta{font-size:11px;color:var(--ink-faint);margin-top:2px;}
+
+.attn{margin:0 20px;background:var(--paper-raised);border:1px solid var(--rule);border-radius:var(--r-lg);overflow:hidden;}
+.attn-row{display:flex;align-items:center;justify-content:space-between;padding:13px 14px;border-bottom:1px solid var(--rule);cursor:pointer;}
+.attn-row:last-child{border-bottom:none;}
+.attn-left{display:flex;align-items:center;gap:10px;}
+.badge{width:8px;height:8px;border-radius:50%;flex:0 0 auto;}
+.badge.crit{background:var(--rose);}
+.badge.med{background:var(--amber);}
+.attn-title{font-size:13.5px;font-weight:500;}
+.attn-sub{font-size:11.5px;color:var(--ink-faint);}
+.chev{color:var(--ink-faint);font-size:14px;}
+
+.brief{margin:0 20px;background:var(--indigo-tint);border-radius:var(--r-lg);padding:16px;}
+.brief-label{font-size:11px;color:var(--indigo);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+.brief-text{font-size:13.5px;line-height:1.55;color:var(--ink);}
+.brief-actions{display:flex;gap:10px;margin-top:12px;}
+.link-btn{font-size:12px;color:var(--indigo);font-weight:600;cursor:pointer;border-bottom:1px solid transparent;}
+.link-btn:hover{border-color:var(--indigo);}
+
+.quick-row{display:flex;gap:10px;padding:0 20px;overflow-x:auto;}
+.qa{flex:0 0 auto;width:76px;display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;}
+.qa-icon{width:52px;height:52px;border-radius:16px;background:var(--paper-raised);border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;font-size:20px;transition:transform .1s ease;}
+.qa:active .qa-icon{transform:scale(0.94);}
+.qa-label{font-size:10.5px;color:var(--ink-soft);text-align:center;}
+
+.bottomnav{position:absolute;left:0;right:0;bottom:0;height:64px;background:var(--paper-raised);border-top:1px solid var(--rule);
+  display:flex;align-items:center;justify-content:space-around;z-index:5;}
+.nav-item{display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--ink-faint);font-size:10px;cursor:pointer;}
+.nav-item.active{color:var(--indigo);}
+.nav-icon{font-size:18px;}
+
+.toast{position:absolute;left:20px;right:20px;bottom:84px;background:var(--ink);color:var(--paper);padding:12px 16px;
+  border-radius:var(--r-md);font-size:12.5px;opacity:0;transform:translateY(8px);transition:all .2s ease;pointer-events:none;z-index:10;}
+.toast.show{opacity:1;transform:translateY(0);}
+
+/* ---------- SHARED: header bar w/ back ---------- */
+.bar{display:flex;align-items:center;gap:12px;padding:18px 16px 12px;flex:0 0 auto;}
+.bar-back{width:34px;height:34px;border-radius:10px;background:var(--paper-raised);border:1px solid var(--rule);
+  display:flex;align-items:center;justify-content:center;font-size:16px;cursor:pointer;flex:0 0 auto;}
+.bar-title{font-size:16.5px;font-weight:600;}
+.bar-sub{font-size:11px;color:var(--ink-faint);}
+
+/* ---------- INVENTORY LIST ---------- */
+.search-wrap{margin:0 16px 12px;position:relative;}
+.search-wrap input{width:100%;padding:12px 14px 12px 38px;border-radius:var(--r-md);border:1px solid var(--rule);
+  background:var(--paper-raised);font-family:'Space Grotesk',sans-serif;font-size:13.5px;color:var(--ink);outline:none;}
+.search-wrap input:focus{border-color:var(--indigo);}
+.search-icon{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--ink-faint);font-size:14px;}
+.chip-row{display:flex;gap:8px;padding:0 16px 12px;overflow-x:auto;}
+.chip{flex:0 0 auto;padding:6px 13px;border-radius:20px;border:1px solid var(--rule);background:var(--paper-raised);
+  font-size:11.5px;color:var(--ink-soft);cursor:pointer;white-space:nowrap;}
+.chip.active{background:var(--indigo);color:#fff;border-color:var(--indigo);}
+.plist{flex:1;overflow-y:auto;padding:0 16px 90px;}
+.prow{display:flex;align-items:center;gap:12px;padding:12px 4px;border-bottom:1px solid var(--rule);cursor:pointer;}
+.pthumb{width:42px;height:42px;border-radius:10px;background:var(--indigo-tint);display:flex;align-items:center;justify-content:center;font-size:17px;flex:0 0 auto;}
+.pinfo{flex:1;min-width:0;}
+.pname{font-size:13.5px;font-weight:500;display:flex;align-items:center;gap:6px;}
+.pline{font-size:9.5px;color:var(--indigo);background:var(--indigo-tint);padding:1px 6px;border-radius:8px;font-weight:600;}
+.palias{font-size:11px;color:var(--ink-faint);margin-top:1px;}
+.pstock{text-align:right;flex:0 0 auto;}
+.pstock-val{font-size:13.5px;font-weight:600;}
+.pstock-val.low{color:var(--rose);}
+.pstock-unit{font-size:10px;color:var(--ink-faint);}
+.fab{position:absolute;right:18px;bottom:96px;width:54px;height:54px;border-radius:50%;background:var(--indigo);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 6px 16px rgba(59,52,134,0.4);cursor:pointer;z-index:6;}
+
+/* ---------- PRODUCT 360 ---------- */
+.p360-hero{padding:4px 20px 18px;}
+.p360-name{font-size:19px;font-weight:600;display:flex;align-items:center;gap:8px;}
+.p360-meta{font-size:12px;color:var(--ink-faint);margin-top:3px;}
+.p360-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:0 20px 18px;}
+.p360-stat{background:var(--paper-raised);border:1px solid var(--rule);border-radius:var(--r-md);padding:11px 8px;text-align:center;}
+.p360-stat .v{font-size:15px;font-weight:600;}
+.p360-stat .l{font-size:9.5px;color:var(--ink-faint);margin-top:2px;}
+.tabs{display:flex;gap:4px;margin:0 20px 14px;border-bottom:1px solid var(--rule);}
+.tab{padding:9px 4px;margin-right:18px;font-size:12.5px;color:var(--ink-faint);cursor:pointer;border-bottom:2px solid transparent;}
+.tab.active{color:var(--indigo);border-color:var(--indigo);font-weight:600;}
+.tab-panel{display:none;padding:0 20px 90px;flex:1;overflow-y:auto;}
+.tab-panel.active{display:block;}
+.timeline-row{display:flex;gap:10px;padding:11px 0;border-bottom:1px solid var(--rule);}
+.tl-dot{width:8px;height:8px;border-radius:50%;background:var(--indigo);margin-top:5px;flex:0 0 auto;}
+.tl-title{font-size:13px;font-weight:500;}
+.tl-sub{font-size:11px;color:var(--ink-faint);margin-top:1px;}
+.tl-amt{margin-left:auto;font-size:12.5px;font-weight:600;}
+.rate-vendor{background:var(--paper-raised);border:1px solid var(--rule);border-radius:var(--r-md);padding:12px 14px;margin-bottom:10px;}
+.rv-name{font-size:13px;font-weight:600;display:flex;justify-content:space-between;}
+.rv-best{font-size:10px;color:var(--emerald);background:var(--emerald-tint);padding:1px 7px;border-radius:8px;font-weight:600;}
+.rv-history{font-size:12.5px;color:var(--ink-soft);margin-top:5px;}
+.ask-row{display:flex;gap:8px;padding:11px 12px;background:var(--paper-raised);border:1px solid var(--rule);border-radius:var(--r-md);margin-bottom:8px;font-size:12.5px;cursor:pointer;}
+
+/* ---------- BOTTOM SHEET (voice entry / import) ---------- */
+.sheet-scrim{position:absolute;inset:0;background:rgba(28,26,46,0.5);z-index:20;opacity:0;pointer-events:none;transition:opacity .2s ease;}
+.sheet-scrim.show{opacity:1;pointer-events:auto;}
+.sheet{position:absolute;left:0;right:0;bottom:0;background:var(--paper);border-radius:20px 20px 0 0;z-index:21;
+  transform:translateY(100%);transition:transform .28s cubic-bezier(.2,.9,.3,1);max-height:82%;display:flex;flex-direction:column;}
+.sheet.show{transform:translateY(0);}
+.sheet-handle{width:36px;height:4px;background:var(--rule);border-radius:2px;margin:10px auto 4px;flex:0 0 auto;}
+.sheet-head{padding:8px 20px 14px;flex:0 0 auto;}
+.sheet-body{padding:0 20px 20px;overflow-y:auto;flex:1;}
+.sheet-foot{padding:14px 20px 22px;display:flex;gap:10px;flex:0 0 auto;border-top:1px solid var(--rule);}
+.mic-stage{display:flex;flex-direction:column;align-items:center;padding:20px 0 10px;}
+.mic-btn{width:76px;height:76px;border-radius:50%;background:var(--indigo);display:flex;align-items:center;justify-content:center;
+  font-size:30px;color:#fff;cursor:pointer;position:relative;}
+.mic-pulse{position:absolute;inset:-8px;border-radius:50%;border:2px solid var(--indigo);opacity:0;}
+.mic-btn.listening .mic-pulse{animation:pulse 1.4s ease-out infinite;}
+@keyframes pulse{0%{opacity:.7;transform:scale(0.9);}100%{opacity:0;transform:scale(1.5);}}
+.mic-hint{font-size:12px;color:var(--ink-faint);margin-top:14px;text-align:center;}
+.transcript{background:var(--paper-raised);border:1px solid var(--rule);border-radius:var(--r-md);padding:12px 14px;
+  font-size:13px;color:var(--ink-soft);margin-top:16px;line-height:1.5;font-style:italic;}
+.extract-grid{margin-top:16px;}
+.ext-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--rule);}
+.ext-label{font-size:12px;color:var(--ink-faint);}
+.ext-val{font-size:13.5px;font-weight:600;}
+.ext-val input{width:70px;text-align:right;border:1px solid var(--rule);border-radius:6px;padding:5px 8px;font-family:'IBM Plex Mono',monospace;font-size:13px;}
+.confidence{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;padding:2px 8px;border-radius:8px;margin-top:2px;}
+.confidence.high{background:var(--emerald-tint);color:var(--emerald);}
+.confidence.low{background:var(--amber-tint);color:var(--amber);}
+.sheet-btn{flex:1;padding:13px;border-radius:var(--r-md);font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13.5px;border:none;cursor:pointer;}
+.sheet-btn.cancel{background:var(--paper-raised);border:1px solid var(--rule);color:var(--ink-soft);}
+.sheet-btn.confirm{background:var(--indigo);color:#fff;}
+.sheet-btn:disabled{opacity:.4;cursor:not-allowed;}
+
+/* ---------- EXCEL IMPORT ---------- */
+.import-step{display:none;}
+.import-step.active{display:block;}
+.drop-zone{border:2px dashed var(--rule);border-radius:var(--r-lg);padding:32px 20px;text-align:center;margin-top:8px;cursor:pointer;}
+.drop-zone .ic{font-size:28px;}
+.drop-zone .t{font-size:13.5px;font-weight:500;margin-top:8px;}
+.drop-zone .s{font-size:11.5px;color:var(--ink-faint);margin-top:3px;}
+.import-summary{display:flex;gap:8px;margin-top:14px;}
+.isum{flex:1;text-align:center;background:var(--paper-raised);border:1px solid var(--rule);border-radius:var(--r-md);padding:10px 4px;}
+.isum .v{font-size:16px;font-weight:600;}
+.isum .v.warn{color:var(--amber);}
+.isum .v.bad{color:var(--rose);}
+.isum .l{font-size:9.5px;color:var(--ink-faint);}
+.import-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--rule);font-size:12.5px;}
+.import-row .tag{font-size:9.5px;padding:1px 6px;border-radius:6px;}
+.import-row .tag.dup{background:var(--rose-tint);color:var(--rose);}
+.import-row .tag.ok{background:var(--emerald-tint);color:var(--emerald);}
+
+/* ---------- VENDOR LIST ---------- */
+.vrow{display:flex;align-items:center;gap:12px;padding:13px 4px;border-bottom:1px solid var(--rule);cursor:pointer;}
+.vavatar{width:42px;height:42px;border-radius:50%;background:var(--indigo);color:#fff;display:flex;align-items:center;justify-content:center;
+  font-size:15px;font-weight:600;flex:0 0 auto;}
+.vinfo{flex:1;min-width:0;}
+.vname{font-size:13.5px;font-weight:500;}
+.vmeta{font-size:11px;color:var(--ink-faint);margin-top:1px;}
+.vright{text-align:right;flex:0 0 auto;}
+.vamt{font-size:12.5px;font-weight:600;}
+.vbadge{font-size:9.5px;padding:2px 7px;border-radius:8px;margin-top:3px;display:inline-block;}
+.vbadge.review{background:var(--amber-tint);color:var(--amber);}
+.vbadge.clear{background:var(--emerald-tint);color:var(--emerald);}
+
+/* ---------- VENDOR 360 ---------- */
+.v360-hero{padding:0 20px 16px;}
+.v360-top{display:flex;align-items:center;gap:12px;margin-top:4px;}
+.v360-avatar{width:56px;height:56px;border-radius:50%;background:var(--indigo);color:#fff;font-size:19px;font-weight:600;
+  display:flex;align-items:center;justify-content:center;flex:0 0 auto;}
+.v360-name{font-size:18px;font-weight:600;}
+.v360-terms{font-size:11.5px;color:var(--ink-faint);margin-top:2px;}
+.v360-actions{display:flex;gap:10px;margin-top:14px;}
+.vaction{flex:1;display:flex;align-items:center;justify-content:center;gap:7px;padding:11px;border-radius:var(--r-md);
+  font-size:12.5px;font-weight:600;cursor:pointer;border:1px solid var(--rule);}
+.vaction.call{background:var(--indigo-tint);color:var(--indigo);border-color:transparent;}
+.vaction.wa{background:var(--emerald-tint);color:var(--emerald);border-color:transparent;}
+.bill-row{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--rule);cursor:pointer;}
+.bill-date{width:52px;flex:0 0 auto;text-align:center;}
+.bill-date .d{font-size:16px;font-weight:600;font-family:'IBM Plex Mono',monospace;}
+.bill-date .m{font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.05em;}
+.bill-mid{flex:1;min-width:0;}
+.bill-title{font-size:13px;font-weight:500;}
+.bill-sub{font-size:11px;color:var(--ink-faint);margin-top:1px;}
+.pin-doc{display:inline-flex;align-items:center;gap:4px;font-size:10px;color:var(--indigo);background:var(--indigo-tint);
+  padding:2px 7px;border-radius:8px;margin-top:4px;}
+.bill-amt{font-size:13.5px;font-weight:600;flex:0 0 auto;}
+
+/* ---------- BILL VIEWER (full screen) ---------- */
+#bill-viewer{background:#151328;}
+.bv-bar{display:flex;align-items:center;justify-content:space-between;padding:16px;color:#F6F1E7;flex:0 0 auto;}
+.bv-icon{width:36px;height:36px;border-radius:10px;background:rgba(246,241,231,0.1);display:flex;align-items:center;justify-content:center;
+  font-size:16px;cursor:pointer;color:#F6F1E7;}
+.bv-doc{flex:1;display:flex;align-items:center;justify-content:center;padding:0 24px;}
+.bv-paper{width:100%;max-width:300px;background:#FDFBF5;border-radius:8px;padding:22px;color:var(--ink);box-shadow:0 20px 50px rgba(0,0,0,0.5);
+  font-family:'IBM Plex Mono',monospace;font-size:11.5px;line-height:1.7;transform:rotate(-0.6deg);}
+.bv-paper .hdr{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13.5px;text-align:center;margin-bottom:2px;}
+.bv-paper .sub{text-align:center;color:var(--ink-faint);font-size:9.5px;margin-bottom:10px;}
+.bv-paper hr{border:none;border-top:1px dashed var(--rule);margin:8px 0;}
+.bv-paper .row{display:flex;justify-content:space-between;}
+.bv-panel{padding:16px 20px 26px;background:var(--paper);border-radius:20px 20px 0 0;flex:0 0 auto;}
+.bv-conf{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.bv-status{font-size:12.5px;font-weight:600;}
+.bv-fields{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;}
+.bv-field{background:var(--paper-raised);border:1px solid var(--rule);border-radius:var(--r-sm);padding:8px 10px;}
+.bv-field .l{font-size:9.5px;color:var(--ink-faint);}
+.bv-field .v{font-size:13px;font-weight:600;font-family:'IBM Plex Mono',monospace;}
+.bv-actions{display:flex;gap:10px;}
+
+/* ---------- VENDOR TABS reuse .tabs/.tab-panel ---------- */
+.rate-vendor .rv-name span.rv-updown{font-size:11px;color:var(--rose);font-weight:600;}
+
+/* ---------- MORE SHEET ---------- */
+.more-row{display:flex;align-items:center;gap:12px;padding:13px 4px;border-bottom:1px solid var(--rule);cursor:pointer;}
+.more-icon{width:38px;height:38px;border-radius:10px;background:var(--indigo-tint);display:flex;align-items:center;justify-content:center;font-size:16px;flex:0 0 auto;}
+.more-title{font-size:13.5px;font-weight:500;}
+.more-sub{font-size:11px;color:var(--ink-faint);}
+.more-soon{font-size:9px;color:var(--ink-faint);background:var(--paper-raised);border:1px solid var(--rule);padding:2px 7px;border-radius:8px;margin-left:auto;}
+
+/* ---------- PURCHASE LIST ---------- */
+.po-row{display:flex;align-items:center;gap:12px;padding:13px 4px;border-bottom:1px solid var(--rule);cursor:pointer;}
+.po-info{flex:1;min-width:0;}
+.po-title{font-size:13.5px;font-weight:500;}
+.po-sub{font-size:11px;color:var(--ink-faint);margin-top:1px;}
+.po-right{text-align:right;flex:0 0 auto;}
+.po-amt{font-size:13px;font-weight:600;}
+.status-pill{font-size:9.5px;font-weight:600;padding:2px 8px;border-radius:8px;margin-top:3px;display:inline-block;text-transform:uppercase;letter-spacing:.02em;}
+.status-pill.DRAFT{background:#EEEBE0;color:var(--ink-faint);}
+.status-pill.SENT{background:var(--indigo-tint);color:var(--indigo);}
+.status-pill.RECEIVED{background:var(--amber-tint);color:var(--amber);}
+.status-pill.REVIEW{background:var(--amber-tint);color:var(--amber);}
+.status-pill.VERIFIED{background:var(--emerald-tint);color:var(--emerald);}
+.status-pill.POSTED{background:var(--emerald);color:#fff;}
+
+/* ---------- PURCHASE DETAIL ---------- */
+.stepper{display:flex;padding:0 20px 18px;}
+.step{flex:1;text-align:center;position:relative;}
+.step .dot{width:20px;height:20px;border-radius:50%;background:var(--paper-raised);border:2px solid var(--rule);margin:0 auto 6px;
+  display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--ink-faint);}
+.step.done .dot{background:var(--indigo);border-color:var(--indigo);color:#fff;}
+.step.current .dot{border-color:var(--indigo);color:var(--indigo);font-weight:700;}
+.step::after{content:'';position:absolute;top:9px;left:-50%;width:100%;height:2px;background:var(--rule);z-index:-1;}
+.step:first-child::after{display:none;}
+.step.done::after{background:var(--indigo);}
+.step .lbl{font-size:8.5px;color:var(--ink-faint);}
+.po-lines{margin:0 20px 16px;}
+.po-line{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--rule);font-size:12.5px;}
+.po-line .qty{color:var(--ink-faint);font-size:11px;}
+.po-total{display:flex;justify-content:space-between;padding:12px 0 0;font-weight:600;font-size:13.5px;}
+.po-cta{margin:0 20px;padding:14px;border-radius:var(--r-md);background:var(--indigo);color:#fff;text-align:center;font-weight:600;font-size:13.5px;cursor:pointer;}
+.po-cta.done{background:var(--emerald-tint);color:var(--emerald);cursor:default;}
+.po-meta-row{display:flex;justify-content:space-between;padding:0 20px;font-size:11.5px;color:var(--ink-faint);margin-bottom:16px;}
+
+/* ---------- WHATSAPP PASTE ---------- */
+.wa-textarea{width:100%;min-height:110px;border:1px solid var(--rule);border-radius:var(--r-md);padding:12px 14px;
+  font-family:'IBM Plex Mono',monospace;font-size:13px;background:var(--paper-raised);resize:none;outline:none;}
+.wa-textarea:focus{border-color:var(--indigo);}
+.wa-preview-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--rule);font-size:13px;}
+.wa-preview-row input{width:56px;text-align:center;border:1px solid var(--rule);border-radius:6px;padding:5px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;}
+
+/* ---------- MONEY ---------- */
+.money-summary{margin:0 20px 16px;background:var(--paper-raised);border:1px solid var(--rule);border-radius:var(--r-lg);overflow:hidden;}
+.money-row{display:flex;justify-content:space-between;padding:11px 16px;border-bottom:1px solid var(--rule);font-size:13px;}
+.money-row:last-child{border-bottom:none;}
+.money-row .l{color:var(--ink-soft);}
+.money-row .v{font-weight:600;}
+.money-row.total{background:var(--indigo-tint);}
+.money-row.total .v{color:var(--indigo);}
+.actual-card{margin:0 20px 16px;background:var(--paper-raised);border:1px solid var(--rule);border-radius:var(--r-lg);padding:16px;}
+.actual-input-row{display:flex;align-items:center;gap:10px;margin-top:8px;}
+.actual-input-row span{font-size:18px;font-weight:600;color:var(--ink-faint);}
+.actual-input-row input{flex:1;border:1px solid var(--rule);border-radius:var(--r-md);padding:11px 12px;font-family:'IBM Plex Mono',monospace;
+  font-size:17px;font-weight:600;outline:none;background:var(--paper);}
+.actual-input-row input:focus{border-color:var(--indigo);}
+.variance-banner{margin:12px 20px 0;padding:12px 14px;border-radius:var(--r-md);font-size:12.5px;display:flex;justify-content:space-between;align-items:center;}
+.variance-banner.zero{background:var(--emerald-tint);color:var(--emerald);}
+.variance-banner.short{background:var(--rose-tint);color:var(--rose);}
+.variance-banner.over{background:var(--amber-tint);color:var(--amber);}
+.reason-select{margin:12px 20px 0;}
+.reason-select select{width:100%;padding:11px 12px;border-radius:var(--r-md);border:1px solid var(--rule);background:var(--paper-raised);
+  font-family:'Space Grotesk',sans-serif;font-size:13px;color:var(--ink);}
+.close-cta{margin:18px 20px 0;padding:14px;border-radius:var(--r-md);background:var(--indigo);color:#fff;text-align:center;
+  font-weight:600;font-size:13.5px;cursor:pointer;}
+.close-cta:disabled, .close-cta.disabled{background:var(--rule);color:var(--ink-faint);cursor:not-allowed;}
+.exp-row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--rule);}
+.exp-icon{width:36px;height:36px;border-radius:10px;background:var(--amber-tint);display:flex;align-items:center;justify-content:center;font-size:15px;flex:0 0 auto;}
+.exp-info{flex:1;}
+.exp-cat{font-size:13px;font-weight:500;}
+.exp-note{font-size:11px;color:var(--ink-faint);}
+.exp-amt{font-size:13px;font-weight:600;}
+.exp-cat-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:8px;}
+.exp-cat-btn{padding:10px 6px;border-radius:var(--r-md);border:1px solid var(--rule);background:var(--paper-raised);text-align:center;
+  font-size:11.5px;cursor:pointer;}
+.exp-cat-btn.active{background:var(--indigo);color:#fff;border-color:var(--indigo);}
+.add-exp-btn{display:flex;align-items:center;justify-content:center;gap:6px;margin:14px 20px 24px;padding:11px;
+  border-radius:var(--r-md);border:1px dashed var(--rule);color:var(--indigo);font-size:12.5px;font-weight:600;cursor:pointer;}
+
+/* ---------- REPORTS ---------- */
+.rpt-filters{display:flex;gap:8px;padding:0 20px 14px;overflow-x:auto;}
+.rpt-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 20px;margin-bottom:18px;}
+.rpt-chart-card{margin:0 20px 20px;background:var(--paper-raised);border:1px solid var(--rule);border-radius:var(--r-lg);padding:16px;}
+.rpt-chart-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;}
+.rpt-chart-head .t{font-size:13px;font-weight:600;}
+.rpt-chart-head .v{font-size:11px;color:var(--ink-faint);}
+.rpt-list{margin:0 20px;}
+.rpt-item{display:flex;align-items:center;gap:12px;padding:13px 4px;border-bottom:1px solid var(--rule);cursor:pointer;}
+.rpt-item:last-child{border-bottom:none;}
+.rpt-icon{width:36px;height:36px;border-radius:10px;background:var(--indigo-tint);display:flex;align-items:center;justify-content:center;font-size:15px;flex:0 0 auto;}
+.rpt-title{font-size:13.5px;font-weight:500;}
+.rpt-sub{font-size:11px;color:var(--ink-faint);}
+.rpt-detail{padding:0 20px 90px;}
+.rpt-bar-row{display:flex;align-items:center;gap:10px;padding:9px 0;}
+.rpt-bar-label{width:110px;font-size:12px;flex:0 0 auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.rpt-bar-track{flex:1;height:8px;background:var(--rule);border-radius:4px;overflow:hidden;}
+.rpt-bar-fill{height:100%;background:var(--indigo);border-radius:4px;}
+.rpt-bar-val{width:64px;text-align:right;font-size:11.5px;font-family:'IBM Plex Mono',monospace;flex:0 0 auto;}
+
+/* ---------- ASK GSH AI ---------- */
+.chat-scroll{flex:1;overflow-y:auto;padding:14px 16px 8px;display:flex;flex-direction:column;gap:12px;}
+.chat-suggest-row{display:flex;flex-wrap:wrap;gap:8px;padding:0 16px 14px;}
+.chat-suggest{padding:8px 12px;border-radius:14px;background:var(--indigo-tint);color:var(--indigo);font-size:11.5px;
+  cursor:pointer;border:1px solid transparent;}
+.msg{max-width:86%;}
+.msg-user{align-self:flex-end;background:var(--indigo);color:#fff;padding:10px 14px;border-radius:14px 14px 3px 14px;font-size:13px;}
+.msg-ai{align-self:flex-start;}
+.msg-ai-bubble{background:var(--paper-raised);border:1px solid var(--rule);padding:12px 14px;border-radius:3px 14px 14px 14px;font-size:13px;line-height:1.55;}
+.msg-ai-bubble.unavailable{border-color:var(--amber);background:var(--amber-tint);}
+.msg-actions{display:flex;gap:14px;margin-top:6px;padding-left:2px;}
+.msg-action{font-size:11px;color:var(--indigo);font-weight:600;cursor:pointer;}
+.chat-input-bar{display:flex;gap:8px;padding:10px 14px 16px;border-top:1px solid var(--rule);background:var(--paper);flex:0 0 auto;}
+.chat-input-bar input{flex:1;border:1px solid var(--rule);border-radius:20px;padding:11px 16px;font-family:'Space Grotesk',sans-serif;
+  font-size:13px;background:var(--paper-raised);outline:none;}
+.chat-input-bar input:focus{border-color:var(--indigo);}
+.chat-send{width:42px;height:42px;border-radius:50%;background:var(--indigo);color:#fff;display:flex;align-items:center;
+  justify-content:center;font-size:16px;cursor:pointer;flex:0 0 auto;}
+.trace-ref{background:var(--paper-raised);border:1px solid var(--rule);border-radius:var(--r-md);padding:10px 12px;margin-bottom:8px;}
+.trace-ref-head{font-size:11px;font-weight:700;color:var(--indigo);text-transform:uppercase;letter-spacing:.04em;margin-bottom:5px;}
+.trace-ref-row{display:flex;justify-content:space-between;font-size:12.5px;padding:2px 0;}
+.trace-ref-row span:first-child{color:var(--ink-faint);}
+
+/* ---------- SEASONAL / DIWALI ---------- */
+.season-picker{display:flex;gap:8px;padding:0 16px 14px;overflow-x:auto;}
+.season-chip{flex:0 0 auto;padding:8px 14px;border-radius:14px;border:1px solid var(--rule);background:var(--paper-raised);
+  font-size:12px;font-weight:600;cursor:pointer;color:var(--ink-soft);}
+.season-chip.active{background:var(--indigo);color:#fff;border-color:var(--indigo);}
+.season-chip.new{border-style:dashed;color:var(--indigo);}
+.season-hero{margin:0 16px 16px;background:linear-gradient(135deg,var(--indigo-deep),var(--indigo));color:#F6F1E7;border-radius:var(--r-lg);padding:18px;}
+.season-hero .name{font-size:17px;font-weight:700;}
+.season-hero .dates{font-size:11px;color:#C9C4E8;margin-top:2px;}
+.season-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;}
+.season-stat .l{font-size:10px;color:#B7B2DA;}
+.season-stat .v{font-size:16px;font-weight:700;font-family:'IBM Plex Mono',monospace;margin-top:2px;}
+.season-stat .v.profit-pos{color:#8FE3C3;}
+.season-stat .v.profit-neg{color:#F3B0BE;}
+.season-section-head{display:flex;justify-content:space-between;align-items:center;padding:0 20px;margin:18px 0 8px;}
+.season-add{font-size:11.5px;font-weight:600;color:var(--indigo);cursor:pointer;}
+.season-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--rule);margin:0 20px;font-size:12.5px;}
+.season-row-sub{font-size:10.5px;color:var(--ink-faint);}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+<div class="device">
+
+  <!-- ================= LOGIN ================= -->
+  <div class="screen active" id="login">
+    <div class="login-scrim"></div>
+    <div class="login-content">
+      <div class="brand-mark">AI-POWERED RETAIL INTELLIGENCE</div>
+      <div class="brand-name">GOPESHWAR<br/>STATIONARY HOUSE</div>
+
+      <div class="login-hero">
+        <div id="stepDots" class="step-dots"><span class="done"></span><span></span><span></span></div>
+
+        <div id="stepMobile">
+          <h1>Welcome</h1>
+          <p>Your stock. Your sales. Your vendors. Your business intelligence.</p>
+          <div class="field">
+            <label>MOBILE NUMBER</label>
+            <input id="mobileInput" type="tel" placeholder="98xxxxxxxx" maxlength="10" />
+          </div>
+          <div class="err" id="mobileErr"></div>
+          <button class="btn btn-primary" id="sendOtpBtn" disabled onclick="sendOtp()">Send OTP</button>
+        </div>
+
+        <div id="stepOtp" style="display:none;">
+          <h1>Enter OTP</h1>
+          <p id="otpSubtext">Code sent to your mobile number.</p>
+          <div class="field">
+            <label>6-DIGIT CODE</label>
+            <input id="otpInput" type="tel" placeholder="••••••" maxlength="6" />
+          </div>
+          <div class="err" id="otpErr"></div>
+          <div class="role-pill">
+            <div class="pill active" id="roleAdmin" onclick="setRole('ADMIN')">Admin</div>
+            <div class="pill" id="roleEmp" onclick="setRole('EMPLOYEE')">Employee</div>
+          </div>
+          <button class="btn btn-primary" style="margin-top:16px;" onclick="verifyOtp()">Verify &amp; Continue</button>
+          <button class="btn btn-ghost" onclick="goStep('mobile')">Change number</button>
+        </div>
+
+        <div id="stepPin" style="display:none;">
+          <h1>Set your PIN</h1>
+          <p>Create a 4-digit PIN. You'll use this — or fingerprint, if your device supports it — to sign in next time.</p>
+          <div class="field">
+            <label>NEW PIN</label>
+            <input id="pinInput" type="password" placeholder="••••" maxlength="4" />
+          </div>
+          <div class="field">
+            <label>CONFIRM PIN</label>
+            <input id="pinConfirm" type="password" placeholder="••••" maxlength="4" />
+          </div>
+          <div class="err" id="pinErr"></div>
+          <button class="btn btn-primary" onclick="setPin()">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= ONBOARDING ================= -->
+  <div class="screen" id="onboarding">
+    <div class="ob-skip" onclick="finishOnboarding()">Skip</div>
+    <div class="ob-card" id="obCard">
+      <div class="ob-icon" id="obIcon">🗂️</div>
+      <h2 id="obTitle">Command Center</h2>
+      <p id="obDesc">See yesterday's sales, today's cash position, and what needs attention — the moment you open the app.</p>
+    </div>
+    <div class="ob-foot">
+      <div class="ob-progress" id="obProgress"></div>
+      <button class="btn btn-primary" style="background:var(--indigo);color:#fff;" id="obNextBtn" onclick="nextOnboarding()">Next</button>
+    </div>
+  </div>
+
+  <!-- ================= COMMAND CENTER ================= -->
+  <div class="screen" id="cc">
+    <div class="cc-scroll">
+      <div class="cc-head">
+        <div class="cc-greet" id="ccGreet">Good morning</div>
+        <div class="cc-title">Gopeshwar Stationary House</div>
+        <div class="cc-ai-status"><span class="dot"></span> AI briefing ready · updated 7:02 AM</div>
+      </div>
+
+      <div class="section-label">TODAY AT A GLANCE</div>
+      <div class="today-grid">
+        <div class="stat-card"><div class="stat-label">Sales</div><div class="stat-value mono" id="ccSales">₹0</div><div class="stat-delta" id="ccSalesSub">No sales logged yet today</div></div>
+        <div class="stat-card"><div class="stat-label">Gross profit</div><div class="stat-value mono" id="ccProfit">₹0</div><div class="stat-delta" id="ccProfitSub">—</div></div>
+        <div class="stat-card"><div class="stat-label">Cash</div><div class="stat-value mono" id="ccCash">₹0</div><div class="stat-delta">Expected in drawer now</div></div>
+        <div class="stat-card"><div class="stat-label">UPI</div><div class="stat-value mono" id="ccUpi">₹0</div><div class="stat-delta" id="ccUpiSub">No UPI sales yet today</div></div>
+      </div>
+
+      <div class="section-label">NEEDS ATTENTION</div>
+      <div class="attn">
+        <div class="attn-row" onclick="openProduct('p1')">
+          <div class="attn-left"><span class="badge crit"></span><div><div class="attn-title">DOMS DF Pen — 6 left</div><div class="attn-sub">Below reorder point of 20</div></div></div>
+          <span class="chev">›</span>
+        </div>
+        <div class="attn-row" onclick="openVendor('v1')">
+          <div class="attn-left"><span class="badge med"></span><div><div class="attn-title">Ashok Pen Wale bill unverified</div><div class="attn-sub">₹4,850 · scanned 2 days ago</div></div></div>
+          <span class="chev">›</span>
+        </div>
+        <div class="attn-row" onclick="openPurchase('po1'); show('po-detail')">
+          <div class="attn-left"><span class="badge med"></span><div><div class="attn-title">₹4,850 priority purchase suggested</div><div class="attn-sub">Within today's available funds</div></div></div>
+          <span class="chev">›</span>
+        </div>
+      </div>
+
+      <div class="section-label">AI MORNING BRIEFING</div>
+      <div class="brief">
+        <div class="brief-label">🪶 SUMMARY</div>
+        <div class="brief-text">Yesterday's sales rose 8% over the previous comparable day. 3 fast-moving products are approaching reorder level — DOMS DF Pen is most urgent. ₹4,850 of priority purchases are recommended within your available funds.</div>
+        <div class="brief-actions">
+          <div class="link-btn" onclick="toast('Trace: source transactions for this briefing')">Trace</div>
+          <div class="link-btn" onclick="toast('Explain: how this briefing was generated')">Explain</div>
+        </div>
+      </div>
+
+      <div class="section-label">QUICK ACTIONS</div>
+      <div class="quick-row">
+        <div class="qa" onclick="openVoiceSheet('inventory')"><div class="qa-icon">🎙️</div><div class="qa-label">Voice Entry</div></div>
+        <div class="qa" onclick="toast('Opening camera — scan bill')"><div class="qa-icon">📷</div><div class="qa-label">Scan Bill</div></div>
+        <div class="qa" onclick="openSaleSheet()"><div class="qa-icon">🧾</div><div class="qa-label">Sale Total</div></div>
+        <div class="qa" onclick="openExpenseSheet()"><div class="qa-icon">💸</div><div class="qa-label">Add Expense</div></div>
+        <div class="qa" onclick="show('ai-assistant'); renderChat();"><div class="qa-icon">💬</div><div class="qa-label">Ask AI</div></div>
+      </div>
+    </div>
+
+    <div class="bottomnav">
+      <div class="nav-item active"><span class="nav-icon">🗂️</span>Home</div>
+      <div class="nav-item" onclick="show('inv-list')"><span class="nav-icon">📦</span>Inventory</div>
+      <div class="nav-item" onclick="show('vendor-list')"><span class="nav-icon">🤝</span>Vendors</div>
+      <div class="nav-item" onclick="show('reports'); renderReports();"><span class="nav-icon">📊</span>Reports</div>
+      <div class="nav-item" onclick="openMoreSheet()"><span class="nav-icon">⋯</span>More</div>
+    </div>
+    <div class="toast" id="toast"></div>
+  </div>
+
+  <!-- ================= INVENTORY LIST ================= -->
+  <div class="screen" id="inv-list">
+    <div class="bar">
+      <div class="bar-back" onclick="show('cc')">←</div>
+      <div style="flex:1;"><div class="bar-title">Inventory</div><div class="bar-sub" id="invCount">42 products · 3 low stock</div></div>
+      <div class="bar-back" onclick="openImportSheet()" title="Import from Excel">⇪</div>
+    </div>
+    <div class="search-wrap">
+      <span class="search-icon">⌕</span>
+      <input id="invSearch" placeholder="Search product, alias, brand…" oninput="filterInventory()" />
+    </div>
+    <div class="chip-row" id="invChips">
+      <div class="chip active" data-f="all" onclick="setInvFilter('all')">All</div>
+      <div class="chip" data-f="low" onclick="setInvFilter('low')">Low stock</div>
+      <div class="chip" data-f="doms" onclick="setInvFilter('doms')">DOMS</div>
+      <div class="chip" data-f="pen" onclick="setInvFilter('Pens')">Pens</div>
+      <div class="chip" data-f="notebook" onclick="setInvFilter('Notebooks')">Notebooks</div>
+    </div>
+    <div class="plist" id="plist"></div>
+    <div class="fab" onclick="openVoiceSheet('inventory')">🎙️</div>
+    <div class="bottomnav">
+      <div class="nav-item" onclick="show('cc')"><span class="nav-icon">🗂️</span>Home</div>
+      <div class="nav-item active"><span class="nav-icon">📦</span>Inventory</div>
+      <div class="nav-item" onclick="show('vendor-list')"><span class="nav-icon">🤝</span>Vendors</div>
+      <div class="nav-item" onclick="show('reports'); renderReports();"><span class="nav-icon">📊</span>Reports</div>
+      <div class="nav-item" onclick="openMoreSheet()"><span class="nav-icon">⋯</span>More</div>
+    </div>
+  </div>
+
+  <!-- ================= PRODUCT 360 ================= -->
+  <div class="screen" id="p360">
+    <div class="bar">
+      <div class="bar-back" onclick="show('inv-list')">←</div>
+      <div><div class="bar-title" id="p360Name">DOMS DF Pen</div><div class="bar-sub" id="p360Meta">PEN-01 · DOMS · Writing</div></div>
+    </div>
+    <div class="p360-stats">
+      <div class="p360-stat"><div class="v mono" id="p360Stock" style="color:var(--rose);">6</div><div class="l">In stock</div></div>
+      <div class="p360-stat"><div class="v mono">₹8 → ₹10</div><div class="l">Rate → Sell</div></div>
+      <div class="p360-stat"><div class="v mono" style="color:var(--emerald);">25%</div><div class="l">Margin</div></div>
+    </div>
+    <div class="tabs">
+      <div class="tab active" data-t="history" onclick="setP360Tab('history')">History</div>
+      <div class="tab" data-t="rates" onclick="setP360Tab('rates')">Vendor rates</div>
+      <div class="tab" data-t="ask" onclick="setP360Tab('ask')">Ask about this</div>
+    </div>
+    <div class="tab-panel active" id="tab-history">
+      <div class="timeline-row"><div class="tl-dot" style="background:var(--rose);"></div><div><div class="tl-title">Sale — 12 nikale</div><div class="tl-sub">Voice adjustment · today, 6:40 PM</div></div><div class="tl-amt">−12</div></div>
+      <div class="timeline-row"><div class="tl-dot"></div><div><div class="tl-title">Purchase received — Ashok Pen Wale</div><div class="tl-sub">30 Aug 2026 · ₹8.00/pc</div></div><div class="tl-amt" style="color:var(--emerald);">+40</div></div>
+      <div class="timeline-row"><div class="tl-dot" style="background:var(--rose);"></div><div><div class="tl-title">Sale — daily total adjustment</div><div class="tl-sub">29 Aug 2026</div></div><div class="tl-amt">−18</div></div>
+      <div class="timeline-row"><div class="tl-dot"></div><div><div class="tl-title">Purchase received — Shree Stationers</div><div class="tl-sub">18 Aug 2026 · ₹8.50/pc</div></div><div class="tl-amt" style="color:var(--emerald);">+50</div></div>
+      <div class="link-btn" style="margin-top:14px;" onclick="toast('Full movement ledger')">View full ledger →</div>
+    </div>
+    <div class="tab-panel" id="tab-rates">
+      <div class="rate-vendor"><div class="rv-name">Ashok Pen Wale <span class="rv-best">BEST RATE</span></div><div class="rv-history mono">₹7.80 → ₹8.00 → ₹8.00</div></div>
+      <div class="rate-vendor"><div class="rv-name">Shree Stationers</div><div class="rv-history mono">₹8.20 → ₹8.40 → ₹8.50</div></div>
+      <div class="link-btn" onclick="toast('Trace: rate history source purchases')">Trace source purchases →</div>
+    </div>
+    <div class="tab-panel" id="tab-ask">
+      <div class="ask-row" onclick="askFromContext('Which vendor gives the lowest rate for '+PRODUCTS.find(p=>p.id===currentP360Id).name+'?')">💬 Which vendor gives the lowest rate?</div>
+      <div class="ask-row" onclick="askFromContext('When did we last purchase '+PRODUCTS.find(p=>p.id===currentP360Id).name+'?')">💬 When did we last purchase this?</div>
+      <div class="ask-row" onclick="askFromContext('What is the current stock of '+PRODUCTS.find(p=>p.id===currentP360Id).name+'?')">💬 What's the current stock?</div>
+    </div>
+  </div>
+
+  <!-- ================= VOICE ENTRY SHEET ================= -->
+  <div class="sheet-scrim" id="voiceScrim" onclick="closeVoiceSheet()"></div>
+  <div class="sheet" id="voiceSheet">
+    <div class="sheet-handle"></div>
+    <div class="sheet-head"><div class="bar-title">Voice inventory entry</div><div class="bar-sub">Speak naturally in Hindi or English</div></div>
+    <div class="sheet-body">
+      <div class="mic-stage">
+        <div class="mic-btn" id="micBtn" onclick="toggleMic()"><span class="mic-pulse"></span>🎙️</div>
+        <div class="mic-hint" id="micHint">Tap the mic and speak — e.g. "DOMS DF Pen 45 ke aaye, 55 sale honge, 20 blue, 10 black, 10 red"</div>
+      </div>
+      <div class="transcript" id="voiceTranscript" style="display:none;"></div>
+      <div class="extract-grid" id="voiceExtract" style="display:none;"></div>
+    </div>
+    <div class="sheet-foot" id="voiceFoot" style="display:none;">
+      <button class="sheet-btn cancel" onclick="closeVoiceSheet()">Cancel</button>
+      <button class="sheet-btn confirm" onclick="confirmVoice()">Confirm</button>
+    </div>
+  </div>
+
+  <!-- ================= EXCEL IMPORT SHEET ================= -->
+  <div class="sheet-scrim" id="importScrim" onclick="closeImportSheet()"></div>
+  <div class="sheet" id="importSheet" style="max-height:88%;">
+    <div class="sheet-handle"></div>
+    <div class="sheet-head"><div class="bar-title">Import inventory from Excel</div><div class="bar-sub" id="importSub">Step 1 of 3 · Upload</div></div>
+    <div class="sheet-body">
+      <div class="import-step active" id="import-1">
+        <input type="file" id="importFileInput" accept=".xlsx,.xls,.csv" style="display:none;" onchange="handleImportFile(event)">
+        <div class="drop-zone" onclick="document.getElementById('importFileInput').click()"><div class="ic">📄</div><div class="t" id="dropZoneText">Tap to select a file</div><div class="s">.xlsx or .csv · columns: Alias, Name, Category, Brand, Unit, Opening Qty, Purchase Rate, Selling Rate, Min Stock</div></div>
+        <div class="link-btn" style="margin-top:12px;" onclick="loadSampleImportFile()">No file handy? Try a sample file →</div>
+      </div>
+      <div class="import-step" id="import-2">
+        <div style="font-size:12.5px;color:var(--ink-soft);">Parsed from <b id="importFileName">file</b>, checked against your live Inventory:</div>
+        <div class="import-summary" id="importSummary"></div>
+        <div style="margin-top:16px;" id="importRows"></div>
+      </div>
+      <div class="import-step" id="import-3">
+        <div style="text-align:center;padding:20px 0;">
+          <div style="font-size:34px;" id="importDoneIcon">✅</div>
+          <div style="font-size:15px;font-weight:600;margin-top:10px;" id="importDoneTitle">Products imported</div>
+          <div style="font-size:12px;color:var(--ink-faint);margin-top:4px;" id="importDoneSub"></div>
+        </div>
+      </div>
+    </div>
+    <div class="sheet-foot">
+      <button class="sheet-btn cancel" onclick="closeImportSheet()">Cancel</button>
+      <button class="sheet-btn confirm" id="importNextBtn" onclick="importNext()" disabled>Select a file to continue</button>
+    </div>
+  </div>
+
+  <!-- ================= VENDOR LIST ================= -->
+  <div class="screen" id="vendor-list">
+    <div class="bar">
+      <div class="bar-back" onclick="show('cc')">←</div>
+      <div><div class="bar-title">Vendors</div><div class="bar-sub" id="vendCount">12 vendors · 2 bills need review</div></div>
+    </div>
+    <div class="search-wrap"><span class="search-icon">⌕</span><input id="vendSearch" placeholder="Search vendor…" oninput="renderVendors()" /></div>
+    <div class="plist" id="vlist" style="padding-top:2px;"></div>
+    <div class="bottomnav">
+      <div class="nav-item" onclick="show('cc')"><span class="nav-icon">🗂️</span>Home</div>
+      <div class="nav-item" onclick="show('inv-list')"><span class="nav-icon">📦</span>Inventory</div>
+      <div class="nav-item active"><span class="nav-icon">🤝</span>Vendors</div>
+      <div class="nav-item" onclick="show('reports'); renderReports();"><span class="nav-icon">📊</span>Reports</div>
+      <div class="nav-item" onclick="openMoreSheet()"><span class="nav-icon">⋯</span>More</div>
+    </div>
+  </div>
+
+  <!-- ================= VENDOR 360 ================= -->
+  <div class="screen" id="vendor-360">
+    <div class="bar"><div class="bar-back" onclick="show('vendor-list')">←</div><div class="bar-title">Vendor 360</div></div>
+    <div class="v360-hero">
+      <div class="v360-top">
+        <div class="v360-avatar" id="v360Initial">A</div>
+        <div>
+          <div class="v360-name" id="v360Name">Ashok Pen Wale</div>
+          <div class="v360-terms" id="v360Terms">7-day credit · Sadar Bazaar</div>
+        </div>
+      </div>
+      <div class="v360-actions">
+        <div class="vaction call" onclick="toast('Calling +91 98xxxxxxxx')">📞 Call</div>
+        <div class="vaction wa" onclick="toast('Opening WhatsApp chat')">💬 WhatsApp</div>
+      </div>
+    </div>
+    <div class="tabs">
+      <div class="tab active" data-t="bills" onclick="setV360Tab('bills')">Bills</div>
+      <div class="tab" data-t="vrates" onclick="setV360Tab('vrates')">Rates</div>
+      <div class="tab" data-t="vspend" onclick="setV360Tab('vspend')">This month</div>
+    </div>
+    <div class="tab-panel active" id="tab-bills">
+      <div class="bill-row" onclick="openBill(0)">
+        <div class="bill-date"><div class="d">30</div><div class="m">Aug</div></div>
+        <div class="bill-mid"><div class="bill-title">Bill · 40 DOMS DF Pen, misc</div><div class="bill-sub">₹360 · <span class="pin-doc">📌 document attached</span></div></div>
+        <div class="bill-amt mono">₹360</div>
+      </div>
+      <div class="bill-row" onclick="openBill(1)">
+        <div class="bill-date"><div class="d">12</div><div class="m">Aug</div></div>
+        <div class="bill-mid"><div class="bill-title">Bill #A-2291</div><div class="bill-sub">₹4,850 · <span class="pin-doc" style="background:var(--amber-tint);color:var(--amber);">📌 AI review required</span></div></div>
+        <div class="bill-amt mono">₹4,850</div>
+      </div>
+      <div class="bill-row" onclick="openBill(2)">
+        <div class="bill-date"><div class="d">28</div><div class="m">Jul</div></div>
+        <div class="bill-mid"><div class="bill-title">Bill · Link calculators ×6</div><div class="bill-sub">₹990 · <span class="pin-doc">📌 document attached</span></div></div>
+        <div class="bill-amt mono">₹990</div>
+      </div>
+    </div>
+    <div class="tab-panel" id="tab-vrates">
+      <div class="rate-vendor"><div class="rv-name">DOMS DF Pen</div><div class="rv-history mono">₹7.80 → ₹8.00 → ₹8.00</div></div>
+      <div class="rate-vendor"><div class="rv-name">Link Calculator <span class="rv-updown">↑ +₹8</span></div><div class="rv-history mono">₹157 → ₹165</div></div>
+      <div class="link-btn" onclick="askFromContext('Has '+currentVendorName+' raised prices?')">Ask: has this vendor raised prices? →</div>
+    </div>
+    <div class="tab-panel" id="tab-vspend">
+      <div class="p360-stats" style="margin:0 0 14px;">
+        <div class="p360-stat"><div class="v mono">₹6,200</div><div class="l">Spent</div></div>
+        <div class="p360-stat"><div class="v mono">3</div><div class="l">Bills</div></div>
+        <div class="p360-stat"><div class="v mono" style="color:var(--amber);">₹4,850</div><div class="l">Unpaid</div></div>
+      </div>
+      <div class="link-btn" onclick="toast('Opening full vendor spend report')">View full report →</div>
+    </div>
+  </div>
+
+  <!-- ================= BILL VIEWER (full screen) ================= -->
+  <div class="screen" id="bill-viewer">
+    <div class="bv-bar">
+      <div class="bv-icon" onclick="show('vendor-360')">←</div>
+      <div style="font-size:12.5px;color:#C9C4E8;" id="bvDate">30 Aug 2026 · Ashok Pen Wale</div>
+      <div class="bv-icon" onclick="toast('Opening share sheet')">⇪</div>
+    </div>
+    <div class="bv-doc">
+      <div class="bv-paper" id="bvPaper">
+        <div class="hdr">ASHOK PEN WALE</div>
+        <div class="sub">Sadar Bazaar · Cash / Credit</div>
+        <hr/>
+        <div class="row"><span>40 × DOMS DF Pen</span><span>₹320</span></div>
+        <div class="row"><span>Misc items</span><span>₹40</span></div>
+        <hr/>
+        <div class="row" style="font-weight:600;"><span>TOTAL</span><span>₹360</span></div>
+      </div>
+    </div>
+    <div class="bv-panel">
+      <div class="bv-conf">
+        <div class="bv-status" id="bvStatus" style="color:var(--emerald);">✓ Verified</div>
+        <div class="confidence high" id="bvConfBadge">96% confidence</div>
+      </div>
+      <div class="bv-fields" id="bvFields">
+        <div class="bv-field"><div class="l">VENDOR</div><div class="v">Ashok Pen Wale</div></div>
+        <div class="bv-field"><div class="l">DATE</div><div class="v">30 Aug 2026</div></div>
+        <div class="bv-field"><div class="l">AMOUNT</div><div class="v">₹360</div></div>
+        <div class="bv-field"><div class="l">BILL #</div><div class="v">—</div></div>
+      </div>
+      <div class="bv-actions">
+        <button class="sheet-btn cancel" onclick="openPurchase('po1'); show('po-detail')">View purchase</button>
+        <button class="sheet-btn confirm" onclick="toast('Opening correction form')">Correct details</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MORE SHEET ================= -->
+  <div class="sheet-scrim" id="moreScrim" onclick="closeMoreSheet()"></div>
+  <div class="sheet" id="moreSheet">
+    <div class="sheet-handle"></div>
+    <div class="sheet-head"><div class="bar-title">More</div></div>
+    <div class="sheet-body">
+      <div class="more-row" onclick="closeMoreSheet(); show('po-list');"><div class="more-icon">🧾</div><div><div class="more-title">Purchases</div><div class="more-sub">Orders, receiving, status</div></div></div>
+      <div class="more-row" onclick="closeMoreSheet(); show('money'); renderMoney();"><div class="more-icon">💰</div><div><div class="more-title">Money</div><div class="more-sub">Daily closing, cash vs UPI</div></div></div>
+      <div class="more-row" onclick="closeMoreSheet(); show('seasonal'); renderSeasonal();"><div class="more-icon">🪔</div><div><div class="more-title">Seasonal / Diwali</div><div class="more-sub">Isolated campaign ledger</div></div></div>
+      <div class="more-row" onclick="closeMoreSheet(); show('ai-assistant'); renderChat();"><div class="more-icon">💬</div><div><div class="more-title">Ask GSH AI</div><div class="more-sub">Business Q&amp;A, Hindi/English</div></div></div>
+      <div class="more-row" onclick="toast('Notifications')"><div class="more-icon">🔔</div><div><div class="more-title">Notifications</div><div class="more-sub">Briefs, tags, review requests</div></div></div>
+      <div class="more-row" onclick="toast('Settings')"><div class="more-icon">⚙️</div><div><div class="more-title">Settings</div><div class="more-sub">Users, permissions, data</div></div></div>
+      <div class="more-row" onclick="openSyncSheet()"><div class="more-icon">🔄</div><div id="syncStatusRow"><div class="more-title">Sync status</div><div class="more-sub">Checking…</div></div></div>
+    </div>
+  </div>
+
+  <!-- ================= PURCHASE LIST ================= -->
+  <div class="screen" id="po-list">
+    <div class="bar">
+      <div class="bar-back" onclick="show('cc')">←</div>
+      <div style="flex:1;"><div class="bar-title">Purchases</div><div class="bar-sub" id="poCount">4 orders · 1 needs review</div></div>
+      <div class="bar-back" onclick="openWaSheet()" title="Paste vendor order">📋</div>
+    </div>
+    <div class="chip-row">
+      <div class="chip active" data-pf="all" onclick="setPoFilter('all')">All</div>
+      <div class="chip" data-pf="DRAFT" onclick="setPoFilter('DRAFT')">Draft</div>
+      <div class="chip" data-pf="REVIEW" onclick="setPoFilter('REVIEW')">Review</div>
+      <div class="chip" data-pf="POSTED" onclick="setPoFilter('POSTED')">Posted</div>
+    </div>
+    <div class="plist" id="polist"></div>
+    <div class="fab" onclick="openVoiceReceiveSheet()">🎙️</div>
+    <div class="bottomnav">
+      <div class="nav-item" onclick="show('cc')"><span class="nav-icon">🗂️</span>Home</div>
+      <div class="nav-item" onclick="show('inv-list')"><span class="nav-icon">📦</span>Inventory</div>
+      <div class="nav-item" onclick="show('vendor-list')"><span class="nav-icon">🤝</span>Vendors</div>
+      <div class="nav-item" onclick="show('reports'); renderReports();"><span class="nav-icon">📊</span>Reports</div>
+      <div class="nav-item" onclick="openMoreSheet()"><span class="nav-icon">⋯</span>More</div>
+    </div>
+  </div>
+
+  <!-- ================= PURCHASE DETAIL ================= -->
+  <div class="screen" id="po-detail">
+    <div class="bar"><div class="bar-back" onclick="show('po-list')">←</div><div><div class="bar-title" id="poVendor">Ashok Pen Wale</div><div class="bar-sub" id="poDate">Ordered 30 Aug 2026</div></div></div>
+    <div class="stepper" id="poStepper"></div>
+    <div class="po-meta-row"><span id="poSource">Source: Voice receiving</span><span id="poPayment">Paid ₹360 of ₹360</span></div>
+    <div class="po-lines" id="poLines"></div>
+    <div class="po-cta" id="poCta" onclick="advancePurchase()">Mark as Received</div>
+    <div style="padding:14px 20px 0;" id="poLinkedBill"></div>
+  </div>
+
+  <!-- ================= VOICE RECEIVING SHEET ================= -->
+  <div class="sheet-scrim" id="voiceRecvScrim" onclick="closeVoiceReceiveSheet()"></div>
+  <div class="sheet" id="voiceRecvSheet">
+    <div class="sheet-handle"></div>
+    <div class="sheet-head"><div class="bar-title">Voice purchase receiving</div><div class="bar-sub">Speak what the vendor delivered</div></div>
+    <div class="sheet-body">
+      <div class="mic-stage">
+        <div class="mic-btn" id="micBtn2" onclick="toggleMic2()"><span class="mic-pulse"></span>🎙️</div>
+        <div class="mic-hint" id="micHint2">Tap the mic — e.g. "Ashok Pen wale se Link calculator 6 pieces aaya, DP 165 tha, 5% discount ke baad, ₹500 diya"</div>
+      </div>
+      <div class="transcript" id="voiceRecvTranscript" style="display:none;"></div>
+      <div class="extract-grid" id="voiceRecvExtract" style="display:none;"></div>
+    </div>
+    <div class="sheet-foot" id="voiceRecvFoot" style="display:none;">
+      <button class="sheet-btn cancel" onclick="closeVoiceReceiveSheet()">Cancel</button>
+      <button class="sheet-btn confirm" onclick="confirmVoiceReceive()">Confirm</button>
+    </div>
+  </div>
+
+  <!-- ================= WHATSAPP PASTE SHEET ================= -->
+  <div class="sheet-scrim" id="waScrim" onclick="closeWaSheet()"></div>
+  <div class="sheet" id="waSheet" style="max-height:86%;">
+    <div class="sheet-handle"></div>
+    <div class="sheet-head"><div class="bar-title">Paste vendor order</div><div class="bar-sub" id="waSub">Paste the WhatsApp-style order text</div></div>
+    <div class="sheet-body">
+      <div id="waStep1">
+        <textarea class="wa-textarea" id="waInput" placeholder="10 DOMS DF blue&#10;5 Link calculator&#10;20 notebooks NB-01"></textarea>
+      </div>
+      <div id="waStep2" style="display:none;">
+        <div style="font-size:12px;color:var(--ink-faint);margin-bottom:6px;">Matched against your catalogue — edit any quantity before confirming.</div>
+        <div class="wa-preview-row"><span>DOMS DF Pen (blue)</span><input type="text" value="10"></div>
+        <div class="wa-preview-row"><span>Link Calculator</span><input type="text" value="5"></div>
+        <div class="wa-preview-row"><span>Classmate Notebook (NB-01)</span><input type="text" value="20"></div>
+      </div>
+    </div>
+    <div class="sheet-foot">
+      <button class="sheet-btn cancel" onclick="closeWaSheet()">Cancel</button>
+      <button class="sheet-btn confirm" id="waNextBtn" onclick="waNext()">Parse order</button>
+    </div>
+  </div>
+
+  <!-- ================= MONEY ================= -->
+  <div class="screen" id="money">
+    <div class="bar"><div class="bar-back" onclick="show('cc')">←</div><div><div class="bar-title">Money</div><div class="bar-sub" id="moneyDateLabel">Today</div></div></div>
+    <div class="cc-scroll">
+      <div class="section-label" style="margin-top:6px;">TODAY'S POSITION</div>
+      <div class="actual-card" style="margin-bottom:14px;">
+        <div style="font-size:12px;color:var(--ink-faint);">Opening cash (carried from last closing)</div>
+        <div class="actual-input-row"><span>₹</span><input type="text" id="openingCashInput" inputmode="numeric" oninput="onOpeningCashEdit()"></div>
+      </div>
+      <div class="money-summary" id="moneySummary"></div>
+
+      <div class="section-label">EXPENSES</div>
+      <div style="margin:0 20px;" id="expList"></div>
+      <div class="add-exp-btn" onclick="openExpenseSheet()">+ Add expense</div>
+
+      <div class="section-label">DAILY CLOSING</div>
+      <div class="actual-card">
+        <div style="font-size:12px;color:var(--ink-faint);">Actual cash counted in drawer</div>
+        <div class="actual-input-row"><span>₹</span><input type="text" id="actualCashInput" placeholder="0" inputmode="numeric" oninput="computeVariance()"></div>
+      </div>
+      <div class="variance-banner zero" id="varianceBanner" style="display:none;"></div>
+      <div class="reason-select" id="reasonSelect" style="display:none;">
+        <select id="varianceReason" onchange="checkCloseEnabled()">
+          <option value="">Select a reason for the difference…</option>
+          <option>Cash shortage</option>
+          <option>Personal use</option>
+          <option>Expense not recorded</option>
+          <option>Opening balance error</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="close-cta disabled" id="closeCta" onclick="closeDay()">Enter actual cash to close the day</div>
+    </div>
+    <div class="bottomnav">
+      <div class="nav-item" onclick="show('cc')"><span class="nav-icon">🗂️</span>Home</div>
+      <div class="nav-item" onclick="show('inv-list')"><span class="nav-icon">📦</span>Inventory</div>
+      <div class="nav-item" onclick="show('vendor-list')"><span class="nav-icon">🤝</span>Vendors</div>
+      <div class="nav-item" onclick="show('reports'); renderReports();"><span class="nav-icon">📊</span>Reports</div>
+      <div class="nav-item" onclick="openMoreSheet()"><span class="nav-icon">⋯</span>More</div>
+    </div>
+  </div>
+
+  <!-- ================= QUICK SALE TOTAL SHEET ================= -->
+  <div class="sheet-scrim" id="saleScrim" onclick="closeSaleSheet()"></div>
+  <div class="sheet" id="saleSheet">
+    <div class="sheet-handle"></div>
+    <div class="sheet-head"><div class="bar-title">Today's sale total</div><div class="bar-sub">Quick total only — no per-product tracking (§17)</div></div>
+    <div class="sheet-body">
+      <div class="field" style="background:var(--paper-raised);border-color:var(--rule);">
+        <label style="color:var(--ink-faint);">CASH RECEIVED</label>
+        <input id="saleCashInput" type="text" inputmode="numeric" placeholder="0" style="color:var(--ink);font-size:18px;">
+      </div>
+      <div class="field" style="background:var(--paper-raised);border-color:var(--rule);">
+        <label style="color:var(--ink-faint);">UPI / ONLINE RECEIVED</label>
+        <input id="saleUpiInput" type="text" inputmode="numeric" placeholder="0" style="color:var(--ink);font-size:18px;">
+      </div>
+      <div class="field" style="background:var(--paper-raised);border-color:var(--rule);">
+        <label style="color:var(--ink-faint);">CREDIT / PENDING (OPTIONAL)</label>
+        <input id="saleCreditInput" type="text" inputmode="numeric" placeholder="0" style="color:var(--ink);font-size:18px;">
+      </div>
+    </div>
+    <div class="sheet-foot">
+      <button class="sheet-btn cancel" onclick="closeSaleSheet()">Cancel</button>
+      <button class="sheet-btn confirm" onclick="saveSaleTotal()">Add to today's sales</button>
+    </div>
+  </div>
+
+  <!-- ================= EXPENSE SHEET ================= -->
+  <div class="sheet-scrim" id="expScrim" onclick="closeExpenseSheet()"></div>
+  <div class="sheet" id="expSheet">
+    <div class="sheet-handle"></div>
+    <div class="sheet-head"><div class="bar-title">Add expense</div><div class="bar-sub">Not part of inventory purchase</div></div>
+    <div class="sheet-body">
+      <div class="exp-cat-grid" id="expCatGrid">
+        <div class="exp-cat-btn active" data-c="Packaging" onclick="setExpCat(this)">📦 Packaging</div>
+        <div class="exp-cat-btn" data-c="Transport" onclick="setExpCat(this)">🛺 Transport</div>
+        <div class="exp-cat-btn" data-c="Tea/snacks" onclick="setExpCat(this)">☕ Tea/snacks</div>
+        <div class="exp-cat-btn" data-c="Personal use" onclick="setExpCat(this)">🏠 Personal</div>
+        <div class="exp-cat-btn" data-c="Miscellaneous" onclick="setExpCat(this)">🗒️ Misc</div>
+        <div class="exp-cat-btn" data-c="Other" onclick="setExpCat(this)">➕ Other</div>
+      </div>
+      <div class="field" style="background:var(--paper-raised);border-color:var(--rule);">
+        <label style="color:var(--ink-faint);">AMOUNT</label>
+        <input id="expAmount" type="text" inputmode="numeric" placeholder="0" style="color:var(--ink);font-size:18px;">
+      </div>
+      <div class="field" style="background:var(--paper-raised);border-color:var(--rule);">
+        <label style="color:var(--ink-faint);">NOTE (OPTIONAL)</label>
+        <input id="expNote" type="text" placeholder="e.g. polythene bags for packing" style="color:var(--ink);">
+      </div>
+    </div>
+    <div class="sheet-foot">
+      <button class="sheet-btn cancel" onclick="closeExpenseSheet()">Cancel</button>
+      <button class="sheet-btn confirm" onclick="saveExpense()">Save expense</button>
+    </div>
+  </div>
+
+  <!-- ================= REPORTS ================= -->
+  <div class="screen" id="reports">
+    <div class="bar"><div class="bar-back" onclick="show('cc')">←</div><div><div class="bar-title">Reports</div><div class="bar-sub">Live from today's ledger</div></div></div>
+    <div class="cc-scroll">
+      <div class="rpt-filters" id="rptFilters">
+        <div class="chip active" data-r="7" onclick="setRptRange(7,this)">7 Days</div>
+        <div class="chip" data-r="30" onclick="setRptRange(30,this)">30 Days</div>
+        <div class="chip" data-r="today" onclick="setRptRange('today',this)">Today</div>
+      </div>
+
+      <div class="rpt-stats" id="rptStats"></div>
+
+      <div class="rpt-chart-card">
+        <div class="rpt-chart-head"><span class="t">Sales trend</span><span class="v" id="rptTrendSub"></span></div>
+        <svg id="rptTrendSvg" viewBox="0 0 320 100" style="width:100%;height:100px;overflow:visible;"></svg>
+      </div>
+
+      <div class="section-label" style="margin-top:0;">REPORTS</div>
+      <div class="rpt-list">
+        <div class="rpt-item" onclick="openReport('vendor-spend')"><div class="rpt-icon">🤝</div><div><div class="rpt-title">Vendor spend</div><div class="rpt-sub">Who you're buying most from</div></div></div>
+        <div class="rpt-item" onclick="openReport('inventory-valuation')"><div class="rpt-icon">📦</div><div><div class="rpt-title">Inventory valuation</div><div class="rpt-sub">Stock × purchase rate, by product</div></div></div>
+        <div class="rpt-item" onclick="openReport('fast-movers')"><div class="rpt-icon">⚡</div><div><div class="rpt-title">Fast movers</div><div class="rpt-sub">Highest movement this period</div></div></div>
+        <div class="rpt-item" onclick="openReport('low-stock')"><div class="rpt-icon">🔻</div><div><div class="rpt-title">Low stock</div><div class="rpt-sub">Below reorder point right now</div></div></div>
+        <div class="rpt-item" onclick="openReport('cash-flow')"><div class="rpt-icon">💵</div><div><div class="rpt-title">Cash flow</div><div class="rpt-sub">Cash vs UPI vs credit split</div></div></div>
+      </div>
+    </div>
+    <div class="bottomnav">
+      <div class="nav-item" onclick="show('cc')"><span class="nav-icon">🗂️</span>Home</div>
+      <div class="nav-item" onclick="show('inv-list')"><span class="nav-icon">📦</span>Inventory</div>
+      <div class="nav-item" onclick="show('vendor-list')"><span class="nav-icon">🤝</span>Vendors</div>
+      <div class="nav-item active"><span class="nav-icon">📊</span>Reports</div>
+      <div class="nav-item" onclick="openMoreSheet()"><span class="nav-icon">⋯</span>More</div>
+    </div>
+  </div>
+
+  <!-- ================= REPORT DETAIL ================= -->
+  <div class="screen" id="report-detail">
+    <div class="bar"><div class="bar-back" onclick="show('reports')">←</div><div><div class="bar-title" id="rdTitle">Report</div><div class="bar-sub" id="rdSub"></div></div></div>
+    <div class="rpt-detail" id="rdBody"></div>
+  </div>
+
+  <!-- ================= ASK GSH AI ================= -->
+  <div class="screen" id="ai-assistant">
+    <div class="bar"><div class="bar-back" onclick="show('cc')">←</div><div><div class="bar-title">Ask GSH AI</div><div class="bar-sub">Answers only from your real GSH data</div></div></div>
+    <div class="chat-suggest-row" id="chatSuggestRow"></div>
+    <div class="chat-scroll" id="chatScroll"></div>
+    <div class="chat-input-bar">
+      <input id="chatInput" placeholder="Ask about rates, vendors, stock, sales…" onkeydown="if(event.key==='Enter') sendChat();">
+      <div class="chat-send" onclick="sendChat()">➤</div>
+    </div>
+  </div>
+
+  <!-- ================= TRACE SHEET ================= -->
+  <div class="sheet-scrim" id="traceScrim" onclick="closeTraceSheet()"></div>
+  <div class="sheet" id="traceSheet" style="max-height:80%;">
+    <div class="sheet-handle"></div>
+    <div class="sheet-head"><div class="bar-title">Trace</div><div class="bar-sub">Exact records this answer came from</div></div>
+    <div class="sheet-body" id="traceBody"></div>
+  </div>
+
+  <!-- ================= EXPLAIN SHEET ================= -->
+  <div class="sheet-scrim" id="explainScrim" onclick="closeExplainSheet()"></div>
+  <div class="sheet" id="explainSheet">
+    <div class="sheet-handle"></div>
+    <div class="sheet-head"><div class="bar-title">Explain</div><div class="bar-sub">How this was calculated</div></div>
+    <div class="sheet-body" id="explainBody" style="font-size:13px;line-height:1.6;color:var(--ink-soft);"></div>
+  </div>
+
+  <!-- ================= SEASONAL / DIWALI ================= -->
+  <div class="screen" id="seasonal">
+    <div class="bar"><div class="bar-back" onclick="show('cc')">←</div><div><div class="bar-title">Seasonal Business</div><div class="bar-sub">Isolated from daily stationery stock (§26)</div></div></div>
+    <div class="season-picker" id="seasonPicker"></div>
+    <div class="cc-scroll">
+      <div class="season-hero">
+        <div class="name" id="seasonName">—</div>
+        <div class="dates" id="seasonDates">—</div>
+        <div class="season-grid">
+          <div class="season-stat"><div class="l">PURCHASE</div><div class="v mono" id="seasonPurchase">₹0</div></div>
+          <div class="season-stat"><div class="l">EXPENSES</div><div class="v mono" id="seasonExpenses">₹0</div></div>
+          <div class="season-stat"><div class="l">SALES</div><div class="v mono" id="seasonSales">₹0</div></div>
+          <div class="season-stat"><div class="l">NET PROFIT</div><div class="v mono" id="seasonProfit">₹0</div></div>
+        </div>
+      </div>
+
+      <div class="season-section-head"><span class="section-label" style="margin:0;">ITEMS PURCHASED</span><span class="season-add" onclick="openSeasonItemSheet()">+ Add item</span></div>
+      <div id="seasonItems"></div>
+
+      <div class="season-section-head"><span class="section-label" style="margin:0;">EXPENSES</span><span class="season-add" onclick="openSeasonExpenseSheet()">+ Add expense</span></div>
+      <div id="seasonExpList"></div>
+
+      <div class="season-section-head"><span class="section-label" style="margin:0;">SALES</span><span class="season-add" onclick="openSeasonSaleSheet()">+ Add sale</span></div>
+      <div id="seasonSalesList" style="padding-bottom:24px;"></div>
+    </div>
+    <div class="bottomnav">
+      <div class="nav-item" onclick="show('cc')"><span class="nav-icon">🗂️</span>Home</div>
+      <div class="nav-item" onclick="show('inv-list')"><span class="nav-icon">📦</span>Inventory</div>
+      <div class="nav-item" onclick="show('vendor-list')"><span class="nav-icon">🤝</span>Vendors</div>
+      <div class="nav-item" onclick="show('reports'); renderReports();"><span class="nav-icon">📊</span>Reports</div>
+      <div class="nav-item" onclick="openMoreSheet()"><span class="nav-icon">⋯</span>More</div>
+    </div>
+  </div>
+
+  <!-- ================= SEASONAL: NEW CAMPAIGN SHEET ================= -->
+  <div class="sheet-scrim" id="seasonNewScrim" onclick="closeSeasonNewSheet()"></div>
+  <div class="sheet" id="seasonNewSheet">
+    <div class="sheet-handle"></div>
+    <div class="sheet-head"><div class="bar-title">New season</div><div class="bar-sub">Kept fully separate from daily stock</div></div>
+    <div class="sheet-body">
+      <div class="field" style="background:var(--paper-raised);border-color:var(--rule);">
+        <label style="color:var(--ink-faint);">SEASON NAME</label>
+        <input id="seasonNewName" type="text" placeholder="e.g. Diwali 2026" style="color:var(--ink);">
+      </div>
+    </div>
+    <div class="sheet-foot">
+      <button class="sheet-btn cancel" onclick="closeSeasonNewSheet()">Cancel</button>
+      <button class="sheet-btn confirm" onclick="createSeasonCampaign()">Create season</button>
+    </div>
+  </div>
+
+  <!-- ================= SEASONAL: ADD ITEM SHEET ================= -->
+  <div class="sheet-scrim" id="seasonItemScrim" onclick="closeSeasonItemSheet()"></div>
+  <div class="sheet" id="seasonItemSheet">
+    <div class="sheet-handle"></div>
+    <div class="sheet-head"><div class="bar-title">Add seasonal item</div><div class="bar-sub">e.g. jhalar, toran, stickers — no year-round tracking needed</div></div>
+    <div class="sheet-body">
+      <div class="field" style="background:var(--paper-raised);border-color:var(--rule);"><label style="color:var(--ink-faint);">ITEM NAME</label><input id="seasonItemName" type="text" placeholder="e.g. LED jhalar 10m" style="color:var(--ink);"></div>
+      <div class="field" style="background:var(--paper-raised);border-color:var(--rule);"><label style="color:var(--ink-faint);">QUANTITY</label><input id="seasonItemQty" type="text" inputmode="numeric" placeholder="0" style="color:var(--ink);"></div>
+      <div class="field" style="background:var(--paper-raised);border-color:var(--rule);"><label style="color:var(--ink-faint);">TOTAL COST (₹)</label><input id="seasonItemCost" type="text" inputmode="numeric" placeholder="0" style="color:var(--ink);"></div>
+      <div class="field" style="background:var(--paper-raised);border-color:var(--rule);"><label style="color:var(--ink-faint);">BILL REFERENCE (OPTIONAL)</label><input id="seasonItemBill" type="text" placeholder="e.g. Delhi Traders #221" style="color:var(--ink);"></div>
+    </div>
+    <div class="sheet-foot">
+      <button class="sheet-btn cancel" onclick="closeSeasonItemSheet()">Cancel</button>
+      <button class="sheet-btn confirm" onclick="saveSeasonItem()">Add item</button>
+    </div>
+  </div>
+
+  <!-- ================= SEASONAL: ADD EXPENSE SHEET ================= -->
+  <div class="sheet-scrim" id="seasonExpScrim" onclick="closeSeasonExpenseSheet()"></div>
+  <div class="sheet" id="seasonExpSheet">
+    <div class="sheet-handle"></div>
+    <div class="sheet-head"><div class="bar-title">Add seasonal expense</div><div class="bar-sub">Travel, transport, misc — kept with this season only</div></div>
+    <div class="sheet-body">
+      <div class="field" style="background:var(--paper-raised);border-color:var(--rule);"><label style="color:var(--ink-faint);">CATEGORY</label><input id="seasonExpCat" type="text" placeholder="e.g. Travel to Delhi" style="color:var(--ink);"></div>
+      <div class="field" style="background:var(--paper-raised);border-color:var(--rule);"><label style="color:var(--ink-faint);">AMOUNT (₹)</label><input id="seasonExpAmt" type="text" inputmode="numeric" placeholder="0" style="color:var(--ink);"></div>
+    </div>
+    <div class="sheet-foot">
+      <button class="sheet-btn cancel" onclick="closeSeasonExpenseSheet()">Cancel</button>
+      <button class="sheet-btn confirm" onclick="saveSeasonExpense()">Add expense</button>
+    </div>
+  </div>
+
+  <!-- ================= SEASONAL: ADD SALE SHEET ================= -->
+  <div class="sheet-scrim" id="seasonSaleScrim" onclick="closeSeasonSaleSheet()"></div>
+  <div class="sheet" id="seasonSaleSheet">
+    <div class="sheet-handle"></div>
+    <div class="sheet-head"><div class="bar-title">Add seasonal sale</div><div class="bar-sub">Quick total, same as daily sales</div></div>
+    <div class="sheet-body">
+      <div class="field" style="background:var(--paper-raised);border-color:var(--rule);"><label style="color:var(--ink-faint);">AMOUNT (₹)</label><input id="seasonSaleAmt" type="text" inputmode="numeric" placeholder="0" style="color:var(--ink);"></div>
+    </div>
+    <div class="sheet-foot">
+      <button class="sheet-btn cancel" onclick="closeSeasonSaleSheet()">Cancel</button>
+      <button class="sheet-btn confirm" onclick="saveSeasonSale()">Add sale</button>
+    </div>
+  </div>
+
+  <!-- ================= SYNC STATUS SHEET ================= -->
+  <div class="sheet-scrim" id="syncScrim" onclick="closeSyncSheet()"></div>
+  <div class="sheet" id="syncSheet" style="max-height:80%;">
+    <div class="sheet-handle"></div>
+    <div class="sheet-head"><div class="bar-title">Local-first sync</div><div class="bar-sub">Every change saves locally first, then syncs when a server is connected</div></div>
+    <div class="sheet-body">
+      <div class="field" style="background:var(--paper-raised);border-color:var(--rule);margin-bottom:14px;">
+        <label style="color:var(--ink-faint);">SERVER URL (OPTIONAL)</label>
+        <input id="syncServerInput" type="text" placeholder="e.g. https://your-gsh-server.example.com" style="color:var(--ink);font-size:13px;">
+      </div>
+      <div class="link-btn" style="margin-bottom:16px;" onclick="saveSyncServerUrl()">Save server URL →</div>
+      <div style="font-size:11px;color:var(--ink-faint);margin-bottom:6px;">QUEUED CHANGES</div>
+      <div id="syncOutboxBody" style="margin-bottom:14px;"></div>
+      <div style="font-size:11px;color:var(--ink-faint);margin-bottom:4px;">LAST SYNC ATTEMPT</div>
+      <div id="syncLastResult" style="font-size:12.5px;color:var(--ink-soft);"></div>
+    </div>
+    <div class="sheet-foot">
+      <button class="sheet-btn cancel" onclick="closeSyncSheet()">Close</button>
+      <button class="sheet-btn confirm" onclick="syncNow()">Sync now</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+/* ---------- PERSISTENCE (window.storage — real, survives reload; personal to this user) ---------- */
+async function loadKey(key, seed){
+  try {
+    const res = await window.storage.get(key, false);
+    if(res && res.value){ return JSON.parse(res.value); }
+  } catch(e){ /* key not found yet — fall through to seeding */ }
+  try { await window.storage.set(key, JSON.stringify(seed), false); } catch(e){ console.warn('storage set failed', key, e); }
+  return seed;
+}
+async function saveKeyRaw(key, value){
+  try { await window.storage.set(key, JSON.stringify(value), false); } catch(e){ console.warn('storage set failed', key, e); }
+}
+
+/* ---------- LOCAL-FIRST SYNC OUTBOX (Phase 1 — see docs/SYNC_PROTOCOL.md) ----------
+   saveKey() is the single chokepoint every mutation in this app already calls, so it's
+   also the sync boundary: write locally (instant, works offline), enqueue the latest
+   snapshot for that collection, and kick a debounced push. No mutation call site
+   anywhere else in the app needed to change. */
+const SYNCED_COLLECTIONS = new Set(['gsh:products','gsh:vendors','gsh:purchases','gsh:expenses','gsh:sales','gsh:closings','gsh:seasons','gsh:movements']);
+let SYNC_OUTBOX = {};        // {collection: {data, clientVersion, queuedAt}}
+let SYNC_VERSIONS = {};      // {collection: last version server accepted}
+let SYNC_SERVER_URL = '';    // empty = no server configured yet — honestly reported, not an error
+let SYNC_STATUS = { lastAttempt:null, lastResult:null, lastError:null };
+let DEVICE_ID = null;
+let syncDebounce;
+
+async function saveKey(key, value){
+  await saveKeyRaw(key, value);
+  if(SYNCED_COLLECTIONS.has(key)){
+    const collection = key.replace('gsh:','');
+    SYNC_OUTBOX[collection] = { data: value, clientVersion: SYNC_VERSIONS[collection]||0, queuedAt: new Date().toISOString() };
+    await saveKeyRaw('gsh:syncOutbox', SYNC_OUTBOX);
+    clearTimeout(syncDebounce);
+    syncDebounce = setTimeout(attemptSync, 1200);
+    if(document.getElementById('moreSheet')?.classList.contains('show')) renderSyncStatusRow();
+  }
+}
+
+async function attemptSync(){
+  SYNC_STATUS.lastAttempt = new Date().toISOString();
+  const pending = Object.keys(SYNC_OUTBOX);
+  if(pending.length===0){ SYNC_STATUS.lastResult='nothing to sync'; renderSyncStatusRow(); return; }
+  if(!SYNC_SERVER_URL){ SYNC_STATUS.lastResult='queued — no server configured'; SYNC_STATUS.lastError=null; renderSyncStatusRow(); return; }
+
+  try {
+    const entries = pending.map(c => ({ collection:c, data: SYNC_OUTBOX[c].data, clientVersion: SYNC_OUTBOX[c].clientVersion }));
+    const res = await fetch(SYNC_SERVER_URL.replace(/\/$/,'') + '/api/v1/sync/push', {
+      method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ deviceId: DEVICE_ID, entries }),
+    });
+    if(!res.ok) throw new Error('server responded '+res.status);
+    const { results } = await res.json();
+    results.forEach(r=>{
+      if(r.outcome==='accepted'){ SYNC_VERSIONS[r.collection]=r.version; delete SYNC_OUTBOX[r.collection]; }
+      // conflict_rejected: left in the outbox on purpose — see SYNC_PROTOCOL.md, no silent overwrite.
+    });
+    await saveKeyRaw('gsh:syncOutbox', SYNC_OUTBOX);
+    await saveKeyRaw('gsh:syncVersions', SYNC_VERSIONS);
+    const conflicts = results.filter(r=>r.outcome==='conflict_rejected').length;
+    SYNC_STATUS.lastResult = conflicts ? `synced with ${conflicts} conflict(s) — server version kept, review those manually` : 'synced';
+    SYNC_STATUS.lastError = null;
+  } catch(e){
+    SYNC_STATUS.lastError = e.message || 'sync request failed';
+    SYNC_STATUS.lastResult = 'failed';
+  }
+  renderSyncStatusRow();
+}
+function renderSyncStatusRow(){
+  const el = document.getElementById('syncStatusRow');
+  if(!el) return;
+  const pending = Object.keys(SYNC_OUTBOX).length;
+  const serverLabel = SYNC_SERVER_URL ? SYNC_SERVER_URL : 'not configured';
+  const state = SYNC_STATUS.lastError ? `⚠ ${SYNC_STATUS.lastError}` : (pending ? `${pending} collection(s) queued` : 'up to date');
+  el.innerHTML = `<div class="more-title">Sync status</div><div class="more-sub">Server: ${serverLabel} · ${state}</div>`;
+}
+function openSyncSheet(){
+  document.getElementById('syncServerInput').value = SYNC_SERVER_URL;
+  renderSyncOutboxDetail();
+  document.getElementById('syncScrim').classList.add('show');
+  document.getElementById('syncSheet').classList.add('show');
+}
+function closeSyncSheet(){ document.getElementById('syncScrim').classList.remove('show'); document.getElementById('syncSheet').classList.remove('show'); }
+function renderSyncOutboxDetail(){
+  const pending = Object.keys(SYNC_OUTBOX);
+  document.getElementById('syncOutboxBody').innerHTML = pending.length
+    ? pending.map(c=>`<div class="trace-ref-row"><span>${c}</span><span>queued ${new Date(SYNC_OUTBOX[c].queuedAt).toLocaleTimeString()}</span></div>`).join('')
+    : `<div style="color:var(--ink-faint);font-size:12.5px;">Nothing queued — every collection is synced (or nothing's been changed yet).</div>`;
+  document.getElementById('syncLastResult').textContent = SYNC_STATUS.lastError ? 'Last attempt failed: '+SYNC_STATUS.lastError : (SYNC_STATUS.lastResult || 'Not attempted yet');
+}
+function saveSyncServerUrl(){
+  SYNC_SERVER_URL = document.getElementById('syncServerInput').value.trim();
+  saveKeyRaw('gsh:syncServerUrl', SYNC_SERVER_URL);
+  toast(SYNC_SERVER_URL ? 'Server URL saved — syncing now' : 'Server URL cleared — changes will stay queued locally');
+  attemptSync();
+  renderSyncStatusRow();
+}
+function syncNow(){ toast('Syncing…'); attemptSync().then(renderSyncOutboxDetail); }
+
+let role = 'ADMIN';
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');}
+function goStep(step){
+  document.getElementById('stepMobile').style.display = step==='mobile' ? 'block':'none';
+  document.getElementById('stepOtp').style.display = step==='otp' ? 'block':'none';
+  document.getElementById('stepPin').style.display = step==='pin' ? 'block':'none';
+  const dots = document.querySelectorAll('#stepDots span');
+  const idx = {mobile:0, otp:1, pin:2}[step];
+  dots.forEach((d,i)=> d.classList.toggle('done', i<=idx));
+}
+document.getElementById('mobileInput').addEventListener('input', e=>{
+  e.target.value = e.target.value.replace(/\D/g,'');
+  document.getElementById('sendOtpBtn').disabled = e.target.value.length !== 10;
+});
+function sendOtp(){
+  const mobile = document.getElementById('mobileInput').value;
+  if(mobile.length!==10){document.getElementById('mobileErr').textContent='Enter a valid 10-digit mobile number.';return;}
+  document.getElementById('mobileErr').textContent='';
+  document.getElementById('otpSubtext').textContent = 'Code sent to +91 '+mobile.slice(0,5)+'•••••';
+  goStep('otp');
+}
+function setRole(r){
+  role = r;
+  document.getElementById('roleAdmin').classList.toggle('active', r==='ADMIN');
+  document.getElementById('roleEmp').classList.toggle('active', r==='EMPLOYEE');
+}
+function verifyOtp(){
+  const otp = document.getElementById('otpInput').value;
+  if(otp.length!==6){document.getElementById('otpErr').textContent='Enter the 6-digit code.';return;}
+  document.getElementById('otpErr').textContent='';
+  goStep('pin');
+}
+function setPin(){
+  const p1=document.getElementById('pinInput').value, p2=document.getElementById('pinConfirm').value;
+  const err=document.getElementById('pinErr');
+  if(p1.length!==4){err.textContent='PIN must be 4 digits.';return;}
+  if(p1!==p2){err.textContent='PINs do not match.';return;}
+  err.textContent='';
+  show('onboarding');
+}
+
+const obSteps = [
+  {icon:'🗂️',title:'Command Center',desc:"See yesterday's sales, today's cash position, and what needs attention — the moment you open the app."},
+  {icon:'📦',title:'Inventory',desc:'Every product, its stock, rate history and margin — searchable by alias, name, or voice.'},
+  {icon:'🎙️',title:'Voice AI',desc:'Speak a stock update or purchase naturally — review the structured result, then confirm.'},
+  {icon:'🤝',title:'Vendor 360',desc:'Every bill, payment and rate for a vendor in one scrollable history.'},
+  {icon:'💬',title:'Ask GSH AI',desc:'Ask business questions in Hindi or English — every answer traces back to a real record.'},
+  {icon:'📊',title:'Reports',desc:'Sales, profit, vendor spend and stock health — filterable by any date range.'},
+];
+let obIndex = 0;
+function renderOb(){
+  const s = obSteps[obIndex];
+  document.getElementById('obIcon').textContent = s.icon;
+  document.getElementById('obTitle').textContent = s.title;
+  document.getElementById('obDesc').textContent = s.desc;
+  document.getElementById('obProgress').innerHTML = obSteps.map((_,i)=>`<span class="${i===obIndex?'on':''}"></span>`).join('');
+  document.getElementById('obNextBtn').textContent = obIndex===obSteps.length-1 ? 'Done' : 'Next';
+}
+function nextOnboarding(){
+  if(obIndex < obSteps.length-1){obIndex++; renderOb();} else {finishOnboarding();}
+}
+function finishOnboarding(){
+  show('cc');
+  const h = new Date().getHours();
+  document.getElementById('ccGreet').textContent = h<12 ? 'Good morning' : h<17 ? 'Good afternoon' : 'Good evening';
+  renderCC();
+}
+renderOb();
+
+/* ---------- INVENTORY DATA (persisted via ProductRepository -> window.storage) ---------- */
+const SEED_PRODUCTS = [
+  {id:'p1', alias:'PEN-01', name:'DOMS DF Pen', brand:'DOMS', line:null, category:'Pens', stock:6, min:20, purchaseRate:8, sellRate:10, icon:'🖊️'},
+  {id:'p2', alias:'PEN-07', name:'DOMS Zillion Pencil', brand:'DOMS', line:'LINE 2', category:'Pens', stock:64, min:30, purchaseRate:4, sellRate:6, icon:'✏️'},
+  {id:'p3', alias:'COL-03', name:'DOMS Wax Colour', brand:'DOMS', line:'LINE 1', category:'Colours', stock:18, min:15, purchaseRate:22, sellRate:30, icon:'🖍️'},
+  {id:'p4', alias:'NB-01', name:'Classmate Notebook 172pg', brand:'Classmate', line:null, category:'Notebooks', stock:120, min:40, purchaseRate:28, sellRate:38, icon:'📓'},
+  {id:'p5', alias:'CAL-02', name:'Link Calculator', brand:'Link', line:null, category:'Stationery', stock:9, min:10, purchaseRate:150, sellRate:190, icon:'🧮'},
+  {id:'p6', alias:'TP-04', name:'Transparent Tape 1"', brand:'Generic', line:null, category:'Stationery', stock:35, min:20, purchaseRate:12, sellRate:18, icon:'📏'},
+];
+let PRODUCTS = [];
+let invFilter = 'all';
+function invNameHtml(p){ return p.name + (p.line ? ` <span class="pline">${p.line}</span>` : ''); }
+function filterInventory(){
+  const q = (document.getElementById('invSearch').value||'').toLowerCase();
+  let rows = PRODUCTS.filter(p =>
+    (p.name.toLowerCase().includes(q) || p.alias.toLowerCase().includes(q) || p.brand.toLowerCase().includes(q)));
+  if(invFilter==='low') rows = rows.filter(p=>p.stock < p.min);
+  else if(invFilter==='doms') rows = rows.filter(p=>p.brand==='DOMS');
+  else if(invFilter!=='all') rows = rows.filter(p=>p.category===invFilter);
+  document.getElementById('plist').innerHTML = rows.map(p => `
+    <div class="prow" onclick="openProduct('${p.id}')">
+      <div class="pthumb">${p.icon}</div>
+      <div class="pinfo">
+        <div class="pname">${invNameHtml(p)}</div>
+        <div class="palias">${p.alias} · ${p.brand}</div>
+      </div>
+      <div class="pstock">
+        <div class="pstock-val ${p.stock<p.min?'low':''} mono">${p.stock}</div>
+        <div class="pstock-unit">${p.stock<p.min?'below min '+p.min:'in stock'}</div>
+      </div>
+    </div>`).join('') || '<div style="padding:30px 0;text-align:center;color:var(--ink-faint);font-size:12.5px;">No products match — try a different search.</div>';
+  document.getElementById('invCount').textContent = `${PRODUCTS.length} products · ${PRODUCTS.filter(p=>p.stock<p.min).length} low stock`;
+}
+function setInvFilter(f){
+  invFilter = f;
+  document.querySelectorAll('#invChips .chip').forEach(c=>c.classList.toggle('active', c.dataset.f===f));
+  filterInventory();
+}
+
+let currentP360Id = null;
+function openProduct(id){
+  currentP360Id = id;
+  const p = PRODUCTS.find(x=>x.id===id);
+  document.getElementById('p360Name').innerHTML = invNameHtml(p);
+  document.getElementById('p360Meta').textContent = `${p.alias} · ${p.brand} · ${p.category}`;
+  const stockEl = document.getElementById('p360Stock');
+  stockEl.textContent = p.stock;
+  stockEl.style.color = p.stock < p.min ? 'var(--rose)' : 'var(--ink)';
+  document.querySelector('.p360-stats .p360-stat:nth-child(2) .v').textContent = `₹${p.purchaseRate} → ₹${p.sellRate}`;
+  const margin = Math.round(((p.sellRate-p.purchaseRate)/p.sellRate)*100);
+  document.querySelector('.p360-stats .p360-stat:nth-child(3) .v').textContent = margin+'%';
+  setP360Tab('history');
+  show('p360');
+}
+function setP360Tab(t){
+  document.querySelectorAll('.tab').forEach(el=>el.classList.toggle('active', el.dataset.t===t));
+  document.querySelectorAll('.tab-panel').forEach(el=>el.classList.toggle('active', el.id==='tab-'+t));
+}
+
+/* ---------- VOICE ENTRY SHEET ---------- */
+let listening = false;
+function openVoiceSheet(){
+  document.getElementById('voiceScrim').classList.add('show');
+  document.getElementById('voiceSheet').classList.add('show');
+  document.getElementById('voiceTranscript').style.display='none';
+  document.getElementById('voiceExtract').style.display='none';
+  document.getElementById('voiceExtract').innerHTML='';
+  document.getElementById('voiceFoot').style.display='none';
+  document.getElementById('micHint').textContent = 'Tap the mic and speak — e.g. "DOMS DF Pen 45 ke aaye, 55 sale honge, 20 blue, 10 black, 10 red"';
+  document.getElementById('micBtn').classList.remove('listening');
+}
+function closeVoiceSheet(){
+  document.getElementById('voiceScrim').classList.remove('show');
+  document.getElementById('voiceSheet').classList.remove('show');
+}
+function toggleMic(){
+  if(listening) return;
+  listening = true;
+  document.getElementById('micBtn').classList.add('listening');
+  document.getElementById('micHint').textContent = 'Listening…';
+  setTimeout(()=>{
+    const transcript = 'DOMS DF Pen 45 ke aaye hain, 55 sale honge, 20 blue hain, 10 black aur 10 red.';
+    const t = document.getElementById('voiceTranscript');
+    t.style.display='block';
+    t.textContent = '"'+transcript+'"';
+    document.getElementById('micBtn').classList.remove('listening');
+    document.getElementById('micHint').textContent = 'Transcript captured — review the extracted fields below.';
+    const ex = document.getElementById('voiceExtract');
+    ex.style.display='block';
+    ex.innerHTML = `
+      <div class="ext-row"><span class="ext-label">Product</span><span class="ext-val">DOMS DF Pen <span class="confidence high">98% match</span></span></div>
+      <div class="ext-row"><span class="ext-label">Purchase rate</span><span class="ext-val">₹<input type="text" value="45"></span></div>
+      <div class="ext-row"><span class="ext-label">Selling rate</span><span class="ext-val">₹<input type="text" value="55"></span></div>
+      <div class="ext-row"><span class="ext-label">Blue</span><span class="ext-val"><input type="text" value="20"></span></div>
+      <div class="ext-row"><span class="ext-label">Black</span><span class="ext-val"><input type="text" value="10"></span></div>
+      <div class="ext-row"><span class="ext-label">Red</span><span class="ext-val"><input type="text" value="10"></span></div>`;
+    document.getElementById('voiceFoot').style.display='flex';
+    listening = false;
+  }, 1400);
+}
+function confirmVoice(){
+  const p = PRODUCTS.find(x=>x.id==='p1');
+  p.stock += 40; // 20+10+10
+  p.purchaseRate = 45; p.sellRate = 55;
+  MOVEMENTS.push({productId:'p1', productName:p.name, delta:40, source:'VOICE', date:BUSINESS_DATE});
+  saveKey('gsh:products', PRODUCTS);
+  saveKey('gsh:movements', MOVEMENTS);
+  closeVoiceSheet();
+  filterInventory();
+  toast('Inventory updated — DOMS DF Pen +40 (20 blue, 10 black, 10 red)');
+}
+
+/* ---------- EXCEL IMPORT SHEET (real parsing via SheetJS, real duplicate-alias
+   validation against the live PRODUCTS catalogue, real commit into Inventory) ---------- */
+let importStep = 1;
+let importParsedRows = []; // {alias, name, category, brand, unit, openingQty, purchaseRate, sellRate, minStock, status, issue}
+let importFileLabel = '';
+
+function openImportSheet(){
+  importStep = 1;
+  importParsedRows = [];
+  document.getElementById('importFileInput').value = '';
+  document.getElementById('dropZoneText').textContent = 'Tap to select a file';
+  renderImportStep();
+  document.getElementById('importScrim').classList.add('show');
+  document.getElementById('importSheet').classList.add('show');
+}
+function closeImportSheet(){
+  document.getElementById('importScrim').classList.remove('show');
+  document.getElementById('importSheet').classList.remove('show');
+}
+
+// Column headers we accept, matched case-insensitively with common variants (§37)
+const IMPORT_COLUMN_ALIASES = {
+  alias: ['alias', 'product alias', 'product id', 'sku'],
+  name: ['name', 'product name'],
+  category: ['category'],
+  brand: ['brand'],
+  unit: ['unit'],
+  openingQty: ['opening quantity', 'opening qty', 'qty', 'quantity'],
+  purchaseRate: ['purchase rate', 'purchaserate', 'cost'],
+  sellRate: ['selling rate', 'sellingrate', 'sell rate', 'mrp'],
+  minStock: ['minimum stock', 'min stock', 'minstock'],
+};
+function mapRow(rawRow){
+  const lowerKeys = {};
+  Object.keys(rawRow).forEach(k => lowerKeys[k.trim().toLowerCase()] = rawRow[k]);
+  const out = {};
+  for(const field in IMPORT_COLUMN_ALIASES){
+    const match = IMPORT_COLUMN_ALIASES[field].find(alias => lowerKeys[alias] !== undefined);
+    out[field] = match ? lowerKeys[match] : undefined;
+  }
+  return out;
+}
+function validateRows(rows){
+  const seenAliases = new Set();
+  return rows.map((r, i) => {
+    const alias = (r.alias ?? '').toString().trim();
+    const name = (r.name ?? '').toString().trim();
+    const purchaseRate = parseFloat(r.purchaseRate);
+    const sellRate = parseFloat(r.sellRate);
+    const openingQty = parseFloat(r.openingQty) || 0;
+    const minStock = parseFloat(r.minStock) || 0;
+
+    let status = 'OK', issue = '';
+    if(!alias || !name){ status = 'MISSING_FIELD'; issue = 'Missing alias or name'; }
+    else if(PRODUCTS.some(p => p.alias.toLowerCase() === alias.toLowerCase())){ status = 'DUPLICATE_ALIAS'; issue = 'Alias already exists in Inventory'; }
+    else if(seenAliases.has(alias.toLowerCase())){ status = 'DUPLICATE_ALIAS'; issue = 'Duplicate alias within this file'; }
+    else if(isNaN(purchaseRate) || isNaN(sellRate)){ status = 'MISSING_FIELD'; issue = 'Missing purchase or selling rate'; }
+    if(status === 'OK') seenAliases.add(alias.toLowerCase());
+
+    return { rowIndex:i+1, alias, name, category:(r.category||'General').toString(), brand:(r.brand||'Generic').toString(),
+      unit:(r.unit||'pcs').toString(), openingQty, purchaseRate, sellRate, minStock, status, issue };
+  });
+}
+function handleImportFile(evt){
+  const file = evt.target.files[0];
+  if(!file) return;
+  importFileLabel = file.name;
+  document.getElementById('dropZoneText').textContent = 'Reading '+file.name+'…';
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    try {
+      const wb = XLSX.read(e.target.result, {type:'binary'});
+      const sheet = wb.Sheets[wb.SheetNames[0]];
+      const rawRows = XLSX.utils.sheet_to_json(sheet, {defval:''});
+      const mapped = rawRows.map(mapRow);
+      importParsedRows = validateRows(mapped);
+      goImportStep(2);
+    } catch(err){
+      toast("Could not read that file — make sure it's a valid .xlsx or .csv");
+      document.getElementById('dropZoneText').textContent = 'Tap to select a file';
+    }
+  };
+  reader.readAsBinaryString(file);
+}
+function loadSampleImportFile(){
+  // A realistic sample: some genuinely new products, one that collides with an
+  // alias already in the live catalogue, and one missing a required rate — so the
+  // validation you're about to see is running against your actual Inventory, not
+  // a scripted demo list. Keys mirror real spreadsheet headers (spec §7).
+  importFileLabel = 'sample_stock.csv';
+  const sample = [
+    {'Alias':'GL-11', 'Name':'Cello Gel Pen', 'Category':'Pens', 'Brand':'Cello', 'Unit':'pcs', 'Opening Qty':60, 'Purchase Rate':6, 'Selling Rate':9, 'Min Stock':20},
+    {'Alias':'ER-02', 'Name':'Apsara Eraser', 'Category':'Stationery', 'Brand':'Apsara', 'Unit':'pcs', 'Opening Qty':100, 'Purchase Rate':2, 'Selling Rate':4, 'Min Stock':30},
+    {'Alias': PRODUCTS[0]?.alias || 'PEN-01', 'Name':'DOMS Gel Pen', 'Category':'Pens', 'Brand':'DOMS', 'Unit':'pcs', 'Opening Qty':40, 'Purchase Rate':9, 'Selling Rate':12, 'Min Stock':20},
+    {'Alias':'MK-07', 'Name':'Whiteboard Marker', 'Category':'Stationery', 'Brand':'Generic', 'Unit':'pcs', 'Opening Qty':25, 'Purchase Rate':15, 'Selling Rate':'', 'Min Stock':10},
+  ];
+  importParsedRows = validateRows(sample.map(mapRow));
+  goImportStep(2);
+}
+function goImportStep(n){
+  importStep = n;
+  renderImportStep();
+}
+function importNext(){
+  if(importStep===1) return;
+  if(importStep===2){ goImportStep(3); return; }
+  // Step 3: actually commit the OK rows into Inventory — real create, real persistence.
+  const okRows = importParsedRows.filter(r=>r.status==='OK');
+  okRows.forEach(r=>{
+    PRODUCTS.push({
+      id:'p'+Date.now()+Math.floor(Math.random()*1000),
+      alias:r.alias, name:r.name, brand:r.brand, line:null, category:r.category,
+      stock:r.openingQty, min:r.minStock||1, purchaseRate:r.purchaseRate, sellRate:r.sellRate, icon:'📦', unit:r.unit,
+    });
+  });
+  saveKey('gsh:products', PRODUCTS);
+  filterInventory();
+  closeImportSheet();
+  toast(`${okRows.length} product(s) imported into Inventory — ${importParsedRows.length-okRows.length} skipped.`);
+}
+function renderImportStep(){
+  document.querySelectorAll('.import-step').forEach((el,i)=>el.classList.toggle('active', i===importStep-1));
+  const labels = ['Step 1 of 3 · Upload','Step 2 of 3 · Review & map','Step 3 of 3 · Confirm'];
+  document.getElementById('importSub').textContent = labels[importStep-1];
+  const btn = document.getElementById('importNextBtn');
+
+  if(importStep===1){ btn.disabled = true; btn.textContent = 'Select a file to continue'; return; }
+  btn.disabled = false;
+
+  if(importStep===2){
+    document.getElementById('importFileName').textContent = importFileLabel;
+    const ok = importParsedRows.filter(r=>r.status==='OK').length;
+    const dup = importParsedRows.filter(r=>r.status==='DUPLICATE_ALIAS').length;
+    const missing = importParsedRows.filter(r=>r.status==='MISSING_FIELD').length;
+    document.getElementById('importSummary').innerHTML = `
+      <div class="isum"><div class="v">${importParsedRows.length}</div><div class="l">rows found</div></div>
+      <div class="isum"><div class="v warn">${missing}</div><div class="l">need review</div></div>
+      <div class="isum"><div class="v bad">${dup}</div><div class="l">duplicate alias</div></div>`;
+    document.getElementById('importRows').innerHTML = importParsedRows.map(r=>{
+      const tagClass = r.status==='OK' ? 'ok' : r.status==='DUPLICATE_ALIAS' ? 'dup' : 'dup';
+      const tagStyle = r.status==='MISSING_FIELD' ? 'style="background:var(--amber-tint);color:var(--amber);"' : '';
+      const tagText = r.status==='OK' ? 'OK' : r.status==='DUPLICATE_ALIAS' ? 'DUPLICATE ALIAS' : 'NEEDS FIX';
+      return `<div class="import-row"><span>${r.alias||'—'} — ${r.name||'(missing name)'}${r.issue?' · '+r.issue:''}</span><span class="tag ${tagClass}" ${tagStyle}>${tagText}</span></div>`;
+    }).join('');
+    btn.textContent = 'Continue';
+  } else if(importStep===3){
+    const okRows = importParsedRows.filter(r=>r.status==='OK');
+    const skipped = importParsedRows.length - okRows.length;
+    document.getElementById('importDoneIcon').textContent = okRows.length ? '✅' : '⚠️';
+    document.getElementById('importDoneTitle').textContent = okRows.length ? `${okRows.length} product(s) ready to import` : 'Nothing valid to import';
+    document.getElementById('importDoneSub').textContent = skipped ? `${skipped} row(s) skipped — fix duplicates/missing rates and re-upload separately` : 'Every row passed validation';
+    btn.textContent = okRows.length ? `Import ${okRows.length} product(s)` : 'Close';
+    btn.disabled = okRows.length===0;
+  }
+}
+
+/* ---------- VENDORS DATA (persisted via VendorRepository -> window.storage) ---------- */
+const SEED_VENDORS = [
+  {id:'v1', name:'Ashok Pen Wale', initial:'A', terms:'7-day credit · Sadar Bazaar', bills:3, reviewCount:1, monthSpend:6200},
+  {id:'v2', name:'Shree Stationers', initial:'S', terms:'Cash on delivery · Karol Bagh', bills:5, reviewCount:0, monthSpend:9840},
+  {id:'v3', name:'Delhi Paper Traders', initial:'D', terms:'15-day credit · Chandni Chowk', bills:2, reviewCount:1, monthSpend:3100},
+  {id:'v4', name:'Modern Book Depot', initial:'M', terms:'Cash · Nai Sarak', bills:4, reviewCount:0, monthSpend:5420},
+];
+let VENDORS = [];
+function renderVendors(){
+  const q = (document.getElementById('vendSearch').value||'').toLowerCase();
+  const rows = VENDORS.filter(v=>v.name.toLowerCase().includes(q));
+  document.getElementById('vlist').innerHTML = rows.map(v=>`
+    <div class="vrow" onclick="openVendor('${v.id}')">
+      <div class="vavatar">${v.initial}</div>
+      <div class="vinfo"><div class="vname">${v.name}</div><div class="vmeta">${v.terms}</div></div>
+      <div class="vright">
+        <div class="vamt mono">₹${v.monthSpend.toLocaleString('en-IN')}</div>
+        <div class="vbadge ${v.reviewCount? 'review':'clear'}">${v.reviewCount? v.reviewCount+' need review':'all clear'}</div>
+      </div>
+    </div>`).join('');
+  const reviewTotal = VENDORS.reduce((a,v)=>a+v.reviewCount,0);
+  document.getElementById('vendCount').textContent = `${VENDORS.length} vendors · ${reviewTotal} bills need review`;
+}
+
+let currentVendorName = null;
+function openVendor(id){
+  const v = VENDORS.find(x=>x.id===id);
+  currentVendorName = v.name;
+  document.getElementById('v360Initial').textContent = v.initial;
+  document.getElementById('v360Name').textContent = v.name;
+  document.getElementById('v360Terms').textContent = v.terms;
+  setV360Tab('bills');
+  show('vendor-360');
+}
+function setV360Tab(t){
+  document.querySelectorAll('#vendor-360 .tab').forEach(el=>el.classList.toggle('active', el.dataset.t===t));
+  document.querySelectorAll('#vendor-360 .tab-panel').forEach(el=>el.classList.toggle('active', el.id==='tab-'+t));
+}
+
+/* ---------- BILL VIEWER ---------- */
+const BILLS = [
+  {date:'30 Aug 2026', vendor:'Ashok Pen Wale', amount:'₹360', billNo:'—', status:'verified', confidence:96,
+   lines:[['40 × DOMS DF Pen','₹320'],['Misc items','₹40']]},
+  {date:'12 Aug 2026', vendor:'Ashok Pen Wale', amount:'₹4,850', billNo:'A-2291', status:'review', confidence:54,
+   lines:[['Handwritten — items unclear','—'],['Total (legible)','₹4,850']]},
+  {date:'28 Jul 2026', vendor:'Ashok Pen Wale', amount:'₹990', billNo:'—', status:'verified', confidence:91,
+   lines:[['6 × Link Calculator','₹990']]},
+];
+function openBill(i){
+  const b = BILLS[i];
+  document.getElementById('bvDate').textContent = `${b.date} · ${b.vendor}`;
+  document.getElementById('bvPaper').innerHTML = `
+    <div class="hdr">${b.vendor.toUpperCase()}</div>
+    <div class="sub">Sadar Bazaar · Cash / Credit</div>
+    <hr/>
+    ${b.lines.map(l=>`<div class="row"><span>${l[0]}</span><span>${l[1]}</span></div>`).join('')}
+    <hr/>
+    <div class="row" style="font-weight:600;"><span>TOTAL</span><span>${b.amount}</span></div>`;
+  const statusEl = document.getElementById('bvStatus');
+  const confEl = document.getElementById('bvConfBadge');
+  if(b.status==='review'){
+    statusEl.textContent = '⚠ AI review required'; statusEl.style.color = 'var(--amber)';
+    confEl.textContent = b.confidence+'% confidence'; confEl.className = 'confidence low';
+  } else {
+    statusEl.textContent = '✓ Verified'; statusEl.style.color = 'var(--emerald)';
+    confEl.textContent = b.confidence+'% confidence'; confEl.className = 'confidence high';
+  }
+  document.getElementById('bvFields').innerHTML = `
+    <div class="bv-field"><div class="l">VENDOR</div><div class="v">${b.vendor}</div></div>
+    <div class="bv-field"><div class="l">DATE</div><div class="v">${b.date}</div></div>
+    <div class="bv-field"><div class="l">AMOUNT</div><div class="v">${b.amount}</div></div>
+    <div class="bv-field"><div class="l">BILL #</div><div class="v">${b.billNo}</div></div>`;
+  show('bill-viewer');
+}
+
+/* ---------- MORE SHEET ---------- */
+function openMoreSheet(){ document.getElementById('moreScrim').classList.add('show'); document.getElementById('moreSheet').classList.add('show'); renderSyncStatusRow(); }
+function closeMoreSheet(){ document.getElementById('moreScrim').classList.remove('show'); document.getElementById('moreSheet').classList.remove('show'); }
+
+/* ---------- PURCHASES DATA (persisted via PurchaseRepository -> window.storage) ---------- */
+const STATUS_ORDER = ['DRAFT','SENT','RECEIVED','REVIEW','VERIFIED','POSTED'];
+const SEED_PURCHASES = [
+  {id:'po1', vendor:'Ashok Pen Wale', date:'30 Aug 2026', status:'REVIEW', source:'Voice receiving',
+   lines:[{name:'DOMS DF Pen',qty:40,rate:8,amt:320},{name:'Misc items',qty:1,rate:40,amt:40}],
+   total:360, paid:360, linkedBill:true},
+  {id:'po2', vendor:'Shree Stationers', date:'29 Aug 2026', status:'POSTED', source:'Manual',
+   lines:[{name:'Classmate Notebook',qty:50,rate:28,amt:1400}],
+   total:1400, paid:1400, linkedBill:true},
+  {id:'po3', vendor:'Delhi Paper Traders', date:'27 Aug 2026', status:'DRAFT', source:'WhatsApp paste',
+   lines:[{name:'A4 Paper Ream',qty:10,rate:220,amt:2200}],
+   total:2200, paid:0, linkedBill:false},
+  {id:'po4', vendor:'Modern Book Depot', date:'22 Aug 2026', status:'SENT', source:'Manual',
+   lines:[{name:'Long Notebook',qty:30,rate:32,amt:960}],
+   total:960, paid:0, linkedBill:false},
+];
+let PURCHASES = [];
+let poFilter = 'all';
+let currentPoId = null;
+
+function renderPurchases(){
+  let rows = poFilter==='all' ? PURCHASES : PURCHASES.filter(p=>p.status===poFilter);
+  document.getElementById('polist').innerHTML = rows.map(p=>`
+    <div class="po-row" onclick="openPurchase('${p.id}'); show('po-detail')">
+      <div class="po-info"><div class="po-title">${p.vendor}</div><div class="po-sub">${p.date} · ${p.source}</div></div>
+      <div class="po-right"><div class="po-amt mono">₹${p.total.toLocaleString('en-IN')}</div><div class="status-pill ${p.status}">${p.status}</div></div>
+    </div>`).join('') || '<div style="padding:30px 0;text-align:center;color:var(--ink-faint);font-size:12.5px;">No purchases in this status.</div>';
+  const reviewCount = PURCHASES.filter(p=>p.status==='REVIEW').length;
+  document.getElementById('poCount').textContent = `${PURCHASES.length} orders · ${reviewCount} needs review`;
+}
+function setPoFilter(f){
+  poFilter = f;
+  document.querySelectorAll('#po-list .chip').forEach(c=>c.classList.toggle('active', c.dataset.pf===f));
+  renderPurchases();
+}
+
+function openPurchase(id){
+  currentPoId = id;
+  const p = PURCHASES.find(x=>x.id===id);
+  document.getElementById('poVendor').textContent = p.vendor;
+  document.getElementById('poDate').textContent = 'Ordered '+p.date;
+  document.getElementById('poSource').textContent = 'Source: '+p.source;
+  document.getElementById('poPayment').textContent = `Paid ₹${p.paid} of ₹${p.total}`;
+  document.getElementById('poStepper').innerHTML = STATUS_ORDER.map((s,i)=>{
+    const curIdx = STATUS_ORDER.indexOf(p.status);
+    const cls = i < curIdx ? 'done' : i===curIdx ? 'current' : '';
+    return `<div class="step ${cls}"><div class="dot">${i<curIdx?'✓':i+1}</div><div class="lbl">${s}</div></div>`;
+  }).join('');
+  document.getElementById('poLines').innerHTML = p.lines.map(l=>`
+    <div class="po-line"><span>${l.name} <span class="qty">×${l.qty} @ ₹${l.rate}</span></span><span class="mono">₹${l.amt}</span></div>
+  `).join('') + `<div class="po-total mono"><span>Total</span><span>₹${p.total}</span></div>`;
+  const cta = document.getElementById('poCta');
+  const nextStatus = STATUS_ORDER[STATUS_ORDER.indexOf(p.status)+1];
+  if(p.status==='POSTED'){
+    cta.textContent = '✓ Posted — inventory, vendor ledger & reports updated';
+    cta.className = 'po-cta done';
+  } else {
+    const labels = {DRAFT:'Mark as Sent', SENT:'Mark as Received', RECEIVED:'Move to Review', REVIEW:'Verify purchase', VERIFIED:'Post purchase'};
+    cta.textContent = labels[p.status] || ('Advance to '+nextStatus);
+    cta.className = 'po-cta';
+  }
+  document.getElementById('poLinkedBill').innerHTML = p.linkedBill
+    ? `<div class="link-btn" onclick="openBill(0)">View linked bill →</div>`
+    : `<div class="link-btn" onclick="toast('Opening camera to attach a bill')">Attach vendor bill →</div>`;
+}
+function advancePurchase(){
+  const p = PURCHASES.find(x=>x.id===currentPoId);
+  const idx = STATUS_ORDER.indexOf(p.status);
+  if(idx >= STATUS_ORDER.length-1) return;
+  p.status = STATUS_ORDER[idx+1];
+  if(p.status==='POSTED'){
+    p.lines.forEach(l=>{
+      MOVEMENTS.push({productId:l.name, productName:l.name, delta:l.qty, source:'PURCHASE', date:BUSINESS_DATE});
+      const vendor = VENDORS.find(v=>v.name===p.vendor);
+      if(vendor) vendor.monthSpend += l.amt;
+    });
+    saveKey('gsh:movements', MOVEMENTS);
+    saveKey('gsh:vendors', VENDORS);
+    toast(`Posted — inventory +${p.lines.reduce((a,l)=>a+l.qty,0)} units, vendor ledger & reports updated`);
+  } else {
+    toast('Status updated to '+p.status);
+  }
+  saveKey('gsh:purchases', PURCHASES);
+  openPurchase(p.id);
+  renderPurchases();
+  renderCC();
+}
+
+/* ---------- VOICE RECEIVING SHEET ---------- */
+let listening2 = false;
+function openVoiceReceiveSheet(){
+  document.getElementById('voiceRecvScrim').classList.add('show');
+  document.getElementById('voiceRecvSheet').classList.add('show');
+  document.getElementById('voiceRecvTranscript').style.display='none';
+  document.getElementById('voiceRecvExtract').style.display='none';
+  document.getElementById('voiceRecvFoot').style.display='none';
+  document.getElementById('micBtn2').classList.remove('listening');
+  document.getElementById('micHint2').textContent = 'Tap the mic — e.g. "Ashok Pen wale se Link calculator 6 pieces aaya, DP 165 tha, 5% discount ke baad, ₹500 diya"';
+}
+function closeVoiceReceiveSheet(){
+  document.getElementById('voiceRecvScrim').classList.remove('show');
+  document.getElementById('voiceRecvSheet').classList.remove('show');
+}
+function toggleMic2(){
+  if(listening2) return;
+  listening2 = true;
+  document.getElementById('micBtn2').classList.add('listening');
+  document.getElementById('micHint2').textContent = 'Listening…';
+  setTimeout(()=>{
+    const transcript = 'Ashok Pen wale se Link calculator 6 pieces aaya, DP 165 tha, 5 percent discount ke baad final rate itna, ₹500 diya.';
+    document.getElementById('voiceRecvTranscript').style.display='block';
+    document.getElementById('voiceRecvTranscript').textContent = '"'+transcript+'"';
+    document.getElementById('micBtn2').classList.remove('listening');
+    document.getElementById('micHint2').textContent = 'Transcript captured — review before confirming.';
+    const ex = document.getElementById('voiceRecvExtract');
+    ex.style.display='block';
+    ex.innerHTML = `
+      <div class="ext-row"><span class="ext-label">Vendor</span><span class="ext-val">Ashok Pen Wale <span class="confidence high">match</span></span></div>
+      <div class="ext-row"><span class="ext-label">Product</span><span class="ext-val">Link Calculator</span></div>
+      <div class="ext-row"><span class="ext-label">Quantity</span><span class="ext-val"><input type="text" value="6"></span></div>
+      <div class="ext-row"><span class="ext-label">Gross rate</span><span class="ext-val">₹<input type="text" value="165"></span></div>
+      <div class="ext-row"><span class="ext-label">Discount</span><span class="ext-val"><input type="text" value="5">%</span></div>
+      <div class="ext-row"><span class="ext-label">Net rate</span><span class="ext-val mono">₹156.75</span></div>
+      <div class="ext-row"><span class="ext-label">Payment given</span><span class="ext-val">₹<input type="text" value="500"></span></div>`;
+    document.getElementById('voiceRecvFoot').style.display='flex';
+    listening2 = false;
+  }, 1400);
+}
+function confirmVoiceReceive(){
+  PURCHASES.unshift({id:'po'+Date.now(), vendor:'Ashok Pen Wale', date:BUSINESS_DATE, status:'RECEIVED',
+    source:'Voice receiving', lines:[{name:'Link Calculator',qty:6,rate:157,amt:940}], total:940, paid:500, paidDate:BUSINESS_DATE, linkedBill:false});
+  const prod = PRODUCTS.find(p=>p.id==='p5');
+  if(prod){ prod.stock += 6; }
+  MOVEMENTS.push({productId:'p5', productName:'Link Calculator', delta:6, source:'PURCHASE', date:BUSINESS_DATE});
+  saveKey('gsh:products', PRODUCTS);
+  saveKey('gsh:purchases', PURCHASES);
+  saveKey('gsh:movements', MOVEMENTS);
+  closeVoiceReceiveSheet();
+  renderPurchases();
+  filterInventory();
+  renderCC();
+  toast('Purchase created — inventory, vendor ledger and payment updated');
+}
+
+/* ---------- WHATSAPP PASTE SHEET ---------- */
+let waStep = 1;
+function openWaSheet(){
+  waStep = 1;
+  document.getElementById('waStep1').style.display='block';
+  document.getElementById('waStep2').style.display='none';
+  document.getElementById('waSub').textContent = 'Paste the WhatsApp-style order text';
+  document.getElementById('waNextBtn').textContent = 'Parse order';
+  document.getElementById('waScrim').classList.add('show');
+  document.getElementById('waSheet').classList.add('show');
+}
+function closeWaSheet(){
+  document.getElementById('waScrim').classList.remove('show');
+  document.getElementById('waSheet').classList.remove('show');
+}
+function waNext(){
+  if(waStep===1){
+    waStep=2;
+    document.getElementById('waStep1').style.display='none';
+    document.getElementById('waStep2').style.display='block';
+    document.getElementById('waSub').textContent = '3 lines matched to your catalogue';
+    document.getElementById('waNextBtn').textContent = 'Create draft purchase';
+  } else {
+    PURCHASES.unshift({id:'po'+Date.now(), vendor:'Unassigned — set vendor', date:BUSINESS_DATE, status:'DRAFT',
+      source:'WhatsApp paste', lines:[{name:'DOMS DF Pen (blue)',qty:10,rate:8,amt:80},{name:'Link Calculator',qty:5,rate:157,amt:785},{name:'Classmate Notebook',qty:20,rate:28,amt:560}],
+      total:1425, paid:0, linkedBill:false});
+    saveKey('gsh:purchases', PURCHASES);
+    closeWaSheet();
+    renderPurchases();
+    toast('Draft purchase created from pasted order — set vendor to send');
+  }
+}
+
+/* ---------- COMMAND CENTER (real numbers derived from SALES/EXPENSES/PURCHASES/PRODUCTS) ---------- */
+function renderCC(){
+  const ccSalesEl = document.getElementById('ccSales');
+  if(!ccSalesEl) return;
+  const cashSales = salesToday('cash'), upiSales = salesToday('upi'), creditSales = salesToday('credit');
+  const salesTotal = cashSales + upiSales + creditSales;
+  const avgMargin = PRODUCTS.length ? PRODUCTS.reduce((a,p)=>a+((p.sellRate-p.purchaseRate)/p.sellRate),0)/PRODUCTS.length : 0;
+  const profit = Math.round(salesTotal*avgMargin);
+  ccSalesEl.textContent = '₹'+salesTotal.toLocaleString('en-IN');
+  document.getElementById('ccSalesSub').textContent = salesTotal>0 ? `Cash ₹${cashSales} · UPI ₹${upiSales}${creditSales?' · Credit ₹'+creditSales:''}` : 'No sales logged yet today';
+  document.getElementById('ccProfit').textContent = '₹'+profit.toLocaleString('en-IN');
+  document.getElementById('ccProfitSub').textContent = salesTotal>0 ? Math.round(avgMargin*100)+'% avg margin (est.)' : '—';
+  document.getElementById('ccCash').textContent = '₹'+expectedCash().toLocaleString('en-IN');
+  document.getElementById('ccUpi').textContent = '₹'+upiSales.toLocaleString('en-IN');
+  document.getElementById('ccUpiSub').textContent = upiSales>0 ? 'Logged today' : 'No UPI sales yet today';
+}
+
+/* ---------- MONEY (fully derived from real ledgers: SALES, PURCHASES, EXPENSES — no static numbers) ---------- */
+const SEED_EXPENSES = [
+  {cat:'Packaging', icon:'📦', note:'Polythene bags', amt:60},
+  {cat:'Transport', icon:'🛺', note:'Delivery pickup', amt:120},
+];
+let EXPENSES = [];
+let SALES = [];        // {id, date, mode:'cash'|'upi'|'credit', amount}
+let CLOSINGS = [];     // {date, openingCash, cashSales, upiSales, expenses, purchases, creditSales, expectedCash, actualCash, variance, varianceReason, closedAt}
+let openingCash = 0;   // persisted; set to yesterday's actualCash once a day has been closed
+let BUSINESS_DATE = new Date().toISOString().slice(0,10); // the "today" the app is currently operating as
+
+function salesToday(mode){ return SALES.filter(s=>s.date===BUSINESS_DATE && s.mode===mode).reduce((a,s)=>a+s.amount,0); }
+function expensesToday(){ return EXPENSES.filter(e=>e.date===BUSINESS_DATE); }
+function purchasesPaidToday(){ return PURCHASES.filter(p=>p.paidDate===BUSINESS_DATE).reduce((a,p)=>a+(p.paid||0),0); }
+function expectedCash(){
+  const totalExpenses = expensesToday().reduce((a,e)=>a+e.amt,0);
+  return openingCash + salesToday('cash') - totalExpenses - purchasesPaidToday();
+}
+function renderMoney(){
+  document.getElementById('openingCashInput').value = openingCash;
+  document.getElementById('moneyDateLabel').textContent = BUSINESS_DATE===new Date().toISOString().slice(0,10) ? 'Today · '+BUSINESS_DATE : BUSINESS_DATE;
+  const cashSales = salesToday('cash'), upiSales = salesToday('upi'), creditSales = salesToday('credit');
+  const todaysExp = expensesToday();
+  const totalExpenses = todaysExp.reduce((a,e)=>a+e.amt,0);
+  const purchasesToday = purchasesPaidToday();
+  const expected = expectedCash();
+  document.getElementById('moneySummary').innerHTML = `
+    <div class="money-row"><span class="l">Opening cash</span><span class="v mono">₹${openingCash}</span></div>
+    <div class="money-row"><span class="l">Cash sales</span><span class="v mono" style="color:var(--emerald);">+₹${cashSales}</span></div>
+    <div class="money-row"><span class="l">UPI / online sales</span><span class="v mono">₹${upiSales}</span></div>
+    <div class="money-row"><span class="l">Expenses</span><span class="v mono" style="color:var(--rose);">−₹${totalExpenses}</span></div>
+    <div class="money-row"><span class="l">Purchases (cash paid today)</span><span class="v mono" style="color:var(--rose);">−₹${purchasesToday}</span></div>
+    <div class="money-row"><span class="l">Credit sales (not yet cash)</span><span class="v mono">₹${creditSales}</span></div>
+    <div class="money-row total"><span class="l">Expected cash in drawer</span><span class="v mono">₹${expected}</span></div>`;
+  document.getElementById('expList').innerHTML = todaysExp.map(e=>`
+    <div class="exp-row"><div class="exp-icon">${e.icon}</div><div class="exp-info"><div class="exp-cat">${e.cat}</div><div class="exp-note">${e.note||'—'}</div></div><div class="exp-amt mono">₹${e.amt}</div></div>
+  `).join('') || '<div style="padding:14px 0;text-align:center;color:var(--ink-faint);font-size:12px;">No expenses logged today.</div>';
+  document.getElementById('actualCashInput').value = '';
+  document.getElementById('varianceBanner').style.display = 'none';
+  document.getElementById('reasonSelect').style.display = 'none';
+  const cta = document.getElementById('closeCta');
+  cta.textContent = 'Enter actual cash to close the day';
+  cta.className = 'close-cta disabled';
+  renderCC();
+}
+function onOpeningCashEdit(){
+  openingCash = parseFloat(document.getElementById('openingCashInput').value) || 0;
+  saveKey('gsh:openingCash', openingCash);
+  const s = document.getElementById('moneySummary');
+  if(s.innerHTML) renderMoney();
+}
+function computeVariance(){
+  const actualStr = document.getElementById('actualCashInput').value;
+  const banner = document.getElementById('varianceBanner');
+  const reasonWrap = document.getElementById('reasonSelect');
+  if(actualStr === ''){ banner.style.display='none'; reasonWrap.style.display='none'; checkCloseEnabled(); return; }
+  const actual = parseFloat(actualStr) || 0;
+  const expected = expectedCash();
+  const diff = actual - expected;
+  banner.style.display = 'block';
+  if(diff === 0){
+    banner.className = 'variance-banner zero';
+    banner.innerHTML = `<span>✓ Matches expected cash exactly</span>`;
+    reasonWrap.style.display = 'none';
+  } else {
+    banner.className = 'variance-banner ' + (diff < 0 ? 'short' : 'over');
+    banner.innerHTML = `<span>${diff<0?'Short by':'Over by'} ₹${Math.abs(diff)}</span><span>Expected ₹${expected}</span>`;
+    reasonWrap.style.display = 'block';
+  }
+  checkCloseEnabled();
+}
+function checkCloseEnabled(){
+  const actualStr = document.getElementById('actualCashInput').value;
+  const cta = document.getElementById('closeCta');
+  if(actualStr === ''){ cta.textContent='Enter actual cash to close the day'; cta.className='close-cta disabled'; return; }
+  const actual = parseFloat(actualStr) || 0;
+  const diff = actual - expectedCash();
+  const reason = document.getElementById('varianceReason').value;
+  if(diff !== 0 && !reason){
+    cta.textContent = 'Select a reason for the variance';
+    cta.className = 'close-cta disabled';
+    return;
+  }
+  cta.textContent = 'Close the day';
+  cta.className = 'close-cta';
+}
+function closeDay(){
+  const actualStr = document.getElementById('actualCashInput').value;
+  if(actualStr === '') return;
+  const actual = parseFloat(actualStr) || 0;
+  const expected = expectedCash();
+  const diff = actual - expected;
+  const reason = document.getElementById('varianceReason').value;
+  if(diff !== 0 && !reason) return;
+
+  const cashSales = salesToday('cash'), upiSales = salesToday('upi'), creditSales = salesToday('credit');
+  const totalExpenses = expensesToday().reduce((a,e)=>a+e.amt,0);
+  const purchasesToday = purchasesPaidToday();
+
+  CLOSINGS.push({
+    date: BUSINESS_DATE, openingCash, cashSales, upiSales, expenses: totalExpenses,
+    purchases: purchasesToday, creditSales, expectedCash: expected, actualCash: actual,
+    variance: diff, varianceReason: diff!==0 ? reason : null, closedAt: new Date().toISOString(),
+  });
+  saveKey('gsh:closings', CLOSINGS);
+
+  toast(diff===0 ? 'Day closed — cash matched exactly' : `Day closed — variance ₹${Math.abs(diff)} logged (${reason})`);
+
+  // Roll forward: tomorrow's opening cash is today's actual count.
+  openingCash = actual;
+  saveKey('gsh:openingCash', openingCash);
+  const next = new Date(BUSINESS_DATE); next.setDate(next.getDate()+1);
+  BUSINESS_DATE = next.toISOString().slice(0,10);
+  saveKey('gsh:businessDate', BUSINESS_DATE);
+
+  show('cc');
+  renderCC();
+}
+
+/* ---------- QUICK SALE TOTAL SHEET (§17 — total only, no per-product tracking) ---------- */
+function openSaleSheet(){
+  document.getElementById('saleCashInput').value = '';
+  document.getElementById('saleUpiInput').value = '';
+  document.getElementById('saleCreditInput').value = '';
+  document.getElementById('saleScrim').classList.add('show');
+  document.getElementById('saleSheet').classList.add('show');
+}
+function closeSaleSheet(){
+  document.getElementById('saleScrim').classList.remove('show');
+  document.getElementById('saleSheet').classList.remove('show');
+}
+function saveSaleTotal(){
+  const cash = parseFloat(document.getElementById('saleCashInput').value) || 0;
+  const upi = parseFloat(document.getElementById('saleUpiInput').value) || 0;
+  const credit = parseFloat(document.getElementById('saleCreditInput').value) || 0;
+  if(cash<=0 && upi<=0 && credit<=0){ toast('Enter at least one amount'); return; }
+  if(cash>0) SALES.push({id:'s'+Date.now()+'c', date:BUSINESS_DATE, mode:'cash', amount:cash});
+  if(upi>0) SALES.push({id:'s'+Date.now()+'u', date:BUSINESS_DATE, mode:'upi', amount:upi});
+  if(credit>0) SALES.push({id:'s'+Date.now()+'k', date:BUSINESS_DATE, mode:'credit', amount:credit});
+  saveKey('gsh:sales', SALES);
+  closeSaleSheet();
+  toast(`Sale total added — ₹${cash+upi+credit} (₹${cash} cash, ₹${upi} UPI${credit?', ₹'+credit+' credit':''})`);
+  renderCC();
+  if(document.getElementById('money').classList.contains('active')) renderMoney();
+}
+
+/* ---------- EXPENSE SHEET ---------- */
+let selectedExpCat = 'Packaging';
+const EXP_ICONS = {Packaging:'📦', Transport:'🛺', 'Tea/snacks':'☕', 'Personal use':'🏠', Miscellaneous:'🗒️', Other:'➕'};
+function openExpenseSheet(){
+  document.getElementById('expAmount').value = '';
+  document.getElementById('expNote').value = '';
+  selectedExpCat = 'Packaging';
+  document.querySelectorAll('#expCatGrid .exp-cat-btn').forEach((b,i)=>b.classList.toggle('active', i===0));
+  document.getElementById('expScrim').classList.add('show');
+  document.getElementById('expSheet').classList.add('show');
+}
+function closeExpenseSheet(){
+  document.getElementById('expScrim').classList.remove('show');
+  document.getElementById('expSheet').classList.remove('show');
+}
+function setExpCat(el){
+  selectedExpCat = el.dataset.c;
+  document.querySelectorAll('#expCatGrid .exp-cat-btn').forEach(b=>b.classList.toggle('active', b===el));
+}
+function saveExpense(){
+  const amt = parseFloat(document.getElementById('expAmount').value);
+  if(!amt || amt <= 0){ toast('Enter an amount to save this expense'); return; }
+  const note = document.getElementById('expNote').value;
+  EXPENSES.unshift({id:'e'+Date.now(), cat:selectedExpCat, icon:EXP_ICONS[selectedExpCat]||'🗒️', note, amt, date:BUSINESS_DATE});
+  saveKey('gsh:expenses', EXPENSES);
+  closeExpenseSheet();
+  toast(`₹${amt} expense logged — ${selectedExpCat}`);
+  renderCC();
+  if(document.getElementById('money').classList.contains('active')) renderMoney();
+}
+
+/* ---------- REPORTS (reads live off PRODUCTS/VENDORS/PURCHASES/EXPENSES/SALES/CLOSINGS — no static numbers) ---------- */
+const SEED_MOVEMENTS = [
+  {productId:'p1', productName:'DOMS DF Pen', delta:40, source:'PURCHASE', date:'2026-08-30'},
+  {productId:'p1', productName:'DOMS DF Pen', delta:-12, source:'SALE_ADJUSTMENT', date:'2026-09-02'},
+  {productId:'p1', productName:'DOMS DF Pen', delta:-18, source:'SALE_ADJUSTMENT', date:'2026-08-29'},
+  {productId:'p2', productName:'DOMS Zillion Pencil', delta:-24, source:'SALE_ADJUSTMENT', date:'2026-08-28'},
+  {productId:'p4', productName:'Classmate Notebook', delta:50, source:'PURCHASE', date:'2026-08-29'},
+  {productId:'p4', productName:'Classmate Notebook', delta:-31, source:'SALE_ADJUSTMENT', date:'2026-08-31'},
+  {productId:'p5', productName:'Link Calculator', delta:-4, source:'SALE_ADJUSTMENT', date:'2026-08-27'},
+  {productId:'p6', productName:'Transparent Tape', delta:-15, source:'SALE_ADJUSTMENT', date:'2026-08-30'},
+];
+let MOVEMENTS = [];
+
+// Sales trend is built ONLY from real CLOSINGS (past days) + today's live, not-yet-closed
+// totals (marked separately). Nothing here is invented — an app with zero closings shows
+// zero history, honestly, until the owner actually closes a day in Money.
+function salesHistory(){
+  const closedDays = CLOSINGS.map(c=>({label:c.date.slice(5), amount:c.cashSales+c.upiSales, closed:true}));
+  const todayClosed = CLOSINGS.some(c=>c.date===BUSINESS_DATE);
+  if(!todayClosed) closedDays.push({label:'Today', amount:salesToday('cash')+salesToday('upi'), closed:false});
+  return closedDays;
+}
+function periodStats(rangeCount){
+  const hist = salesHistory();
+  const windowed = hist.slice(-Math.min(rangeCount, hist.length));
+  const closedInWindow = CLOSINGS.slice(-rangeCount);
+  let expenses = closedInWindow.reduce((a,c)=>a+c.expenses,0);
+  let purchases = closedInWindow.reduce((a,c)=>a+c.purchases,0);
+  const todayClosed = CLOSINGS.some(c=>c.date===BUSINESS_DATE);
+  if(!todayClosed && windowed.some(d=>!d.closed)){
+    expenses += expensesToday().reduce((a,e)=>a+e.amt,0);
+    purchases += purchasesPaidToday();
+  }
+  const sales = windowed.reduce((a,d)=>a+d.amount,0);
+  return {sales, expenses, purchases, hist: windowed};
+}
+
+let rptRange = 7;
+function setRptRange(r, el){
+  rptRange = r;
+  document.querySelectorAll('#rptFilters .chip').forEach(c=>c.classList.toggle('active', c===el));
+  renderReports();
+}
+function renderReports(){
+  const hasAnyData = CLOSINGS.length>0 || SALES.length>0 || expensesToday().length>0;
+  if(!hasAnyData){
+    document.getElementById('rptStats').innerHTML = `<div style="grid-column:1/-1;padding:22px 4px;text-align:center;color:var(--ink-faint);font-size:12.5px;line-height:1.6;">No sales or closings recorded yet.<br>Log today's sale total and close the day in Money — real trends will build up here from that point on.</div>`;
+    document.getElementById('rptTrendSub').textContent = '';
+    document.getElementById('rptTrendSvg').innerHTML = '';
+    return;
+  }
+  const rangeCount = rptRange==='today' ? 1 : rptRange;
+  const {sales:totalSales, expenses:totalExpenses, purchases:totalPurchases, hist} = periodStats(rangeCount);
+  const avgMargin = PRODUCTS.length ? PRODUCTS.reduce((a,p)=>a+((p.sellRate-p.purchaseRate)/p.sellRate),0) / PRODUCTS.length : 0;
+  const profit = Math.round(totalSales * avgMargin);
+
+  document.getElementById('rptStats').innerHTML = `
+    <div class="stat-card"><div class="stat-label">Sales</div><div class="stat-value mono">₹${totalSales.toLocaleString('en-IN')}</div><div class="stat-delta">${hist.length} day${hist.length>1?'s':''}${hist.some(d=>!d.closed)?' · today not yet closed':''}</div></div>
+    <div class="stat-card"><div class="stat-label">Est. profit</div><div class="stat-value mono up">₹${profit.toLocaleString('en-IN')}</div><div class="stat-delta">${Math.round(avgMargin*100)}% avg margin</div></div>
+    <div class="stat-card"><div class="stat-label">Purchases paid</div><div class="stat-value mono">₹${totalPurchases.toLocaleString('en-IN')}</div><div class="stat-delta">Cash out, this period</div></div>
+    <div class="stat-card"><div class="stat-label">Expenses</div><div class="stat-value mono" style="color:var(--rose);">₹${totalExpenses.toLocaleString('en-IN')}</div><div class="stat-delta">This period</div></div>`;
+
+  if(hist.length===0){ document.getElementById('rptTrendSub').textContent=''; document.getElementById('rptTrendSvg').innerHTML=''; return; }
+  document.getElementById('rptTrendSub').textContent = `Peak ₹${Math.max(...hist.map(d=>d.amount)).toLocaleString('en-IN')}`;
+  const max = Math.max(...hist.map(d=>d.amount), 1);
+  const w = 320, h = 100, pad = 6;
+  const pts = hist.map((d,i)=>{
+    const x = hist.length===1 ? w/2 : pad + i*((w-2*pad)/(hist.length-1));
+    const y = h - pad - ((d.amount/max) * (h-2*pad));
+    return [x,y];
+  });
+  const path = pts.map((p,i)=> (i===0?'M':'L')+p[0].toFixed(1)+','+p[1].toFixed(1)).join(' ');
+  const dots = pts.map((p,i)=>`<circle cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="3" fill="${hist[i].closed===false?'var(--amber)':'var(--indigo)'}"/>`).join('');
+  document.getElementById('rptTrendSvg').innerHTML = `<path d="${path}" fill="none" stroke="var(--indigo)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>${dots}`;
+}
+
+function openReport(type){
+  const configs = {
+    'vendor-spend': {title:'Vendor spend', sub:'This month', rows: VENDORS.map(v=>({label:v.name, val:v.monthSpend})).sort((a,b)=>b.val-a.val)},
+    'inventory-valuation': {title:'Inventory valuation', sub:'Stock × purchase rate', rows: PRODUCTS.map(p=>({label:p.name, val:p.stock*p.purchaseRate})).sort((a,b)=>b.val-a.val)},
+    'fast-movers': {title:'Fast movers', sub:'Total units moved, this history', rows: Object.values(MOVEMENTS.reduce((acc,m)=>{
+        acc[m.productId] = acc[m.productId] || {label:m.productName, val:0};
+        acc[m.productId].val += Math.abs(m.delta);
+        return acc;
+      },{})).sort((a,b)=>b.val-a.val)},
+    'low-stock': {title:'Low stock', sub:'Below reorder point right now', rows: PRODUCTS.filter(p=>p.stock<p.min).map(p=>({label:p.name, val:p.stock})).sort((a,b)=>a.val-b.val)},
+    'cash-flow': {title:'Cash flow', sub:'Today', rows: [
+        {label:'Cash sales', val: salesToday('cash')}, {label:'UPI / online', val: salesToday('upi')}, {label:'Credit (pending)', val: salesToday('credit')},
+      ]},
+  };
+  const c = configs[type];
+  document.getElementById('rdTitle').textContent = c.title;
+  document.getElementById('rdSub').textContent = c.sub;
+  const max = Math.max(...c.rows.map(r=>r.val), 1);
+  document.getElementById('rdBody').innerHTML = c.rows.length ? c.rows.map(r=>`
+    <div class="rpt-bar-row">
+      <div class="rpt-bar-label">${r.label}</div>
+      <div class="rpt-bar-track"><div class="rpt-bar-fill" style="width:${Math.max(4,(r.val/max)*100)}%;"></div></div>
+      <div class="rpt-bar-val mono">${type==='fast-movers'||type==='low-stock' ? r.val : '₹'+r.val.toLocaleString('en-IN')}</div>
+    </div>`).join('') : '<div style="padding:30px 0;text-align:center;color:var(--ink-faint);font-size:12.5px;">Nothing in this report right now — good sign.</div>';
+  show('report-detail');
+}
+
+/* ---------- ASK GSH AI (deterministic, grounded query engine — no generic chatbot,
+   no model free-text generation of numbers. Every answer is computed directly from
+   PRODUCTS/VENDORS/PURCHASES/EXPENSES/SALES/CLOSINGS/MOVEMENTS, or the assistant says
+   plainly that it doesn't have the data. Every answer carries citedRefs for Trace and
+   a plain-language method for Explain — matches spec §28 exactly.) ---------- */
+let CHAT_LOG = []; // {role:'user'|'ai', text, refs?, explain?, unavailable?}
+
+function findProduct(q){
+  const t = q.toLowerCase();
+  return PRODUCTS.find(p => t.includes(p.name.toLowerCase()) || t.includes(p.alias.toLowerCase()));
+}
+function findVendor(q){
+  const t = q.toLowerCase();
+  return VENDORS.find(v => t.includes(v.name.toLowerCase()) || t.includes(v.name.split(' ')[0].toLowerCase()));
+}
+function purchaseLinesFor(productName){
+  // PURCHASES is always kept newest-first (every create uses unshift), so array
+  // order IS chronological order — no date-parsing needed to find "most recent".
+  const out = [];
+  PURCHASES.forEach(p => p.lines.forEach(l => {
+    if(l.name.toLowerCase().includes(productName.toLowerCase())) out.push({purchase:p, line:l});
+  }));
+  return out;
+}
+
+function askGSH(query){
+  const q = query.trim();
+  if(!q) return {text:"Ask me something about rates, stock, vendors, sales or profit.", unavailable:true};
+  const ql = q.toLowerCase();
+
+  // ---- low stock / stock-out risk (checked BEFORE generic stock lookup, since
+  //      "stock-out" and "low stock" would otherwise match the generic pattern) ----
+  if(/low.stock|stock.?out|reorder|khatam ho|stock.*khatam/.test(ql)){
+    const low = PRODUCTS.filter(p=>p.stock<p.min);
+    if(low.length===0) return {text:`Nothing is below its reorder point right now — inventory looks healthy.`, refs:[], explain:`Compared live stock to minStock for every product in Inventory.`};
+    return {
+      text: `${low.length} item(s) below reorder point: ${low.map(p=>`${p.name} (${p.stock} left, min ${p.min})`).join(', ')}.`,
+      refs: low.map(p=>({type:'Product', label:p.name, data:{stock:p.stock, minStock:p.min}})),
+      explain: `Filtered Inventory for products where current stock is below their configured minimum stock.`,
+    };
+  }
+
+  // ---- current stock ----
+  if(/stock|kitna.*(bacha|hai)|available/.test(ql)){
+    const p = findProduct(ql);
+    if(!p) return {text:`I don't have any product in Inventory matching that name. Check the spelling, or it may not be added yet.`, unavailable:true};
+    return {
+      text: `${p.name} currently has ${p.stock} ${p.unit||'units'} in stock${p.stock<p.min?` — below the reorder point of ${p.min}.`:'.'}`,
+      refs: [{type:'Product', label:p.name, data:{alias:p.alias, stock:p.stock, minStock:p.min, purchaseRate:p.purchaseRate, sellingRate:p.sellRate}}],
+      explain: `Read directly from the live Product record for "${p.name}" in Inventory — this is the same number shown on its Product 360 page right now, not a separate calculation.`,
+    };
+  }
+
+  // ---- best/cheapest vendor for a product ----
+  if(/(lowest|cheapest|best|sasta).*(rate|price|vendor)|(vendor|kaun).*(lowest|cheapest|sasta)/.test(ql)){
+    const p = findProduct(ql);
+    if(!p) return {text:`I couldn't match a product in that question — try naming it exactly as it appears in Inventory.`, unavailable:true};
+    const matches = purchaseLinesFor(p.name);
+    if(matches.length===0) return {text:`I don't have any purchase history for ${p.name} yet, so I can't compare vendor rates.`, unavailable:true};
+    const byVendor = {};
+    matches.forEach(m => { const v=m.purchase.vendor; if(!byVendor[v] || m.line.rate<byVendor[v].rate) byVendor[v]=m.line; });
+    const ranked = Object.entries(byVendor).map(([v,l])=>({vendor:v, rate:l.rate})).sort((a,b)=>a.rate-b.rate);
+    if(ranked.length===1) return {
+      text: `Only one vendor has supplied ${p.name} so far — ${ranked[0].vendor} at ₹${ranked[0].rate}/pc. Nothing to compare yet.`,
+      refs: matches.map(m=>({type:'Purchase', label:`${m.purchase.vendor} · ${m.purchase.date}`, data:{product:m.line.name, qty:m.line.qty, rate:m.line.rate, status:m.purchase.status}})),
+      explain: `Scanned every purchase line item matching "${p.name}" across all recorded purchases and grouped by vendor.`,
+    };
+    return {
+      text: `${ranked[0].vendor} currently gives the lowest rate for ${p.name} at ₹${ranked[0].rate}/pc, vs ${ranked.slice(1).map(r=>`${r.vendor} at ₹${r.rate}`).join(', ')}.`,
+      refs: matches.map(m=>({type:'Purchase', label:`${m.purchase.vendor} · ${m.purchase.date}`, data:{product:m.line.name, qty:m.line.qty, rate:m.line.rate, status:m.purchase.status}})),
+      explain: `Compared the rate paid to every vendor that has supplied "${p.name}", using each purchase line on record, and took the minimum per vendor.`,
+    };
+  }
+
+  // ---- has a vendor raised prices ----
+  if(/raised?.(price|rate)|badh|increase.*(price|rate)/.test(ql)){
+    const v = findVendor(ql) || (currentVendorName ? VENDORS.find(x=>x.name===currentVendorName) : null);
+    if(!v) return {text:`Tell me which vendor — I couldn't match one in that question.`, unavailable:true};
+    const lines = [];
+    PURCHASES.filter(p=>p.vendor===v.name).forEach(p=>p.lines.forEach(l=>lines.push({date:p.date, ...l})));
+    const byProduct = {};
+    lines.forEach(l=>{ (byProduct[l.name]=byProduct[l.name]||[]).push(l); });
+    const changes = Object.entries(byProduct)
+      .filter(([,arr])=>arr.length>=2)
+      .map(([name,arr])=>{
+        const latest = arr[0].rate, earliest = arr[arr.length-1].rate; // array is newest-first
+        return {name, earliest, latest, pct: earliest? Math.round(((latest-earliest)/earliest)*100) : 0};
+      });
+    if(changes.length===0) return {
+      text: `${v.name} has only one recorded rate per product so far — not enough history to tell if prices have moved.`,
+      refs: lines.map(l=>({type:'Purchase line', label:`${v.name} · ${l.date}`, data:{product:l.name, qty:l.qty, rate:l.rate}})),
+      explain: `Needs at least two purchases of the same product from this vendor to compare rates over time.`,
+    };
+    const risers = changes.filter(c=>c.pct>0);
+    return {
+      text: risers.length
+        ? `Yes — ${risers.map(r=>`${r.name} went from ₹${r.earliest} to ₹${r.latest} (${r.pct>0?'+':''}${r.pct}%)`).join('; ')}. ${changes.filter(c=>c.pct<=0).length} other product(s) stayed flat or dropped.`
+        : `No — rates from ${v.name} have stayed flat or dropped across every product with repeat purchases.`,
+      refs: lines.map(l=>({type:'Purchase line', label:`${v.name} · ${l.date}`, data:{product:l.name, qty:l.qty, rate:l.rate}})),
+      explain: `For each product bought more than once from ${v.name}, compared the most recent rate to the earliest recorded rate.`,
+    };
+  }
+
+  // ---- last purchase date/rate for a product ----
+  if(/last (purchase|bought|order)|when.*(purchase|buy)|kab.*(khareed|liya)/.test(ql)){
+    const p = findProduct(ql);
+    if(!p) return {text:`I couldn't match a product in that question.`, unavailable:true};
+    const matches = purchaseLinesFor(p.name);
+    if(matches.length===0) return {text:`No purchase history recorded for ${p.name} yet.`, unavailable:true};
+    const m = matches[0];
+    return {
+      text: `Last purchased on ${m.purchase.date} from ${m.purchase.vendor} — ${m.line.qty} units at ₹${m.line.rate}.`,
+      refs: [{type:'Purchase', label:`${m.purchase.vendor} · ${m.purchase.date}`, data:{status:m.purchase.status, qty:m.line.qty, rate:m.line.rate, total:m.purchase.total}}],
+      explain: `Took the most recent purchase record (by entry order, newest first) containing a line item matching "${p.name}".`,
+    };
+  }
+
+  // ---- rate lookup ----
+  if(/rate|price|kitne.*(mein|ka)|dp\b/.test(ql)){
+    const p = findProduct(ql);
+    if(!p) return {text:`I couldn't match a product in that question — try the exact name or alias from Inventory.`, unavailable:true};
+    return {
+      text: `${p.name} — current purchase rate ₹${p.purchaseRate}, selling rate ₹${p.sellRate} (${Math.round(((p.sellRate-p.purchaseRate)/p.sellRate)*100)}% margin).`,
+      refs: [{type:'Product', label:p.name, data:{alias:p.alias, purchaseRate:p.purchaseRate, sellingRate:p.sellRate}}],
+      explain: `Read the product's current rate fields directly — these update every time a purchase involving this product is confirmed.`,
+    };
+  }
+
+  // ---- yesterday's sales ----
+  if(/yesterday|kal.*(sale|bikri)/.test(ql)){
+    const y = new Date(BUSINESS_DATE); y.setDate(y.getDate()-1);
+    const yStr = y.toISOString().slice(0,10);
+    const closing = CLOSINGS.find(c=>c.date===yStr);
+    if(closing) return {
+      text: `Yesterday (${yStr}) sales were ₹${(closing.cashSales+closing.upiSales+closing.creditSales).toLocaleString('en-IN')} — ₹${closing.cashSales} cash, ₹${closing.upiSales} UPI${closing.creditSales?`, ₹${closing.creditSales} credit`:''}. Day closed with ${closing.variance===0?'no variance':'a variance of ₹'+Math.abs(closing.variance)}.`,
+      refs: [{type:'DailyClosing', label:yStr, data:closing}],
+      explain: `Read the finalized closing record for ${yStr} from Money's daily closing history.`,
+    };
+    const salesY = SALES.filter(s=>s.date===yStr);
+    if(salesY.length) return {
+      text: `${yStr} has ${salesY.reduce((a,s)=>a+s.amount,0)} logged in sales entries, but that day was never formally closed in Money — treat this as provisional.`,
+      refs: salesY.map(s=>({type:'Sale entry', label:s.mode, data:s})),
+      explain: `Summed Quick Sale Total entries dated ${yStr}; no matching DailyClosing record exists.`,
+    };
+    return {text: `No sales or closing recorded for ${yStr} yet.`, unavailable:true};
+  }
+
+  // ---- month profit ----
+  if(/profit|munafa|kamaya/.test(ql) && /month|mahine/.test(ql)){
+    const monthPrefix = BUSINESS_DATE.slice(0,7);
+    const monthClosings = CLOSINGS.filter(c=>c.date.startsWith(monthPrefix));
+    if(monthClosings.length===0) return {text:`No days have been closed this month yet — nothing to calculate profit from. Close today's business in Money to start building this.`, unavailable:true};
+    const totalSales = monthClosings.reduce((a,c)=>a+c.cashSales+c.upiSales+c.creditSales,0);
+    const avgMargin = PRODUCTS.length ? PRODUCTS.reduce((a,p)=>a+((p.sellRate-p.purchaseRate)/p.sellRate),0)/PRODUCTS.length : 0;
+    const profit = Math.round(totalSales*avgMargin);
+    return {
+      text: `Estimated profit this month: ₹${profit.toLocaleString('en-IN')}, from ₹${totalSales.toLocaleString('en-IN')} sales across ${monthClosings.length} closed day(s) at an estimated ${Math.round(avgMargin*100)}% average margin. This is an estimate — it uses average product margin, not per-sale product tracking.`,
+      refs: monthClosings.map(c=>({type:'DailyClosing', label:c.date, data:{sales:c.cashSales+c.upiSales+c.creditSales, expenses:c.expenses}})),
+      explain: `Summed sales from every closed day this month, then multiplied by the average margin across all products in Inventory (sell rate vs purchase rate). No per-product sale history exists yet, so this can't be exact.`,
+    };
+  }
+
+  // ---- vendor monthly spend ----
+  if(/spend|kharcha|kitna.*(diya|paisa)/.test(ql) && /vendor|se|wale/.test(ql)){
+    const v = findVendor(ql);
+    if(!v) return {text:`I couldn't match a vendor in that question — try their exact name.`, unavailable:true};
+    return {
+      text: `You've spent ₹${v.monthSpend.toLocaleString('en-IN')} with ${v.name} this month, across ${v.bills} bill(s).`,
+      refs: [{type:'Vendor', label:v.name, data:{monthSpend:v.monthSpend, bills:v.bills, reviewCount:v.reviewCount}}],
+      explain: `Read the running monthly-spend total on ${v.name}'s Vendor 360 record, which increases each time a purchase from them is posted.`,
+    };
+  }
+
+  // ---- expected cash right now ----
+  if(/how much cash|expected cash|cash.*(hai|kitna)/.test(ql)){
+    return {
+      text: `Expected cash in the drawer right now: ₹${expectedCash().toLocaleString('en-IN')} (opening ₹${openingCash} + cash sales ₹${salesToday('cash')} − expenses ₹${expensesToday().reduce((a,e)=>a+e.amt,0)} − purchases paid ₹${purchasesPaidToday()}).`,
+      refs: [{type:'Money snapshot', label:BUSINESS_DATE, data:{openingCash, cashSalesToday:salesToday('cash'), expensesToday:expensesToday().reduce((a,e)=>a+e.amt,0), purchasesPaidToday:purchasesPaidToday()}}],
+      explain: `Live formula from the Money module: opening cash + today's cash sales − today's expenses − today's cash purchases.`,
+    };
+  }
+
+  // ---- purchase priority within a budget ----
+  if(/(budget|paas|available funds|kya khareed|what should i buy|priority purchase)/.test(ql)){
+    const amtMatch = q.match(/[\d,]{3,}/);
+    const budget = amtMatch ? parseFloat(amtMatch[0].replace(/,/g,'')) : null;
+    const candidates = PRODUCTS.filter(p=>p.stock<p.min)
+      .map(p=>{
+        const deficit = p.min - p.stock;
+        const qty = p.reorderQty || deficit;
+        const cost = Math.round(qty * p.purchaseRate);
+        return {p, qty, cost, deficit};
+      })
+      .sort((a,b)=> (b.deficit/((b.p.min)||1)) - (a.deficit/((a.p.min)||1))); // most critical first
+    if(candidates.length===0) return {text:`Nothing is below reorder point right now, so there's no priority purchase to recommend.`, refs:[], explain:`Checked every product's live stock against its minimum stock.`};
+    if(budget===null){
+      return {
+        text: `Priority order if you were buying today: ${candidates.map(c=>`${c.p.name} (₹${c.cost} for ${c.qty})`).join(', then ')}. Tell me a budget amount and I'll tell you exactly how far it goes.`,
+        refs: candidates.map(c=>({type:'Product', label:c.p.name, data:{stock:c.p.stock, min:c.p.min, purchaseRate:c.p.purchaseRate, estCost:c.cost}})),
+        explain: `Ranked low-stock products by how far below their minimum stock they are (deficit ÷ minimum), most critical first.`,
+      };
+    }
+    let remaining = budget, picked = [];
+    for(const c of candidates){ if(c.cost<=remaining){ picked.push(c); remaining -= c.cost; } }
+    if(picked.length===0) return {
+      text: `₹${budget} isn't enough to fully restock even the most urgent item (${candidates[0].p.name} needs ₹${candidates[0].cost} for ${candidates[0].qty} units). Consider a partial order.`,
+      refs: [{type:'Product', label:candidates[0].p.name, data:{estCost:candidates[0].cost, qty:candidates[0].qty}}],
+      explain: `Compared your budget to the cost of restocking the single most critical low-stock item.`,
+    };
+    return {
+      text: `With ₹${budget}: buy ${picked.map(c=>`${c.p.name} — ${c.qty} units for ₹${c.cost}`).join('; ')}. That uses ₹${budget-remaining}, leaving ₹${remaining} safe remaining.`,
+      refs: picked.map(c=>({type:'Product', label:c.p.name, data:{stock:c.p.stock, min:c.p.min, qty:c.qty, purchaseRate:c.p.purchaseRate, estCost:c.cost}})),
+      explain: `Ranked low-stock products by urgency, then filled the given budget top-down, skipping any item that wouldn't fit rather than partially buying it.`,
+    };
+  }
+
+  // ---- overall business summary ----
+  if(/business summary|how is business|aaj ka summary|overview|kaisa (chal|raha)/.test(ql)){
+    const cash = expectedCash();
+    const salesTotal = salesToday('cash')+salesToday('upi')+salesToday('credit');
+    const low = PRODUCTS.filter(p=>p.stock<p.min);
+    const reviewPOs = PURCHASES.filter(p=>p.status==='REVIEW');
+    const reviewBills = VENDORS.reduce((a,v)=>a+v.reviewCount,0);
+    return {
+      text: `Today so far: ₹${salesTotal} in sales, ₹${cash} expected cash in the drawer. ${low.length} item(s) below reorder point. ${reviewPOs.length} purchase(s) awaiting review, ${reviewBills} vendor bill(s) need AI review.`,
+      refs: [
+        {type:'Money snapshot', label:BUSINESS_DATE, data:{salesTotal, expectedCash:cash}},
+        {type:'Low stock', label:`${low.length} items`, data:{items:low.map(p=>p.name).join(', ')||'none'}},
+        {type:'Purchases', label:'Needs review', data:{count:reviewPOs.length}},
+      ],
+      explain: `Pulled live totals from Money (sales/cash), Inventory (stock vs minimum), and Purchases (status = REVIEW) — the same numbers shown on their respective screens right now.`,
+    };
+  }
+
+  return {
+    text: `I can currently answer questions about product rates and stock, vendor comparisons and spend, last purchase dates, yesterday's or this month's sales/profit, low stock, and expected cash. I don't yet understand that question — try one of the suggestions below, or rephrase it closer to those topics.`,
+    unavailable: true,
+  };
+}
+
+function suggestedQuestions(){
+  return [
+    'What rate did we buy DOMS DF Pen at?',
+    'Which vendor gives the lowest rate for Link Calculator?',
+    'What was yesterday\'s sale?',
+    'Kaunse items stock-out hone wale hain?',
+    'Is month profit kaisa raha?',
+    'Ashok Pen Wale se is month kitna spend hua?',
+    'Abhi 3000 budget hai, kya khareedu?',
+    'Give me a business summary',
+  ];
+}
+
+function renderChat(){
+  document.getElementById('chatSuggestRow').innerHTML = suggestedQuestions().map(q=>
+    `<div class="chat-suggest" onclick="askFromContext('${q.replace(/'/g,"\\'")}')">${q}</div>`).join('');
+  const scroll = document.getElementById('chatScroll');
+  if(CHAT_LOG.length===0){
+    scroll.innerHTML = `<div style="text-align:center;color:var(--ink-faint);font-size:12.5px;padding:20px 10px;">Ask about rates, vendors, stock, sales or profit — every answer is pulled straight from your GSH data, with a Trace button to the exact records.</div>`;
+    return;
+  }
+  scroll.innerHTML = CHAT_LOG.map((m,i)=>{
+    if(m.role==='user') return `<div class="msg msg-user">${m.text}</div>`;
+    return `<div class="msg msg-ai">
+      <div class="msg-ai-bubble ${m.unavailable?'unavailable':''}">${m.text}</div>
+      ${(m.refs&&m.refs.length)||m.explain ? `<div class="msg-actions">
+        ${m.refs&&m.refs.length?`<div class="msg-action" onclick="openTrace(${i})">Trace</div>`:''}
+        ${m.explain?`<div class="msg-action" onclick="openExplain(${i})">Explain</div>`:''}
+      </div>`:''}
+    </div>`;
+  }).join('');
+  scroll.scrollTop = scroll.scrollHeight;
+}
+function sendChat(){
+  const input = document.getElementById('chatInput');
+  const q = input.value.trim();
+  if(!q) return;
+  input.value = '';
+  askFromContext(q);
+}
+function askFromContext(q){
+  show('ai-assistant');
+  CHAT_LOG.push({role:'user', text:q});
+  const result = askGSH(q);
+  CHAT_LOG.push({role:'ai', ...result});
+  saveKey('gsh:aiLog', CHAT_LOG);
+  renderChat();
+}
+function openTrace(i){
+  const m = CHAT_LOG[i];
+  document.getElementById('traceBody').innerHTML = (m.refs||[]).map(r=>`
+    <div class="trace-ref">
+      <div class="trace-ref-head">${r.type}${r.label?' · '+r.label:''}</div>
+      ${Object.entries(r.data||{}).map(([k,v])=>`<div class="trace-ref-row"><span>${k}</span><span class="mono">${typeof v==='object'?JSON.stringify(v):v}</span></div>`).join('')}
+    </div>`).join('') || '<div style="color:var(--ink-faint);font-size:12.5px;">No underlying records for this answer.</div>';
+  document.getElementById('traceScrim').classList.add('show');
+  document.getElementById('traceSheet').classList.add('show');
+}
+function closeTraceSheet(){ document.getElementById('traceScrim').classList.remove('show'); document.getElementById('traceSheet').classList.remove('show'); }
+function openExplain(i){
+  document.getElementById('explainBody').textContent = CHAT_LOG[i].explain || 'No explanation available.';
+  document.getElementById('explainScrim').classList.add('show');
+  document.getElementById('explainSheet').classList.add('show');
+}
+function closeExplainSheet(){ document.getElementById('explainScrim').classList.remove('show'); document.getElementById('explainSheet').classList.remove('show'); }
+
+let toastTimer;
+function toast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg + ' — wired up once the AI/data services are connected.';
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>t.classList.remove('show'), 2200);
+}
+
+/* ---------- SEASONAL / DIWALI (§26 — fully isolated ledger, no year-round tracking) ---------- */
+let SEASONS = []; // [{id, name, startedAt, items:[], expenses:[], sales:[]}]
+let currentSeasonId = null;
+
+function seasonTotals(s){
+  const purchase = s.items.reduce((a,i)=>a+i.cost,0);
+  const expenses = s.expenses.reduce((a,e)=>a+e.amount,0);
+  const sales = s.sales.reduce((a,x)=>a+x.amount,0);
+  const profit = sales - purchase - expenses;
+  return {purchase, expenses, sales, profit};
+}
+function renderSeasonal(){
+  if(SEASONS.length===0){
+    document.getElementById('seasonPicker').innerHTML = `<div class="season-chip new" onclick="openSeasonNewSheet()">+ New season</div>`;
+    document.getElementById('seasonName').textContent = 'No season yet';
+    document.getElementById('seasonDates').textContent = 'Create one to start tracking Diwali or any seasonal campaign, fully separate from daily stock.';
+    ['seasonPurchase','seasonExpenses','seasonSales','seasonProfit'].forEach(id=>document.getElementById(id).textContent='₹0');
+    document.getElementById('seasonItems').innerHTML = '';
+    document.getElementById('seasonExpList').innerHTML = '';
+    document.getElementById('seasonSalesList').innerHTML = '';
+    return;
+  }
+  if(!currentSeasonId || !SEASONS.find(s=>s.id===currentSeasonId)) currentSeasonId = SEASONS[0].id;
+  document.getElementById('seasonPicker').innerHTML = SEASONS.map(s=>
+    `<div class="season-chip ${s.id===currentSeasonId?'active':''}" onclick="selectSeason('${s.id}')">${s.name}</div>`
+  ).join('') + `<div class="season-chip new" onclick="openSeasonNewSheet()">+ New</div>`;
+
+  const s = SEASONS.find(x=>x.id===currentSeasonId);
+  const t = seasonTotals(s);
+  document.getElementById('seasonName').textContent = s.name;
+  document.getElementById('seasonDates').textContent = `Started ${s.startedAt} · ${s.items.length} item type(s), ${s.expenses.length} expense(s), ${s.sales.length} sale entr${s.sales.length===1?'y':'ies'}`;
+  document.getElementById('seasonPurchase').textContent = '₹'+t.purchase.toLocaleString('en-IN');
+  document.getElementById('seasonExpenses').textContent = '₹'+t.expenses.toLocaleString('en-IN');
+  document.getElementById('seasonSales').textContent = '₹'+t.sales.toLocaleString('en-IN');
+  const profitEl = document.getElementById('seasonProfit');
+  profitEl.textContent = (t.profit<0?'-':'')+'₹'+Math.abs(t.profit).toLocaleString('en-IN');
+  profitEl.className = 'v mono ' + (t.profit>=0 ? 'profit-pos' : 'profit-neg');
+
+  document.getElementById('seasonItems').innerHTML = s.items.map(i=>`
+    <div class="season-row"><div><div>${i.name} <span class="season-row-sub">×${i.qty}</span></div>${i.billRef?`<div class="season-row-sub">${i.billRef}</div>`:''}</div><div class="mono">₹${i.cost}</div></div>
+  `).join('') || `<div class="season-row" style="border:none;color:var(--ink-faint);">No items logged yet.</div>`;
+  document.getElementById('seasonExpList').innerHTML = s.expenses.map(e=>`
+    <div class="season-row"><span>${e.category}</span><span class="mono">₹${e.amount}</span></div>
+  `).join('') || `<div class="season-row" style="border:none;color:var(--ink-faint);">No expenses logged yet.</div>`;
+  document.getElementById('seasonSalesList').innerHTML = s.sales.map(x=>`
+    <div class="season-row"><span>${x.date}</span><span class="mono">₹${x.amount}</span></div>
+  `).join('') || `<div class="season-row" style="border:none;color:var(--ink-faint);">No sales logged yet.</div>`;
+}
+function selectSeason(id){ currentSeasonId = id; renderSeasonal(); }
+
+function openSeasonNewSheet(){
+  document.getElementById('seasonNewName').value='';
+  document.getElementById('seasonNewScrim').classList.add('show');
+  document.getElementById('seasonNewSheet').classList.add('show');
+}
+function closeSeasonNewSheet(){ document.getElementById('seasonNewScrim').classList.remove('show'); document.getElementById('seasonNewSheet').classList.remove('show'); }
+function createSeasonCampaign(){
+  const name = document.getElementById('seasonNewName').value.trim();
+  if(!name){ toast('Enter a season name'); return; }
+  const s = {id:'season'+Date.now(), name, startedAt:BUSINESS_DATE, items:[], expenses:[], sales:[]};
+  SEASONS.push(s);
+  currentSeasonId = s.id;
+  saveKey('gsh:seasons', SEASONS);
+  closeSeasonNewSheet();
+  renderSeasonal();
+  toast(`"${name}" created — fully separate from daily stationery inventory`);
+}
+
+function openSeasonItemSheet(){
+  if(!currentSeasonId){ toast('Create a season first'); return; }
+  ['seasonItemName','seasonItemQty','seasonItemCost','seasonItemBill'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('seasonItemScrim').classList.add('show');
+  document.getElementById('seasonItemSheet').classList.add('show');
+}
+function closeSeasonItemSheet(){ document.getElementById('seasonItemScrim').classList.remove('show'); document.getElementById('seasonItemSheet').classList.remove('show'); }
+function saveSeasonItem(){
+  const name = document.getElementById('seasonItemName').value.trim();
+  const qty = parseFloat(document.getElementById('seasonItemQty').value) || 0;
+  const cost = parseFloat(document.getElementById('seasonItemCost').value) || 0;
+  const billRef = document.getElementById('seasonItemBill').value.trim();
+  if(!name || cost<=0){ toast('Enter an item name and cost'); return; }
+  const s = SEASONS.find(x=>x.id===currentSeasonId);
+  s.items.push({id:'si'+Date.now(), name, qty, cost, billRef});
+  saveKey('gsh:seasons', SEASONS);
+  closeSeasonItemSheet();
+  renderSeasonal();
+  toast(`Added ${name} — ₹${cost}`);
+}
+
+function openSeasonExpenseSheet(){
+  if(!currentSeasonId){ toast('Create a season first'); return; }
+  document.getElementById('seasonExpCat').value=''; document.getElementById('seasonExpAmt').value='';
+  document.getElementById('seasonExpScrim').classList.add('show');
+  document.getElementById('seasonExpSheet').classList.add('show');
+}
+function closeSeasonExpenseSheet(){ document.getElementById('seasonExpScrim').classList.remove('show'); document.getElementById('seasonExpSheet').classList.remove('show'); }
+function saveSeasonExpense(){
+  const category = document.getElementById('seasonExpCat').value.trim() || 'Miscellaneous';
+  const amount = parseFloat(document.getElementById('seasonExpAmt').value) || 0;
+  if(amount<=0){ toast('Enter an amount'); return; }
+  const s = SEASONS.find(x=>x.id===currentSeasonId);
+  s.expenses.push({id:'se'+Date.now(), category, amount});
+  saveKey('gsh:seasons', SEASONS);
+  closeSeasonExpenseSheet();
+  renderSeasonal();
+  toast(`Seasonal expense logged — ${category} ₹${amount}`);
+}
+
+function openSeasonSaleSheet(){
+  if(!currentSeasonId){ toast('Create a season first'); return; }
+  document.getElementById('seasonSaleAmt').value='';
+  document.getElementById('seasonSaleScrim').classList.add('show');
+  document.getElementById('seasonSaleSheet').classList.add('show');
+}
+function closeSeasonSaleSheet(){ document.getElementById('seasonSaleScrim').classList.remove('show'); document.getElementById('seasonSaleSheet').classList.remove('show'); }
+function saveSeasonSale(){
+  const amount = parseFloat(document.getElementById('seasonSaleAmt').value) || 0;
+  if(amount<=0){ toast('Enter an amount'); return; }
+  const s = SEASONS.find(x=>x.id===currentSeasonId);
+  s.sales.push({id:'ss'+Date.now(), date:BUSINESS_DATE, amount});
+  saveKey('gsh:seasons', SEASONS);
+  closeSeasonSaleSheet();
+  renderSeasonal();
+  toast(`Seasonal sale logged — ₹${amount}`);
+}
+
+/* ---------- BOOTSTRAP: load everything from window.storage (seed only if empty) ---------- */
+async function bootstrap(){
+  PRODUCTS      = await loadKey('gsh:products', SEED_PRODUCTS);
+  VENDORS       = await loadKey('gsh:vendors', SEED_VENDORS);
+  PURCHASES     = await loadKey('gsh:purchases', SEED_PURCHASES);
+  MOVEMENTS     = await loadKey('gsh:movements', SEED_MOVEMENTS);
+  BUSINESS_DATE = await loadKey('gsh:businessDate', new Date().toISOString().slice(0,10));
+  openingCash   = await loadKey('gsh:openingCash', 0);
+  // Expenses/sales/closings start genuinely empty on a brand new install — only the
+  // one-time seed expenses get a real date stamped on them so they behave exactly
+  // like a user-entered expense from here on (same repository, same fields).
+  EXPENSES = await loadKey('gsh:expenses', SEED_EXPENSES.map((e,i)=>({...e, id:'e'+i, date:BUSINESS_DATE})));
+  SALES     = await loadKey('gsh:sales', []);
+  CLOSINGS  = await loadKey('gsh:closings', []);
+  CHAT_LOG  = await loadKey('gsh:aiLog', []);
+  SEASONS   = await loadKey('gsh:seasons', []);
+
+  DEVICE_ID       = await loadKey('gsh:deviceId', 'dev-'+Math.random().toString(36).slice(2)+Date.now().toString(36));
+  SYNC_OUTBOX     = await loadKey('gsh:syncOutbox', {});
+  SYNC_VERSIONS   = await loadKey('gsh:syncVersions', {});
+  SYNC_SERVER_URL = await loadKey('gsh:syncServerUrl', '');
+
+  filterInventory();
+  renderVendors();
+  renderPurchases();
+  renderCC();
+  renderChat();
+  renderSyncStatusRow();
+  if(Object.keys(SYNC_OUTBOX).length) attemptSync(); // resume any sync left queued from last session
+}
+bootstrap();
+
+</script>
+</body>
+</html>

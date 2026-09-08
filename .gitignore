@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Capacitor native project — regenerated in CI via `npx cap add android`
+# (see .github/workflows/android-apk.yml). Not committed because it's fully
+# derived from capacitor.config.ts + package.json; committing a hand-authored
+# copy risks silently drifting from what `cap add` actually generates.
+android/
+ios/
+
+# Environment / secrets — NEVER commit real values.
+# See .env.example for the variables the server actually needs.
+.env
+.env.local
+.env.*.local
+
+# Prisma
+prisma/*.db
+prisma/migrations/dev/
+
+# Logs
+npm-debug.log*
+*.log
+
+# OS/editor cruft
+.DS_Store
+.vscode/
+.idea/
+
+# Gradle/Android build artifacts (only relevant once android/ exists locally)
+*.apk
+*.aab
+.gradle/
+local.properties
