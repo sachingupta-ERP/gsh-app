@@ -15,13 +15,15 @@
 // docs/ARCHITECTURE.md), this script is what gets replaced by a real bundler
 // step — nothing else about the project structure needs to change to get there.
 
-import { mkdirSync, copyFileSync, existsSync } from 'node:fs';
+import { mkdirSync, existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 const root = resolve(import.meta.dirname, '..');
 const src = resolve(root, 'preview', 'index.html');
 const outDir = resolve(root, 'dist');
 const outFile = resolve(outDir, 'index.html');
+const otaManifestUrl = process.env.OTA_MANIFEST_URL || '';
+const otaEnabled = process.env.OTA_ENABLED !== 'false';
 
 if (!existsSync(src)) {
   console.error(`Build failed: expected the app at ${src} but it does not exist.`);
@@ -29,6 +31,9 @@ if (!existsSync(src)) {
 }
 
 mkdirSync(outDir, { recursive: true });
-copyFileSync(src, outFile);
+const html = readFileSync(src, 'utf8')
+  .replaceAll('__GSH_OTA_MANIFEST_URL__', otaManifestUrl)
+  .replaceAll('__GSH_OTA_ENABLED__', String(otaEnabled));
+writeFileSync(outFile, html);
 
 console.log(`Built web app: ${src} -> ${outFile}`);

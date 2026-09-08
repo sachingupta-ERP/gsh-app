@@ -21,7 +21,7 @@ html,body{margin:0;padding:0;background:#0f0e1a;font-family:'Space Grotesk',syst
 .screen.active{opacity:1;pointer-events:auto;}
 
 /* ---------- LOGIN ---------- */
-#login{background:linear-gradient(180deg,#1C1A2E 0%,#241F5C 55%,#3B3486 100%);color:#F6F1E7;padding:0;}
+#login{background:linear-gradient(135deg,rgba(28,26,46,.96),rgba(36,31,92,.94)),radial-gradient(circle at 15% 20%,rgba(246,241,231,.18) 0 2px,transparent 3px),radial-gradient(circle at 80% 35%,rgba(246,241,231,.12) 0 1px,transparent 2px);background-size:auto,34px 34px,27px 27px;color:#F6F1E7;padding:0;}
 .login-scrim{position:absolute;inset:0;background:
   radial-gradient(60% 40% at 20% 10%, rgba(246,241,231,0.06), transparent),
   repeating-linear-gradient(115deg, rgba(246,241,231,0.02) 0 2px, transparent 2px 40px);}
@@ -50,6 +50,16 @@ html,body{margin:0;padding:0;background:#0f0e1a;font-family:'Space Grotesk',syst
 .step-dots{display:flex;gap:6px;margin-bottom:20px;}
 .step-dots span{width:22px;height:3px;border-radius:2px;background:rgba(246,241,231,0.2);}
 .step-dots span.done{background:#F6F1E7;}
+.login-version{position:absolute;right:20px;bottom:18px;font-size:10px;color:#C9C4E8;font-family:'IBM Plex Mono',monospace;}
+.login-footer{position:absolute;left:0;right:0;bottom:18px;text-align:center;font-size:10px;letter-spacing:.08em;color:#C9C4E8;text-transform:uppercase;}
+.auth-note{font-size:11px;color:#C9C4E8;margin:8px 0 14px;line-height:1.4;}
+.settings-section{margin:0 20px 18px;background:var(--paper-raised);border:1px solid var(--rule);border-radius:var(--r-lg);overflow:hidden;}
+.settings-section-title{padding:12px 14px 8px;font-size:10px;letter-spacing:.08em;color:var(--ink-faint);}
+.settings-user{display:flex;align-items:center;gap:10px;padding:11px 14px;border-top:1px solid var(--rule);}
+.settings-user .avatar{width:30px;height:30px;border-radius:50%;background:var(--indigo-tint);color:var(--indigo);display:flex;align-items:center;justify-content:center;font-weight:700;}
+.settings-user .meta{flex:1;font-size:12.5px}.settings-user .sub{font-size:10.5px;color:var(--ink-faint);margin-top:2px}
+.settings-action{padding:13px 14px;border-top:1px solid var(--rule);font-size:13px;cursor:pointer;}
+.settings-action.danger{color:var(--rose);}
 
 /* ---------- ONBOARDING ---------- */
 #onboarding{background:var(--paper);}
@@ -435,55 +445,23 @@ html,body{margin:0;padding:0;background:#0f0e1a;font-family:'Space Grotesk',syst
   <div class="screen active" id="login">
     <div class="login-scrim"></div>
     <div class="login-content">
-      <div class="brand-mark">AI-POWERED RETAIL INTELLIGENCE</div>
       <div class="brand-name">GOPESHWAR<br/>STATIONARY HOUSE</div>
 
       <div class="login-hero">
-        <div id="stepDots" class="step-dots"><span class="done"></span><span></span><span></span></div>
-
-        <div id="stepMobile">
-          <h1>Welcome</h1>
-          <p>Your stock. Your sales. Your vendors. Your business intelligence.</p>
-          <div class="field">
-            <label>MOBILE NUMBER</label>
-            <input id="mobileInput" type="tel" placeholder="98xxxxxxxx" maxlength="10" />
-          </div>
-          <div class="err" id="mobileErr"></div>
-          <button class="btn btn-primary" id="sendOtpBtn" disabled onclick="sendOtp()">Send OTP</button>
-        </div>
-
-        <div id="stepOtp" style="display:none;">
-          <h1>Enter OTP</h1>
-          <p id="otpSubtext">Code sent to your mobile number.</p>
-          <div class="field">
-            <label>6-DIGIT CODE</label>
-            <input id="otpInput" type="tel" placeholder="••••••" maxlength="6" />
-          </div>
-          <div class="err" id="otpErr"></div>
-          <div class="role-pill">
-            <div class="pill active" id="roleAdmin" onclick="setRole('ADMIN')">Admin</div>
-            <div class="pill" id="roleEmp" onclick="setRole('EMPLOYEE')">Employee</div>
-          </div>
-          <button class="btn btn-primary" style="margin-top:16px;" onclick="verifyOtp()">Verify &amp; Continue</button>
-          <button class="btn btn-ghost" onclick="goStep('mobile')">Change number</button>
-        </div>
-
-        <div id="stepPin" style="display:none;">
-          <h1>Set your PIN</h1>
-          <p>Create a 4-digit PIN. You'll use this — or fingerprint, if your device supports it — to sign in next time.</p>
-          <div class="field">
-            <label>NEW PIN</label>
-            <input id="pinInput" type="password" placeholder="••••" maxlength="4" />
-          </div>
-          <div class="field">
-            <label>CONFIRM PIN</label>
-            <input id="pinConfirm" type="password" placeholder="••••" maxlength="4" />
-          </div>
-          <div class="err" id="pinErr"></div>
-          <button class="btn btn-primary" onclick="setPin()">Continue</button>
+        <div id="authForm">
+          <h1>Welcome back</h1>
+          <p>Sign in to your store intelligence workspace.</p>
+          <div class="field"><label>USERNAME</label><input id="usernameInput" autocomplete="username" placeholder="Your username" /></div>
+          <div class="field"><label>PASSWORD</label><input id="passwordInput" type="password" autocomplete="current-password" placeholder="Your password" onkeydown="if(event.key==='Enter') loginUser()" /></div>
+          <div class="err" id="loginErr"></div>
+          <div class="auth-note" id="firstRunNote">Owner access is created securely on this device the first time you open GSH.</div>
+          <button class="btn btn-primary" onclick="loginUser()">Sign in</button>
+          <button class="btn btn-ghost" onclick="openForgotPassword()">Forgot password?</button>
         </div>
       </div>
     </div>
+    <div class="login-footer">AI Powered Retail Intelligence</div>
+    <div class="login-version">v1.0.0</div>
   </div>
 
   <!-- ================= ONBOARDING ================= -->
@@ -793,8 +771,60 @@ html,body{margin:0;padding:0;background:#0f0e1a;font-family:'Space Grotesk',syst
       <div class="more-row" onclick="closeMoreSheet(); show('seasonal'); renderSeasonal();"><div class="more-icon">🪔</div><div><div class="more-title">Seasonal / Diwali</div><div class="more-sub">Isolated campaign ledger</div></div></div>
       <div class="more-row" onclick="closeMoreSheet(); show('ai-assistant'); renderChat();"><div class="more-icon">💬</div><div><div class="more-title">Ask GSH AI</div><div class="more-sub">Business Q&amp;A, Hindi/English</div></div></div>
       <div class="more-row" onclick="toast('Notifications')"><div class="more-icon">🔔</div><div><div class="more-title">Notifications</div><div class="more-sub">Briefs, tags, review requests</div></div></div>
-      <div class="more-row" onclick="toast('Settings')"><div class="more-icon">⚙️</div><div><div class="more-title">Settings</div><div class="more-sub">Users, permissions, data</div></div></div>
+      <div class="more-row" onclick="closeMoreSheet(); openSettings()"><div class="more-icon">⚙️</div><div><div class="more-title">Settings</div><div class="more-sub">Users, passwords, app controls</div></div></div>
       <div class="more-row" onclick="openSyncSheet()"><div class="more-icon">🔄</div><div id="syncStatusRow"><div class="more-title">Sync status</div><div class="more-sub">Checking…</div></div></div>
+    </div>
+
+    <!-- ================= SETTINGS ================= -->
+    <div class="screen" id="settings">
+      <div class="bar"><div class="bar-back" onclick="show('cc')">←</div><div><div class="bar-title">Settings</div><div class="bar-sub">Account and access controls</div></div></div>
+      <div class="cc-scroll">
+        <div class="settings-section">
+          <div class="settings-section-title">CURRENT ACCOUNT</div>
+          <div class="settings-user" id="currentUserRow"></div>
+          <div class="settings-action" onclick="openChangePassword()">Change password</div>
+          <div class="settings-action" onclick="openForgotPassword()">Request password reset</div>
+        </div>
+        <div class="settings-section" id="usersSection">
+          <div class="settings-section-title">USERS</div>
+          <div id="usersList"></div>
+          <div class="settings-action" onclick="openCreateEmployee()">+ Create employee</div>
+        </div>
+        <div class="settings-section" id="resetRequestsSection" style="display:none;">
+          <div class="settings-section-title">PASSWORD RESET REQUESTS</div>
+          <div id="resetRequestsList"></div>
+        </div>
+        <div class="settings-section">
+          <div class="settings-section-title">SESSION</div>
+          <div class="settings-action danger" onclick="logoutUser()">Log out</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sheet-scrim" id="authSheetScrim" onclick="closeAuthSheet()"></div>
+    <div class="sheet" id="authSheet">
+      <div class="sheet-handle"></div>
+      <div class="sheet-head"><div class="bar-title" id="authSheetTitle">Create employee</div><div class="bar-sub" id="authSheetSub">Access is recorded locally until the server auth API is connected.</div></div>
+      <div class="sheet-body">
+        <div id="employeeFields">
+          <div class="field" style="background:var(--paper-raised);border-color:var(--rule);"><label>NAME</label><input id="employeeName" style="color:var(--ink);" /></div>
+          <div class="field" style="background:var(--paper-raised);border-color:var(--rule);"><label>MOBILE</label><input id="employeeMobile" type="tel" style="color:var(--ink);" /></div>
+          <div class="field" style="background:var(--paper-raised);border-color:var(--rule);"><label>EMAIL</label><input id="employeeEmail" type="email" style="color:var(--ink);" /></div>
+          <div class="field" style="background:var(--paper-raised);border-color:var(--rule);"><label>ROLE</label><select id="employeeRole" style="width:100%;border:0;background:transparent;color:var(--ink);font:inherit;"><option value="EMPLOYEE">Employee</option><option value="ADMIN">Owner</option></select></div>
+          <div class="auth-note" id="temporaryCredentials"></div>
+        </div>
+        <div id="passwordFields" style="display:none;">
+          <div class="field" style="background:var(--paper-raised);border-color:var(--rule);"><label>CURRENT PASSWORD</label><input id="currentPassword" type="password" style="color:var(--ink);" /></div>
+          <div class="field" style="background:var(--paper-raised);border-color:var(--rule);"><label>NEW PASSWORD</label><input id="newPassword" type="password" style="color:var(--ink);" /></div>
+          <div class="field" style="background:var(--paper-raised);border-color:var(--rule);"><label>CONFIRM NEW PASSWORD</label><input id="confirmPassword" type="password" style="color:var(--ink);" /></div>
+        </div>
+        <div id="forgotFields" style="display:none;">
+          <div class="auth-note">A reset request will be recorded for the owner. Email delivery is intentionally not configured in this client.</div>
+          <div class="field" style="background:var(--paper-raised);border-color:var(--rule);"><label>USERNAME OR EMAIL</label><input id="forgotIdentity" style="color:var(--ink);" /></div>
+        </div>
+        <div class="err" id="authSheetErr"></div>
+      </div>
+      <div class="sheet-foot"><button class="sheet-btn cancel" onclick="closeAuthSheet()">Cancel</button><button class="sheet-btn confirm" id="authSheetAction" onclick="submitAuthSheet()">Create employee</button></div>
     </div>
   </div>
 
@@ -1149,6 +1179,9 @@ html,body{margin:0;padding:0;background:#0f0e1a;font-family:'Space Grotesk',syst
       <div id="syncOutboxBody" style="margin-bottom:14px;"></div>
       <div style="font-size:11px;color:var(--ink-faint);margin-bottom:4px;">LAST SYNC ATTEMPT</div>
       <div id="syncLastResult" style="font-size:12.5px;color:var(--ink-soft);"></div>
+      <div id="otaStatus" style="margin-top:16px;font-size:12.5px;color:var(--ink-soft);"></div>
+      <div id="otaAction" class="link-btn" style="margin-top:8px;display:none;" onclick="applyOtaUpdate()"></div>
+      <div id="otaToggle" class="link-btn" style="margin-top:8px;" onclick="toggleOtaDisabled()">Pause automatic updates</div>
     </div>
     <div class="sheet-foot">
       <button class="sheet-btn cancel" onclick="closeSyncSheet()">Close</button>
@@ -1178,12 +1211,96 @@ async function saveKeyRaw(key, value){
    snapshot for that collection, and kick a debounced push. No mutation call site
    anywhere else in the app needed to change. */
 const SYNCED_COLLECTIONS = new Set(['gsh:products','gsh:vendors','gsh:purchases','gsh:expenses','gsh:sales','gsh:closings','gsh:seasons','gsh:movements']);
+const OTA_MANIFEST_URL = '__GSH_OTA_MANIFEST_URL__';
+const OTA_ENABLED = '__GSH_OTA_ENABLED__' === 'true';
 let SYNC_OUTBOX = {};        // {collection: {data, clientVersion, queuedAt}}
 let SYNC_VERSIONS = {};      // {collection: last version server accepted}
 let SYNC_SERVER_URL = '';    // empty = no server configured yet — honestly reported, not an error
 let SYNC_STATUS = { lastAttempt:null, lastResult:null, lastError:null };
 let DEVICE_ID = null;
 let syncDebounce;
+let OTA_STATE = { status:'not checked', bundle:null, disabled:false };
+let OTA_CHECK_IN_FLIGHT = false;
+
+function otaPlugin(){
+  return window.Capacitor?.Plugins?.CapacitorUpdater || null;
+}
+async function sha256Hex(buffer){
+  const digest = await crypto.subtle.digest('SHA-256', buffer);
+  return Array.from(new Uint8Array(digest)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+async function checkOtaUpdate(){
+  if(!OTA_ENABLED || !OTA_MANIFEST_URL || OTA_STATE.disabled || OTA_CHECK_IN_FLIGHT) return;
+  const updater = otaPlugin();
+  if(!updater){ OTA_STATE.status = 'native updater unavailable'; renderOtaStatus(); return; }
+  OTA_CHECK_IN_FLIGHT = true;
+  try {
+    const response = await fetch(`${OTA_MANIFEST_URL}${OTA_MANIFEST_URL.includes('?')?'&':'?'}t=${Date.now()}`, {cache:'no-store'});
+    if(!response.ok) throw new Error(`manifest request failed (${response.status})`);
+    const manifest = await response.json();
+    if(!manifest.version || !manifest.bundleUrl || !manifest.sha256 || !/^https:\/\//i.test(manifest.bundleUrl)){
+      throw new Error('manifest validation failed');
+    }
+    const current = await updater.current();
+    if(manifest.minNativeVersion && compareOtaVersions(manifest.minNativeVersion, current?.native || '0.0.0') > 0){
+      OTA_STATE.status = `Update requires APK ${manifest.minNativeVersion} or newer`;
+      renderOtaStatus();
+      return;
+    }
+    const installed = current?.bundle?.version || '0.0.0';
+    if(compareOtaVersions(manifest.version, installed) <= 0){
+      OTA_STATE.status = `Up to date (${installed})`;
+      renderOtaStatus();
+      return;
+    }
+    function compareOtaVersions(left, right){
+      const parse = value => String(value).split('.').map(part => Number.parseInt(part, 10) || 0);
+      const a = parse(left), b = parse(right);
+      for(let i=0; i<3; i++) if((a[i]||0)!==(b[i]||0)) return (a[i]||0) > (b[i]||0) ? 1 : -1;
+      return 0;
+    }
+    const bundleResponse = await fetch(manifest.bundleUrl, {cache:'no-store'});
+    if(!bundleResponse.ok) throw new Error(`bundle request failed (${bundleResponse.status})`);
+    const bundleBytes = await bundleResponse.arrayBuffer();
+    if((await sha256Hex(bundleBytes)).toLowerCase() !== String(manifest.sha256).toLowerCase()){
+      throw new Error('bundle checksum validation failed');
+    }
+    const bundle = await updater.download({version: manifest.version, url: manifest.bundleUrl});
+    OTA_STATE.bundle = { ...bundle, version: manifest.version };
+    OTA_STATE.status = `Update ${manifest.version} is ready`;
+  } catch(error){
+    OTA_STATE.status = `Update check unavailable: ${error.message || 'unknown error'}`;
+    console.warn('OTA update check failed', error);
+  } finally {
+    OTA_CHECK_IN_FLIGHT = false;
+    renderOtaStatus();
+  }
+}
+function renderOtaStatus(){
+  const status = document.getElementById('otaStatus');
+  const action = document.getElementById('otaAction');
+  const toggle = document.getElementById('otaToggle');
+  if(!status || !action || !toggle) return;
+  status.textContent = OTA_ENABLED ? `Web updates: ${OTA_STATE.disabled ? 'paused' : OTA_STATE.status}` : 'Web updates: disabled for this build';
+  action.style.display = OTA_STATE.bundle && !OTA_STATE.disabled ? 'block' : 'none';
+  action.textContent = OTA_STATE.bundle ? `Apply update ${OTA_STATE.bundle.version}` : '';
+  toggle.textContent = OTA_STATE.disabled ? 'Resume automatic updates' : 'Pause automatic updates';
+}
+async function applyOtaUpdate(){
+  if(!OTA_STATE.bundle) return;
+  const updater = otaPlugin();
+  if(!updater) return;
+  OTA_STATE.status = 'Applying update…';
+  renderOtaStatus();
+  // next() activates on the next background/restart; reload applies it now
+  await updater.next({id: OTA_STATE.bundle.id});
+  await updater.reload();
+}
+function toggleOtaDisabled(){
+  OTA_STATE.disabled = !OTA_STATE.disabled;
+  saveKeyRaw('gsh:otaDisabled', OTA_STATE.disabled);
+  renderOtaStatus();
+}
 
 async function saveKey(key, value){
   await saveKeyRaw(key, value);
@@ -1236,6 +1353,7 @@ function renderSyncStatusRow(){
 function openSyncSheet(){
   document.getElementById('syncServerInput').value = SYNC_SERVER_URL;
   renderSyncOutboxDetail();
+  renderOtaStatus();
   document.getElementById('syncScrim').classList.add('show');
   document.getElementById('syncSheet').classList.add('show');
 }
@@ -1256,46 +1374,125 @@ function saveSyncServerUrl(){
 }
 function syncNow(){ toast('Syncing…'); attemptSync().then(renderSyncOutboxDetail); }
 
-let role = 'ADMIN';
+let USERS = [];
+let CURRENT_USER = null;
+let authSheetMode = 'employee';
 function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');}
-function goStep(step){
-  document.getElementById('stepMobile').style.display = step==='mobile' ? 'block':'none';
-  document.getElementById('stepOtp').style.display = step==='otp' ? 'block':'none';
-  document.getElementById('stepPin').style.display = step==='pin' ? 'block':'none';
-  const dots = document.querySelectorAll('#stepDots span');
-  const idx = {mobile:0, otp:1, pin:2}[step];
-  dots.forEach((d,i)=> d.classList.toggle('done', i<=idx));
+async function hashPassword(password){
+  const bytes = new TextEncoder().encode(password);
+  const digest = await crypto.subtle.digest('SHA-256', bytes);
+  return Array.from(new Uint8Array(digest)).map(b=>b.toString(16).padStart(2,'0')).join('');
 }
-document.getElementById('mobileInput').addEventListener('input', e=>{
-  e.target.value = e.target.value.replace(/\D/g,'');
-  document.getElementById('sendOtpBtn').disabled = e.target.value.length !== 10;
-});
-function sendOtp(){
-  const mobile = document.getElementById('mobileInput').value;
-  if(mobile.length!==10){document.getElementById('mobileErr').textContent='Enter a valid 10-digit mobile number.';return;}
-  document.getElementById('mobileErr').textContent='';
-  document.getElementById('otpSubtext').textContent = 'Code sent to +91 '+mobile.slice(0,5)+'•••••';
-  goStep('otp');
+function makeUsername(name){
+  const base = name.toLowerCase().replace(/[^a-z0-9]+/g,'.').replace(/^\.+|\.+$/g,'') || 'employee';
+  let username = base, suffix = 1;
+  while(USERS.some(user=>user.username===username)){ username = `${base}${suffix++}`; }
+  return username;
 }
-function setRole(r){
-  role = r;
-  document.getElementById('roleAdmin').classList.toggle('active', r==='ADMIN');
-  document.getElementById('roleEmp').classList.toggle('active', r==='EMPLOYEE');
+function makeTemporaryPassword(){
+  return `GSH-${Math.random().toString(36).slice(2,8).toUpperCase()}`;
 }
-function verifyOtp(){
-  const otp = document.getElementById('otpInput').value;
-  if(otp.length!==6){document.getElementById('otpErr').textContent='Enter the 6-digit code.';return;}
-  document.getElementById('otpErr').textContent='';
-  goStep('pin');
+function renderFirstRunNote(){
+  const note = document.getElementById('firstRunNote');
+  if(!note) return;
+  const owner = USERS[0];
+  note.textContent = owner?.temporaryPassword
+    ? `Owner account ready. Username: ${owner.username} · Temporary password: ${owner.temporaryPassword}. Change it after signing in.`
+    : 'Use your GSH username and password to continue.';
 }
-function setPin(){
-  const p1=document.getElementById('pinInput').value, p2=document.getElementById('pinConfirm').value;
-  const err=document.getElementById('pinErr');
-  if(p1.length!==4){err.textContent='PIN must be 4 digits.';return;}
-  if(p1!==p2){err.textContent='PINs do not match.';return;}
-  err.textContent='';
-  show('onboarding');
+async function loginUser(){
+  const username = document.getElementById('usernameInput').value.trim().toLowerCase();
+  const password = document.getElementById('passwordInput').value;
+  const err = document.getElementById('loginErr');
+  const user = USERS.find(candidate=>candidate.username===username);
+  if(!user || user.passwordHash !== await hashPassword(password)){ err.textContent='Username or password is incorrect.'; return; }
+  CURRENT_USER = user;
+  user.lastLoginAt = new Date().toISOString();
+  user.temporaryPassword = null;
+  await saveKeyRaw('gsh:users', USERS);
+  await saveKeyRaw('gsh:currentUserId', user.id);
+  if(user.mustChangePassword){ openChangePassword(true); return; }
+  show('cc'); renderCC();
 }
+function openForgotPassword(){
+  authSheetMode = 'forgot';
+  document.getElementById('authSheetTitle').textContent = 'Request password reset';
+  document.getElementById('authSheetSub').textContent = 'The owner will review this request.';
+  document.getElementById('employeeFields').style.display='none';
+  document.getElementById('passwordFields').style.display='none';
+  document.getElementById('forgotFields').style.display='block';
+  document.getElementById('authSheetAction').textContent='Send request';
+  document.getElementById('forgotIdentity').value=document.getElementById('usernameInput')?.value || '';
+  document.getElementById('authSheet').classList.add('show'); document.getElementById('authSheetScrim').classList.add('show');
+}
+function openChangePassword(required=false){
+  authSheetMode = required ? 'required-password' : 'password';
+  document.getElementById('authSheetTitle').textContent = required ? 'Set a new password' : 'Change password';
+  document.getElementById('authSheetSub').textContent = required ? 'A new password is required before continuing.' : 'Use at least 8 characters.';
+  document.getElementById('employeeFields').style.display='none';
+  document.getElementById('passwordFields').style.display='block';
+  document.getElementById('forgotFields').style.display='none';
+  document.getElementById('currentPassword').style.display = required ? 'none' : 'block';
+  document.getElementById('currentPassword').previousElementSibling.style.display = required ? 'none' : 'block';
+  document.getElementById('authSheetAction').textContent='Save password';
+  document.getElementById('authSheet').classList.add('show'); document.getElementById('authSheetScrim').classList.add('show');
+}
+function openCreateEmployee(){
+  if(CURRENT_USER?.role!=='ADMIN'){ toast('Only the owner can create users'); return; }
+  authSheetMode='employee';
+  document.getElementById('authSheetTitle').textContent='Create employee';
+  document.getElementById('authSheetSub').textContent='A username and temporary password will be generated.';
+  document.getElementById('employeeFields').style.display='block';
+  document.getElementById('passwordFields').style.display='none';
+  document.getElementById('forgotFields').style.display='none';
+  document.getElementById('temporaryCredentials').textContent='';
+  document.getElementById('authSheetAction').textContent='Create employee';
+  document.getElementById('authSheet').classList.add('show'); document.getElementById('authSheetScrim').classList.add('show');
+}
+function closeAuthSheet(){ document.getElementById('authSheet').classList.remove('show'); document.getElementById('authSheetScrim').classList.remove('show'); }
+async function submitAuthSheet(){
+  const err=document.getElementById('authSheetErr'); err.textContent='';
+  if(authSheetMode==='employee'){
+    const name=document.getElementById('employeeName').value.trim(), mobile=document.getElementById('employeeMobile').value.trim(), email=document.getElementById('employeeEmail').value.trim(), role=document.getElementById('employeeRole').value;
+    if(!name || !mobile || !email){err.textContent='Name, mobile, and email are required.';return;}
+    const username=makeUsername(name), temporaryPassword=makeTemporaryPassword();
+    USERS.push({id:'u'+Date.now(),name,mobile,email,role,username,passwordHash:await hashPassword(temporaryPassword),temporaryPassword,mustChangePassword:true,createdAt:new Date().toISOString()});
+    await saveKeyRaw('gsh:users',USERS); renderUsers(); closeAuthSheet(); toast(`Employee created · username ${username}`);
+  } else if(authSheetMode==='forgot'){
+    const identity=document.getElementById('forgotIdentity').value.trim().toLowerCase();
+    const user=USERS.find(candidate=>candidate.username===identity || candidate.email?.toLowerCase()===identity);
+    if(!user){err.textContent='No matching user found.';return;}
+    const requests=await loadKey('gsh:credentialRequests',[]);
+    requests.push({id:'cr'+Date.now(),userId:user.id,type:'password_reset',status:'pending',requestedAt:new Date().toISOString(),notification:{channel:'email',status:'queued',provider:'not-configured'}});
+    await saveKeyRaw('gsh:credentialRequests',requests); closeAuthSheet(); toast('Reset request sent to the owner');
+  } else {
+    const current=document.getElementById('currentPassword').value, next=document.getElementById('newPassword').value, confirm=document.getElementById('confirmPassword').value;
+    if(authSheetMode==='password' && CURRENT_USER.passwordHash!==await hashPassword(current)){err.textContent='Current password is incorrect.';return;}
+    if(next.length<8 || next!==confirm){err.textContent='Use 8+ characters and make both new passwords match.';return;}
+    CURRENT_USER.passwordHash=await hashPassword(next); CURRENT_USER.mustChangePassword=false; CURRENT_USER.temporaryPassword=null;
+    await saveKeyRaw('gsh:users',USERS); closeAuthSheet(); show('cc'); renderCC(); toast('Password updated');
+  }
+}
+function renderUsers(){
+  const list=document.getElementById('usersList'); if(!list) return;
+  list.innerHTML=USERS.map(user=>`<div class="settings-user"><div class="avatar">${user.name.charAt(0).toUpperCase()}</div><div class="meta">${user.name}<div class="sub">${user.username} · ${user.role==='ADMIN'?'Owner':'Employee'}</div></div></div>`).join('');
+}
+async function renderResetRequests(){
+  const section=document.getElementById('resetRequestsSection'), list=document.getElementById('resetRequestsList');
+  if(!section || !list) return;
+  if(CURRENT_USER?.role!=='ADMIN'){ section.style.display='none'; return; }
+  const requests=await loadKey('gsh:credentialRequests',[]);
+  const pending=requests.filter(request=>request.status==='pending');
+  section.style.display='block';
+  list.innerHTML=pending.length
+    ? pending.map(request=>{
+      const user=USERS.find(candidate=>candidate.id===request.userId);
+      return `<div class="settings-user"><div class="avatar">!</div><div class="meta">${user?.name||'Unknown user'}<div class="sub">${user?.username||'—'} · ${new Date(request.requestedAt).toLocaleString()}</div></div></div>`;
+    }).join('')
+    : '<div class="auth-note">No pending requests.</div>';
+}
+async function openSettings(){ renderUsers(); const row=document.getElementById('currentUserRow'); row.innerHTML=`<div class="avatar">${CURRENT_USER?.name?.charAt(0).toUpperCase()||'G'}</div><div class="meta">${CURRENT_USER?.name||'Owner'}<div class="sub">${CURRENT_USER?.username||''} · ${CURRENT_USER?.role==='ADMIN'?'Owner':'Employee'}</div></div>`; show('settings'); await renderResetRequests(); }
+async function logoutUser(){ CURRENT_USER=null; await saveKeyRaw('gsh:currentUserId', null); document.getElementById('passwordInput').value=''; show('login'); renderFirstRunNote(); }
 
 const obSteps = [
   {icon:'🗂️',title:'Command Center',desc:"See yesterday's sales, today's cash position, and what needs attention — the moment you open the app."},
@@ -2589,6 +2786,12 @@ function saveSeasonSale(){
 
 /* ---------- BOOTSTRAP: load everything from window.storage (seed only if empty) ---------- */
 async function bootstrap(){
+  USERS = await loadKey('gsh:users', []);
+  if(USERS.length===0){
+    const temporaryPassword = makeTemporaryPassword();
+    USERS = [{id:'u-owner',name:'Gopeshwar Owner',mobile:'',email:'',role:'ADMIN',username:'owner',passwordHash:await hashPassword(temporaryPassword),temporaryPassword,mustChangePassword:true,createdAt:new Date().toISOString()}];
+    await saveKeyRaw('gsh:users', USERS);
+  }
   PRODUCTS      = await loadKey('gsh:products', SEED_PRODUCTS);
   VENDORS       = await loadKey('gsh:vendors', SEED_VENDORS);
   PURCHASES     = await loadKey('gsh:purchases', SEED_PURCHASES);
@@ -2608,6 +2811,10 @@ async function bootstrap(){
   SYNC_OUTBOX     = await loadKey('gsh:syncOutbox', {});
   SYNC_VERSIONS   = await loadKey('gsh:syncVersions', {});
   SYNC_SERVER_URL = await loadKey('gsh:syncServerUrl', '');
+  OTA_STATE.disabled = await loadKey('gsh:otaDisabled', false);
+  const currentUserId = await loadKey('gsh:currentUserId', null);
+  CURRENT_USER = USERS.find(user=>user.id===currentUserId) || null;
+  renderFirstRunNote();
 
   filterInventory();
   renderVendors();
@@ -2615,7 +2822,17 @@ async function bootstrap(){
   renderCC();
   renderChat();
   renderSyncStatusRow();
+  renderOtaStatus();
+  const updater = otaPlugin();
+  if(updater) {
+    updater.notifyAppReady().catch(error => console.warn('OTA app-ready signal failed', error));
+    checkOtaUpdate();
+  }
   if(Object.keys(SYNC_OUTBOX).length) attemptSync(); // resume any sync left queued from last session
+  if(CURRENT_USER){
+    show('cc');
+    renderCC();
+  }
 }
 bootstrap();
 

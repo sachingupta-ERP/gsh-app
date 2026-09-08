@@ -49,6 +49,9 @@ Debug APK output: `android/app/build/outputs/apk/debug/app-debug.apk`
 `main` (and on manual trigger) and uploads the resulting debug APK as a workflow
 artifact named `gsh-debug-apk`. See that file for the exact steps — nothing in it
 is invented; every command is one you can also run locally.
+- `.github/workflows/ota-release.yml` publishes an explicitly promoted web bundle
+from an `ota-vX.Y.Z` tag (or an approved manual production run). See
+`docs/OTA_UPDATES.md` before publishing.
 
 ## Pushing this repo to GitHub
 
@@ -70,3 +73,5 @@ Then: GitHub → your repo → **Actions** tab → run "Android APK" (or just pu
 - `docs/ARCHITECTURE.md` — folder layout and the repository-pattern seam
 - `docs/API_CONTRACTS.md` — REST surface the repositories will eventually call
 - `docs/SYNC_PROTOCOL.md` — local-first outbox + Phase 1/Phase 2 sync design
+- `docs/OTA_UPDATES.md` — native shell, OTA bundle publishing, rollback, and release rules
+- `docs/AUTHENTICATION.md` — local login, owner/employee, and reset architecture

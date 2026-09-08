@@ -9,6 +9,7 @@
     "cap:sync": "npx cap sync android",
     "cap:open": "npx cap open android",
     "cap:build": "npm run build && npx cap sync android",
+    "ota:manifest": "node scripts/create-ota-manifest.mjs",
     "typecheck": "tsc --noEmit",
     "db:migrate": "prisma migrate dev",
     "db:generate": "prisma generate",
@@ -23,6 +24,7 @@
     "@capacitor/local-notifications": "^6.1.0",
     "@capacitor/preferences": "^6.0.2",
     "@capacitor/share": "^6.0.2",
+    "@capgo/capacitor-updater": "^6.51.15",
     "@types/express": "^5.0.6",
     "capacitor-native-biometric": "^4.2.1",
     "express": "^5.2.1"

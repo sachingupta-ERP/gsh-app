@@ -1,0 +1,73 @@
+name: Publish OTA bundle
+
+on:
+  push:
+    tags:
+      - 'ota-v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Semver OTA version, for example 1.0.1'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Select OTA version
+        id: version
+        shell: bash
+        run: |
+          if [[ "${GITHUB_REF}" == refs/tags/ota-v* ]]; then
+            VERSION="${GITHUB_REF_NAME#ota-v}"
+          else
+            VERSION="${{ inputs.version }}"
+          fi
+          if [[ ! "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Version must be semver (x.y.z): $VERSION" >&2
+            exit 1
+          fi
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Build web bundle
+        env:
+          OTA_MANIFEST_URL: https://github.com/${{ github.repository }}/releases/latest/download/manifest.json
+          OTA_ENABLED: 'true'
+        run: npm run build
+
+      - name: Package OTA bundle
+        run: |
+          cd dist
+          zip -q -r ../dist.zip .
+
+      - name: Create manifest
+        env:
+          OTA_VERSION: ${{ steps.version.outputs.version }}
+          OTA_BUNDLE_URL: https://github.com/${{ github.repository }}/releases/download/ota-v${{ steps.version.outputs.version }}/dist.zip
+          OTA_MIN_NATIVE_VERSION: 0.1.0
+        run: npm run ota:manifest
+
+      - name: Publish immutable GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "ota-v${{ steps.version.outputs.version }}" dist.zip manifest.json \
+            --title "GSH web update ${{ steps.version.outputs.version }}" \
+            --notes "Production OTA web bundle. Native APK is unchanged."

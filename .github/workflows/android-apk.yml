@@ -26,11 +26,9 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      # No package-lock.json is committed yet (see repo README) — `npm install`
-      # is used instead of `npm ci` for now. Once a lockfile exists, switch this
-      # to `npm ci` for reproducible installs.
+      # The lockfile is committed, so CI uses npm ci for reproducible installs.
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       # Generates Prisma's TypeScript types from prisma/schema.prisma. Needed
       # before typecheck can resolve `@prisma/client` imports. Does not need
@@ -44,6 +42,9 @@ jobs:
       # Builds dist/index.html from the current app (see scripts/build-web.mjs
       # for why this isn't a bundler step yet).
       - name: Build web app
+        env:
+          OTA_MANIFEST_URL: https://github.com/${{ github.repository }}/releases/latest/download/manifest.json
+          OTA_ENABLED: 'true'
         run: npm run build
 
       # android/ is gitignored (see .gitignore) and regenerated fresh here from

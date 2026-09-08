@@ -26,6 +26,16 @@ const config: CapacitorConfig = {
     Preferences: {
       // used for PIN + session flags (onboarding-complete, biometric-enrolled) — NOT for business data
     },
+    CapacitorUpdater: {
+      // The web layer checks our HTTPS manifest and bundle checksum. Downloads are
+      // staged and applied after explicit user confirmation.
+      autoUpdate: 'off',
+      appReadyTimeout: 15000,
+      responseTimeout: 30,
+      autoDeleteFailed: true,
+      autoDeletePrevious: true,
+      statsUrl: '',
+    },
     BiometricAuth: {
       // wraps Android BiometricPrompt for §3 step-4 / §5 fallback login
     },
