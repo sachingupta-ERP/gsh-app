@@ -30,29 +30,32 @@ enum UserStatus {
 }
 
 model User {
-  id                String       @id @default(cuid())
-  name              String
-  mobile            String       @unique
-  email             String?
-  userCode          String       @unique // human-facing login id — THIS + password is the sole login credential
-  role              Role
-  status            UserStatus   @default(PENDING_FIRST_LOGIN)
-  passwordHash      String? // scrypt(password, salt) — see server/services/auth.ts. NEVER store plaintext.
-  passwordSalt      String? // random per-user salt, stored alongside the hash
-  pinHash           String? // OPTIONAL device-unlock convenience only — never sufficient for login on its own,
-                             // and never checked before passwordHash has been verified at least once on that device
-  biometricEnrolled Boolean      @default(false)
-  onboardingSeenAt  DateTime?
-  createdAt         DateTime     @default(now())
-  createdById       String?
-  permissions       Permission[]
-  sessions          Session[]
-  auditLogs         AuditLog[]   @relation("ActorUser")
-  notes             Note[]
-  notifications     Notification[]
-  tagsRaised        EmployeeTag[]  @relation("TagRaisedBy")
-  tagsReceived      EmployeeTag[]  @relation("TagAddressedTo")
-  credentialRequests CredentialRequest[]
+  id                    String                 @id @default(cuid())
+  name                  String
+  mobile                String                 @unique
+  email                 String?
+  userCode              String                 @unique // human-facing login id — THIS + password is the sole login credential
+  role                  Role
+  status                UserStatus             @default(PENDING_FIRST_LOGIN)
+  passwordHash          String? // scrypt(password, salt) — see server/services/auth.ts. NEVER store plaintext.
+  passwordSalt          String? // random per-user salt, stored alongside the hash
+  pinHash               String? // OPTIONAL device-unlock convenience only — never sufficient for login on its own,
+  // and never checked before passwordHash has been verified at least once on that device
+  biometricEnrolled     Boolean                @default(false)
+  onboardingSeenAt      DateTime?
+  createdAt             DateTime               @default(now())
+  createdById           String?
+  permissions           Permission[]
+  sessions              Session[]
+  auditLogs             AuditLog[]             @relation("ActorUser")
+  notes                 Note[]
+  notifications         Notification[]
+  tagsRaised            EmployeeTag[]          @relation("TagRaisedBy")
+  tagsReceived          EmployeeTag[]          @relation("TagAddressedTo")
+  credentialRequests    CredentialRequest[]
+  userRoles             UserRole[]
+  userSessions          UserSession[]
+  passwordResetRequests PasswordResetRequest[]
 }
 
 // granular module/action grants, e.g. "inventory:write", "money:close_day"
@@ -80,53 +83,105 @@ model Session {
 }
 
 model CredentialRequest {
-  id          String   @id @default(cuid())
+  id          String    @id @default(cuid())
   userId      String
-  user        User     @relation(fields: [userId], references: [id])
+  user        User      @relation(fields: [userId], references: [id])
   type        String // "pin_reset" | "biometric_reset"
-  status      String   @default("pending") // pending | approved | denied
-  requestedAt DateTime @default(now())
+  status      String    @default("pending") // pending | approved | denied
+  requestedAt DateTime  @default(now())
   resolvedAt  DateTime?
+}
+
+// Additive auth tables for the production authentication API. The existing
+// User/Permission/Session models remain intact for backward compatibility.
+model UserRole {
+  id        String   @id @default(cuid())
+  userId    String
+  role      Role
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@unique([userId, role])
+  @@map("UserRoles")
+}
+
+model UserSession {
+  id           String    @id @default(cuid())
+  userId       String
+  token        String    @unique @default(cuid())
+  deviceId     String
+  loggedInAt   DateTime  @default(now())
+  lastActiveAt DateTime  @updatedAt
+  revokedAt    DateTime?
+  user         User      @relation(fields: [userId], references: [id])
+
+  @@map("UserSessions")
+}
+
+model PasswordResetRequest {
+  id            String    @id @default(cuid())
+  userId        String
+  status        String    @default("pending")
+  temporaryHash String?
+  requestedAt   DateTime  @default(now())
+  approvedAt    DateTime?
+  resolvedAt    DateTime?
+  user          User      @relation(fields: [userId], references: [id])
+
+  @@map("PasswordResetRequests")
+}
+
+model VersionHistory {
+  id           String   @id @default(cuid())
+  version      String
+  date         DateTime @default(now())
+  delivery     String
+  developer    String
+  releaseNotes String
+
+  @@index([date])
+  @@map("VersionHistory")
 }
 
 // ---------- PRODUCTS / INVENTORY (§7–§10, §19–§20) ----------
 
 model Product {
-  id             String            @id @default(cuid())
-  alias          String            @unique // e.g. PEN-01 — globally unique, enforced (§7)
-  name           String
-  category       String
-  brand          String
-  domsLine       String? // "LINE_1" | "LINE_2" | null — DOMS-only (§9)
-  unit           String
-  imageUrl       String?
-  icon           String? // cosmetic emoji shown in list rows — Phase 1 denormalized display field
-  minStock       Int               @default(0)
-  reorderQty     Int?
+  id            String              @id @default(cuid())
+  alias         String              @unique // e.g. PEN-01 — globally unique, enforced (§7)
+  name          String
+  category      String
+  brand         String
+  domsLine      String? // "LINE_1" | "LINE_2" | null — DOMS-only (§9)
+  unit          String
+  imageUrl      String?
+  icon          String? // cosmetic emoji shown in list rows — Phase 1 denormalized display field
+  minStock      Int                 @default(0)
+  reorderQty    Int?
   // --- Phase 1 denormalized current-state (see docs/SYNC_PROTOCOL.md "Source of truth") ---
   // The client keeps these as direct, mutable fields (not derived) to match the existing,
   // unmodified app logic. InventoryMovement below remains the append-only audit trail;
   // deriving stock from it instead of this field is documented Phase 2 work, not done yet —
   // until then, THIS field is authoritative for "current stock", and movements are history only.
-  stock          Int               @default(0)
-  purchaseRate   Float             @default(0)
-  sellingRate    Float             @default(0)
-  createdAt      DateTime          @default(now())
-  updatedAt      DateTime          @updatedAt
-  variants       ProductVariant[]
-  purchaseLines  PurchaseLine[]
-  movements      InventoryMovement[]
-  vendorRates    VendorProductRate[]
-  seasonalItems  SeasonalItem[]
+  stock         Int                 @default(0)
+  purchaseRate  Float               @default(0)
+  sellingRate   Float               @default(0)
+  createdAt     DateTime            @default(now())
+  updatedAt     DateTime            @updatedAt
+  variants      ProductVariant[]
+  purchaseLines PurchaseLine[]
+  movements     InventoryMovement[]
+  vendorRates   VendorProductRate[]
+  seasonalItems SeasonalItem[]
 }
 
 // e.g. color/size split used for voice entry like "20 blue / 10 black"
 model ProductVariant {
-  id         String   @id @default(cuid())
-  productId  String
-  product    Product  @relation(fields: [productId], references: [id])
-  label      String // "Blue", "Black", "Red"
-  quantity   Int      @default(0)
+  id        String  @id @default(cuid())
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+  label     String // "Blue", "Black", "Red"
+  quantity  Int     @default(0)
 }
 
 enum MovementSource {
@@ -156,27 +211,27 @@ model InventoryMovement {
 // ---------- VENDORS (§15–§16) ----------
 
 model Vendor {
-  id             String              @id @default(cuid())
-  name           String
-  contactPerson  String?
-  mobile         String?
-  whatsapp       String?
-  address        String?
-  paymentTerms   String?
-  notes          String?
-  active          Boolean            @default(true)
+  id            String              @id @default(cuid())
+  name          String
+  contactPerson String?
+  mobile        String?
+  whatsapp      String?
+  address       String?
+  paymentTerms  String?
+  notes         String?
+  active        Boolean             @default(true)
   // --- Phase 1 denormalized current-state (see Product above for rationale) ---
   // True production design computes these from VendorBill/Purchase relations;
   // until Phase 2, the client maintains them directly and this mirrors that.
-  terms          String? // display string e.g. "7-day credit · Sadar Bazaar" — client-composed
-  monthSpend     Float               @default(0)
-  billsCount     Int                 @default(0)
-  reviewCount    Int                 @default(0)
-  createdAt      DateTime            @default(now())
-  updatedAt      DateTime            @updatedAt
-  bills          VendorBill[]
-  purchases      Purchase[]
-  productRates   VendorProductRate[]
+  terms         String? // display string e.g. "7-day credit · Sadar Bazaar" — client-composed
+  monthSpend    Float               @default(0)
+  billsCount    Int                 @default(0)
+  reviewCount   Int                 @default(0)
+  createdAt     DateTime            @default(now())
+  updatedAt     DateTime            @updatedAt
+  bills         VendorBill[]
+  purchases     Purchase[]
+  productRates  VendorProductRate[]
 }
 
 // denormalized rate-history ledger powering Product 360 / Vendor 360 price intelligence
@@ -198,19 +253,19 @@ enum BillReviewStatus {
 }
 
 model VendorBill {
-  id             String            @id @default(cuid())
-  vendorId       String
-  vendor         Vendor            @relation(fields: [vendorId], references: [id])
-  billNumber     String?
-  billDate       DateTime
-  amount         Float?
-  documentUrl    String // scanned/attached image, always retained (§13)
-  ocrRawText     String?
-  ocrConfidence  Float?
-  reviewStatus   BillReviewStatus  @default(AI_REVIEW_REQUIRED)
-  purchaseId     String?
-  purchase       Purchase?         @relation(fields: [purchaseId], references: [id])
-  createdAt      DateTime          @default(now())
+  id            String           @id @default(cuid())
+  vendorId      String
+  vendor        Vendor           @relation(fields: [vendorId], references: [id])
+  billNumber    String?
+  billDate      DateTime
+  amount        Float?
+  documentUrl   String // scanned/attached image, always retained (§13)
+  ocrRawText    String?
+  ocrConfidence Float?
+  reviewStatus  BillReviewStatus @default(AI_REVIEW_REQUIRED)
+  purchaseId    String?
+  purchase      Purchase?        @relation(fields: [purchaseId], references: [id])
+  createdAt     DateTime         @default(now())
 }
 
 // ---------- PURCHASES (§11–§13, §21–§23) ----------
@@ -225,43 +280,43 @@ enum PurchaseStatus {
 }
 
 model Purchase {
-  id           String         @id @default(cuid())
-  vendorId     String? // nullable: client allows a draft purchase with no vendor resolved yet
-                        // ("Unassigned — set vendor" from WhatsApp-paste import)
-  vendor       Vendor?        @relation(fields: [vendorId], references: [id])
-  vendorName   String // always present even when vendorId can't be resolved — display + resync key
-  status       PurchaseStatus @default(DRAFT)
-  source       MovementSource @default(MANUAL) // best-effort mapped from sourceLabel
-  sourceLabel  String? // exact client label: "Voice receiving" | "Manual" | "WhatsApp paste"
-  dateLabel    String  // client sends either an ISO date or a display string inconsistently —
-                        // stored verbatim here; orderedAt below is the best-effort parsed DateTime
-  orderedAt    DateTime       @default(now())
-  receivedAt   DateTime?
-  postedAt     DateTime?
-  total        Float          @default(0)
-  paid         Float          @default(0)
-  linkedBill   Boolean        @default(false)
-  updatedAt    DateTime       @updatedAt
-  bills        VendorBill[]
-  lines        PurchaseLine[]
-  payments     Payment[]
+  id          String         @id @default(cuid())
+  vendorId    String? // nullable: client allows a draft purchase with no vendor resolved yet
+  // ("Unassigned — set vendor" from WhatsApp-paste import)
+  vendor      Vendor?        @relation(fields: [vendorId], references: [id])
+  vendorName  String // always present even when vendorId can't be resolved — display + resync key
+  status      PurchaseStatus @default(DRAFT)
+  source      MovementSource @default(MANUAL) // best-effort mapped from sourceLabel
+  sourceLabel String? // exact client label: "Voice receiving" | "Manual" | "WhatsApp paste"
+  dateLabel   String // client sends either an ISO date or a display string inconsistently —
+  // stored verbatim here; orderedAt below is the best-effort parsed DateTime
+  orderedAt   DateTime       @default(now())
+  receivedAt  DateTime?
+  postedAt    DateTime?
+  total       Float          @default(0)
+  paid        Float          @default(0)
+  linkedBill  Boolean        @default(false)
+  updatedAt   DateTime       @updatedAt
+  bills       VendorBill[]
+  lines       PurchaseLine[]
+  payments    Payment[]
 }
 
 model PurchaseLine {
   id          String   @id @default(cuid())
   purchaseId  String
   purchase    Purchase @relation(fields: [purchaseId], references: [id])
-  productId   String?  // best-effort resolved by matching productName against Product.name/alias
-                        // at sync time — client purchase lines only ever carry a name, not an id
+  productId   String? // best-effort resolved by matching productName against Product.name/alias
+  // at sync time — client purchase lines only ever carry a name, not an id
   product     Product? @relation(fields: [productId], references: [id])
-  productName String   // always present; source of truth for what was actually typed/said
+  productName String // always present; source of truth for what was actually typed/said
   quantity    Int
   grossRate   Float
   discountPct Float    @default(0)
   netRate     Float
-  amount      Float    // client's line total (qty × rate, or an explicit override) — stored
-                        // directly rather than recomputed, since voice/WhatsApp parsing can
-                        // legitimately produce a total that doesn't cleanly equal qty×rate
+  amount      Float // client's line total (qty × rate, or an explicit override) — stored
+  // directly rather than recomputed, since voice/WhatsApp parsing can
+  // legitimately produce a total that doesn't cleanly equal qty×rate
 }
 
 // ---------- SALES (§17–§18) ----------
@@ -276,10 +331,10 @@ model DailySalesEntry {
   date          DateTime
   amount        Float
   mode          SaleMode @default(QUICK_TOTAL) // entry TYPE (§17/§18) — always QUICK_TOTAL from
-                                                // the current client; kept distinct on purpose from...
-  paymentMode   String   // ...THIS: "cash" | "upi" | "credit" — the payment channel. These two
-                          // fields were colliding on the same name in the client's mental model
-                          // and the schema; separated explicitly during the Phase 1 hardening pass.
+  // the current client; kept distinct on purpose from...
+  paymentMode   String // ...THIS: "cash" | "upi" | "credit" — the payment channel. These two
+  // fields were colliding on the same name in the client's mental model
+  // and the schema; separated explicitly during the Phase 1 hardening pass.
   sourceImage   String? // only kept if user explicitly opts to save (§17)
   ocrConfidence Float?
   createdAt     DateTime @default(now())
@@ -314,36 +369,36 @@ model Payment {
 }
 
 model Expense {
-  id        String   @id @default(cuid())
-  category  String // packaging | transport | tea | personal | other
-  amount    Float
-  note      String?
-  imageUrl  String?
-  date      DateTime @default(now())
+  id          String   @id @default(cuid())
+  category    String // packaging | transport | tea | personal | other
+  amount      Float
+  note        String?
+  imageUrl    String?
+  date        DateTime @default(now())
   createdById String
 }
 
 // ---------- SEASONAL / DIWALI (§26) — isolated from daily stock ledger ----------
 
 model SeasonalCampaign {
-  id         String           @id @default(cuid())
-  name       String // "DIWALI 2026"
-  startedAt  DateTime
-  endedAt    DateTime?
-  items      SeasonalItem[]
-  expenses   SeasonalExpense[]
-  sales      SeasonalSale[]
+  id        String            @id @default(cuid())
+  name      String // "DIWALI 2026"
+  startedAt DateTime
+  endedAt   DateTime?
+  items     SeasonalItem[]
+  expenses  SeasonalExpense[]
+  sales     SeasonalSale[]
 }
 
 model SeasonalItem {
-  id          String            @id @default(cuid())
-  campaignId  String
-  campaign    SeasonalCampaign  @relation(fields: [campaignId], references: [id])
-  productId   String?
-  product     Product?          @relation(fields: [productId], references: [id])
-  name        String // free-form: jhalar, toran, stickers...
-  quantity    Int
-  cost        Float
+  id            String           @id @default(cuid())
+  campaignId    String
+  campaign      SeasonalCampaign @relation(fields: [campaignId], references: [id])
+  productId     String?
+  product       Product?         @relation(fields: [productId], references: [id])
+  name          String // free-form: jhalar, toran, stickers...
+  quantity      Int
+  cost          Float
   vendorBillRef String?
 }
 
@@ -367,42 +422,42 @@ model SeasonalSale {
 // ---------- NOTIFICATIONS / TAGGING / NOTES (§30–§32) ----------
 
 model Notification {
-  id        String   @id @default(cuid())
+  id        String    @id @default(cuid())
   userId    String
-  user      User     @relation(fields: [userId], references: [id])
+  user      User      @relation(fields: [userId], references: [id])
   type      String // morning_brief | night_closing | low_stock | ai_review | tag | credential_request | purchase_pending
   title     String
   body      String
   refType   String?
   refId     String?
   readAt    DateTime?
-  createdAt DateTime @default(now())
+  createdAt DateTime  @default(now())
 }
 
 model EmployeeTag {
-  id           String   @id @default(cuid())
-  raisedById   String
-  raisedBy     User     @relation("TagRaisedBy", fields: [raisedById], references: [id])
+  id            String    @id @default(cuid())
+  raisedById    String
+  raisedBy      User      @relation("TagRaisedBy", fields: [raisedById], references: [id])
   addressedToId String
-  addressedTo  User     @relation("TagAddressedTo", fields: [addressedToId], references: [id])
-  refType      String // "Product" | "Vendor" | ...
-  refId        String
-  message      String
-  reply        String?
-  createdAt    DateTime @default(now())
-  repliedAt    DateTime?
+  addressedTo   User      @relation("TagAddressedTo", fields: [addressedToId], references: [id])
+  refType       String // "Product" | "Vendor" | ...
+  refId         String
+  message       String
+  reply         String?
+  createdAt     DateTime  @default(now())
+  repliedAt     DateTime?
 }
 
 model Note {
-  id        String    @id @default(cuid())
-  userId    String
-  user      User      @relation(fields: [userId], references: [id])
-  text      String
-  priority  String    @default("normal")
+  id         String    @id @default(cuid())
+  userId     String
+  user       User      @relation(fields: [userId], references: [id])
+  text       String
+  priority   String    @default("normal")
   reminderAt DateTime?
-  refType   String?
-  refId     String?
-  createdAt DateTime  @default(now())
+  refType    String?
+  refId      String?
+  createdAt  DateTime  @default(now())
 }
 
 // ---------- AI / AUDIT (§28–§29, §36) ----------
@@ -417,16 +472,16 @@ model AiInteraction {
 }
 
 model AuditLog {
-  id          String   @id @default(cuid())
-  actorId     String
-  actor       User     @relation("ActorUser", fields: [actorId], references: [id])
-  entityType  String
-  entityId    String
-  action      String // create | update | delete | verify | post
-  oldValue    Json?
-  newValue    Json?
-  source      MovementSource
-  createdAt   DateTime @default(now())
+  id         String         @id @default(cuid())
+  actorId    String
+  actor      User           @relation("ActorUser", fields: [actorId], references: [id])
+  entityType String
+  entityId   String
+  action     String // create | update | delete | verify | post
+  oldValue   Json?
+  newValue   Json?
+  source     MovementSource
+  createdAt  DateTime       @default(now())
 }
 
 // ---------- LOCAL-FIRST SYNC (Phase 1: whole-collection snapshot sync) ----------
@@ -440,9 +495,9 @@ model AuditLog {
 model SyncSnapshot {
   id           String   @id @default(cuid())
   collection   String   @unique // "products" | "vendors" | "purchases" | "expenses" | "sales" | "closings" | "seasons" | "movements"
-  data         Json     // the full array/object the client keeps in window.storage — Phase 1 unit of sync
+  data         Json // the full array/object the client keeps in window.storage — Phase 1 unit of sync
   updatedAt    DateTime @updatedAt
-  deviceOrigin String   // which device last wrote this snapshot — for conflict messaging, not enforcement
+  deviceOrigin String // which device last wrote this snapshot — for conflict messaging, not enforcement
   version      Int      @default(1) // incremented on every accepted push; used for optimistic concurrency
 }
 
@@ -453,8 +508,8 @@ model SyncOperation {
   id            String   @id @default(cuid())
   collection    String
   deviceOrigin  String
-  clientVersion Int      // version the client believed it was updating from
-  serverVersion Int      // version the server actually had at push time
-  outcome       String   // "accepted" | "conflict_rejected"
+  clientVersion Int // version the client believed it was updating from
+  serverVersion Int // version the server actually had at push time
+  outcome       String // "accepted" | "conflict_rejected"
   appliedAt     DateTime @default(now())
 }
