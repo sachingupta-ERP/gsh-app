@@ -1,6 +1,8 @@
 -- Additive production auth/version history tables.
 -- Existing User, Permission, Session, and business tables are preserved.
 
+ALTER TABLE "User" ADD COLUMN "active" BOOLEAN NOT NULL DEFAULT true;
+
 CREATE TABLE "UserRoles" (
     "id" TEXT NOT NULL,
     "userId" TEXT NOT NULL,

@@ -37,6 +37,7 @@ model User {
   userCode              String                 @unique // human-facing login id — THIS + password is the sole login credential
   role                  Role
   status                UserStatus             @default(PENDING_FIRST_LOGIN)
+  active                Boolean                @default(true)
   passwordHash          String? // scrypt(password, salt) — see server/services/auth.ts. NEVER store plaintext.
   passwordSalt          String? // random per-user salt, stored alongside the hash
   pinHash               String? // OPTIONAL device-unlock convenience only — never sufficient for login on its own,
