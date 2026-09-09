@@ -27,9 +27,9 @@ const config: CapacitorConfig = {
       // used for PIN + session flags (onboarding-complete, biometric-enrolled) — NOT for business data
     },
     CapacitorUpdater: {
-      // The web layer checks our HTTPS manifest and bundle checksum. Downloads are
-      // staged and applied after explicit user confirmation.
-      autoUpdate: 'off',
+      // Automatic OTA updates: check on launch, download and install silently,
+      // reload app without user confirmation. Local data is preserved by Capacitor.
+      autoUpdate: 'background',
       appReadyTimeout: 15000,
       responseTimeout: 30,
       autoDeleteFailed: true,
