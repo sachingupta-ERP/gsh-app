@@ -53,12 +53,14 @@ jobs:
         run: npx cap add android
 
       # @capgo/capacitor-updater requires Android SDK 35. Capacitor 6's
-      # generated template currently defaults to SDK 34, so update the
-      # generated values before Gradle resolves plugin dependencies.
+      # generated template currently defaults to SDK 34 and API 22, so update
+      # the generated values before Gradle resolves plugin dependencies.
       - name: Configure Android SDK 35
         run: |
+          sed -i "s/minSdkVersion = 22/minSdkVersion = 23/" android/variables.gradle
           sed -i "s/compileSdkVersion = 34/compileSdkVersion = 35/" android/variables.gradle
           sed -i "s/targetSdkVersion = 34/targetSdkVersion = 35/" android/variables.gradle
+          printf "android.suppressUnsupportedCompileSdk=35\n" >> android/gradle.properties
 
       - name: Sync web assets into Android project
         run: npx cap sync android
