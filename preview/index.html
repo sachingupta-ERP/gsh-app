@@ -1500,6 +1500,10 @@ function confirmEmailSelection(){
   const selected=document.querySelector('input[name="gshEmail"]:checked');
   if(!selected){ document.getElementById('emailStageErr').textContent='Select the registered account to continue.'; return; }
   AUTH_EMAIL=selected.value;
+  if(AUTH_USER && AUTH_USER.email !== AUTH_EMAIL){
+    AUTH_USER.email=AUTH_EMAIL;
+    saveKeyRaw('gsh:users', USERS);
+  }
   document.getElementById('mobileField').style.display='none';
   document.getElementById('emailSelection').style.display='none';
   document.getElementById('passwordField').style.display='block';
