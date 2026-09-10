@@ -1,0 +1,4 @@
+-- GSH v1.3.2: Mobile-only authentication (no OTP, no password)
+-- User model already supports mobile-only auth via the mobile field
+-- This migration is a placeholder to track the version
+-- No schema changes needed - authentication logic moved to client-side mobile-only
