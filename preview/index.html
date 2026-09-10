@@ -70,6 +70,21 @@ html,body{margin:0;padding:0;background:#0f0e1a;font-family:'Space Grotesk',syst
 .auth-error{text-align:center;margin:24px 0;padding:20px;background:rgba(255,107,107,0.1);border:1px solid rgba(255,107,107,0.3);border-radius:12px;}
 .auth-error h3{font-size:16px;font-weight:700;color:#ff6b6b;margin:0 0 8px;}
 .auth-error p{font-size:13px;color:rgba(255,255,255,0.8);margin:0;line-height:1.5;}
+.pin-entry{display:flex;gap:6px;margin:18px 0 24px;justify-content:center;}
+.pin-digit{width:44px;height:54px;border:2px solid rgba(255,255,255,0.2);border-radius:10px;background:rgba(255,255,255,0.1);font-size:24px;font-weight:700;color:#ffffff;text-align:center;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;position:relative;}
+.pin-digit:focus-visible{outline:none;border-color:#3B3486;background:rgba(255,255,255,0.15);}
+.pin-digit::placeholder{color:rgba(255,255,255,0.3);}
+.pin-success{text-align:center;margin:24px 0;}
+.pin-success-icon{font-size:64px;margin-bottom:16px;animation:successPop 0.6s ease-out;}
+@keyframes successPop{0%{transform:scale(0);}50%{transform:scale(1.2);}100%{transform:scale(1);}}
+.pin-success h2{font-size:20px;font-weight:700;color:#ffffff;margin:0 0 8px;}
+.pin-success p{font-size:15px;color:rgba(255,255,255,0.8);margin:0;}
+.biometric-row{display:flex;flex-direction:column;gap:12px;margin:24px 0;}
+.biometric-offer{font-size:13px;color:rgba(255,255,255,0.8);text-align:center;margin-bottom:8px;}
+.biometric-offer strong{color:#ffffff;font-weight:700;}
+.btn-secondary{background:rgba(255,255,255,0.1);color:#ffffff;border:1px solid rgba(255,255,255,0.2);}
+.btn-secondary:hover{background:rgba(255,255,255,0.15);}
+.auth-step-label{font-size:10px;letter-spacing:.15em;color:rgba(255,255,255,0.5);text-transform:uppercase;margin:0 0 12px;font-weight:700;}
 .settings-section{margin:0 20px 18px;background:var(--paper-raised);border:1px solid var(--rule);border-radius:var(--r-lg);overflow:hidden;}
 .settings-section-title{padding:12px 14px 8px;font-size:10px;letter-spacing:.08em;color:var(--ink-faint);}
 .settings-user{display:flex;align-items:center;gap:10px;padding:11px 14px;border-top:1px solid var(--rule);}
@@ -499,6 +514,91 @@ html,body{margin:0;padding:0;background:#0f0e1a;font-family:'Space Grotesk',syst
             <button class="btn btn-ghost" style="margin-top: 16px;" onclick="resetAuthForm()">Try Again</button>
           </div>
         </div>
+      </div>
+    </div>
+    <div class="login-version">v1.3.2 OTA</div>
+  </div>
+
+  <!-- ================= PIN SETUP ================= -->
+  <div class="screen" id="pinSetupScreen">
+    <div class="login-scrim"></div>
+    <div class="login-content">
+      <div class="brand-mark">GOPESHWAR</div>
+      <div class="brand-name">Stationary House</div>
+
+      <div class="login-hero">
+        <div class="auth-step-label">STEP 1 · ACCOUNT CONFIRMED</div>
+        <h1>Create your GSH PIN</h1>
+        <p id="pinSetupSubtitle">Set a 6-digit PIN for secure login.</p>
+        
+        <div class="field">
+          <label>Your Registered Mobile</label>
+          <div style="padding: 12px 14px; background: rgba(255,255,255,0.1); border-radius: 12px; color: #ffffff; font-size: 13px; word-break: break-all;" id="pinDisplayMobile"></div>
+        </div>
+
+        <div style="margin-top: 18px;">
+          <label style="display:block;font-size:11px;color:rgba(255,255,255,0.6);margin-bottom:8px;font-weight:500;letter-spacing:.03em;text-transform:uppercase;">Enter PIN (6 digits)</label>
+          <div class="pin-entry" id="pinEntryContainer"></div>
+          <div class="err" id="pinSetupErr"></div>
+        </div>
+
+        <div style="margin-top: 24px;">
+          <label style="display:block;font-size:11px;color:rgba(255,255,255,0.6);margin-bottom:8px;font-weight:500;letter-spacing:.03em;text-transform:uppercase;">Confirm PIN</label>
+          <div class="pin-entry" id="pinConfirmContainer"></div>
+        </div>
+
+        <button class="btn btn-primary" style="margin-top: 28px;" onclick="submitPIN()">Create PIN</button>
+        <button class="btn btn-ghost" onclick="resetAuthFlow();show('login')">Use a different number</button>
+      </div>
+    </div>
+    <div class="login-version">v1.3.2 OTA</div>
+  </div>
+
+  <!-- ================= PIN SUCCESS & BIOMETRIC ================= -->
+  <div class="screen" id="pinSuccessScreen">
+    <div class="login-scrim"></div>
+    <div class="login-content">
+      <div class="login-hero" style="margin-top: 80px;">
+        <div class="pin-success">
+          <div class="auth-success-icon">✓</div>
+          <h2>GSH Secure Login Activated</h2>
+          <p>Your PIN has been created successfully.</p>
+        </div>
+
+        <div id="biometricOfferSection" style="display: none;">
+          <div class="biometric-offer">
+            <strong>Enable Fingerprint Login?</strong><br/>
+            Use your fingerprint for faster, more secure access.
+          </div>
+          <button class="btn btn-primary" onclick="enableBiometric()">Enable Fingerprint</button>
+          <button class="btn btn-secondary" onclick="skipBiometric()">Not Now</button>
+        </div>
+
+        <button class="btn btn-primary" id="continueToGshBtn" style="display: none; margin-top: 20px;" onclick="finishPINAuth()">Continue to GSH</button>
+      </div>
+    </div>
+    <div class="login-version">v1.3.2 OTA</div>
+  </div>
+
+  <!-- ================= SUBSEQUENT LOGIN (PIN ONLY) ================= -->
+  <div class="screen" id="pinLoginScreen">
+    <div class="login-scrim"></div>
+    <div class="login-content">
+      <div class="brand-mark">GOPESHWAR</div>
+      <div class="brand-name">Stationary House</div>
+
+      <div class="login-hero" style="margin-top: 80px;">
+        <h1 id="welcomeBackName">Welcome back</h1>
+        <p id="welcomeBackSub">Enter your PIN to continue.</p>
+
+        <div style="margin-top: 24px;">
+          <label style="display:block;font-size:11px;color:rgba(255,255,255,0.6);margin-bottom:8px;font-weight:500;letter-spacing:.03em;text-transform:uppercase;">Your PIN</label>
+          <div class="pin-entry" id="pinLoginContainer"></div>
+          <div class="err" id="pinLoginErr"></div>
+        </div>
+
+        <button id="useBiometricBtn" class="btn btn-secondary" style="margin-top: 18px; display: none;" onclick="triggerBiometricLogin()">Use Fingerprint</button>
+        <button class="btn btn-ghost" style="margin-top: 10px;" onclick="resetAuthFlow();show('login')">Use different mobile</button>
       </div>
     </div>
     <div class="login-version">v1.3.2 OTA</div>
@@ -1437,6 +1537,10 @@ let USERS = [];
 let CURRENT_USER = null;
 let AUTH_MOBILE = '';
 let AUTH_USER = null;
+let AUTH_PIN = '';
+let AUTH_PIN_CONFIRM = '';
+let BIOMETRIC_AVAILABLE = false;
+let BIOMETRIC_ENROLLED = false;
 let VERSION_HISTORY = [];
 let authSheetMode = 'employee';
 
@@ -1511,27 +1615,266 @@ async function continueMobileAuth(){
   document.getElementById('authLoading').style.display = 'none';
   
   if(user){
-    // User exists - login successful
+    // User exists - proceed with PIN flow
     AUTH_MOBILE = mobile; 
     AUTH_USER = user;
-    AUTH_EMAIL = user.email || '';
     
-    // Save session
-    await saveKeyRaw('gsh:currentUserId', user.id);
-    CURRENT_USER = user;
-    
-    // Show success
-    document.getElementById('authSuccess').style.display = 'block';
-    document.getElementById('authSuccessText').textContent = `Welcome back, ${user.name}`;
-    
-    // Auto-open dashboard after success
-    setTimeout(() => {
-      show('cc');
-      renderCC();
-    }, 1500);
+    // Check if user has a PIN already set
+    if(user.pinHash){
+      // Existing user: show PIN login
+      document.getElementById('welcomeBackName').textContent = `Welcome back, ${user.name}`;
+      document.getElementById('welcomeBackSub').textContent = `Enter your PIN to access GSH.`;
+      initializePINLoginScreen();
+      show('pinLoginScreen');
+    } else {
+      // First login: show PIN setup
+      document.getElementById('pinDisplayMobile').textContent = mobile;
+      document.getElementById('pinSetupSubtitle').textContent = `Create a 6-digit PIN for ${user.name}.`;
+      initializePINSetupScreen();
+      show('pinSetupScreen');
+    }
   } else {
     // User not registered
     document.getElementById('authError').style.display = 'block';
+  }
+}
+
+function initializePINSetupScreen(){
+  document.getElementById('pinDisplayMobile').textContent = AUTH_MOBILE || 'Mobile not set';
+  document.getElementById('pinSetupSubtitle').textContent = `Create a 6-digit PIN for ${AUTH_USER.name}.`;
+  document.getElementById('pinEntryContainer').innerHTML = '';
+  document.getElementById('pinConfirmContainer').innerHTML = '';
+  document.getElementById('pinSetupErr').textContent = '';
+  
+  for(let i=0; i<6; i++){
+    const input = document.createElement('input');
+    input.className = 'pin-digit';
+    input.type = 'text';
+    input.inputMode = 'numeric';
+    input.maxLength = '1';
+    input.pattern = '[0-9]';
+    input.placeholder = '•';
+    input.addEventListener('input', (e) => handlePINInput(e, 'pinEntry', i));
+    input.addEventListener('keydown', (e) => handlePINKeydown(e, 'pinEntry', i));
+    document.getElementById('pinEntryContainer').appendChild(input);
+  }
+  
+  for(let i=0; i<6; i++){
+    const input = document.createElement('input');
+    input.className = 'pin-digit';
+    input.type = 'text';
+    input.inputMode = 'numeric';
+    input.maxLength = '1';
+    input.pattern = '[0-9]';
+    input.placeholder = '•';
+    input.addEventListener('input', (e) => handlePINInput(e, 'pinConfirm', i));
+    input.addEventListener('keydown', (e) => handlePINKeydown(e, 'pinConfirm', i));
+    document.getElementById('pinConfirmContainer').appendChild(input);
+  }
+  
+  document.getElementById('pinEntryContainer').children[0].focus();
+}
+
+function initializePINLoginScreen(){
+  document.getElementById('pinLoginContainer').innerHTML = '';
+  document.getElementById('pinLoginErr').textContent = '';
+  
+  for(let i=0; i<6; i++){
+    const input = document.createElement('input');
+    input.className = 'pin-digit';
+    input.type = 'text';
+    input.inputMode = 'numeric';
+    input.maxLength = '1';
+    input.pattern = '[0-9]';
+    input.placeholder = '•';
+    input.addEventListener('input', (e) => handlePINInput(e, 'pinLogin', i));
+    input.addEventListener('keydown', (e) => handlePINKeydown(e, 'pinLogin', i));
+    document.getElementById('pinLoginContainer').appendChild(input);
+  }
+  
+  // Show biometric button if available
+  if(BIOMETRIC_ENROLLED){
+    document.getElementById('useBiometricBtn').style.display = 'block';
+  }
+  
+  document.getElementById('pinLoginContainer').children[0].focus();
+}
+
+function handlePINInput(e, type, index){
+  const value = e.target.value;
+  if(!/^\d?$/.test(value)){ e.target.value = ''; return; }
+  
+  const container = type === 'pinEntry' ? document.getElementById('pinEntryContainer')
+                  : type === 'pinConfirm' ? document.getElementById('pinConfirmContainer')
+                  : document.getElementById('pinLoginContainer');
+  
+  if(value && index < 5){
+    container.children[index+1].focus();
+  }
+}
+
+function handlePINKeydown(e, type, index){
+  const container = type === 'pinEntry' ? document.getElementById('pinEntryContainer')
+                  : type === 'pinConfirm' ? document.getElementById('pinConfirmContainer')
+                  : document.getElementById('pinLoginContainer');
+  
+  if(e.key === 'Backspace' && !e.target.value && index > 0){
+    container.children[index-1].focus();
+  }
+  
+  if(e.key === 'Enter' && index === 5){
+    if(type === 'pinEntry' || type === 'pinConfirm'){
+      submitPIN();
+    } else if(type === 'pinLogin'){
+      verifyPINLogin();
+    }
+  }
+}
+
+async function submitPIN(){
+  const entryDigits = Array.from(document.getElementById('pinEntryContainer').children).map(i=>i.value).join('');
+  const confirmDigits = Array.from(document.getElementById('pinConfirmContainer').children).map(i=>i.value).join('');
+  const err = document.getElementById('pinSetupErr');
+  
+  err.textContent = '';
+  
+  if(entryDigits.length !== 6){
+    err.textContent = 'Enter all 6 digits for your PIN.';
+    return;
+  }
+  
+  if(entryDigits !== confirmDigits){
+    err.textContent = 'PINs do not match. Please try again.';
+    document.getElementById('pinConfirmContainer').innerHTML = '';
+    for(let i=0; i<6; i++){
+      const input = document.createElement('input');
+      input.className = 'pin-digit';
+      input.type = 'text';
+      input.inputMode = 'numeric';
+      input.maxLength = '1';
+      input.pattern = '[0-9]';
+      input.placeholder = '•';
+      input.addEventListener('input', (e) => handlePINInput(e, 'pinConfirm', i));
+      input.addEventListener('keydown', (e) => handlePINKeydown(e, 'pinConfirm', i));
+      document.getElementById('pinConfirmContainer').appendChild(input);
+    }
+    document.getElementById('pinConfirmContainer').children[0].focus();
+    return;
+  }
+  
+  AUTH_PIN = entryDigits;
+  AUTH_USER.pinHash = await hashPassword(AUTH_PIN);
+  AUTH_USER.pinEnrolledAt = new Date().toISOString();
+  await saveKeyRaw('gsh:users', USERS);
+  
+  // Check if biometric is available
+  checkBiometricAvailability().then(() => {
+    document.getElementById('biometricOfferSection').style.display = BIOMETRIC_AVAILABLE ? 'block' : 'none';
+    document.getElementById('continueToGshBtn').style.display = BIOMETRIC_AVAILABLE ? 'none' : 'block';
+    show('pinSuccessScreen');
+  });
+}
+
+async function checkBiometricAvailability(){
+  try {
+    if(typeof BiometricAuth !== 'undefined'){
+      const result = await BiometricAuth.isAvailable();
+      BIOMETRIC_AVAILABLE = result && result.isAvailable === true;
+    }
+  } catch(e){
+    BIOMETRIC_AVAILABLE = false;
+  }
+}
+
+async function enableBiometric(){
+  try {
+    if(typeof BiometricAuth !== 'undefined'){
+      const result = await BiometricAuth.authenticate({
+        reason: 'Enable fingerprint for faster access to GSH',
+        fallbackTitle: 'Use your PIN instead',
+        maxAttempts: 3,
+      });
+      
+      if(result && result.success){
+        BIOMETRIC_ENROLLED = true;
+        AUTH_USER.biometricEnrolledAt = new Date().toISOString();
+        await saveKeyRaw('gsh:users', USERS);
+        toast('Fingerprint enabled successfully');
+        finishPINAuth();
+      }
+    }
+  } catch(e){
+    toast('Fingerprint setup cancelled');
+    skipBiometric();
+  }
+}
+
+function skipBiometric(){
+  BIOMETRIC_ENROLLED = false;
+  finishPINAuth();
+}
+
+async function finishPINAuth(){
+  CURRENT_USER = AUTH_USER;
+  AUTH_USER.lastLoginAt = new Date().toISOString();
+  await saveKeyRaw('gsh:users', USERS);
+  await saveKeyRaw('gsh:currentUserId', AUTH_USER.id);
+  
+  resetAuthFlow();
+  show('cc');
+  renderCC();
+}
+
+async function verifyPINLogin(){
+  const pinDigits = Array.from(document.getElementById('pinLoginContainer').children).map(i=>i.value).join('');
+  const err = document.getElementById('pinLoginErr');
+  
+  err.textContent = '';
+  
+  if(pinDigits.length !== 6){
+    err.textContent = 'Enter all 6 digits.';
+    return;
+  }
+  
+  const pinHash = await hashPassword(pinDigits);
+  
+  if(AUTH_USER.pinHash !== pinHash){
+    err.textContent = 'Incorrect PIN. Try again.';
+    document.getElementById('pinLoginContainer').innerHTML = '';
+    for(let i=0; i<6; i++){
+      const input = document.createElement('input');
+      input.className = 'pin-digit';
+      input.type = 'text';
+      input.inputMode = 'numeric';
+      input.maxLength = '1';
+      input.pattern = '[0-9]';
+      input.placeholder = '•';
+      input.addEventListener('input', (e) => handlePINInput(e, 'pinLogin', i));
+      input.addEventListener('keydown', (e) => handlePINKeydown(e, 'pinLogin', i));
+      document.getElementById('pinLoginContainer').appendChild(input);
+    }
+    document.getElementById('pinLoginContainer').children[0].focus();
+    return;
+  }
+  
+  await finishPINAuth();
+}
+
+async function triggerBiometricLogin(){
+  try {
+    if(typeof BiometricAuth !== 'undefined'){
+      const result = await BiometricAuth.authenticate({
+        reason: 'Unlock GSH with your fingerprint',
+        fallbackTitle: 'Use your PIN instead',
+        maxAttempts: 3,
+      });
+      
+      if(result && result.success){
+        await finishPINAuth();
+      }
+    }
+  } catch(e){
+    // User cancelled or biometric failed, fall back to PIN
   }
 }
 
@@ -2885,7 +3228,7 @@ async function bootstrap(){
   }
   VERSION_HISTORY = await loadKey('gsh:versionHistory', []);
   if(!VERSION_HISTORY.some(entry=>entry.version==='v1.3.2')){
-    VERSION_HISTORY.push({version:'v1.3.2',date:new Date().toISOString().slice(0,10),type:'OTA',developer:'GSH Product Team',notes:'Premium login design, mobile-only authentication, automatic OTA updates.'});
+    VERSION_HISTORY.push({version:'v1.3.2',date:new Date().toISOString().slice(0,10),type:'OTA',developer:'GSH Product Team',notes:'Premium login design, mobile-only authentication with PIN security, automatic OTA updates.'});
     await saveKeyRaw('gsh:versionHistory', VERSION_HISTORY);
   }
   PRODUCTS      = await loadKey('gsh:products', SEED_PRODUCTS);
