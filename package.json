@@ -4,6 +4,8 @@
   "private": true,
   "description": "GSH — AI-powered retail intelligence for Gopeshwar Stationary House. Android-first, web-secondary.",
   "scripts": {
+    "dev": "node scripts/build-web.mjs && node server.js",
+    "start": "node server.js",
     "build": "node scripts/build-web.mjs",
     "cap:add-android": "npx cap add android",
     "cap:sync": "npx cap sync android",
