@@ -21,76 +21,55 @@ html,body{margin:0;padding:0;background:#0f0e1a;font-family:'Space Grotesk',syst
 .screen.active{opacity:1;pointer-events:auto;}
 
 /* ---------- LOGIN ---------- */
-#login{background:linear-gradient(135deg,#FBF9F4 0%,#F5EFE5 50%,#F0E8DD 100%);color:#1C1A2E;padding:0;overflow:hidden;position:relative;}
+#login{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);color:#ffffff;padding:0;overflow:hidden;position:relative;}
 #login::before{content:"";position:absolute;inset:0;background-image:
-  radial-gradient(circle at 85% 8%,rgba(210,160,100,0.12) 0%,transparent 20%),
-  radial-gradient(circle at 12% 92%,rgba(100,150,120,0.1) 0%,transparent 22%),
-  radial-gradient(ellipse 400px 350px at 50% 35%,rgba(210,180,140,0.08) 0%,transparent 60%);pointer-events:none;}
-#login::after{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(28,26,46,0.1),transparent);pointer-events:none;}
+  radial-gradient(circle at 20% 80%,rgba(59,52,134,0.3) 0%,transparent 40%),
+  radial-gradient(circle at 80% 20%,rgba(26,35,126,0.2) 0%,transparent 30%),
+  radial-gradient(ellipse 600px 400px at 50% 50%,rgba(45,52,134,0.15) 0%,transparent 70%);pointer-events:none;animation:gradientShift 15s ease-in-out infinite;}
+#login::after{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);pointer-events:none;}
+@keyframes gradientShift{0%,100%{opacity:1;}50%{opacity:0.7;}}
 .login-scrim{position:absolute;inset:0;background:transparent;z-index:0;}
-.login-scrim:after{content:"";position:absolute;width:220px;height:220px;right:-60px;bottom:120px;border:1px solid rgba(210,160,100,0.15);border-radius:45% 55% 50% 50%;opacity:0.5;pointer-events:none;}
-.login-content{position:relative;z-index:1;flex:1;display:flex;flex-direction:column;padding:56px 28px 48px;justify-content:flex-start;}
-.brand-mark{font-size:10px;letter-spacing:.24em;color:#8B7A6F;margin-bottom:8px;font-family:'IBM Plex Mono',monospace;font-weight:600;text-transform:uppercase;}
-.brand-name{font-size:24px;font-weight:700;line-height:1.1;letter-spacing:-.02em;font-family:'Space Grotesk',sans-serif;color:#1C1A2E;margin-bottom:2px;}
-.brand-tagline{font-size:12px;color:#8B7A6F;font-weight:500;margin-bottom:0;}
-.login-hero{margin-top:54px;max-width:334px;}
-.login-hero h1{font-size:20px;line-height:1.32;font-weight:600;margin:0 0 6px;color:#1C1A2E;}
-.login-hero p{font-size:13px;color:#6B6460;margin:0 0 24px;line-height:1.4;}
-.login-operating-system{margin:0 0 20px;padding:14px 16px;border-left:3px solid #8B7A6F;background:rgba(210,160,100,0.08);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#8B7A6F;font-weight:600;}
-.login-operating-system strong{display:block;margin-top:6px;color:#1C1A2E;font-size:12px;letter-spacing:.01em;text-transform:none;font-weight:600;}
-.field{background:rgba(255,255,255,0.6);border:1px solid rgba(210,160,100,0.3);border-radius:var(--r-md);
-  padding:14px 16px;margin-bottom:12px;}
-.field label{display:block;font-size:10px;color:#8B7A6F;margin-bottom:5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;}
-.field input{background:transparent;border:none;color:#1C1A2E;font-family:'Space Grotesk',sans-serif;font-size:16px;width:100%;outline:none;letter-spacing:.01em;}
-.field input::placeholder{color:#B5ADA0;}
-.btn{border:none;border-radius:var(--r-md);padding:14px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14px;
-  cursor:pointer;width:100%;transition:all .12s ease;}
+.login-scrim:after{content:"";position:absolute;width:300px;height:300px;right:-100px;bottom:-100px;border:2px solid rgba(59,52,134,0.2);border-radius:50% 50% 50% 50%;opacity:0.4;pointer-events:none;animation:float 20s ease-in-out infinite;}
+@keyframes float{0%,100%{transform:translate(0,0) rotate(0deg);}50%{transform:translate(20px,-20px) rotate(180deg);}}
+.login-content{position:relative;z-index:1;flex:1;display:flex;flex-direction:column;padding:64px 32px 48px;justify-content:center;align-items:center;}
+.brand-mark{font-size:11px;letter-spacing:.28em;color:rgba(255,255,255,0.6);margin-bottom:12px;font-family:'IBM Plex Mono',monospace;font-weight:600;text-transform:uppercase;}
+.brand-name{font-size:28px;font-weight:700;line-height:1.1;letter-spacing:-.01em;font-family:'Space Grotesk',sans-serif;color:#ffffff;margin-bottom:4px;text-align:center;}
+.brand-tagline{font-size:13px;color:rgba(255,255,255,0.7);font-weight:500;margin-bottom:0;text-align:center;}
+.login-hero{margin-top:48px;max-width:380px;text-align:center;}
+.login-hero h1{font-size:22px;line-height:1.3;font-weight:600;margin:0 0 8px;color:#ffffff;}
+.login-hero p{font-size:14px;color:rgba(255,255,255,0.7);margin:0 0 32px;line-height:1.5;}
+.login-glass{background:rgba(255,255,255,0.1);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.2);border-radius:20px;padding:32px;width:100%;max-width:380px;box-shadow:0 8px 32px rgba(0,0,0,0.3);}
+.field{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);border-radius:12px;
+  padding:16px 20px;margin-bottom:16px;transition:all .2s ease;}
+.field:focus-within{background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.4);}
+.field label{display:block;font-size:11px;color:rgba(255,255,255,0.6);margin-bottom:6px;font-weight:500;letter-spacing:.03em;text-transform:uppercase;}
+.field input{background:transparent;border:none;color:#ffffff;font-family:'Space Grotesk',sans-serif;font-size:18px;width:100%;outline:none;letter-spacing:.01em;}
+.field input::placeholder{color:rgba(255,255,255,0.4);}
+.btn{border:none;border-radius:12px;padding:16px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;
+  cursor:pointer;width:100%;transition:all .15s ease;}
 .btn:active{transform:scale(0.98);}
-.btn-primary{background:#2D5F52;color:#FFFFFF;}
-.btn-primary:hover{background:#234A3E;}
-.btn-primary:disabled{opacity:.4;cursor:not-allowed;}
-.btn-ghost{background:transparent;color:#6B6460;border:1px solid rgba(210,160,100,0.4);margin-top:10px;}
-.btn-ghost:hover{background:rgba(210,160,100,0.06);}
-.role-pill{display:inline-flex;gap:6px;margin-top:14px;}
-.pill{padding:6px 12px;border-radius:20px;font-size:11.5px;border:1px solid rgba(210,160,100,0.3);color:#6B6460;}
-.pill.active{background:#2D5F52;color:#FFFFFF;border-color:#2D5F52;}
-.err{color:#A6304A;font-size:12px;margin:-4px 0 10px;min-height:14px;}
-.step-dots{display:flex;gap:6px;margin-bottom:20px;}
-.step-dots span{width:22px;height:3px;border-radius:2px;background:rgba(210,160,100,0.2);}
-.step-dots span.done{background:#2D5F52;}
-.login-version{position:absolute;right:20px;bottom:18px;font-size:9px;color:#8B7A6F;font-family:'IBM Plex Mono',monospace;font-weight:600;}
-.login-footer{position:absolute;left:28px;bottom:18px;text-align:left;font-size:9px;letter-spacing:.08em;color:#8B7A6F;text-transform:uppercase;font-weight:600;}
-.auth-note{font-size:11px;color:#6B6460;margin:8px 0 14px;line-height:1.4;}
-.provider-row{display:flex;gap:12px;margin-top:18px;justify-content:center;}
-.provider-btn{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(210,160,100,0.3);border-radius:12px;background:rgba(255,255,255,0.5);cursor:not-allowed;opacity:.5;transition:all .12s ease;}
-.provider-btn:hover{background:rgba(210,160,100,0.1);}
-.provider-btn svg{width:20px;height:20px;display:block;}
-.provider-status{text-align:center;font-size:9px;color:#8B7A6F;margin-top:8px;font-weight:600;}
-.email-choice{display:flex;align-items:center;gap:10px;padding:13px 14px;border:1px solid rgba(210,160,100,0.4);border-radius:var(--r-md);background:rgba(210,160,100,0.06);color:#1C1A2E;cursor:pointer;}
-.email-choice input{accent-color:#2D5F52;}
-.auth-step-label{font-size:9px;letter-spacing:.12em;color:#8B7A6F;text-transform:uppercase;margin:0 0 10px;font-weight:700;}
-.auth-register{font-size:12px;color:#2D5F52;text-align:center;margin-top:16px;cursor:pointer;text-decoration:underline;text-underline-offset:3px;font-weight:600;}
-.auth-register:hover{color:#234A3E;}
-.email-stage{position:absolute;inset:0;z-index:2;background:linear-gradient(135deg,#F0E8DD 0%,#FBF9F4 50%,#F5EFE5 100%);color:#1C1A2E;padding:56px 28px;display:flex;flex-direction:column;}
-.email-stage:before{content:"";position:absolute;inset:0;background-image:
-  radial-gradient(circle at 85% 8%,rgba(210,160,100,0.12) 0%,transparent 20%),
-  radial-gradient(circle at 12% 92%,rgba(100,150,120,0.1) 0%,transparent 22%);pointer-events:none;}
-.email-stage-content{position:relative;z-index:1;}
-.email-stage .brand-name{color:#1C1A2E;}
-.email-stage-content>p{font-size:13px;line-height:1.5;color:#6B6460;margin:10px 0 24px;}
-.pin-entry{display:flex;gap:6px;margin:18px 0 24px;justify-content:center;}
-.pin-digit{width:44px;height:54px;border:2px solid rgba(210,160,100,0.3);border-radius:10px;background:rgba(255,255,255,0.7);font-size:24px;font-weight:700;color:#1C1A2E;text-align:center;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;position:relative;}
-.pin-digit:focus-visible{outline:none;border-color:#2D5F52;background:rgba(255,255,255,0.95);}
-.pin-digit::placeholder{color:rgba(28,26,46,0.3);}
-.pin-success{text-align:center;margin:24px 0;}
-.pin-success-icon{font-size:48px;margin-bottom:12px;}
-.pin-success h2{font-size:18px;font-weight:700;color:#1C1A2E;margin:0 0 6px;}
-.pin-success p{font-size:13px;color:#6B6460;margin:0;}
-.biometric-row{display:flex;flex-direction:column;gap:12px;margin:24px 0;}
-.biometric-offer{font-size:12px;color:#6B6460;text-align:center;margin-bottom:8px;}
-.biometric-offer strong{color:#1C1A2E;font-weight:700;}
-.btn-secondary{background:rgba(210,160,100,0.15);color:#2D5F52;border:1px solid rgba(210,160,100,0.3);}
-.btn-secondary:hover{background:rgba(210,160,100,0.25);}
+.btn-primary{background:linear-gradient(135deg,#3B3486 0%,#241F5C 100%);color:#FFFFFF;border:1px solid rgba(255,255,255,0.2);box-shadow:0 4px 15px rgba(59,52,134,0.4);}
+.btn-primary:hover{background:linear-gradient(135deg,#4a4295 0%,#2d2a6e 100%);box-shadow:0 6px 20px rgba(59,52,134,0.5);}
+.btn-primary:disabled{opacity:.5;cursor:not-allowed;}
+.btn-ghost{background:transparent;color:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.2);margin-top:12px;}
+.btn-ghost:hover{background:rgba(255,255,255,0.1);color:#ffffff;}
+.err{color:#ff6b6b;font-size:13px;margin:-8px 0 16px;min-height:16px;text-align:center;}
+.login-version{position:absolute;right:24px;bottom:24px;font-size:10px;color:rgba(255,255,255,0.5);font-family:'IBM Plex Mono',monospace;font-weight:600;letter-spacing:.05em;}
+.auth-loading{text-align:center;margin:24px 0;}
+.auth-loading-text{font-size:14px;color:rgba(255,255,255,0.8);margin-bottom:8px;}
+.auth-loading-dots{display:flex;gap:6px;justify-content:center;}
+.auth-loading-dots span{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.6);animation:loadingPulse 1.4s ease-in-out infinite;}
+.auth-loading-dots span:nth-child(2){animation-delay:0.2s;}
+.auth-loading-dots span:nth-child(3){animation-delay:0.4s;}
+@keyframes loadingPulse{0%,100%{opacity:0.4;transform:scale(1);}50%{opacity:1;transform:scale(1.2);}}
+.auth-success{text-align:center;margin:32px 0;}
+.auth-success-icon{font-size:64px;margin-bottom:16px;animation:successPop 0.6s ease-out;}
+@keyframes successPop{0%{transform:scale(0);}50%{transform:scale(1.2);}100%{transform:scale(1);}}
+.auth-success h2{font-size:20px;font-weight:700;color:#ffffff;margin:0 0 8px;}
+.auth-success p{font-size:15px;color:rgba(255,255,255,0.8);margin:0;}
+.auth-error{text-align:center;margin:24px 0;padding:20px;background:rgba(255,107,107,0.1);border:1px solid rgba(255,107,107,0.3);border-radius:12px;}
+.auth-error h3{font-size:16px;font-weight:700;color:#ff6b6b;margin:0 0 8px;}
+.auth-error p{font-size:13px;color:rgba(255,255,255,0.8);margin:0;line-height:1.5;}
 .settings-section{margin:0 20px 18px;background:var(--paper-raised);border:1px solid var(--rule);border-radius:var(--r-lg);overflow:hidden;}
 .settings-section-title{padding:12px 14px 8px;font-size:10px;letter-spacing:.08em;color:var(--ink-faint);}
 .settings-user{display:flex;align-items:center;gap:10px;padding:11px 14px;border-top:1px solid var(--rule);}
@@ -488,116 +467,41 @@ html,body{margin:0;padding:0;background:#0f0e1a;font-family:'Space Grotesk',syst
       <div class="brand-tagline">Premium Stationery & Office Solutions</div>
 
       <div class="login-hero">
-        <div id="authForm">
-          <div class="login-operating-system">AI Retail Operating System<strong>Clarity for every shelf, sale, and decision.</strong></div>
+        <div class="login-glass">
           <h1 id="authTitle">Welcome to GSH</h1>
           <p id="authSubtitle">Enter your registered mobile number to start.</p>
-          <div class="field" id="mobileField">
-            <label>Mobile Number</label>
-            <input id="mobileInput" type="tel" inputmode="numeric" autocomplete="tel" placeholder="10-digit number" onkeydown="if(event.key==='Enter') continueMobileAuth()" maxlength="10" />
+          
+          <div id="authForm">
+            <div class="field">
+              <label>Mobile Number</label>
+              <input id="mobileInput" type="tel" inputmode="numeric" autocomplete="tel" placeholder="10-digit number" onkeydown="if(event.key==='Enter') continueMobileAuth()" maxlength="10" />
+            </div>
+            <div class="err" id="loginErr"></div>
+            <button class="btn btn-primary" onclick="continueMobileAuth()">Continue</button>
           </div>
-          <div class="err" id="loginErr"></div>
-          <button class="btn btn-primary" onclick="continueMobileAuth()">Continue</button>
-          <button class="btn btn-ghost" onclick="openRegistrationRequest()">Create New Account</button>
-          <div class="provider-row" aria-label="Sign-in providers">
-            <button class="provider-btn" type="button" disabled title="Google sign-in is not configured"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#EA4335" d="M12 10.2v4.05h5.72c-.25 1.3-1.49 3.8-5.72 3.8A6.05 6.05 0 1 1 12 5.95c2.2 0 3.67.94 4.51 1.73l3.08-3.01C17.62 2.8 15.08 1.7 12 1.7a10.3 10.3 0 1 0 0 20.6c5.95 0 9.9-4.18 9.9-10.1 0-.68-.08-1.34-.18-2H12Z"/></svg></button>
-            <button class="provider-btn" type="button" disabled title="GitHub sign-in is not configured"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#333" d="M12 2C6.48 2 2 6.58 2 12.24c0 4.52 2.87 8.36 6.84 9.72.5.1.68-.22.68-.49v-1.88c-2.78.62-3.37-1.23-3.37-1.23-.46-1.2-1.11-1.52-1.11-1.52-.91-.64.07-.63.07-.63 1 .08 1.53 1.06 1.53 1.06.9 1.58 2.35 1.13 2.92.87.09-.66.35-1.13.64-1.39-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05A9.2 9.2 0 0 1 12 6.35a9.2 9.2 0 0 1 2.5.35c1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.35 4.8-4.58 5.05.36.32.68.95.68 1.92v2.85c0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.24C22 6.58 17.52 2 12 2Z"/></svg></button>
-            <button class="provider-btn" type="button" disabled title="Apple sign-in is not configured"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#000" d="M16.77 12.77c.01 2.42 2.12 3.23 2.14 3.24-.02.06-.34 1.19-1.1 2.36-.66 1.02-1.35 2.05-2.43 2.07-1.06.02-1.4-.67-2.61-.67-1.22 0-1.6.65-2.61.69-1.05.04-1.85-1.1-2.52-2.12-1.37-1.99-2.42-5.63-1.01-8.1.7-1.23 1.98-2.01 3.37-2.03 1.05-.02 2.04.71 2.61.71.57 0 1.72-.88 2.9-.75.49.02 1.87.2 2.76 1.51-.07.04-1.65.96-1.64 2.87ZM14.86 5.27c.54-.66.9-1.57.8-2.47-.77.03-1.7.52-2.25 1.18-.49.57-.92 1.49-.8 2.37.86.07 1.72-.44 2.25-1.08Z"/></svg></button>
+
+          <div id="authLoading" class="auth-loading" style="display: none;">
+            <div class="auth-loading-text" id="authLoadingText">Connecting to GSH...</div>
+            <div class="auth-loading-dots">
+              <span></span><span></span><span></span>
+            </div>
           </div>
-          <div class="provider-status">Social sign-in becomes available after provider configuration.</div>
-        </div>
-      </div>
-    </div>
-    <div class="login-footer">AI Powered Retail Intelligence</div>
-    <div class="login-version">v1.3 OTA</div>
-  </div>
 
-  <!-- ================= PIN SETUP ================= -->
-  <div class="screen" id="pinSetupScreen">
-    <div class="login-scrim"></div>
-    <div class="login-content">
-      <div class="brand-mark">GOPESHWAR</div>
-      <div class="brand-name">Stationary House</div>
-
-      <div class="login-hero">
-        <div class="auth-step-label">Step 1 · Account Confirmed</div>
-        <h1>Create your GSH PIN</h1>
-        <p id="pinSetupSubtitle">Set a 6-digit PIN for secure login.</p>
-        
-        <div class="field">
-          <label>Your Registered Email</label>
-          <div style="padding: 12px 14px; background: rgba(210,160,100,0.1); border-radius: var(--r-md); color: #1C1A2E; font-size: 13px; word-break: break-all;" id="pinDisplayEmail"></div>
-        </div>
-
-        <div style="margin-top: 18px;">
-          <label style="display:block;font-size:10px;color:#8B7A6F;margin-bottom:8px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;">Enter PIN (6 digits)</label>
-          <div class="pin-entry" id="pinEntryContainer"></div>
-          <div class="err" id="pinSetupErr"></div>
-        </div>
-
-        <div style="margin-top: 24px;">
-          <label style="display:block;font-size:10px;color:#8B7A6F;margin-bottom:8px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;">Confirm PIN</label>
-          <div class="pin-entry" id="pinConfirmContainer"></div>
-        </div>
-
-        <button class="btn btn-primary" style="margin-top: 28px;" onclick="submitPIN()">Create PIN</button>
-        <button class="btn btn-ghost" onclick="resetAuthFlow();show('login')">Use a different number</button>
-      </div>
-    </div>
-    <div class="login-footer">AI Powered Retail Intelligence</div>
-    <div class="login-version">v1.3 OTA</div>
-  </div>
-
-  <!-- ================= PIN SUCCESS & BIOMETRIC ================= -->
-  <div class="screen" id="pinSuccessScreen">
-    <div class="login-scrim"></div>
-    <div class="login-content">
-      <div class="login-hero" style="margin-top: 80px;">
-        <div class="pin-success">
-          <div class="pin-success-icon">✓</div>
-          <h2>GSH Secure Login Activated</h2>
-          <p>Your PIN has been created successfully.</p>
-        </div>
-
-        <div id="biometricOfferSection" style="display: none;">
-          <div class="biometric-offer">
-            <strong>Enable Fingerprint Login?</strong><br/>
-            Use your fingerprint for faster, more secure access.
+          <div id="authSuccess" class="auth-success" style="display: none;">
+            <div class="auth-success-icon">✓</div>
+            <h2>Login Successful</h2>
+            <p id="authSuccessText">Welcome back</p>
           </div>
-          <button class="btn btn-primary" onclick="enableBiometric()">Enable Fingerprint</button>
-          <button class="btn btn-secondary" onclick="skipBiometric()">Not Now</button>
-        </div>
 
-        <button class="btn btn-primary" id="continueToGshBtn" style="display: none; margin-top: 20px;" onclick="finishPINAuth()">Continue to GSH</button>
+          <div id="authError" class="auth-error" style="display: none;">
+            <h3>Authentication Required</h3>
+            <p>This mobile number is not registered with Gopeshwar Stationary House.</p>
+            <button class="btn btn-ghost" style="margin-top: 16px;" onclick="resetAuthForm()">Try Again</button>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="login-footer">AI Powered Retail Intelligence</div>
-    <div class="login-version">v1.3 OTA</div>
-  </div>
-
-  <!-- ================= SUBSEQUENT LOGIN (PIN ONLY) ================= -->
-  <div class="screen" id="pinLoginScreen">
-    <div class="login-scrim"></div>
-    <div class="login-content">
-      <div class="brand-mark">GOPESHWAR</div>
-      <div class="brand-name">Stationary House</div>
-
-      <div class="login-hero" style="margin-top: 80px;">
-        <h1 id="welcomeBackName">Welcome back</h1>
-        <p id="welcomeBackSub">Enter your PIN to continue.</p>
-
-        <div style="margin-top: 24px;">
-          <label style="display:block;font-size:10px;color:#8B7A6F;margin-bottom:8px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;">Your PIN</label>
-          <div class="pin-entry" id="pinLoginContainer"></div>
-          <div class="err" id="pinLoginErr"></div>
-        </div>
-
-        <button id="useBiometricBtn" class="btn btn-secondary" style="margin-top: 18px; display: none;" onclick="triggerBiometricLogin()">Use Fingerprint</button>
-        <button class="btn btn-ghost" style="margin-top: 10px;" onclick="openForgotPIN()">Forgot PIN?</button>
-      </div>
-    </div>
-    <div class="login-footer">AI Powered Retail Intelligence</div>
-    <div class="login-version">v1.3 OTA</div>
+    <div class="login-version">v1.3.2 OTA</div>
   </div>
 
   <!-- ================= ONBOARDING ================= -->
@@ -918,8 +822,6 @@ html,body{margin:0;padding:0;background:#0f0e1a;font-family:'Space Grotesk',syst
         <div class="settings-section">
           <div class="settings-section-title">CURRENT ACCOUNT</div>
           <div class="settings-user" id="currentUserRow"></div>
-          <div class="settings-action" onclick="openChangePassword()">Change password</div>
-          <div class="settings-action" onclick="openForgotPassword()">Request password reset</div>
         </div>
         <div class="settings-section" id="usersSection">
           <div class="settings-section-title">USERS</div>
@@ -929,10 +831,6 @@ html,body{margin:0;padding:0;background:#0f0e1a;font-family:'Space Grotesk',syst
         <div class="settings-section" id="versionHistorySection">
           <div class="settings-section-title">VERSION HISTORY</div>
           <div id="versionHistoryList"></div>
-        </div>
-        <div class="settings-section" id="resetRequestsSection" style="display:none;">
-          <div class="settings-section-title">PASSWORD RESET REQUESTS</div>
-          <div id="resetRequestsList"></div>
         </div>
         <div class="settings-section">
           <div class="settings-section-title">SESSION</div>
@@ -948,20 +846,10 @@ html,body{margin:0;padding:0;background:#0f0e1a;font-family:'Space Grotesk',syst
       <div class="sheet-body">
         <div id="employeeFields">
           <div class="field" style="background:var(--paper-raised);border-color:var(--rule);"><label>NAME</label><input id="employeeName" style="color:var(--ink);" /></div>
-          <div class="field" style="background:var(--paper-raised);border-color:var(--rule);"><label>MOBILE</label><input id="employeeMobile" type="tel" style="color:var(--ink);" /></div>
-          <div class="field" style="background:var(--paper-raised);border-color:var(--rule);"><label>EMAIL</label><input id="employeeEmail" type="email" style="color:var(--ink);" /></div>
+          <div class="field" style="background:var(--paper-raised);border-color:var(--rule);"><label>MOBILE NUMBER</label><input id="employeeMobile" type="tel" style="color:var(--ink);" maxlength="10" /></div>
           <div class="field" style="background:var(--paper-raised);border-color:var(--rule);"><label>ROLE</label><select id="employeeRole" style="width:100%;border:0;background:transparent;color:var(--ink);font:inherit;"><option value="EMPLOYEE">Employee</option><option value="ADMIN">Owner</option></select></div>
           <div class="field" style="background:var(--paper-raised);border-color:var(--rule);"><label><input id="employeeActive" type="checkbox" checked style="width:auto;margin-right:8px;" />ACTIVE</label></div>
-          <div class="auth-note" id="temporaryCredentials"></div>
-        </div>
-        <div id="passwordFields" style="display:none;">
-          <div class="field" style="background:var(--paper-raised);border-color:var(--rule);"><label>CURRENT PASSWORD</label><input id="currentPassword" type="password" style="color:var(--ink);" /></div>
-          <div class="field" style="background:var(--paper-raised);border-color:var(--rule);"><label>NEW PASSWORD</label><input id="newPassword" type="password" style="color:var(--ink);" /></div>
-          <div class="field" style="background:var(--paper-raised);border-color:var(--rule);"><label>CONFIRM NEW PASSWORD</label><input id="confirmPassword" type="password" style="color:var(--ink);" /></div>
-        </div>
-        <div id="forgotFields" style="display:none;">
-          <div class="auth-note">A reset request will be recorded for the owner. Email delivery is intentionally not configured in this client.</div>
-          <div class="field" style="background:var(--paper-raised);border-color:var(--rule);"><label>USERNAME OR EMAIL</label><input id="forgotIdentity" style="color:var(--ink);" /></div>
+          <div class="auth-note">Only registered users can login with their mobile number.</div>
         </div>
         <div class="err" id="authSheetErr"></div>
       </div>
@@ -1549,11 +1437,6 @@ let USERS = [];
 let CURRENT_USER = null;
 let AUTH_MOBILE = '';
 let AUTH_USER = null;
-let AUTH_EMAIL = '';
-let AUTH_PIN = '';
-let AUTH_PIN_CONFIRM = '';
-let BIOMETRIC_AVAILABLE = false;
-let BIOMETRIC_ENROLLED = false;
 let VERSION_HISTORY = [];
 let authSheetMode = 'employee';
 
@@ -1583,6 +1466,18 @@ function resetAuthFlow(){
   document.getElementById('mobileInput').value='';
   document.getElementById('loginErr').textContent='';
   document.querySelectorAll('.pin-entry').forEach(c => c.innerHTML='');
+  resetAuthForm();
+}
+
+function resetAuthForm(){
+  document.getElementById('authForm').style.display = 'block';
+  document.getElementById('authLoading').style.display = 'none';
+  document.getElementById('authSuccess').style.display = 'none';
+  document.getElementById('authError').style.display = 'none';
+  document.getElementById('authTitle').textContent = 'Welcome to GSH';
+  document.getElementById('authSubtitle').textContent = 'Enter your registered mobile number to start.';
+  document.getElementById('mobileInput').value = '';
+  document.getElementById('loginErr').textContent = '';
 }
 
 async function continueMobileAuth(){
@@ -1595,333 +1490,58 @@ async function continueMobileAuth(){
     return; 
   }
   
-  const owner = USERS.find(user=>user.role==='ADMIN');
+  // Show loading state
+  document.getElementById('authForm').style.display = 'none';
+  document.getElementById('authLoading').style.display = 'block';
+  
+  // Simulate loading steps
+  const loadingText = document.getElementById('authLoadingText');
+  loadingText.textContent = 'Connecting to GSH...';
+  await new Promise(r => setTimeout(r, 800));
+  
+  loadingText.textContent = 'Checking registered mobile...';
+  await new Promise(r => setTimeout(r, 800));
+  
+  loadingText.textContent = 'Verifying profile...';
+  await new Promise(r => setTimeout(r, 600));
+  
+  // Check if user exists in database
   const user = USERS.find(candidate=>candidate.active!==false && normalizeMobile(candidate.mobile)===mobile);
   
-  if(!user && owner && !owner.mobile){
-    owner.mobile = mobile;
-    await saveKeyRaw('gsh:users', USERS);
-    AUTH_MOBILE = mobile; 
-    AUTH_USER = owner;
-  } else if(!user){
-    err.textContent='Authentication Required — This mobile number is not registered with GSH.';
-    return;
-  } else {
+  document.getElementById('authLoading').style.display = 'none';
+  
+  if(user){
+    // User exists - login successful
     AUTH_MOBILE = mobile; 
     AUTH_USER = user;
-  }
-  
-  AUTH_EMAIL = AUTH_USER.email || '';
-  
-  // Check if user has a PIN already set
-  if(AUTH_USER.pinHash){
-    // Existing user: show PIN login
-    document.getElementById('welcomeBackName').textContent = `Welcome back, ${AUTH_USER.name}`;
-    document.getElementById('welcomeBackSub').textContent = `Enter your PIN to access GSH.`;
-    initializePINLoginScreen();
-    show('pinLoginScreen');
+    AUTH_EMAIL = user.email || '';
+    
+    // Save session
+    await saveKeyRaw('gsh:currentUserId', user.id);
+    CURRENT_USER = user;
+    
+    // Show success
+    document.getElementById('authSuccess').style.display = 'block';
+    document.getElementById('authSuccessText').textContent = `Welcome back, ${user.name}`;
+    
+    // Auto-open dashboard after success
+    setTimeout(() => {
+      show('cc');
+      renderCC();
+    }, 1500);
   } else {
-    // First login: show PIN setup
-    initializePINSetupScreen();
-    show('pinSetupScreen');
+    // User not registered
+    document.getElementById('authError').style.display = 'block';
   }
-}
-
-function initializePINSetupScreen(){
-  document.getElementById('pinDisplayEmail').textContent = AUTH_EMAIL || 'Email not configured';
-  document.getElementById('pinSetupSubtitle').textContent = `Create a 6-digit PIN for ${AUTH_USER.name}.`;
-  document.getElementById('pinEntryContainer').innerHTML = '';
-  document.getElementById('pinConfirmContainer').innerHTML = '';
-  document.getElementById('pinSetupErr').textContent = '';
-  
-  for(let i=0; i<6; i++){
-    const input = document.createElement('input');
-    input.className = 'pin-digit';
-    input.type = 'text';
-    input.inputMode = 'numeric';
-    input.maxLength = '1';
-    input.pattern = '[0-9]';
-    input.placeholder = '•';
-    input.addEventListener('input', (e) => handlePINInput(e, 'pinEntry', i));
-    input.addEventListener('keydown', (e) => handlePINKeydown(e, 'pinEntry', i));
-    document.getElementById('pinEntryContainer').appendChild(input);
-  }
-  
-  for(let i=0; i<6; i++){
-    const input = document.createElement('input');
-    input.className = 'pin-digit';
-    input.type = 'text';
-    input.inputMode = 'numeric';
-    input.maxLength = '1';
-    input.pattern = '[0-9]';
-    input.placeholder = '•';
-    input.addEventListener('input', (e) => handlePINInput(e, 'pinConfirm', i));
-    input.addEventListener('keydown', (e) => handlePINKeydown(e, 'pinConfirm', i));
-    document.getElementById('pinConfirmContainer').appendChild(input);
-  }
-  
-  document.getElementById('pinEntryContainer').children[0].focus();
-}
-
-function initializePINLoginScreen(){
-  document.getElementById('pinLoginContainer').innerHTML = '';
-  document.getElementById('pinLoginErr').textContent = '';
-  
-  for(let i=0; i<6; i++){
-    const input = document.createElement('input');
-    input.className = 'pin-digit';
-    input.type = 'text';
-    input.inputMode = 'numeric';
-    input.maxLength = '1';
-    input.pattern = '[0-9]';
-    input.placeholder = '•';
-    input.addEventListener('input', (e) => handlePINInput(e, 'pinLogin', i));
-    input.addEventListener('keydown', (e) => handlePINKeydown(e, 'pinLogin', i));
-    document.getElementById('pinLoginContainer').appendChild(input);
-  }
-  
-  // Show biometric button if available
-  if(BIOMETRIC_ENROLLED){
-    document.getElementById('useBiometricBtn').style.display = 'block';
-  }
-  
-  document.getElementById('pinLoginContainer').children[0].focus();
-}
-
-function handlePINInput(e, type, index){
-  const value = e.target.value;
-  if(!/^\d?$/.test(value)){ e.target.value = ''; return; }
-  
-  const container = type === 'pinEntry' ? document.getElementById('pinEntryContainer')
-                  : type === 'pinConfirm' ? document.getElementById('pinConfirmContainer')
-                  : document.getElementById('pinLoginContainer');
-  
-  if(value && index < 5){
-    container.children[index+1].focus();
-  }
-}
-
-function handlePINKeydown(e, type, index){
-  const container = type === 'pinEntry' ? document.getElementById('pinEntryContainer')
-                  : type === 'pinConfirm' ? document.getElementById('pinConfirmContainer')
-                  : document.getElementById('pinLoginContainer');
-  
-  if(e.key === 'Backspace' && !e.target.value && index > 0){
-    container.children[index-1].focus();
-  }
-  
-  if(e.key === 'Enter' && index === 5){
-    if(type === 'pinEntry' || type === 'pinConfirm'){
-      submitPIN();
-    } else if(type === 'pinLogin'){
-      verifyPINLogin();
-    }
-  }
-}
-
-async function submitPIN(){
-  const entryDigits = Array.from(document.getElementById('pinEntryContainer').children).map(i=>i.value).join('');
-  const confirmDigits = Array.from(document.getElementById('pinConfirmContainer').children).map(i=>i.value).join('');
-  const err = document.getElementById('pinSetupErr');
-  
-  err.textContent = '';
-  
-  if(entryDigits.length !== 6){
-    err.textContent = 'Enter all 6 digits for your PIN.';
-    return;
-  }
-  
-  if(entryDigits !== confirmDigits){
-    err.textContent = 'PINs do not match. Please try again.';
-    document.getElementById('pinConfirmContainer').innerHTML = '';
-    for(let i=0; i<6; i++){
-      const input = document.createElement('input');
-      input.className = 'pin-digit';
-      input.type = 'text';
-      input.inputMode = 'numeric';
-      input.maxLength = '1';
-      input.pattern = '[0-9]';
-      input.placeholder = '•';
-      input.addEventListener('input', (e) => handlePINInput(e, 'pinConfirm', i));
-      input.addEventListener('keydown', (e) => handlePINKeydown(e, 'pinConfirm', i));
-      document.getElementById('pinConfirmContainer').appendChild(input);
-    }
-    document.getElementById('pinConfirmContainer').children[0].focus();
-    return;
-  }
-  
-  AUTH_PIN = entryDigits;
-  AUTH_USER.pinHash = await hashPassword(AUTH_PIN);
-  AUTH_USER.pinEnrolledAt = new Date().toISOString();
-  await saveKeyRaw('gsh:users', USERS);
-  
-  // Check if biometric is available
-  checkBiometricAvailability().then(() => {
-    document.getElementById('biometricOfferSection').style.display = BIOMETRIC_AVAILABLE ? 'block' : 'none';
-    document.getElementById('continueToGshBtn').style.display = BIOMETRIC_AVAILABLE ? 'none' : 'block';
-    show('pinSuccessScreen');
-  });
-}
-
-async function checkBiometricAvailability(){
-  try {
-    if(typeof BiometricAuth !== 'undefined'){
-      const result = await BiometricAuth.isAvailable();
-      BIOMETRIC_AVAILABLE = result && result.isAvailable === true;
-    }
-  } catch(e){
-    BIOMETRIC_AVAILABLE = false;
-  }
-}
-
-async function enableBiometric(){
-  try {
-    if(typeof BiometricAuth !== 'undefined'){
-      const result = await BiometricAuth.authenticate({
-        reason: 'Enable fingerprint for faster access to GSH',
-        fallbackTitle: 'Use your PIN instead',
-        maxAttempts: 3,
-      });
-      
-      if(result && result.success){
-        BIOMETRIC_ENROLLED = true;
-        AUTH_USER.biometricEnrolledAt = new Date().toISOString();
-        await saveKeyRaw('gsh:users', USERS);
-        toast('Fingerprint enabled successfully');
-        finishPINAuth();
-      }
-    }
-  } catch(e){
-    toast('Fingerprint setup cancelled');
-    skipBiometric();
-  }
-}
-
-function skipBiometric(){
-  BIOMETRIC_ENROLLED = false;
-  finishPINAuth();
-}
-
-async function finishPINAuth(){
-  CURRENT_USER = AUTH_USER;
-  AUTH_USER.lastLoginAt = new Date().toISOString();
-  AUTH_USER.temporaryPassword = null;
-  await saveKeyRaw('gsh:users', USERS);
-  await saveKeyRaw('gsh:currentUserId', AUTH_USER.id);
-  
-  resetAuthFlow();
-  show('cc');
-  renderCC();
-}
-
-async function verifyPINLogin(){
-  const pinDigits = Array.from(document.getElementById('pinLoginContainer').children).map(i=>i.value).join('');
-  const err = document.getElementById('pinLoginErr');
-  
-  err.textContent = '';
-  
-  if(pinDigits.length !== 6){
-    err.textContent = 'Enter all 6 digits.';
-    return;
-  }
-  
-  const pinHash = await hashPassword(pinDigits);
-  
-  if(AUTH_USER.pinHash !== pinHash){
-    err.textContent = 'Incorrect PIN. Try again.';
-    document.getElementById('pinLoginContainer').innerHTML = '';
-    for(let i=0; i<6; i++){
-      const input = document.createElement('input');
-      input.className = 'pin-digit';
-      input.type = 'text';
-      input.inputMode = 'numeric';
-      input.maxLength = '1';
-      input.pattern = '[0-9]';
-      input.placeholder = '•';
-      input.addEventListener('input', (e) => handlePINInput(e, 'pinLogin', i));
-      input.addEventListener('keydown', (e) => handlePINKeydown(e, 'pinLogin', i));
-      document.getElementById('pinLoginContainer').appendChild(input);
-    }
-    document.getElementById('pinLoginContainer').children[0].focus();
-    return;
-  }
-  
-  await finishPINAuth();
-}
-
-async function triggerBiometricLogin(){
-  try {
-    if(typeof BiometricAuth !== 'undefined'){
-      const result = await BiometricAuth.authenticate({
-        reason: 'Unlock GSH with your fingerprint',
-        fallbackTitle: 'Use your PIN instead',
-        maxAttempts: 3,
-      });
-      
-      if(result && result.success){
-        await finishPINAuth();
-      }
-    }
-  } catch(e){
-    // User cancelled or biometric failed, fall back to PIN
-  }
-}
-
-function openForgotPIN(){
-  authSheetMode = 'forgot-pin';
-  document.getElementById('authSheetTitle').textContent = 'Reset your PIN';
-  document.getElementById('authSheetSub').textContent = 'The owner will review and reset your access.';
-  document.getElementById('employeeFields').style.display='none';
-  document.getElementById('passwordFields').style.display='none';
-  document.getElementById('forgotFields').style.display='block';
-  document.getElementById('forgotIdentity').value = AUTH_MOBILE || '';
-  document.getElementById('authSheetAction').textContent='Send reset request';
-  document.getElementById('authSheet').classList.add('show'); 
-  document.getElementById('authSheetScrim').classList.add('show');
 }
 
 function openRegistrationRequest(){
-  authSheetMode='registration-request';
-  document.getElementById('authSheetTitle').textContent='Request a GSH account';
-  document.getElementById('authSheetSub').textContent='An admin must approve new access. No public account is created.';
-  document.getElementById('employeeFields').style.display='block';
-  document.getElementById('employeeRole').value='EMPLOYEE';
-  document.getElementById('employeeRole').disabled=true;
-  document.getElementById('passwordFields').style.display='none';
-  document.getElementById('forgotFields').style.display='none';
-  document.getElementById('temporaryCredentials').textContent='Your request will be sent to the existing admin for review.';
-  document.getElementById('authSheetAction').textContent='Request admin approval';
-  document.getElementById('authSheet').classList.add('show'); 
-  document.getElementById('authSheetScrim').classList.add('show');
-}
-  const err=document.getElementById('authSheetErr'); err.textContent='';
-  if(authSheetMode==='employee' || authSheetMode==='registration-request'){
-    const name=document.getElementById('employeeName').value.trim(), mobile=document.getElementById('employeeMobile').value.trim(), email=document.getElementById('employeeEmail').value.trim(), role=document.getElementById('employeeRole').value, active=document.getElementById('employeeActive').checked;
-    if(!name || !mobile || !email){err.textContent='Name, mobile, and email are required.';return;}
-    if(USERS.some(user=>normalizeMobile(user.mobile)===normalizeMobile(mobile))){err.textContent='That mobile number is already registered.';return;}
-    if(authSheetMode==='registration-request'){
-      const requests=await loadKey('gsh:credentialRequests',[]);
-      requests.push({id:'ar'+Date.now(),type:'account_registration',status:'pending',name,mobile,email,role,requestedAt:new Date().toISOString(),notification:{channel:'email',status:'queued',provider:'not-configured'}});
-      await saveKeyRaw('gsh:credentialRequests',requests); closeAuthSheet(); toast('Request sent to the GSH admin');
-      return;
-    }
-    const username=makeUsername(name);
-    const tempPin = Math.random().toString(36).slice(2,8).toUpperCase();
-    USERS.push({id:'u'+Date.now(),name,mobile,email,role,username,temporaryPin:tempPin,active,createdAt:new Date().toISOString()});
-    await saveKeyRaw('gsh:users',USERS); renderUsers(); closeAuthSheet(); toast(`Employee created · temporary PIN: ${tempPin}`);
-  } else if(authSheetMode==='forgot' || authSheetMode==='forgot-pin'){
-    const identity=document.getElementById('forgotIdentity').value.trim().toLowerCase();
-    const user=USERS.find(candidate=>normalizeMobile(candidate.mobile)===normalizeMobile(identity) || candidate.email?.toLowerCase()===identity);
-    if(!user){err.textContent='No matching user found.';return;}
-    const requests=await loadKey('gsh:credentialRequests',[]);
-    requests.push({id:'cr'+Date.now(),userId:user.id,type:'pin_reset',status:'pending',requestedAt:new Date().toISOString(),notification:{channel:'email',status:'queued',provider:'not-configured'}});
-    await saveKeyRaw('gsh:credentialRequests',requests); closeAuthSheet(); toast('Reset request sent to the owner');
-  }
+  toast('Contact your administrator to create an account');
 }
 function renderUsers(){
   const list=document.getElementById('usersList'), section=document.getElementById('usersSection'); if(!list || !section) return;
   section.style.display=CURRENT_USER?.role==='ADMIN'?'block':'none';
-  list.innerHTML=USERS.map(user=>`<div class="settings-user"><div class="avatar">${user.name.charAt(0).toUpperCase()}</div><div class="meta">${user.name}<div class="sub">${user.mobile||'Mobile not set'} · ${user.role==='ADMIN'?'Owner':'Employee'} · ${user.username}</div></div><button class="sheet-btn ${user.active===false?'cancel':'confirm'}" style="width:auto;padding:7px 10px;font-size:11px;" onclick="toggleUserActive('${user.id}')">${user.active===false?'Inactive':'Active'}</button></div>`).join('');
+  list.innerHTML=USERS.map(user=>`<div class="settings-user"><div class="avatar">${user.name.charAt(0).toUpperCase()}</div><div class="meta">${user.name}<div class="sub">${user.mobile||'Mobile not set'} · ${user.role==='ADMIN'?'Owner':'Employee'}</div></div><button class="sheet-btn ${user.active===false?'cancel':'confirm'}" style="width:auto;padding:7px 10px;font-size:11px;" onclick="toggleUserActive('${user.id}')">${user.active===false?'Inactive':'Active'}</button></div>`).join('');
 }
 async function toggleUserActive(userId){
   if(CURRENT_USER?.role!=='ADMIN' || userId===CURRENT_USER.id) return;
@@ -1929,27 +1549,38 @@ async function toggleUserActive(userId){
   user.active=user.active===false;
   await saveKeyRaw('gsh:users',USERS); renderUsers(); toast(`${user.name} is now ${user.active?'active':'inactive'}`);
 }
+function openCreateEmployee(){
+  authSheetMode='employee';
+  document.getElementById('authSheetTitle').textContent='Create employee';
+  document.getElementById('authSheetSub').textContent='Registered users can login with their mobile number.';
+  document.getElementById('employeeFields').style.display='block';
+  document.getElementById('authSheetAction').textContent='Create employee';
+  document.getElementById('authSheetErr').textContent='';
+  document.getElementById('employeeName').value='';
+  document.getElementById('employeeMobile').value='';
+  document.getElementById('employeeRole').value='EMPLOYEE';
+  document.getElementById('employeeActive').checked=true;
+  document.getElementById('authSheet').classList.add('show');
+  document.getElementById('authSheetScrim').classList.add('show');
+}
+async function submitAuthSheet(){
+  const err=document.getElementById('authSheetErr'); err.textContent='';
+  if(authSheetMode==='employee'){
+    const name=document.getElementById('employeeName').value.trim(), mobile=document.getElementById('employeeMobile').value.trim(), role=document.getElementById('employeeRole').value, active=document.getElementById('employeeActive').checked;
+    if(!name || !mobile){err.textContent='Name and mobile number are required.';return;}
+    if(mobile.length !== 10){err.textContent='Enter a valid 10-digit mobile number.';return;}
+    if(USERS.some(user=>normalizeMobile(user.mobile)===normalizeMobile(mobile))){err.textContent='That mobile number is already registered.';return;}
+    USERS.push({id:'u'+Date.now(),name,mobile,role,active,createdAt:new Date().toISOString()});
+    await saveKeyRaw('gsh:users',USERS); renderUsers(); closeAuthSheet(); toast(`Employee created successfully`);
+  }
+}
 function renderVersionHistory(){
   const list=document.getElementById('versionHistoryList'), section=document.getElementById('versionHistorySection'); if(!list || !section) return;
   section.style.display=CURRENT_USER?.role==='ADMIN'?'block':'none';
   list.innerHTML=VERSION_HISTORY.slice().sort((a,b)=>String(b.date).localeCompare(String(a.date))).map(entry=>`<div class="settings-user"><div class="avatar">${entry.type==='OTA'?'↻':'▣'}</div><div class="meta">${entry.version} · ${entry.type}<div class="sub">${entry.date} · ${entry.developer}<br/>${entry.notes}</div></div></div>`).join('');
 }
-async function renderResetRequests(){
-  const section=document.getElementById('resetRequestsSection'), list=document.getElementById('resetRequestsList');
-  if(!section || !list) return;
-  if(CURRENT_USER?.role!=='ADMIN'){ section.style.display='none'; return; }
-  const requests=await loadKey('gsh:credentialRequests',[]);
-  const pending=requests.filter(request=>request.status==='pending');
-  section.style.display='block';
-  list.innerHTML=pending.length
-    ? pending.map(request=>{
-      const user=USERS.find(candidate=>candidate.id===request.userId);
-      return `<div class="settings-user"><div class="avatar">!</div><div class="meta">${user?.name||'Unknown user'}<div class="sub">${user?.username||'—'} · ${new Date(request.requestedAt).toLocaleString()}</div></div></div>`;
-    }).join('')
-    : '<div class="auth-note">No pending requests.</div>';
-}
-async function openSettings(){ renderUsers(); renderVersionHistory(); const row=document.getElementById('currentUserRow'); row.innerHTML=`<div class="avatar">${CURRENT_USER?.name?.charAt(0).toUpperCase()||'G'}</div><div class="meta">${CURRENT_USER?.name||'Owner'}<div class="sub">${CURRENT_USER?.mobile||''} · ${CURRENT_USER?.role==='ADMIN'?'Owner':'Employee'}</div></div>`; show('settings'); await renderResetRequests(); }
-async function logoutUser(){ CURRENT_USER=null; await saveKeyRaw('gsh:currentUserId', null); document.getElementById('passwordInput').value=''; show('login'); renderFirstRunNote(); }
+async function openSettings(){ renderUsers(); renderVersionHistory(); const row=document.getElementById('currentUserRow'); row.innerHTML=`<div class="avatar">${CURRENT_USER?.name?.charAt(0).toUpperCase()||'G'}</div><div class="meta">${CURRENT_USER?.name||'Owner'}<div class="sub">${CURRENT_USER?.mobile||''} · ${CURRENT_USER?.role==='ADMIN'?'Owner':'Employee'}</div></div>`; show('settings'); }
+async function logoutUser(){ CURRENT_USER=null; await saveKeyRaw('gsh:currentUserId', null); show('login'); resetAuthForm(); }
 
 const obSteps = [
   {icon:'🗂️',title:'Command Center',desc:"See yesterday's sales, today's cash position, and what needs attention — the moment you open the app."},
@@ -3245,16 +2876,16 @@ function saveSeasonSale(){
 async function bootstrap(){
   USERS = await loadKey('gsh:users', []);
   if(USERS.length===0){
-    const temporaryPassword = makeTemporaryPassword();
-    USERS = [{id:'u-owner',name:'Gopeshwar Owner',mobile:'',email:'',role:'ADMIN',username:'owner',passwordHash:await hashPassword(temporaryPassword),temporaryPassword,mustChangePassword:true,active:true,createdAt:new Date().toISOString()}];
+    // Create initial admin user without password - mobile-only authentication
+    USERS = [{id:'u-owner',name:'Gopeshwar Owner',mobile:'',role:'ADMIN',active:true,createdAt:new Date().toISOString()}];
     await saveKeyRaw('gsh:users', USERS);
   } else if(USERS.some(user=>user.active===undefined)){
     USERS.forEach(user=>{ if(user.active===undefined) user.active=true; });
     await saveKeyRaw('gsh:users', USERS);
   }
   VERSION_HISTORY = await loadKey('gsh:versionHistory', []);
-  if(!VERSION_HISTORY.some(entry=>entry.version==='v1.1')){
-    VERSION_HISTORY.push({version:'v1.1',date:new Date().toISOString().slice(0,10),type:'OTA',developer:'GSH Product Team',notes:'Mobile-first authentication, active users, and production OTA pass.'});
+  if(!VERSION_HISTORY.some(entry=>entry.version==='v1.3.2')){
+    VERSION_HISTORY.push({version:'v1.3.2',date:new Date().toISOString().slice(0,10),type:'OTA',developer:'GSH Product Team',notes:'Premium login design, mobile-only authentication, automatic OTA updates.'});
     await saveKeyRaw('gsh:versionHistory', VERSION_HISTORY);
   }
   PRODUCTS      = await loadKey('gsh:products', SEED_PRODUCTS);
@@ -3301,9 +2932,13 @@ async function bootstrap(){
     checkOtaUpdate(true);
   }
   if(Object.keys(SYNC_OUTBOX).length) attemptSync(); // resume any sync left queued from last session
+  
+  // Permanent login: if user is logged in, go directly to dashboard
   if(CURRENT_USER){
     show('cc');
     renderCC();
+  } else {
+    show('login');
   }
 }
 bootstrap();
