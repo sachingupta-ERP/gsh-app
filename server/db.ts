@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client';
+// @ts-ignore
 import { getDatabase } from './production-db.js';
 
 let prisma: any;
