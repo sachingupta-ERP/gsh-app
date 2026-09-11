@@ -52,6 +52,8 @@ html,body{margin:0;padding:0;background:#090d16;font-family:'Plus Jakarta Sans',
 
 /* ---------- DIGITAL LOGIN BACKGROUND (M3 Clean Tech) ---------- */
 #login, #pinSetupScreen, #pinSuccessScreen, #pinLoginScreen{
+  height: 100vh;
+  min-height: 100vh;
   background:radial-gradient(circle at 50% 12%, #1e293b 0%, #0f172a 48%, #020617 100%);
   color:#ffffff;padding:0;overflow-y:auto;position:relative;
 }
@@ -69,13 +71,13 @@ html,body{margin:0;padding:0;background:#090d16;font-family:'Plus Jakarta Sans',
   background:radial-gradient(circle, rgba(37,99,235,0.28) 0%, rgba(14,165,233,0.1) 45%, transparent 70%);
   pointer-events:none;filter:blur(36px);
 }
-.login-content{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;padding:48px 24px 36px;justify-content:center;align-items:center;}
-.brand-badge{width:56px;height:56px;border-radius:18px;background:linear-gradient(135deg,#2563eb,#1e3a8a);border:1px solid rgba(255,255,255,0.25);display:flex;align-items:center;justify-content:center;font-size:26px;color:#ffffff;margin-bottom:14px;box-shadow:0 10px 24px rgba(37,99,235,0.35);}
+.login-content{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;padding:24px 16px 20px;justify-content: center;align-items:center;}
+.brand-badge{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#2563eb,#1e3a8a);border:1px solid rgba(255,255,255,0.25);display:flex;align-items:center;justify-content:center;font-size:22px;color:#ffffff;margin-bottom:8px;box-shadow:0 8px 20px rgba(37,99,235,0.3);}
 .brand-mark{font-size:11px;letter-spacing:.24em;color:#93c5fd;margin-bottom:4px;font-family:'IBM Plex Mono',monospace;font-weight:700;text-transform:uppercase;}
 .brand-name{font-size:25px;font-weight:800;letter-spacing:-.02em;color:#ffffff;margin-bottom:4px;text-align:center;}
 .brand-tagline{font-size:12.5px;color:#94a3b8;font-weight:500;margin-bottom:0;text-align:center;}
-.login-hero{margin-top:28px;width:100%;max-width:380px;text-align:center;}
-.login-glass{background:rgba(15,23,42,0.76);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,0.12);border-radius:24px;padding:26px 22px;width:100%;box-shadow:0 16px 40px rgba(0,0,0,0.45);}
+.login-hero{margin-top:14px;width:100%;max-width:380px;text-align:center;}
+.login-glass{background:rgba(15,23,42,0.76);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:18px 16px;width:100%;box-shadow:0 12px 32px rgba(0,0,0,0.4);}
 .login-glass h1{font-size:20px;font-weight:700;margin:0 0 6px;color:#ffffff;}
 .login-glass p{font-size:13px;color:#94a3b8;margin:0 0 20px;line-height:1.45;}
 .field{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:14px;padding:12px 16px;margin-bottom:14px;transition:all .2s ease;text-align:left;}
@@ -4564,7 +4566,8 @@ async function bootstrap(){
   SYNC_SERVER_URL = await loadKey('gsh:syncServerUrl', '');
   OTA_STATE.disabled = await loadKey('gsh:otaDisabled', false);
   const currentUserId = await loadKey('gsh:currentUserId', null);
-  CURRENT_USER = USERS.find(user=>user.id===currentUserId) || null;
+  const isLoggedIn = await loadKey('gsh:isLoggedIn', false);
+  CURRENT_USER = (currentUserId && isLoggedIn) ? (USERS.find(user=>user.id===currentUserId) || null) : null;
   renderFirstRunNote();
 
   filterInventory();
@@ -4589,10 +4592,11 @@ async function bootstrap(){
   if(Object.keys(SYNC_OUTBOX).length) attemptSync(); // resume any sync left queued from last session
   
   // Permanent login: if user is logged in, go directly to dashboard
-  if(CURRENT_USER){
+  if(CURRENT_USER && isLoggedIn){
     show('cc');
     renderCC();
   } else {
+    CURRENT_USER = null;
     show('login');
   }
 }
