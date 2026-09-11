@@ -36,3 +36,4 @@ npm-debug.log*
 *.aab
 .gradle/
 local.properties
+.tools/

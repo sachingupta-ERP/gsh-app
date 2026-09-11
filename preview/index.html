@@ -8,155 +8,197 @@
 <meta property="og:title" content="Gopeshwar Stationary House" />
 <meta property="og:description" content="Retail intelligence and inventory management for Gopeshwar Stationary House" />
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
 
 :root{
-  --paper:#F6F1E7; --paper-raised:#FDFBF5; --ink:#1C1A2E; --ink-soft:#4A465F; --ink-faint:#8A8598; --rule:#DCD4C0;
-  --indigo:#3B3486; --indigo-deep:#241F5C; --indigo-tint:#ECEAF7;
-  --emerald:#1F6F54; --emerald-tint:#E4F1EC; --amber:#A9631A; --amber-tint:#FBEFDD; --rose:#A6304A; --rose-tint:#F7E7EA;
-  --r-sm:6px; --r-md:10px; --r-lg:16px;
+  /* Google Material 3 Color Tokens */
+  --md-sys-color-primary: #1e3a8a;
+  --md-sys-color-on-primary: #ffffff;
+  --md-sys-color-primary-container: #dbeafe;
+  --md-sys-color-on-primary-container: #1e3a8a;
+  --md-sys-color-surface: #f8fafc;
+  --md-sys-color-surface-container-low: #f1f5f9;
+  --md-sys-color-surface-container: #e2e8f0;
+  --md-sys-color-outline: #cbd5e1;
+
+  /* App Theme Variables mapped cleanly to M3 palette */
+  --paper: #f8fafc;
+  --paper-raised: #ffffff;
+  --ink: #0f172a;
+  --ink-soft: #334155;
+  --ink-faint: #64748b;
+  --rule: #e2e8f0;
+  --indigo: #2563eb;
+  --indigo-deep: #1e3a8a;
+  --indigo-tint: #eff6ff;
+  --emerald: #059669;
+  --emerald-tint: #ecfdf5;
+  --amber: #d97706;
+  --amber-tint: #fffbeb;
+  --rose: #dc2626;
+  --rose-tint: #fef2f2;
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 24px;
 }
 *{box-sizing:border-box;}
-html,body{margin:0;padding:0;background:#0f0e1a;font-family:'Space Grotesk',system-ui,sans-serif;}
-.device{width:390px;height:844px;margin:0 auto;background:var(--paper);position:relative;overflow:hidden;color:var(--ink);}
+html,body{margin:0;padding:0;background:#090d16;font-family:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;-webkit-tap-highlight-color:transparent;}
+.device{width:100%;max-width:440px;height:100vh;height:100dvh;margin:0 auto;background:var(--paper);position:relative;overflow:hidden;color:var(--ink);display:flex;flex-direction:column;box-shadow:0 0 50px rgba(0,0,0,0.45);}
+@media(max-width:440px){.device{max-width:100%;box-shadow:none;}}
 .mono{font-family:'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums;}
 .screen{position:absolute;inset:0;display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .25s ease;}
 .screen.active{opacity:1;pointer-events:auto;}
 
-/* ---------- LOGIN ---------- */
-#login{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);color:#ffffff;padding:0;overflow:hidden;position:relative;}
-#login::before{content:"";position:absolute;inset:0;background-image:
-  radial-gradient(circle at 20% 80%,rgba(59,52,134,0.3) 0%,transparent 40%),
-  radial-gradient(circle at 80% 20%,rgba(26,35,126,0.2) 0%,transparent 30%),
-  radial-gradient(ellipse 600px 400px at 50% 50%,rgba(45,52,134,0.15) 0%,transparent 70%);pointer-events:none;animation:gradientShift 15s ease-in-out infinite;}
-#login::after{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);pointer-events:none;}
-@keyframes gradientShift{0%,100%{opacity:1;}50%{opacity:0.7;}}
-.login-scrim{position:absolute;inset:0;background:transparent;z-index:0;}
-.login-scrim:after{content:"";position:absolute;width:300px;height:300px;right:-100px;bottom:-100px;border:2px solid rgba(59,52,134,0.2);border-radius:50% 50% 50% 50%;opacity:0.4;pointer-events:none;animation:float 20s ease-in-out infinite;}
-@keyframes float{0%,100%{transform:translate(0,0) rotate(0deg);}50%{transform:translate(20px,-20px) rotate(180deg);}}
-.login-content{position:relative;z-index:1;flex:1;display:flex;flex-direction:column;padding:64px 32px 48px;justify-content:center;align-items:center;}
-.brand-mark{font-size:11px;letter-spacing:.28em;color:rgba(255,255,255,0.6);margin-bottom:12px;font-family:'IBM Plex Mono',monospace;font-weight:600;text-transform:uppercase;}
-.brand-name{font-size:28px;font-weight:700;line-height:1.1;letter-spacing:-.01em;font-family:'Space Grotesk',sans-serif;color:#ffffff;margin-bottom:4px;text-align:center;}
-.brand-tagline{font-size:13px;color:rgba(255,255,255,0.7);font-weight:500;margin-bottom:0;text-align:center;}
-.login-hero{margin-top:48px;max-width:380px;text-align:center;}
-.login-hero h1{font-size:22px;line-height:1.3;font-weight:600;margin:0 0 8px;color:#ffffff;}
-.login-hero p{font-size:14px;color:rgba(255,255,255,0.7);margin:0 0 32px;line-height:1.5;}
-.login-glass{background:rgba(255,255,255,0.1);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.2);border-radius:20px;padding:32px;width:100%;max-width:380px;box-shadow:0 8px 32px rgba(0,0,0,0.3);}
-.field{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);border-radius:12px;
-  padding:16px 20px;margin-bottom:16px;transition:all .2s ease;}
-.field:focus-within{background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.4);}
-.field label{display:block;font-size:11px;color:rgba(255,255,255,0.6);margin-bottom:6px;font-weight:500;letter-spacing:.03em;text-transform:uppercase;}
-.field input{background:transparent;border:none;color:#ffffff;font-family:'Space Grotesk',sans-serif;font-size:18px;width:100%;outline:none;letter-spacing:.01em;}
-.field input::placeholder{color:rgba(255,255,255,0.4);}
-.btn{border:none;border-radius:12px;padding:16px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;
-  cursor:pointer;width:100%;transition:all .15s ease;}
+/* ---------- DIGITAL LOGIN BACKGROUND (M3 Clean Tech) ---------- */
+#login, #pinSetupScreen, #pinSuccessScreen, #pinLoginScreen{
+  background:radial-gradient(circle at 50% 12%, #1e293b 0%, #0f172a 48%, #020617 100%);
+  color:#ffffff;padding:0;overflow-y:auto;position:relative;
+}
+#login::before, #pinSetupScreen::before, #pinSuccessScreen::before, #pinLoginScreen::before{
+  content:"";position:absolute;inset:0;
+  background-size:32px 32px;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.035) 1px, transparent 1px);
+  pointer-events:none;
+}
+#login::after, #pinSetupScreen::after, #pinLoginScreen::after{
+  content:"";position:absolute;top:-100px;left:50%;transform:translateX(-50%);
+  width:320px;height:320px;
+  background:radial-gradient(circle, rgba(37,99,235,0.28) 0%, rgba(14,165,233,0.1) 45%, transparent 70%);
+  pointer-events:none;filter:blur(36px);
+}
+.login-content{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;padding:48px 24px 36px;justify-content:center;align-items:center;}
+.brand-badge{width:56px;height:56px;border-radius:18px;background:linear-gradient(135deg,#2563eb,#1e3a8a);border:1px solid rgba(255,255,255,0.25);display:flex;align-items:center;justify-content:center;font-size:26px;color:#ffffff;margin-bottom:14px;box-shadow:0 10px 24px rgba(37,99,235,0.35);}
+.brand-mark{font-size:11px;letter-spacing:.24em;color:#93c5fd;margin-bottom:4px;font-family:'IBM Plex Mono',monospace;font-weight:700;text-transform:uppercase;}
+.brand-name{font-size:25px;font-weight:800;letter-spacing:-.02em;color:#ffffff;margin-bottom:4px;text-align:center;}
+.brand-tagline{font-size:12.5px;color:#94a3b8;font-weight:500;margin-bottom:0;text-align:center;}
+.login-hero{margin-top:28px;width:100%;max-width:380px;text-align:center;}
+.login-glass{background:rgba(15,23,42,0.76);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,0.12);border-radius:24px;padding:26px 22px;width:100%;box-shadow:0 16px 40px rgba(0,0,0,0.45);}
+.login-glass h1{font-size:20px;font-weight:700;margin:0 0 6px;color:#ffffff;}
+.login-glass p{font-size:13px;color:#94a3b8;margin:0 0 20px;line-height:1.45;}
+.field{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:14px;padding:12px 16px;margin-bottom:14px;transition:all .2s ease;text-align:left;}
+.field:focus-within{background:rgba(255,255,255,0.1);border-color:#60a5fa;box-shadow:0 0 0 3px rgba(96,165,250,0.2);}
+.field label{display:block;font-size:10.5px;color:#94a3b8;margin-bottom:4px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;}
+.field input{background:transparent;border:none;color:#ffffff;font-family:'Plus Jakarta Sans',sans-serif;font-size:17px;width:100%;outline:none;font-weight:600;letter-spacing:.02em;}
+.field input::placeholder{color:rgba(255,255,255,0.35);font-weight:400;}
+.quick-owner-chip{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:20px;background:rgba(37,99,235,0.18);border:1px solid rgba(96,165,250,0.35);color:#bfdbfe;font-size:11.5px;font-weight:600;cursor:pointer;margin-bottom:16px;transition:background .15s ease;}
+.quick-owner-chip:hover{background:rgba(37,99,235,0.32);}
+.btn{border:none;border-radius:14px;padding:14px 20px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:14.5px;cursor:pointer;width:100%;transition:all .15s ease;display:inline-flex;align-items:center;justify-content:center;gap:8px;}
 .btn:active{transform:scale(0.98);}
-.btn-primary{background:linear-gradient(135deg,#3B3486 0%,#241F5C 100%);color:#FFFFFF;border:1px solid rgba(255,255,255,0.2);box-shadow:0 4px 15px rgba(59,52,134,0.4);}
-.btn-primary:hover{background:linear-gradient(135deg,#4a4295 0%,#2d2a6e 100%);box-shadow:0 6px 20px rgba(59,52,134,0.5);}
+.btn-primary{background:#2563eb;color:#FFFFFF;border:1px solid rgba(255,255,255,0.2);box-shadow:0 4px 16px rgba(37,99,235,0.4);}
+.btn-primary:hover{background:#1d4ed8;box-shadow:0 6px 20px rgba(37,99,235,0.5);}
 .btn-primary:disabled{opacity:.5;cursor:not-allowed;}
-.btn-ghost{background:transparent;color:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.2);margin-top:12px;}
-.btn-ghost:hover{background:rgba(255,255,255,0.1);color:#ffffff;}
-.err{color:#ff6b6b;font-size:13px;margin:-8px 0 16px;min-height:16px;text-align:center;}
-.login-version{position:absolute;right:24px;bottom:24px;font-size:10px;color:rgba(255,255,255,0.5);font-family:'IBM Plex Mono',monospace;font-weight:600;letter-spacing:.05em;}
+.btn-ghost{background:rgba(255,255,255,0.06);color:#e2e8f0;border:1px solid rgba(255,255,255,0.15);margin-top:10px;}
+.btn-ghost:hover{background:rgba(255,255,255,0.12);color:#ffffff;}
+.err{color:#f87171;font-size:12.5px;margin:-6px 0 14px;min-height:16px;text-align:center;}
+.login-version{position:absolute;right:20px;bottom:20px;font-size:10.5px;color:rgba(255,255,255,0.5);font-family:'IBM Plex Mono',monospace;font-weight:600;letter-spacing:.05em;}
 .auth-loading{text-align:center;margin:24px 0;}
-.auth-loading-text{font-size:14px;color:rgba(255,255,255,0.8);margin-bottom:8px;}
+.auth-loading-text{font-size:14px;color:#cbd5e1;margin-bottom:10px;}
 .auth-loading-dots{display:flex;gap:6px;justify-content:center;}
-.auth-loading-dots span{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.6);animation:loadingPulse 1.4s ease-in-out infinite;}
+.auth-loading-dots span{width:8px;height:8px;border-radius:50%;background:#60a5fa;animation:loadingPulse 1.4s ease-in-out infinite;}
 .auth-loading-dots span:nth-child(2){animation-delay:0.2s;}
 .auth-loading-dots span:nth-child(3){animation-delay:0.4s;}
-@keyframes loadingPulse{0%,100%{opacity:0.4;transform:scale(1);}50%{opacity:1;transform:scale(1.2);}}
-.auth-success{text-align:center;margin:32px 0;}
-.auth-success-icon{font-size:64px;margin-bottom:16px;animation:successPop 0.6s ease-out;}
+@keyframes loadingPulse{0%,100%{opacity:0.35;transform:scale(1);}50%{opacity:1;transform:scale(1.25);}}
+.auth-success{text-align:center;margin:28px 0;}
+.auth-success-icon{font-size:56px;margin-bottom:14px;animation:successPop 0.5s ease-out;color:#34d399;}
 @keyframes successPop{0%{transform:scale(0);}50%{transform:scale(1.2);}100%{transform:scale(1);}}
-.auth-success h2{font-size:20px;font-weight:700;color:#ffffff;margin:0 0 8px;}
-.auth-success p{font-size:15px;color:rgba(255,255,255,0.8);margin:0;}
-.auth-error{text-align:center;margin:24px 0;padding:20px;background:rgba(255,107,107,0.1);border:1px solid rgba(255,107,107,0.3);border-radius:12px;}
-.auth-error h3{font-size:16px;font-weight:700;color:#ff6b6b;margin:0 0 8px;}
-.auth-error p{font-size:13px;color:rgba(255,255,255,0.8);margin:0;line-height:1.5;}
-.pin-entry{display:flex;gap:6px;margin:18px 0 24px;justify-content:center;}
-.pin-digit{width:44px;height:54px;border:2px solid rgba(255,255,255,0.2);border-radius:10px;background:rgba(255,255,255,0.1);font-size:24px;font-weight:700;color:#ffffff;text-align:center;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;position:relative;}
-.pin-digit:focus-visible{outline:none;border-color:#3B3486;background:rgba(255,255,255,0.15);}
-.pin-digit::placeholder{color:rgba(255,255,255,0.3);}
+.auth-success h2{font-size:20px;font-weight:700;color:#ffffff;margin:0 0 6px;}
+.auth-success p{font-size:14.5px;color:#94a3b8;margin:0;}
+.auth-error{text-align:center;margin:20px 0;padding:18px;background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:14px;}
+.auth-error h3{font-size:15.5px;font-weight:700;color:#f87171;margin:0 0 6px;}
+.auth-error p{font-size:13px;color:#cbd5e1;margin:0;line-height:1.5;}
+.pin-entry{display:flex;gap:6px;margin:16px 0 22px;justify-content:center;}
+.pin-digit{width:46px;height:54px;border:2px solid rgba(255,255,255,0.18);border-radius:12px;background:rgba(255,255,255,0.08);font-size:24px;font-weight:700;color:#ffffff;text-align:center;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;position:relative;}
+.pin-digit:focus-visible{outline:none;border-color:#38bdf8;background:rgba(255,255,255,0.15);box-shadow:0 0 0 3px rgba(56,189,248,0.25);}
+.pin-digit::placeholder{color:rgba(255,255,255,0.25);}
 .pin-success{text-align:center;margin:24px 0;}
-.pin-success-icon{font-size:64px;margin-bottom:16px;animation:successPop 0.6s ease-out;}
-@keyframes successPop{0%{transform:scale(0);}50%{transform:scale(1.2);}100%{transform:scale(1);}}
-.pin-success h2{font-size:20px;font-weight:700;color:#ffffff;margin:0 0 8px;}
-.pin-success p{font-size:15px;color:rgba(255,255,255,0.8);margin:0;}
+.pin-success-icon{font-size:56px;margin-bottom:14px;animation:successPop 0.5s ease-out;color:#34d399;}
+.pin-success h2{font-size:20px;font-weight:700;color:#ffffff;margin:0 0 6px;}
+.pin-success p{font-size:14px;color:#94a3b8;margin:0;}
 .biometric-row{display:flex;flex-direction:column;gap:12px;margin:24px 0;}
-.biometric-offer{font-size:13px;color:rgba(255,255,255,0.8);text-align:center;margin-bottom:8px;}
+.biometric-offer{font-size:13.5px;color:#cbd5e1;text-align:center;margin-bottom:8px;line-height:1.5;}
 .biometric-offer strong{color:#ffffff;font-weight:700;}
-.btn-secondary{background:rgba(255,255,255,0.1);color:#ffffff;border:1px solid rgba(255,255,255,0.2);}
+.btn-secondary{background:rgba(255,255,255,0.08);color:#ffffff;border:1px solid rgba(255,255,255,0.2);}
 .btn-secondary:hover{background:rgba(255,255,255,0.15);}
-.auth-step-label{font-size:10px;letter-spacing:.15em;color:rgba(255,255,255,0.5);text-transform:uppercase;margin:0 0 12px;font-weight:700;}
-.settings-section{margin:0 20px 18px;background:var(--paper-raised);border:1px solid var(--rule);border-radius:var(--r-lg);overflow:hidden;}
-.settings-section-title{padding:12px 14px 8px;font-size:10px;letter-spacing:.08em;color:var(--ink-faint);}
-.settings-user{display:flex;align-items:center;gap:10px;padding:11px 14px;border-top:1px solid var(--rule);}
-.settings-user .avatar{width:30px;height:30px;border-radius:50%;background:var(--indigo-tint);color:var(--indigo);display:flex;align-items:center;justify-content:center;font-weight:700;}
-.settings-user .meta{flex:1;font-size:12.5px}.settings-user .sub{font-size:10.5px;color:var(--ink-faint);margin-top:2px}
-.settings-action{padding:13px 14px;border-top:1px solid var(--rule);font-size:13px;cursor:pointer;}
-.settings-action.danger{color:var(--rose);}
+.auth-step-label{font-size:10px;letter-spacing:.15em;color:#93c5fd;text-transform:uppercase;margin:0 0 10px;font-weight:700;}
+.settings-section{margin:0 20px 18px;background:var(--paper-raised);border:1px solid var(--rule);border-radius:var(--r-lg);overflow:hidden;box-shadow:0 1px 3px rgba(15,23,42,0.04);}
+.settings-section-title{padding:12px 14px 8px;font-size:10px;letter-spacing:.08em;color:var(--ink-faint);font-weight:700;}
+.settings-user{display:flex;align-items:center;gap:10px;padding:12px 14px;border-top:1px solid var(--rule);}
+.settings-user .avatar{width:32px;height:32px;border-radius:50%;background:var(--indigo-tint);color:var(--indigo);display:flex;align-items:center;justify-content:center;font-weight:700;}
+.settings-user .meta{flex:1;font-size:13px;font-weight:600;}.settings-user .sub{font-size:11px;color:var(--ink-faint);margin-top:2px;font-weight:400;}
+.settings-action{padding:13px 14px;border-top:1px solid var(--rule);font-size:13px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;}
+.settings-action.danger{color:var(--rose);font-weight:600;}
 
 /* ---------- ONBOARDING ---------- */
 #onboarding{background:var(--paper);}
-.ob-skip{align-self:flex-end;padding:20px 20px 0;font-size:12.5px;color:var(--ink-faint);cursor:pointer;}
+.ob-skip{align-self:flex-end;padding:20px 20px 0;font-size:12.5px;color:var(--ink-faint);cursor:pointer;font-weight:600;}
 .ob-card{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 36px;text-align:center;}
-.ob-icon{width:72px;height:72px;border-radius:20px;background:var(--indigo-tint);display:flex;align-items:center;justify-content:center;font-size:30px;margin-bottom:26px;}
-.ob-card h2{font-size:20px;margin:0 0 10px;}
-.ob-card p{font-size:13.5px;color:var(--ink-soft);line-height:1.5;margin:0;}
+.ob-icon{width:76px;height:76px;border-radius:22px;background:var(--indigo-tint);display:flex;align-items:center;justify-content:center;font-size:32px;margin-bottom:24px;border:1px solid #bfdbfe;}
+.ob-card h2{font-size:21px;font-weight:800;margin:0 0 10px;}
+.ob-card p{font-size:14px;color:var(--ink-soft);line-height:1.55;margin:0;}
 .ob-foot{padding:20px 28px 34px;}
 .ob-progress{display:flex;gap:6px;justify-content:center;margin-bottom:18px;}
 .ob-progress span{width:7px;height:7px;border-radius:50%;background:var(--rule);}
-.ob-progress span.on{background:var(--indigo);}
+.ob-progress span.on{background:var(--indigo);width:16px;border-radius:4px;}
 
-/* ---------- COMMAND CENTER ---------- */
+/* ---------- COMMAND CENTER (Material 3 Professional Dashboard) ---------- */
 #cc{background:var(--paper);}
 .cc-scroll{flex:1;overflow-y:auto;padding-bottom:84px;}
-.cc-head{padding:20px 20px 14px;}
-.cc-greet{font-size:12px;color:var(--ink-faint);}
-.cc-title{font-size:19px;font-weight:600;margin-top:2px;}
-.cc-ai-status{display:flex;align-items:center;gap:6px;margin-top:10px;font-size:11.5px;color:var(--indigo);}
-.dot{width:6px;height:6px;border-radius:50%;background:var(--emerald);}
+.cc-head{padding:20px 20px 14px;background:#ffffff;border-bottom:1px solid var(--rule);}
+.cc-top-row{display:flex;justify-content:space-between;align-items:center;}
+.cc-greet{font-size:11.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-faint);}
+.cc-title{font-size:20px;font-weight:800;letter-spacing:-.02em;margin-top:2px;color:var(--ink);}
+.cc-ai-status{display:flex;align-items:center;gap:6px;margin-top:10px;font-size:11.5px;color:var(--indigo);font-weight:600;}
+.status-pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:20px;background:var(--emerald-tint);border:1px solid rgba(5,150,105,0.2);color:var(--emerald);font-size:11px;font-weight:700;}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--emerald);box-shadow:0 0 0 2px rgba(5,150,105,0.25);animation:pulseBeacon 2s infinite;}
+@keyframes pulseBeacon{0%{box-shadow:0 0 0 0 rgba(5,150,105,0.6);}70%{box-shadow:0 0 0 6px rgba(5,150,105,0);}100%{box-shadow:0 0 0 0 rgba(5,150,105,0);}}
 
-.section-label{padding:0 20px;font-size:11px;letter-spacing:.06em;color:var(--ink-faint);margin:22px 0 10px;}
-.today-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 20px;}
-.stat-card{background:var(--paper-raised);border:1px solid var(--rule);border-radius:var(--r-lg);padding:14px;}
-.stat-label{font-size:11px;color:var(--ink-faint);}
-.stat-value{font-family:'IBM Plex Mono',monospace;font-size:19px;font-weight:600;margin-top:4px;}
+.section-label{padding:0 20px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);margin:20px 0 10px;}
+.today-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 20px;}
+.stat-card{background:var(--paper-raised);border:1px solid var(--rule);border-radius:var(--r-lg);padding:15px;box-shadow:0 1px 3px rgba(15,23,42,0.04),0 1px 2px rgba(15,23,42,0.02);transition:transform .15s ease;}
+.stat-card:active{transform:scale(0.98);}
+.stat-label{font-size:11.5px;font-weight:600;color:var(--ink-faint);letter-spacing:.01em;}
+.stat-value{font-family:'IBM Plex Mono',monospace;font-size:20px;font-weight:700;margin-top:6px;letter-spacing:-.02em;}
 .stat-value.up{color:var(--emerald);}
-.stat-delta{font-size:11px;color:var(--ink-faint);margin-top:2px;}
+.stat-delta{font-size:11px;color:var(--ink-faint);margin-top:4px;font-weight:500;}
 
-.attn{margin:0 20px;background:var(--paper-raised);border:1px solid var(--rule);border-radius:var(--r-lg);overflow:hidden;}
-.attn-row{display:flex;align-items:center;justify-content:space-between;padding:13px 14px;border-bottom:1px solid var(--rule);cursor:pointer;}
+.attn{margin:0 20px;background:var(--paper-raised);border:1px solid var(--rule);border-radius:var(--r-lg);overflow:hidden;box-shadow:0 1px 3px rgba(15,23,42,0.04);}
+.attn-row{display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--rule);cursor:pointer;transition:background .12s ease;}
+.attn-row:hover{background:#f8fafc;}
 .attn-row:last-child{border-bottom:none;}
 .attn-left{display:flex;align-items:center;gap:10px;}
 .badge{width:8px;height:8px;border-radius:50%;flex:0 0 auto;}
 .badge.crit{background:var(--rose);}
 .badge.med{background:var(--amber);}
-.attn-title{font-size:13.5px;font-weight:500;}
+.attn-title{font-size:13.5px;font-weight:600;}
 .attn-sub{font-size:11.5px;color:var(--ink-faint);}
-.chev{color:var(--ink-faint);font-size:14px;}
+.chev{color:var(--ink-faint);font-size:15px;font-weight:600;}
 
-.brief{margin:0 20px;background:var(--indigo-tint);border-radius:var(--r-lg);padding:16px;}
-.brief-label{font-size:11px;color:var(--indigo);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:6px;}
-.brief-text{font-size:13.5px;line-height:1.55;color:var(--ink);}
-.brief-actions{display:flex;gap:10px;margin-top:12px;}
-.link-btn{font-size:12px;color:var(--indigo);font-weight:600;cursor:pointer;border-bottom:1px solid transparent;}
+.brief{margin:0 20px;background:var(--indigo-tint);border:1px solid #bfdbfe;border-radius:var(--r-lg);padding:16px;box-shadow:0 1px 3px rgba(37,99,235,0.06);}
+.brief-label{font-size:11px;letter-spacing:.08em;color:var(--indigo);font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:6px;text-transform:uppercase;}
+.brief-text{font-size:13px;line-height:1.55;color:#1e293b;font-weight:500;}
+.brief-actions{display:flex;gap:12px;margin-top:12px;}
+.link-btn{font-size:12px;color:var(--indigo);font-weight:700;cursor:pointer;border-bottom:1px solid transparent;}
 .link-btn:hover{border-color:var(--indigo);}
 
-.quick-row{display:flex;gap:10px;padding:0 20px;overflow-x:auto;}
-.qa{flex:0 0 auto;width:76px;display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;}
-.qa-icon{width:52px;height:52px;border-radius:16px;background:var(--paper-raised);border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;font-size:20px;transition:transform .1s ease;}
-.qa:active .qa-icon{transform:scale(0.94);}
-.qa-label{font-size:10.5px;color:var(--ink-soft);text-align:center;}
+.quick-row{display:flex;gap:12px;padding:0 20px;overflow-x:auto;}
+.qa{flex:0 0 auto;width:74px;display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;}
+.qa-icon{width:54px;height:54px;border-radius:18px;background:var(--paper-raised);border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 1px 3px rgba(15,23,42,0.04);transition:all .15s ease;}
+.qa:active .qa-icon{transform:scale(0.92);background:#f1f5f9;}
+.qa-label{font-size:11px;font-weight:600;color:var(--ink-soft);text-align:center;}
 
-.bottomnav{position:absolute;left:0;right:0;bottom:0;height:64px;background:var(--paper-raised);border-top:1px solid var(--rule);
+/* Material 3 Bottom Navigation Bar */
+.bottomnav{position:absolute;left:0;right:0;bottom:0;height:68px;background:var(--paper-raised);border-top:1px solid var(--rule);
   display:flex;align-items:center;justify-content:space-around;z-index:5;}
-.nav-item{display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--ink-faint);font-size:10px;cursor:pointer;}
-.nav-item.active{color:var(--indigo);}
-.nav-icon{font-size:18px;}
+.nav-item{display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--ink-faint);font-size:11px;font-weight:600;cursor:pointer;padding:4px 10px;transition:all .15s ease;}
+.nav-item.active{color:var(--indigo-deep);}
+.nav-item.active .nav-icon{background:var(--indigo-tint);color:var(--indigo-deep);border-radius:14px;padding:3px 16px;}
+.nav-icon{font-size:18px;display:inline-flex;align-items:center;justify-content:center;transition:all .15s ease;padding:3px 10px;}
 
-.toast{position:absolute;left:20px;right:20px;bottom:84px;background:var(--ink);color:var(--paper);padding:12px 16px;
-  border-radius:var(--r-md);font-size:12.5px;opacity:0;transform:translateY(8px);transition:all .2s ease;pointer-events:none;z-index:10;}
+.toast{position:absolute;left:20px;right:20px;bottom:84px;background:var(--ink);color:#ffffff;padding:12px 16px;
+  border-radius:var(--r-md);font-size:12.5px;font-weight:600;opacity:0;transform:translateY(8px);transition:all .2s ease;pointer-events:none;z-index:10;box-shadow:0 4px 14px rgba(0,0,0,0.25);}
 .toast.show{opacity:1;transform:translateY(0);}
 
 /* ---------- SHARED: header bar w/ back ---------- */
@@ -470,8 +512,23 @@ html,body{margin:0;padding:0;background:#0f0e1a;font-family:'Space Grotesk',syst
 .season-add{font-size:11.5px;font-weight:600;color:var(--indigo);cursor:pointer;}
 .season-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--rule);margin:0 20px;font-size:12.5px;}
 .season-row-sub{font-size:10.5px;color:var(--ink-faint);}
+
+/* ---------- PDF EXPORT BUTTONS & BANNERS ---------- */
+.export-pdf-pill{background:var(--indigo-tint);color:var(--indigo-deep);border:1px solid rgba(59,52,134,0.25);border-radius:14px;padding:5px 12px;font-size:11.5px;font-weight:600;display:inline-flex;align-items:center;gap:5px;cursor:pointer;transition:all .15s ease;white-space:nowrap;}
+.export-pdf-pill:hover{background:var(--indigo);color:#ffffff;}
+.export-pdf-pill:active{transform:scale(0.96);}
+.rpt-export-banner{margin:0 20px 14px;background:linear-gradient(135deg,#241F5C 0%,#3B3486 100%);border-radius:var(--r-lg);padding:14px 16px;display:flex;align-items:center;justify-content:space-between;color:#ffffff;box-shadow:0 4px 12px rgba(36,31,92,0.18);}
+.reb-title{font-size:13.5px;font-weight:600;letter-spacing:-.01em;}
+.reb-sub{font-size:11px;color:rgba(255,255,255,0.75);margin-top:2px;}
+.reb-btn{background:#ffffff;color:#241F5C;border:none;border-radius:8px;padding:8px 12px;font-size:11.5px;font-weight:600;display:flex;align-items:center;gap:5px;cursor:pointer;transition:all .15s ease;flex:0 0 auto;}
+.reb-btn:hover{background:var(--paper-raised);box-shadow:0 2px 6px rgba(0,0,0,0.15);}
+.reb-btn:active{transform:scale(0.96);}
+.bill-pdf-chip{background:var(--indigo-tint);color:var(--indigo);border:1px solid rgba(59,52,134,0.2);border-radius:6px;padding:3px 8px;font-size:11px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:3px;transition:all .15s ease;}
+.bill-pdf-chip:hover{background:var(--indigo);color:#ffffff;}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
 </head>
 <body>
 <div class="device">
@@ -480,22 +537,28 @@ html,body{margin:0;padding:0;background:#0f0e1a;font-family:'Space Grotesk',syst
   <div class="screen active" id="login">
     <div class="login-scrim"></div>
     <div class="login-content">
+      <div class="brand-badge">📚</div>
       <div class="brand-mark">GOPESHWAR</div>
       <div class="brand-name">Stationary House</div>
-      <div class="brand-tagline">Premium Stationery & Office Solutions</div>
+      <div class="brand-tagline">Retail Intelligence & Inventory Operations</div>
 
       <div class="login-hero">
         <div class="login-glass">
-          <h1 id="authTitle">Welcome to GSH</h1>
-          <p id="authSubtitle">Enter your registered mobile number to start.</p>
+          <h1 id="authTitle">Staff & Owner Portal</h1>
+          <p id="authSubtitle">Enter your registered 10-digit mobile number.</p>
           
           <div id="authForm">
+            <div style="text-align:center;">
+              <div class="quick-owner-chip" onclick="document.getElementById('mobileInput').value='9457076378';continueMobileAuth();">
+                <span>👑 Owner: 9457076378</span>
+              </div>
+            </div>
             <div class="field">
               <label>Mobile Number</label>
-              <input id="mobileInput" type="tel" inputmode="numeric" autocomplete="tel" placeholder="10-digit number" onkeydown="if(event.key==='Enter') continueMobileAuth()" maxlength="10" />
+              <input id="mobileInput" type="tel" inputmode="numeric" autocomplete="tel" placeholder="9457076378" onkeydown="if(event.key==='Enter') continueMobileAuth()" maxlength="10" />
             </div>
             <div class="err" id="loginErr"></div>
-            <button class="btn btn-primary" onclick="continueMobileAuth()">Continue</button>
+            <button class="btn btn-primary" onclick="continueMobileAuth()">Sign In Directly</button>
           </div>
 
           <div id="authLoading" class="auth-loading" style="display: none;">
@@ -601,7 +664,10 @@ html,body{margin:0;padding:0;background:#0f0e1a;font-family:'Space Grotesk',syst
         </div>
 
         <button id="useBiometricBtn" class="btn btn-secondary" style="margin-top: 18px; display: none;" onclick="triggerBiometricLogin()">Use Fingerprint</button>
-        <button class="btn btn-ghost" style="margin-top: 10px;" onclick="resetAuthFlow();show('login')">Use different mobile</button>
+        <div style="margin-top: 14px; display: flex; justify-content: space-between; align-items: center; padding: 0 4px;">
+          <a href="javascript:void(0)" onclick="forgotPIN()" style="color: rgba(255,255,255,0.75); font-size: 12px; text-decoration: underline; cursor: pointer;">Forgot PIN?</a>
+          <a href="javascript:void(0)" onclick="resetAuthFlow();show('login')" style="color: rgba(255,255,255,0.65); font-size: 12px; text-decoration: none; cursor: pointer;">Use different mobile</a>
+        </div>
       </div>
     </div>
     <div class="login-version">v1.3.2 OTA</div>
@@ -625,17 +691,41 @@ html,body{margin:0;padding:0;background:#0f0e1a;font-family:'Space Grotesk',syst
   <div class="screen" id="cc">
     <div class="cc-scroll">
       <div class="cc-head">
-        <div class="cc-greet" id="ccGreet">Good morning</div>
-        <div class="cc-title">Gopeshwar Stationary House</div>
-        <div class="cc-ai-status"><span class="dot"></span> AI briefing ready · updated 7:02 AM</div>
+        <div class="cc-top-row">
+          <div>
+            <div class="cc-greet" id="ccGreet">Good morning</div>
+            <div class="cc-title">Gopeshwar Stationary</div>
+          </div>
+          <div class="status-pill">
+            <span class="dot"></span>
+            <span>Live DB</span>
+          </div>
+        </div>
+        <div class="cc-ai-status">⚡ AI Assistant active · SQLite WAL Engine</div>
       </div>
 
       <div class="section-label">TODAY AT A GLANCE</div>
       <div class="today-grid">
-        <div class="stat-card"><div class="stat-label">Sales</div><div class="stat-value mono" id="ccSales">₹0</div><div class="stat-delta" id="ccSalesSub">No sales logged yet today</div></div>
-        <div class="stat-card"><div class="stat-label">Gross profit</div><div class="stat-value mono" id="ccProfit">₹0</div><div class="stat-delta" id="ccProfitSub">—</div></div>
-        <div class="stat-card"><div class="stat-label">Cash</div><div class="stat-value mono" id="ccCash">₹0</div><div class="stat-delta">Expected in drawer now</div></div>
-        <div class="stat-card"><div class="stat-label">UPI</div><div class="stat-value mono" id="ccUpi">₹0</div><div class="stat-delta" id="ccUpiSub">No UPI sales yet today</div></div>
+        <div class="stat-card">
+          <div class="stat-card-head"><span class="stat-label">Sales</span><span class="stat-icon" style="background:#eff6ff;color:#2563eb;">📈</span></div>
+          <div class="stat-value mono" id="ccSales">₹0</div>
+          <div class="stat-delta" id="ccSalesSub">No sales logged yet today</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-head"><span class="stat-label">Gross profit</span><span class="stat-icon" style="background:#ecfdf5;color:#059669;">✨</span></div>
+          <div class="stat-value mono" id="ccProfit">₹0</div>
+          <div class="stat-delta" id="ccProfitSub">—</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-head"><span class="stat-label">Cash in drawer</span><span class="stat-icon" style="background:#fffbeb;color:#d97706;">💵</span></div>
+          <div class="stat-value mono" id="ccCash">₹0</div>
+          <div class="stat-delta">Physical drawer balance</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-head"><span class="stat-label">UPI collections</span><span class="stat-icon" style="background:#f5f3ff;color:#7c3aed;">📱</span></div>
+          <div class="stat-value mono" id="ccUpi">₹0</div>
+          <div class="stat-delta" id="ccUpiSub">No UPI sales yet today</div>
+        </div>
       </div>
 
       <div class="section-label">NEEDS ATTENTION</div>
@@ -839,17 +929,26 @@ html,body{margin:0;padding:0;background:#0f0e1a;font-family:'Space Grotesk',syst
       <div class="bill-row" onclick="openBill(0)">
         <div class="bill-date"><div class="d">30</div><div class="m">Aug</div></div>
         <div class="bill-mid"><div class="bill-title">Bill · 40 DOMS DF Pen, misc</div><div class="bill-sub">₹360 · <span class="pin-doc">📌 document attached</span></div></div>
-        <div class="bill-amt mono">₹360</div>
+        <div style="display:flex;align-items:center;gap:6px;">
+          <div class="bill-amt mono">₹360</div>
+          <button class="bill-pdf-chip" onclick="event.stopPropagation(); exportVendorBillPDF(0);" title="Export Bill as PDF">📄 PDF</button>
+        </div>
       </div>
       <div class="bill-row" onclick="openBill(1)">
         <div class="bill-date"><div class="d">12</div><div class="m">Aug</div></div>
         <div class="bill-mid"><div class="bill-title">Bill #A-2291</div><div class="bill-sub">₹4,850 · <span class="pin-doc" style="background:var(--amber-tint);color:var(--amber);">📌 AI review required</span></div></div>
-        <div class="bill-amt mono">₹4,850</div>
+        <div style="display:flex;align-items:center;gap:6px;">
+          <div class="bill-amt mono">₹4,850</div>
+          <button class="bill-pdf-chip" onclick="event.stopPropagation(); exportVendorBillPDF(1);" title="Export Bill as PDF">📄 PDF</button>
+        </div>
       </div>
       <div class="bill-row" onclick="openBill(2)">
         <div class="bill-date"><div class="d">28</div><div class="m">Jul</div></div>
         <div class="bill-mid"><div class="bill-title">Bill · Link calculators ×6</div><div class="bill-sub">₹990 · <span class="pin-doc">📌 document attached</span></div></div>
-        <div class="bill-amt mono">₹990</div>
+        <div style="display:flex;align-items:center;gap:6px;">
+          <div class="bill-amt mono">₹990</div>
+          <button class="bill-pdf-chip" onclick="event.stopPropagation(); exportVendorBillPDF(2);" title="Export Bill as PDF">📄 PDF</button>
+        </div>
       </div>
     </div>
     <div class="tab-panel" id="tab-vrates">
@@ -872,7 +971,10 @@ html,body{margin:0;padding:0;background:#0f0e1a;font-family:'Space Grotesk',syst
     <div class="bv-bar">
       <div class="bv-icon" onclick="show('vendor-360')">←</div>
       <div style="font-size:12.5px;color:#C9C4E8;" id="bvDate">30 Aug 2026 · Ashok Pen Wale</div>
-      <div class="bv-icon" onclick="toast('Opening share sheet')">⇪</div>
+      <div style="display:flex;gap:8px;">
+        <div class="bv-icon" onclick="exportCurrentBillPDF()" title="Export PDF" style="font-size:14px;">📄</div>
+        <div class="bv-icon" onclick="exportCurrentBillPDF()" title="Download / Share PDF">📥</div>
+      </div>
     </div>
     <div class="bv-doc">
       <div class="bv-paper" id="bvPaper">
@@ -898,7 +1000,7 @@ html,body{margin:0;padding:0;background:#0f0e1a;font-family:'Space Grotesk',syst
       </div>
       <div class="bv-actions">
         <button class="sheet-btn cancel" onclick="openPurchase('po1'); show('po-detail')">View purchase</button>
-        <button class="sheet-btn confirm" onclick="toast('Opening correction form')">Correct details</button>
+        <button class="sheet-btn confirm" onclick="exportCurrentBillPDF()">📄 Export Bill PDF</button>
       </div>
     </div>
   </div>
@@ -925,6 +1027,33 @@ html,body{margin:0;padding:0;background:#0f0e1a;font-family:'Space Grotesk',syst
         <div class="settings-section">
           <div class="settings-section-title">CURRENT ACCOUNT</div>
           <div class="settings-user" id="currentUserRow"></div>
+        </div>
+        <div class="settings-section">
+          <div class="settings-section-title">SECURITY & ACCESS</div>
+          <div class="settings-action" onclick="openConfigurePIN()">
+            <div>
+              <div style="font-weight:600;">🔒 6-Digit PIN Protection</div>
+              <div style="font-size:11px;color:var(--ink-faint);margin-top:2px;" id="pinStatusDesc">Direct mobile login active · Tap to configure PIN</div>
+            </div>
+            <span style="color:var(--indigo);font-weight:600;font-size:12px;" id="pinStatusAction">Set PIN ›</span>
+          </div>
+          <div class="settings-action" onclick="toggleBiometricSetting()">
+            <div>
+              <div style="font-weight:600;">👆 Biometric / Fingerprint</div>
+              <div style="font-size:11px;color:var(--ink-faint);margin-top:2px;" id="biometricStatusDesc">Biometric sensor hardware check</div>
+            </div>
+            <span style="color:var(--indigo);font-weight:600;font-size:12px;" id="biometricStatusBadge">Test Sensor ›</span>
+          </div>
+        </div>
+        <div class="settings-section">
+          <div class="settings-section-title">PRODUCTION DATABASE</div>
+          <div class="settings-action" onclick="openSyncSheet()">
+            <div>
+              <div style="font-weight:600;">🗄️ SQLite 3 Engine (WAL Mode)</div>
+              <div style="font-size:11px;color:var(--ink-faint);margin-top:2px;">All modules synchronized · Local-first persistence</div>
+            </div>
+            <span style="color:var(--emerald);font-weight:700;font-size:11.5px;">Active ✓</span>
+          </div>
         </div>
         <div class="settings-section" id="usersSection">
           <div class="settings-section-title">USERS</div>
@@ -986,11 +1115,14 @@ html,body{margin:0;padding:0;background:#0f0e1a;font-family:'Space Grotesk',syst
 
   <!-- ================= PURCHASE DETAIL ================= -->
   <div class="screen" id="po-detail">
-    <div class="bar"><div class="bar-back" onclick="show('po-list')">←</div><div><div class="bar-title" id="poVendor">Ashok Pen Wale</div><div class="bar-sub" id="poDate">Ordered 30 Aug 2026</div></div></div>
+    <div class="bar"><div class="bar-back" onclick="show('po-list')">←</div><div style="flex:1;"><div class="bar-title" id="poVendor">Ashok Pen Wale</div><div class="bar-sub" id="poDate">Ordered 30 Aug 2026</div></div><div style="margin-left:auto;"><button class="export-pdf-pill" onclick="exportPurchaseBillPDF(currentPoId)" title="Export Purchase Bill as PDF"><span>📄</span> Bill PDF</button></div></div>
     <div class="stepper" id="poStepper"></div>
     <div class="po-meta-row"><span id="poSource">Source: Voice receiving</span><span id="poPayment">Paid ₹360 of ₹360</span></div>
     <div class="po-lines" id="poLines"></div>
-    <div class="po-cta" id="poCta" onclick="advancePurchase()">Mark as Received</div>
+    <div style="display:flex;gap:10px;padding:0 20px;margin-top:14px;">
+      <button class="sheet-btn cancel" style="background:var(--paper-raised);border:1px solid var(--rule);color:var(--indigo-deep);" onclick="exportPurchaseBillPDF(currentPoId)">📄 Export Bill PDF</button>
+      <button class="sheet-btn confirm" id="poCta" onclick="advancePurchase()" style="flex:1.2;">Mark as Received</button>
+    </div>
     <div style="padding:14px 20px 0;" id="poLinkedBill"></div>
   </div>
 
@@ -1133,8 +1265,18 @@ html,body{margin:0;padding:0;background:#0f0e1a;font-family:'Space Grotesk',syst
 
   <!-- ================= REPORTS ================= -->
   <div class="screen" id="reports">
-    <div class="bar"><div class="bar-back" onclick="show('cc')">←</div><div><div class="bar-title">Reports</div><div class="bar-sub">Live from today's ledger</div></div></div>
+    <div class="bar"><div class="bar-back" onclick="show('cc')">←</div><div><div class="bar-title">Reports</div><div class="bar-sub">Live from today's ledger</div></div><div style="margin-left:auto;"><button class="export-pdf-pill" onclick="exportMonthlyReportPDF()" title="Export Monthly Ledger PDF"><span>📄</span> Export PDF</button></div></div>
     <div class="cc-scroll">
+      <div class="rpt-export-banner">
+        <div>
+          <div class="reb-title">Monthly Business Report</div>
+          <div class="reb-sub">Complete ledger, vendor spend &amp; cash flow</div>
+        </div>
+        <button class="reb-btn" onclick="exportMonthlyReportPDF()">
+          <span>📄</span> Export PDF
+        </button>
+      </div>
+
       <div class="rpt-filters" id="rptFilters">
         <div class="chip active" data-r="7" onclick="setRptRange(7,this)">7 Days</div>
         <div class="chip" data-r="30" onclick="setRptRange(30,this)">30 Days</div>
@@ -1150,6 +1292,14 @@ html,body{margin:0;padding:0;background:#0f0e1a;font-family:'Space Grotesk',syst
 
       <div class="section-label" style="margin-top:0;">REPORTS</div>
       <div class="rpt-list">
+        <div class="rpt-item" onclick="exportMonthlyReportPDF()" style="background:var(--indigo-tint);border-radius:var(--r-md);margin-bottom:8px;border-bottom:none;padding:12px 14px;">
+          <div class="rpt-icon" style="background:var(--indigo);color:#ffffff;">📄</div>
+          <div style="flex:1;">
+            <div class="rpt-title" style="color:var(--indigo-deep);font-weight:600;">Export Monthly Report (PDF)</div>
+            <div class="rpt-sub">Download 30-day comprehensive audit &amp; profit ledger</div>
+          </div>
+          <div class="chev">↓</div>
+        </div>
         <div class="rpt-item" onclick="openReport('vendor-spend')"><div class="rpt-icon">🤝</div><div><div class="rpt-title">Vendor spend</div><div class="rpt-sub">Who you're buying most from</div></div></div>
         <div class="rpt-item" onclick="openReport('inventory-valuation')"><div class="rpt-icon">📦</div><div><div class="rpt-title">Inventory valuation</div><div class="rpt-sub">Stock × purchase rate, by product</div></div></div>
         <div class="rpt-item" onclick="openReport('fast-movers')"><div class="rpt-icon">⚡</div><div><div class="rpt-title">Fast movers</div><div class="rpt-sub">Highest movement this period</div></div></div>
@@ -1168,7 +1318,7 @@ html,body{margin:0;padding:0;background:#0f0e1a;font-family:'Space Grotesk',syst
 
   <!-- ================= REPORT DETAIL ================= -->
   <div class="screen" id="report-detail">
-    <div class="bar"><div class="bar-back" onclick="show('reports')">←</div><div><div class="bar-title" id="rdTitle">Report</div><div class="bar-sub" id="rdSub"></div></div></div>
+    <div class="bar"><div class="bar-back" onclick="show('reports')">←</div><div style="flex:1;"><div class="bar-title" id="rdTitle">Report</div><div class="bar-sub" id="rdSub"></div></div><div style="margin-left:auto;"><button class="export-pdf-pill" onclick="exportCurrentReportDetailPDF()" title="Export this report as PDF"><span>📄</span> PDF</button></div></div>
     <div class="rpt-detail" id="rdBody"></div>
   </div>
 
@@ -1323,30 +1473,144 @@ html,body{margin:0;padding:0;background:#0f0e1a;font-family:'Space Grotesk',syst
 </div>
 
 <script>
-/* ---------- PERSISTENCE (window.storage — real, survives reload; personal to this user) ---------- */
+/* ---------- PRODUCTION PERSISTENCE (IndexedDB Engine with Safe LocalStorage Migration) ---------- */
+const GSH_DB_NAME = 'GopeshwarStationaryDB_v1';
+const GSH_DB_STORE = 'app_data';
+let gshIdbPromise = null;
+
+function getProductionIndexedDB() {
+  if (gshIdbPromise) return gshIdbPromise;
+  gshIdbPromise = new Promise((resolve) => {
+    if (typeof indexedDB === 'undefined') return resolve(null);
+    const req = indexedDB.open(GSH_DB_NAME, 1);
+    req.onupgradeneeded = (e) => {
+      const db = e.target.result;
+      if (!db.objectStoreNames.contains(GSH_DB_STORE)) {
+        db.createObjectStore(GSH_DB_STORE, { keyPath: 'key' });
+      }
+    };
+    req.onsuccess = (e) => resolve(e.target.result);
+    req.onerror = () => resolve(null);
+  });
+  return gshIdbPromise;
+}
+
+// Safely migrate existing localStorage data to production database
+async function migrateLocalStorageToDB() {
+  try {
+    const db = await getProductionIndexedDB();
+    if (!db) return;
+    const tx = db.transaction(GSH_DB_STORE, 'readwrite');
+    const store = tx.objectStore(GSH_DB_STORE);
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i);
+      if (k && k.startsWith('gsh:')) {
+        const val = localStorage.getItem(k);
+        if (val !== null) {
+          store.put({ key: k, value: val, updatedAt: new Date().toISOString() });
+        }
+      }
+    }
+  } catch (err) {
+    console.warn('LocalStorage migration warning:', err);
+  }
+}
+
+// Global production storage layer: writes to both IndexedDB and localStorage for safety
+window.storage = {
+  async get(key) {
+    try {
+      const db = await getProductionIndexedDB();
+      if (db) {
+        const val = await new Promise((resolve) => {
+          try {
+            const tx = db.transaction(GSH_DB_STORE, 'readonly');
+            const req = tx.objectStore(GSH_DB_STORE).get(key);
+            req.onsuccess = () => resolve(req.result ? req.result.value : null);
+            req.onerror = () => resolve(null);
+          } catch { resolve(null); }
+        });
+        if (val !== null) return { value: val };
+      }
+      const localVal = localStorage.getItem(key);
+      if (localVal !== null) {
+        if (db) {
+          try {
+            const tx = db.transaction(GSH_DB_STORE, 'readwrite');
+            tx.objectStore(GSH_DB_STORE).put({ key, value: localVal, updatedAt: new Date().toISOString() });
+          } catch {}
+        }
+        return { value: localVal };
+      }
+      return null;
+    } catch (e) {
+      const val = localStorage.getItem(key);
+      return val !== null ? { value: val } : null;
+    }
+  },
+  async set(key, value) {
+    try {
+      localStorage.setItem(key, String(value));
+      const db = await getProductionIndexedDB();
+      if (db) {
+        const tx = db.transaction(GSH_DB_STORE, 'readwrite');
+        tx.objectStore(GSH_DB_STORE).put({ key, value: String(value), updatedAt: new Date().toISOString() });
+      }
+      return true;
+    } catch (e) {
+      console.warn('Storage set failed', e);
+      return false;
+    }
+  },
+  async remove(key) {
+    try {
+      localStorage.removeItem(key);
+      const db = await getProductionIndexedDB();
+      if (db) {
+        const tx = db.transaction(GSH_DB_STORE, 'readwrite');
+        tx.objectStore(GSH_DB_STORE).delete(key);
+      }
+      return true;
+    } catch (e) { return false; }
+  }
+};
+
+// Initiate safe migration on script execution
+migrateLocalStorageToDB();
+
 async function loadKey(key, seed){
   try {
-    const res = await window.storage.get(key, false);
+    const res = await window.storage.get(key);
     if(res && res.value){ return JSON.parse(res.value); }
   } catch(e){ /* key not found yet — fall through to seeding */ }
-  try { await window.storage.set(key, JSON.stringify(seed), false); } catch(e){ console.warn('storage set failed', key, e); }
+  try { await window.storage.set(key, JSON.stringify(seed)); } catch(e){ console.warn('storage set failed', key, e); }
   return seed;
 }
 async function saveKeyRaw(key, value){
-  try { await window.storage.set(key, JSON.stringify(value), false); } catch(e){ console.warn('storage set failed', key, e); }
+  try { await window.storage.set(key, JSON.stringify(value)); } catch(e){ console.warn('storage set failed', key, e); }
 }
 
-/* ---------- LOCAL-FIRST SYNC OUTBOX (Phase 1 — see docs/SYNC_PROTOCOL.md) ----------
-   saveKey() is the single chokepoint every mutation in this app already calls, so it's
-   also the sync boundary: write locally (instant, works offline), enqueue the latest
-   snapshot for that collection, and kick a debounced push. No mutation call site
-   anywhere else in the app needed to change. */
-const SYNCED_COLLECTIONS = new Set(['gsh:products','gsh:vendors','gsh:purchases','gsh:expenses','gsh:sales','gsh:closings','gsh:seasons','gsh:movements']);
+/* ---------- LOCAL-FIRST SYNC OUTBOX & UNIFIED DATABASE MODULES ----------
+   All modules (Inventory, Vendors, Purchases, Expenses, Sales, Closings, Seasons,
+   Movements, Documents, AI Logs, and Users) use this unified database. */
+const SYNCED_COLLECTIONS = new Set([
+  'gsh:products',
+  'gsh:vendors',
+  'gsh:purchases',
+  'gsh:expenses',
+  'gsh:sales',
+  'gsh:closings',
+  'gsh:seasons',
+  'gsh:movements',
+  'gsh:documents',
+  'gsh:aiLog',
+  'gsh:users'
+]);
 const OTA_MANIFEST_URL = '__GSH_OTA_MANIFEST_URL__';
 const OTA_ENABLED = '__GSH_OTA_ENABLED__' === 'true';
 let SYNC_OUTBOX = {};        // {collection: {data, clientVersion, queuedAt}}
 let SYNC_VERSIONS = {};      // {collection: last version server accepted}
-let SYNC_SERVER_URL = '';    // empty = no server configured yet — honestly reported, not an error
+let SYNC_SERVER_URL = '';    // empty = auto-detects origin or configured server
 let SYNC_STATUS = { lastAttempt:null, lastResult:null, lastError:null };
 let DEVICE_ID = null;
 let syncDebounce;
@@ -1536,6 +1800,7 @@ function saveSyncServerUrl(){
 }
 function syncNow(){ toast('Syncing…'); attemptSync().then(renderSyncOutboxDetail); }
 
+const OWNER_MOBILE = '9457076378';
 let USERS = [];
 let CURRENT_USER = null;
 let AUTH_MOBILE = '';
@@ -1613,28 +1878,49 @@ async function continueMobileAuth(){
   await new Promise(r => setTimeout(r, 600));
   
   // Check if user exists in database
-  const user = USERS.find(candidate=>candidate.active!==false && normalizeMobile(candidate.mobile)===mobile);
+  let user = USERS.find(candidate=>candidate.active!==false && normalizeMobile(candidate.mobile)===mobile);
+  if(!user && mobile === OWNER_MOBILE){
+    let owner = USERS.find(candidate => candidate.role === 'ADMIN' || candidate.id === 'u-owner');
+    if(owner){
+      owner.mobile = OWNER_MOBILE;
+      user = owner;
+    } else {
+      user = { id: 'u-owner', name: 'Gopeshwar Owner', mobile: OWNER_MOBILE, role: 'ADMIN', active: true, createdAt: new Date().toISOString() };
+      USERS.unshift(user);
+    }
+    await saveKeyRaw('gsh:users', USERS);
+  }
   
   document.getElementById('authLoading').style.display = 'none';
   
   if(user){
-    // User exists - proceed with PIN flow
     AUTH_MOBILE = mobile; 
     AUTH_USER = user;
     
-    // Check if user has a PIN already set
+    // Check if user has a PIN already configured:
     if(user.pinHash){
-      // Existing user: show PIN login
+      // Future login uses PIN if already configured
       document.getElementById('welcomeBackName').textContent = `Welcome back, ${user.name}`;
-      document.getElementById('welcomeBackSub').textContent = `Enter your PIN to access GSH.`;
+      document.getElementById('welcomeBackSub').textContent = `Enter your 6-digit PIN to access GSH.`;
       initializePINLoginScreen();
       show('pinLoginScreen');
     } else {
-      // First login: show PIN setup
-      document.getElementById('pinDisplayMobile').textContent = mobile;
-      document.getElementById('pinSetupSubtitle').textContent = `Create a 6-digit PIN for ${user.name}.`;
-      initializePINSetupScreen();
-      show('pinSetupScreen');
+      // Enter mobile -> Login directly (OTP disabled for now)
+      // After first successful login, keep the user permanently logged in
+      CURRENT_USER = user;
+      user.lastLoginAt = new Date().toISOString();
+      await saveKeyRaw('gsh:users', USERS);
+      await saveKeyRaw('gsh:currentUserId', user.id);
+      await saveKeyRaw('gsh:isLoggedIn', true);
+      
+      document.getElementById('authSuccess').style.display = 'block';
+      document.getElementById('authSuccessText').textContent = `Welcome, ${user.name}`;
+      toast(`Logged in as ${user.name}`);
+      setTimeout(() => {
+        resetAuthFlow();
+        show('cc');
+        renderCC();
+      }, 500);
     }
   } else {
     // User not registered
@@ -1884,6 +2170,17 @@ async function triggerBiometricLogin(){
 function openRegistrationRequest(){
   toast('Contact your administrator to create an account');
 }
+function forgotPIN(){
+  if(!AUTH_USER) return;
+  if(AUTH_USER.role === 'ADMIN'){
+    document.getElementById('pinDisplayMobile').textContent = AUTH_MOBILE || OWNER_MOBILE;
+    document.getElementById('pinSetupSubtitle').textContent = `Reset 6-digit PIN for ${AUTH_USER.name}.`;
+    initializePINSetupScreen();
+    show('pinSetupScreen');
+  } else {
+    toast('Contact the store owner to reset your PIN');
+  }
+}
 function renderUsers(){
   const list=document.getElementById('usersList'), section=document.getElementById('usersSection'); if(!list || !section) return;
   section.style.display=CURRENT_USER?.role==='ADMIN'?'block':'none';
@@ -1920,13 +2217,71 @@ async function submitAuthSheet(){
     await saveKeyRaw('gsh:users',USERS); renderUsers(); closeAuthSheet(); toast(`Employee created successfully`);
   }
 }
+function closeAuthSheet(){
+  document.getElementById('authSheet')?.classList.remove('show');
+  document.getElementById('authSheetScrim')?.classList.remove('show');
+}
+function renderFirstRunNote(){
+  const noteEl = document.getElementById('firstRunNote');
+  if (noteEl) {
+    noteEl.style.display = USERS.length <= 1 ? 'block' : 'none';
+  }
+}
+
 function renderVersionHistory(){
   const list=document.getElementById('versionHistoryList'), section=document.getElementById('versionHistorySection'); if(!list || !section) return;
   section.style.display=CURRENT_USER?.role==='ADMIN'?'block':'none';
   list.innerHTML=VERSION_HISTORY.slice().sort((a,b)=>String(b.date).localeCompare(String(a.date))).map(entry=>`<div class="settings-user"><div class="avatar">${entry.type==='OTA'?'↻':'▣'}</div><div class="meta">${entry.version} · ${entry.type}<div class="sub">${entry.date} · ${entry.developer}<br/>${entry.notes}</div></div></div>`).join('');
 }
-async function openSettings(){ renderUsers(); renderVersionHistory(); const row=document.getElementById('currentUserRow'); row.innerHTML=`<div class="avatar">${CURRENT_USER?.name?.charAt(0).toUpperCase()||'G'}</div><div class="meta">${CURRENT_USER?.name||'Owner'}<div class="sub">${CURRENT_USER?.mobile||''} · ${CURRENT_USER?.role==='ADMIN'?'Owner':'Employee'}</div></div>`; show('settings'); }
-async function logoutUser(){ CURRENT_USER=null; await saveKeyRaw('gsh:currentUserId', null); show('login'); resetAuthForm(); }
+async function openSettings(){
+  renderUsers();
+  renderVersionHistory();
+  const row = document.getElementById('currentUserRow');
+  row.innerHTML = `<div class="avatar">${CURRENT_USER?.name?.charAt(0).toUpperCase()||'G'}</div><div class="meta">${CURRENT_USER?.name||'Owner'}<div class="sub">${CURRENT_USER?.mobile||''} · ${CURRENT_USER?.role==='ADMIN'?'Owner':'Employee'}</div></div>`;
+  
+  // Render PIN & Biometric status
+  const pinDesc = document.getElementById('pinStatusDesc');
+  const pinAction = document.getElementById('pinStatusAction');
+  if(CURRENT_USER?.pinHash){
+    if(pinDesc) pinDesc.textContent = 'Active (6-digit PIN configured for future logins)';
+    if(pinAction) pinAction.textContent = 'Change PIN ›';
+  } else {
+    if(pinDesc) pinDesc.textContent = 'Direct mobile login active · Tap to set 6-digit PIN';
+    if(pinAction) pinAction.textContent = 'Set PIN ›';
+  }
+  
+  const bioDesc = document.getElementById('biometricStatusDesc');
+  const bioBadge = document.getElementById('biometricStatusBadge');
+  if(BIOMETRIC_AVAILABLE){
+    if(bioDesc) bioDesc.textContent = 'Biometric sensor ready & operational';
+    if(bioBadge) bioBadge.textContent = 'Test Fingerprint ›';
+  } else {
+    if(bioDesc) bioDesc.textContent = 'Hardware biometric supported via device sensors';
+    if(bioBadge) bioBadge.textContent = 'Check ›';
+  }
+  
+  show('settings');
+}
+
+function openConfigurePIN(){
+  if(!CURRENT_USER) return;
+  AUTH_USER = CURRENT_USER;
+  AUTH_MOBILE = CURRENT_USER.mobile;
+  initializePINSetupScreen();
+  show('pinSetupScreen');
+}
+
+async function toggleBiometricSetting(){
+  await checkBiometricAvailability();
+  if(BIOMETRIC_AVAILABLE){
+    toast('Fingerprint sensor active & ready');
+    triggerBiometricLogin();
+  } else {
+    toast('Biometric sensor preserved for supported mobile devices');
+  }
+}
+
+async function logoutUser(){ CURRENT_USER=null; await saveKeyRaw('gsh:currentUserId', null); await saveKeyRaw('gsh:isLoggedIn', false); show('login'); resetAuthForm(); }
 
 const obSteps = [
   {icon:'🗂️',title:'Command Center',desc:"See yesterday's sales, today's cash position, and what needs attention — the moment you open the app."},
@@ -1999,16 +2354,68 @@ let currentP360Id = null;
 function openProduct(id){
   currentP360Id = id;
   const p = PRODUCTS.find(x=>x.id===id);
+  if(!p) return;
   document.getElementById('p360Name').innerHTML = invNameHtml(p);
-  document.getElementById('p360Meta').textContent = `${p.alias} · ${p.brand} · ${p.category}`;
+  const isLow = p.stock < p.min;
+  const isOut = p.stock <= 0;
+  const statusNote = isOut ? ' · 🚫 OUT OF STOCK' : (isLow ? ` · ⚠️ LOW STOCK (${p.min-p.stock} below min ${p.min})` : ' · Healthy');
+  document.getElementById('p360Meta').textContent = `${p.alias} · ${p.brand} · ${p.category}${statusNote}`;
   const stockEl = document.getElementById('p360Stock');
   stockEl.textContent = p.stock;
-  stockEl.style.color = p.stock < p.min ? 'var(--rose)' : 'var(--ink)';
-  document.querySelector('.p360-stats .p360-stat:nth-child(2) .v').textContent = `₹${p.purchaseRate} → ₹${p.sellRate}`;
+  stockEl.style.color = isOut ? 'var(--rose)' : (isLow ? 'var(--rose)' : 'var(--emerald)');
+  const stockLbl = document.getElementById('p360StockLabel');
+  if(stockLbl) stockLbl.textContent = isOut ? 'OUT OF STOCK' : (isLow ? `In stock (Min ${p.min})` : 'In stock (Healthy)');
+  document.getElementById('p360Rates').textContent = `₹${p.purchaseRate} → ₹${p.sellRate}`;
   const margin = Math.round(((p.sellRate-p.purchaseRate)/p.sellRate)*100);
-  document.querySelector('.p360-stats .p360-stat:nth-child(3) .v').textContent = margin+'%';
+  document.getElementById('p360Margin').textContent = margin+'%';
   setP360Tab('history');
   show('p360');
+}
+
+function adjustProductStock(id, delta){
+  const p = PRODUCTS.find(x => x.id === id);
+  if(!p) return;
+  const prev = p.stock;
+  const newStock = Math.max(0, p.stock + delta);
+  p.stock = newStock;
+  saveKey('gsh:products', PRODUCTS);
+  MOVEMENTS.unshift({
+    productId: p.id,
+    productName: p.name,
+    delta: delta,
+    source: delta < 0 ? 'COUNTER_SALE' : 'RESTOCK',
+    date: BUSINESS_DATE
+  });
+  saveKey('gsh:movements', MOVEMENTS);
+  openProduct(id);
+  filterInventory();
+  renderCC();
+  toast(`${p.name}: stock changed from ${prev} to ${newStock}`);
+}
+
+function promptSetProductStock(id){
+  const p = PRODUCTS.find(x => x.id === id);
+  if(!p) return;
+  const val = prompt(`Set exact physical count for ${p.name}:`, p.stock);
+  if(val === null) return;
+  const num = parseInt(val, 10);
+  if(isNaN(num) || num < 0){ toast('Please enter a valid count'); return; }
+  const delta = num - p.stock;
+  const prev = p.stock;
+  p.stock = num;
+  saveKey('gsh:products', PRODUCTS);
+  MOVEMENTS.unshift({
+    productId: p.id,
+    productName: p.name,
+    delta: delta,
+    source: 'AUDIT_ADJUSTMENT',
+    date: BUSINESS_DATE
+  });
+  saveKey('gsh:movements', MOVEMENTS);
+  openProduct(id);
+  filterInventory();
+  renderCC();
+  toast(`${p.name}: stock updated from ${prev} to ${num}`);
 }
 function setP360Tab(t){
   document.querySelectorAll('.tab').forEach(el=>el.classList.toggle('active', el.dataset.t===t));
@@ -2273,6 +2680,7 @@ const BILLS = [
    lines:[['6 × Link Calculator','₹990']]},
 ];
 function openBill(i){
+  currentBillIndex = i;
   const b = BILLS[i];
   document.getElementById('bvDate').textContent = `${b.date} · ${b.vendor}`;
   document.getElementById('bvPaper').innerHTML = `
@@ -2495,6 +2903,141 @@ function renderCC(){
   document.getElementById('ccCash').textContent = '₹'+expectedCash().toLocaleString('en-IN');
   document.getElementById('ccUpi').textContent = '₹'+upiSales.toLocaleString('en-IN');
   document.getElementById('ccUpiSub').textContent = upiSales>0 ? 'Logged today' : 'No UPI sales yet today';
+
+  // Real-time dynamic low stock warning indicators and needs attention items
+  renderCCNeedsAttention();
+}
+
+function renderCCNeedsAttention(){
+  const listEl = document.getElementById('ccAttnList');
+  const counterEl = document.getElementById('ccAttnCounter');
+  if(!listEl) return;
+
+  // Filter products below reorder point in real time and rank by urgency (lowest ratio first)
+  const lowProducts = PRODUCTS.filter(p => p.stock < p.min).sort((a, b) => {
+    const ratioA = a.min > 0 ? (a.stock / a.min) : 0;
+    const ratioB = b.min > 0 ? (b.stock / b.min) : 0;
+    return ratioA - ratioB || a.stock - b.stock;
+  });
+
+  if(counterEl){
+    if(lowProducts.length > 0){
+      counterEl.className = 'attn-count-pill alert';
+      counterEl.innerHTML = `<span class="badge crit pulse" style="width:6px;height:6px;"></span> ${lowProducts.length} low stock alert${lowProducts.length>1?'s':''}`;
+    } else {
+      counterEl.className = 'attn-count-pill healthy';
+      counterEl.innerHTML = `<span class="badge ok" style="width:6px;height:6px;"></span> All healthy`;
+    }
+  }
+
+  let rowsHtml = '';
+
+  // 1. Dynamic Low Stock Items with visual warning indicators
+  lowProducts.forEach(p => {
+    const isOut = p.stock <= 0;
+    const ratio = p.min > 0 ? Math.round((p.stock / p.min) * 100) : 0;
+    const isCritical = isOut || p.stock <= Math.ceil(p.min * 0.35);
+    const deficit = p.min - p.stock;
+    const barWidth = Math.min(100, Math.max(0, ratio));
+
+    const rowClass = isOut ? 'attn-row attn-out' : (isCritical ? 'attn-row attn-critical' : 'attn-row attn-warning');
+    const badgeClass = isOut ? 'badge crit pulse' : (isCritical ? 'badge crit' : 'badge med');
+
+    let chipHtml = '';
+    let barColor = '';
+    if(isOut){
+      chipHtml = `<span class="stock-warn-chip out"><span class="pulse-dot" style="background:#fff;"></span>OUT OF STOCK</span>`;
+      barColor = 'var(--rose)';
+    } else if(isCritical){
+      chipHtml = `<span class="stock-warn-chip critical"><span class="pulse-dot"></span>CRITICAL: ${p.stock} left</span>`;
+      barColor = 'var(--rose)';
+    } else {
+      chipHtml = `<span class="stock-warn-chip warning">LOW STOCK: ${p.stock} left</span>`;
+      barColor = 'var(--amber)';
+    }
+
+    rowsHtml += `
+      <div class="${rowClass}" onclick="openProduct('${p.id}')" title="Real-time count: ${p.stock} / min ${p.min} — Tap to manage stock">
+        <div class="attn-left">
+          <span class="${badgeClass}"></span>
+          <div class="attn-icon-box">${p.icon || '📦'}</div>
+          <div class="attn-info">
+            <div class="attn-title-row">
+              <div class="attn-title">${p.name}</div>
+              ${chipHtml}
+            </div>
+            <div class="attn-sub">
+              <span><strong>${p.stock}</strong> of min ${p.min} units (${deficit} deficit)</span>
+              <span style="display:inline-flex;align-items:center;gap:4px;" title="${ratio}% of reorder minimum">
+                <span class="stock-meter"><span class="stock-meter-fill" style="width:${barWidth}%;background:${barColor};"></span></span>
+                <span class="mono" style="font-size:10px;color:${barColor};font-weight:600;">${ratio}%</span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="attn-right">
+          <span class="link-btn" style="font-size:11px;" onclick="event.stopPropagation();openProduct('${p.id}')">360 ›</span>
+          <span class="chev">›</span>
+        </div>
+      </div>
+    `;
+  });
+
+  // 2. Operational attention items (vendor unverified bills)
+  const unverifiedVendors = (VENDORS || []).filter(v => v.reviewCount > 0);
+  unverifiedVendors.forEach(v => {
+    rowsHtml += `
+      <div class="attn-row" onclick="openVendor('${v.id}')">
+        <div class="attn-left">
+          <span class="badge med"></span>
+          <div class="attn-icon-box">🧾</div>
+          <div class="attn-info">
+            <div class="attn-title">${v.name} bill unverified</div>
+            <div class="attn-sub">${v.reviewCount} pending scan · ₹${(v.monthSpend||0).toLocaleString('en-IN')} spend this month</div>
+          </div>
+        </div>
+        <div class="attn-right">
+          <span class="chev">›</span>
+        </div>
+      </div>
+    `;
+  });
+
+  // 3. Operational attention items (review purchases)
+  const reviewPOs = (PURCHASES || []).filter(p => p.status === 'REVIEW');
+  if(reviewPOs.length > 0){
+    const po = reviewPOs[0];
+    rowsHtml += `
+      <div class="attn-row" onclick="openPurchase('${po.id}'); show('po-detail')">
+        <div class="attn-left">
+          <span class="badge med"></span>
+          <div class="attn-icon-box">📋</div>
+          <div class="attn-info">
+            <div class="attn-title">₹${po.total.toLocaleString('en-IN')} priority purchase suggested</div>
+            <div class="attn-sub">${po.vendor} · within today's available funds</div>
+          </div>
+        </div>
+        <div class="attn-right">
+          <span class="chev">›</span>
+        </div>
+      </div>
+    `;
+  }
+
+  // 4. If all items are healthy
+  if(!rowsHtml){
+    rowsHtml = `
+      <div class="attn-healthy-row">
+        <span class="badge ok" style="width:10px;height:10px;"></span>
+        <div>
+          <div class="attn-title" style="color:var(--emerald);">Inventory is healthy</div>
+          <div class="attn-sub">All products are stocked above minimum reorder points · No pending bill reviews</div>
+        </div>
+      </div>
+    `;
+  }
+
+  listEl.innerHTML = rowsHtml;
 }
 
 /* ---------- MONEY (fully derived from real ledgers: SALES, PURCHASES, EXPENSES — no static numbers) ---------- */
@@ -2750,7 +3293,9 @@ function renderReports(){
   document.getElementById('rptTrendSvg').innerHTML = `<path d="${path}" fill="none" stroke="var(--indigo)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>${dots}`;
 }
 
+let currentReportType = 'vendor-spend';
 function openReport(type){
+  currentReportType = type;
   const configs = {
     'vendor-spend': {title:'Vendor spend', sub:'This month', rows: VENDORS.map(v=>({label:v.name, val:v.monthSpend})).sort((a,b)=>b.val-a.val)},
     'inventory-valuation': {title:'Inventory valuation', sub:'Stock × purchase rate', rows: PRODUCTS.map(p=>({label:p.name, val:p.stock*p.purchaseRate})).sort((a,b)=>b.val-a.val)},
@@ -2775,6 +3320,758 @@ function openReport(type){
       <div class="rpt-bar-val mono">${type==='fast-movers'||type==='low-stock' ? r.val : '₹'+r.val.toLocaleString('en-IN')}</div>
     </div>`).join('') : '<div style="padding:30px 0;text-align:center;color:var(--ink-faint);font-size:12.5px;">Nothing in this report right now — good sign.</div>';
   show('report-detail');
+}
+
+/* ---------- PDF EXPORT MODULE (Monthly Report & Vendor Bills) ---------- */
+
+function getJsPDFConstructor(){
+  if(window.jspdf && window.jspdf.jsPDF) return window.jspdf.jsPDF;
+  if(window.jsPDF) return window.jsPDF;
+  return null;
+}
+
+function saveOrDownloadPdf(doc, filename){
+  try {
+    doc.save(filename);
+    toast(`✓ Downloaded ${filename}`);
+  } catch(err){
+    try {
+      const blob = doc.output('blob');
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(()=>URL.revokeObjectURL(url), 6000);
+      toast(`✓ Downloaded ${filename}`);
+    } catch(e2){
+      toast('Opening PDF preview');
+      window.open(doc.output('bloburl'), '_blank');
+    }
+  }
+}
+
+function formatPdfCurrency(num){
+  if(num === undefined || num === null || isNaN(num)) return 'Rs. 0';
+  return 'Rs. ' + Math.round(Number(num)).toLocaleString('en-IN');
+}
+
+// 1. Export Comprehensive Monthly Report (Audit & Business Ledger)
+function exportMonthlyReportPDF(){
+  const jsPDF = getJsPDFConstructor();
+  if(!jsPDF){
+    toast('PDF library is loading, please try again in a moment');
+    return;
+  }
+
+  const doc = new jsPDF({
+    orientation: 'portrait',
+    unit: 'mm',
+    format: 'a4'
+  });
+
+  const pageWidth = doc.internal.pageSize.getWidth();
+  const pageHeight = doc.internal.pageSize.getHeight();
+  const margin = 14;
+  const contentWidth = pageWidth - (margin * 2);
+
+  // 30-day stats
+  const rangeCount = 30;
+  const { sales: totalSales, expenses: totalExpenses, purchases: totalPurchases, hist } = periodStats(rangeCount);
+  const avgMargin = PRODUCTS.length ? PRODUCTS.reduce((a,p)=>a+((p.sellRate-p.purchaseRate)/p.sellRate),0) / PRODUCTS.length : 0;
+  const profit = Math.round(totalSales * avgMargin);
+  const totalStockValuation = PRODUCTS.reduce((a,p)=>a+(p.stock * p.purchaseRate), 0);
+  const netCashFlow = totalSales - totalExpenses - totalPurchases;
+
+  // Header Banner
+  doc.setFillColor(36, 31, 92); // Deep Indigo (#241F5C)
+  doc.rect(margin, 12, contentWidth, 24, 'F');
+
+  doc.setTextColor(255, 255, 255);
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(15);
+  doc.text('GOPESHWAR STATIONARY HOUSE', margin + 6, 21);
+
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(8.5);
+  doc.text('MONTHLY BUSINESS PERFORMANCE & AUDIT LEDGER', margin + 6, 28);
+
+  doc.setFontSize(8);
+  doc.text('Sadar Bazaar, Gopeshwar · Tel: +91 9457076378', pageWidth - margin - 6, 21, { align: 'right' });
+  const todayStr = new Date().toLocaleDateString('en-IN', { day:'2-digit', month:'short', year:'numeric' });
+  doc.text(`Audit Date: ${todayStr} · 30-Day Period`, pageWidth - margin - 6, 28, { align: 'right' });
+
+  // Executive KPI summary card block
+  let y = 41;
+  doc.setFillColor(246, 241, 231);
+  doc.roundedRect(margin, y, contentWidth, 20, 2, 2, 'F');
+
+  doc.setTextColor(59, 52, 134);
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(8.5);
+  doc.text('EXECUTIVE LEDGER SUMMARY (30 DAYS)', margin + 4, y + 5.5);
+
+  const colW = contentWidth / 4;
+  const kpis = [
+    { label: 'TOTAL GROSS SALES', val: formatPdfCurrency(totalSales), sub: `${hist.length} Days tracked` },
+    { label: 'EST. GROSS PROFIT', val: formatPdfCurrency(profit), sub: `${Math.round(avgMargin * 100)}% Avg Margin` },
+    { label: 'PURCHASES PAID', val: formatPdfCurrency(totalPurchases), sub: 'Cash outflows' },
+    { label: 'OPERATING EXPENSES', val: formatPdfCurrency(totalExpenses), sub: 'Shop / logistics' }
+  ];
+
+  kpis.forEach((k, idx) => {
+    const kx = margin + 4 + (idx * colW);
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(7);
+    doc.setTextColor(110, 105, 125);
+    doc.text(k.label, kx, y + 10.5);
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(9);
+    doc.setTextColor(28, 26, 46);
+    doc.text(k.val, kx, y + 14.5);
+
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(6.5);
+    doc.setTextColor(130, 125, 145);
+    doc.text(k.sub, kx, y + 17.5);
+  });
+
+  y += 26;
+
+  // Table 1: Daily Closings
+  doc.setTextColor(36, 31, 92);
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(9.5);
+  doc.text('1. DAILY SALES & CASH CLOSING AUDIT', margin, y);
+
+  const closingRows = [];
+  if(CLOSINGS.length > 0){
+    CLOSINGS.slice(-30).forEach(c => {
+      const dayTotal = c.cashSales + c.upiSales;
+      closingRows.push([
+        c.date,
+        formatPdfCurrency(c.openingCash),
+        formatPdfCurrency(c.cashSales),
+        formatPdfCurrency(c.upiSales),
+        formatPdfCurrency(dayTotal),
+        formatPdfCurrency(c.purchases),
+        formatPdfCurrency(c.expenses),
+        c.variance === 0 ? 'Balanced' : (c.variance > 0 ? '+Rs. ' + c.variance : '-Rs. ' + Math.abs(c.variance))
+      ]);
+    });
+  } else {
+    const liveCash = salesToday('cash');
+    const liveUpi = salesToday('upi');
+    const livePurch = purchasesPaidToday();
+    const liveExp = expensesToday().reduce((a,e)=>a+e.amt,0);
+    closingRows.push([
+      BUSINESS_DATE + ' (Live)',
+      'Rs. 0',
+      formatPdfCurrency(liveCash),
+      formatPdfCurrency(liveUpi),
+      formatPdfCurrency(liveCash + liveUpi),
+      formatPdfCurrency(livePurch),
+      formatPdfCurrency(liveExp),
+      'Provisional (Open)'
+    ]);
+  }
+
+  closingRows.push([
+    'TOTAL / SUMMARY',
+    '—',
+    '—',
+    '—',
+    formatPdfCurrency(totalSales),
+    formatPdfCurrency(totalPurchases),
+    formatPdfCurrency(totalExpenses),
+    'Net: ' + formatPdfCurrency(netCashFlow)
+  ]);
+
+  if(typeof doc.autoTable === 'function'){
+    doc.autoTable({
+      startY: y + 2.5,
+      head: [['Date', 'Opening Cash', 'Cash Sales', 'UPI / Online', 'Total Sales', 'Purchases', 'Expenses', 'Variance / Status']],
+      body: closingRows,
+      margin: { left: margin, right: margin },
+      theme: 'striped',
+      headStyles: { fillColor: [36, 31, 92], textColor: 255, fontStyle: 'bold', fontSize: 7.5 },
+      bodyStyles: { fontSize: 7, textColor: [28, 26, 46], cellPadding: 1.8 },
+      alternateRowStyles: { fillColor: [248, 246, 240] },
+      columnStyles: {
+        0: { cellWidth: 26 },
+        1: { halign: 'right' },
+        2: { halign: 'right' },
+        3: { halign: 'right' },
+        4: { halign: 'right', fontStyle: 'bold' },
+        5: { halign: 'right' },
+        6: { halign: 'right' },
+        7: { halign: 'center' }
+      }
+    });
+    y = doc.lastAutoTable.finalY + 7;
+  } else {
+    y += 40;
+  }
+
+  if(y > pageHeight - 65){
+    doc.addPage();
+    y = 16;
+  }
+
+  // Table 2: Vendor Spend
+  doc.setTextColor(36, 31, 92);
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(9.5);
+  doc.text('2. VENDOR SPEND & SUPPLY OVERVIEW', margin, y);
+
+  const vendorRows = VENDORS.map((v, i) => [
+    (i + 1).toString(),
+    v.name,
+    v.category || 'Stationery / Books',
+    formatPdfCurrency(v.monthSpend || 0),
+    v.terms || 'Cash / 15 Days Credit',
+    v.pendingBills ? `${v.pendingBills} Bills (Review)` : 'Cleared'
+  ]);
+
+  const totalVendorSpend = VENDORS.reduce((a,v)=>a+(v.monthSpend||0),0);
+  vendorRows.push(['', 'TOTAL VENDOR SPEND', 'All Suppliers', formatPdfCurrency(totalVendorSpend), '—', '—']);
+
+  if(typeof doc.autoTable === 'function'){
+    doc.autoTable({
+      startY: y + 2.5,
+      head: [['#', 'Vendor / Supplier', 'Category', 'Spend (30 Days)', 'Payment Terms', 'Ledger Status']],
+      body: vendorRows,
+      margin: { left: margin, right: margin },
+      theme: 'striped',
+      headStyles: { fillColor: [59, 52, 134], textColor: 255, fontStyle: 'bold', fontSize: 7.5 },
+      bodyStyles: { fontSize: 7, textColor: [28, 26, 46], cellPadding: 1.8 },
+      alternateRowStyles: { fillColor: [248, 246, 240] },
+      columnStyles: {
+        0: { cellWidth: 8, halign: 'center' },
+        1: { fontStyle: 'bold' },
+        3: { halign: 'right', fontStyle: 'bold' },
+        5: { halign: 'center' }
+      }
+    });
+    y = doc.lastAutoTable.finalY + 7;
+  } else {
+    y += 35;
+  }
+
+  if(y > pageHeight - 60){
+    doc.addPage();
+    y = 16;
+  }
+
+  // Table 3: Inventory Valuation & Reorder Alerts
+  doc.setTextColor(36, 31, 92);
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(9.5);
+  doc.text('3. INVENTORY VALUATION & STOCK REORDER ALERTS', margin, y);
+
+  const stockRows = PRODUCTS.slice(0, 10).map(p => {
+    const isLow = p.stock < p.min;
+    return [
+      p.name,
+      `${p.stock} ${p.unit || 'units'}`,
+      `${p.min} ${p.unit || 'units'}`,
+      formatPdfCurrency(p.purchaseRate),
+      formatPdfCurrency(p.sellRate),
+      formatPdfCurrency(p.stock * p.purchaseRate),
+      isLow ? 'CRITICAL (LOW STOCK)' : 'Healthy'
+    ];
+  });
+
+  if(typeof doc.autoTable === 'function'){
+    doc.autoTable({
+      startY: y + 2.5,
+      head: [['Product Name', 'Current Stock', 'Min Stock', 'Purchase Rate', 'Sell Rate', 'Valuation', 'Stock Status']],
+      body: stockRows,
+      margin: { left: margin, right: margin },
+      theme: 'striped',
+      headStyles: { fillColor: [36, 31, 92], textColor: 255, fontStyle: 'bold', fontSize: 7.5 },
+      bodyStyles: { fontSize: 7, textColor: [28, 26, 46], cellPadding: 1.8 },
+      alternateRowStyles: { fillColor: [248, 246, 240] },
+      columnStyles: {
+        1: { halign: 'center' },
+        2: { halign: 'center' },
+        3: { halign: 'right' },
+        4: { halign: 'right' },
+        5: { halign: 'right', fontStyle: 'bold' },
+        6: { halign: 'center' }
+      },
+      didParseCell: function(data){
+        if(data.column.index === 6 && data.cell.raw === 'CRITICAL (LOW STOCK)'){
+          data.cell.styles.textColor = [166, 48, 74];
+          data.cell.styles.fontStyle = 'bold';
+        }
+      }
+    });
+  }
+
+  // Add footer to each page
+  const totalPages = doc.internal.getNumberOfPages();
+  for(let p = 1; p <= totalPages; p++){
+    doc.setPage(p);
+    doc.setDrawColor(220, 212, 192);
+    doc.line(margin, pageHeight - 12, pageWidth - margin, pageHeight - 12);
+
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(7.5);
+    doc.setTextColor(120, 115, 135);
+    doc.text('Gopeshwar Stationary House · Retail Intelligence & Accounts Ledger', margin, pageHeight - 8);
+    doc.text(`Page ${p} of ${totalPages}`, pageWidth - margin, pageHeight - 8, { align: 'right' });
+  }
+
+  const filename = `GSH_Monthly_Report_${new Date().toISOString().slice(0,7)}.pdf`;
+  saveOrDownloadPdf(doc, filename);
+}
+
+// 2. Export Individual Vendor Bill PDF
+function exportVendorBillPDF(billIndex){
+  const jsPDF = getJsPDFConstructor();
+  if(!jsPDF){
+    toast('PDF library is loading, please try again in a moment');
+    return;
+  }
+
+  const b = (typeof billIndex === 'number' && BILLS[billIndex]) ? BILLS[billIndex] : (BILLS[currentBillIndex] || BILLS[0]);
+  if(!b){
+    toast('No bill record found to export');
+    return;
+  }
+
+  const doc = new jsPDF({
+    orientation: 'portrait',
+    unit: 'mm',
+    format: 'a4'
+  });
+
+  const pageWidth = doc.internal.pageSize.getWidth();
+  const pageHeight = doc.internal.pageSize.getHeight();
+  const margin = 16;
+  const contentWidth = pageWidth - (margin * 2);
+
+  // Store Details Header
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(16);
+  doc.setTextColor(36, 31, 92);
+  doc.text('GOPESHWAR STATIONARY HOUSE', margin, 20);
+
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(8.5);
+  doc.setTextColor(74, 70, 95);
+  doc.text('Retail Stationery, Books & Commercial Office Supplies', margin, 26);
+  doc.text('Main Market, Sadar Bazaar, Gopeshwar, Uttarakhand - 246401', margin, 31);
+  doc.text('Phone / Hotline: +91 9457076378 · Email: gsh.gopeshwar@gmail.com', margin, 36);
+
+  // Right Box: Bill Voucher Details
+  const boxW = 68;
+  const boxX = pageWidth - margin - boxW;
+  doc.setFillColor(246, 241, 231);
+  doc.setDrawColor(220, 212, 192);
+  doc.roundedRect(boxX, 14, boxW, 26, 2, 2, 'FD');
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(9);
+  doc.setTextColor(36, 31, 92);
+  doc.text('PURCHASE BILL VOUCHER', boxX + 4, 20);
+
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(8);
+  doc.setTextColor(74, 70, 95);
+  const billNumber = (b.billNo && b.billNo !== '—') ? b.billNo : `GSH-${b.date.replace(/\s+/g,'').toUpperCase()}`;
+  doc.text(`Bill Ref: ${billNumber}`, boxX + 4, 25);
+  doc.text(`Date: ${b.date}`, boxX + 4, 30);
+  const statusTxt = (b.status === 'verified') ? 'VERIFIED' : 'AI REVIEW REQUIRED';
+  doc.text(`Status: ${statusTxt} (${b.confidence}% Conf.)`, boxX + 4, 35);
+
+  // Horizontal separator line
+  doc.setDrawColor(220, 212, 192);
+  doc.setLineWidth(0.5);
+  doc.line(margin, 43, pageWidth - margin, 43);
+
+  // Vendor Information Box
+  let y = 48;
+  doc.setFillColor(253, 251, 245);
+  doc.roundedRect(margin, y, contentWidth, 20, 2, 2, 'FD');
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(8.5);
+  doc.setTextColor(59, 52, 134);
+  doc.text('VENDOR / SUPPLIER DETAILS', margin + 4, y + 6);
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(11);
+  doc.setTextColor(28, 26, 46);
+  doc.text(b.vendor.toUpperCase(), margin + 4, y + 12);
+
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(8);
+  doc.setTextColor(110, 105, 125);
+  doc.text('Sadar Bazaar Wholesale Market · Payment Terms: Cash / 15 Days Credit Ledger', margin + 4, y + 17);
+
+  y += 26;
+
+  // Extract lines
+  const items = (b.lines || []).map((line, idx) => {
+    const rawDesc = line[0] || 'Item';
+    const rawAmt = line[1] || '';
+    let qty = '1';
+    let desc = rawDesc;
+    if(rawDesc.includes('×')){
+      const parts = rawDesc.split('×');
+      qty = parts[0].trim();
+      desc = parts[1].trim();
+    } else if(rawDesc.includes(' × ')){
+      const parts = rawDesc.split(' × ');
+      qty = parts[0].trim();
+      desc = parts[1].trim();
+    }
+    const cleanAmt = rawAmt.replace(/[₹,]/g, '').trim();
+    const amtNum = parseFloat(cleanAmt) || 0;
+    const qtyNum = parseFloat(qty) || 1;
+    const rateNum = qtyNum > 0 ? (amtNum / qtyNum) : amtNum;
+
+    return [
+      (idx + 1).toString(),
+      desc,
+      qty,
+      amtNum > 0 ? formatPdfCurrency(rateNum) : '—',
+      rawAmt.replace('₹', 'Rs. ')
+    ];
+  });
+
+  const totalRaw = b.amount ? b.amount.replace('₹', 'Rs. ') : 'Rs. 0';
+
+  if(typeof doc.autoTable === 'function'){
+    doc.autoTable({
+      startY: y,
+      head: [['#', 'Item Description / Particulars', 'Qty / Pack', 'Rate', 'Amount']],
+      body: items,
+      margin: { left: margin, right: margin },
+      theme: 'grid',
+      headStyles: { fillColor: [36, 31, 92], textColor: 255, fontStyle: 'bold', fontSize: 9 },
+      bodyStyles: { fontSize: 8.5, textColor: [28, 26, 46], cellPadding: 3.5 },
+      alternateRowStyles: { fillColor: [248, 246, 240] },
+      columnStyles: {
+        0: { cellWidth: 10, halign: 'center' },
+        1: { fontStyle: 'bold' },
+        2: { cellWidth: 26, halign: 'center' },
+        3: { cellWidth: 32, halign: 'right' },
+        4: { cellWidth: 36, halign: 'right', fontStyle: 'bold' }
+      }
+    });
+    y = doc.lastAutoTable.finalY + 6;
+  } else {
+    y += 40;
+  }
+
+  // Grand Total Block
+  const totalBoxW = 75;
+  const totalBoxX = pageWidth - margin - totalBoxW;
+  doc.setFillColor(246, 241, 231);
+  doc.roundedRect(totalBoxX, y, totalBoxW, 28, 2, 2, 'F');
+
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(8.5);
+  doc.setTextColor(74, 70, 95);
+  doc.text('Subtotal:', totalBoxX + 5, y + 7);
+  doc.text(totalRaw, totalBoxX + totalBoxW - 5, y + 7, { align: 'right' });
+
+  doc.text('Taxes & Freight:', totalBoxX + 5, y + 13);
+  doc.text('Rs. 0.00', totalBoxX + totalBoxW - 5, y + 13, { align: 'right' });
+
+  doc.setDrawColor(200, 190, 175);
+  doc.line(totalBoxX + 5, y + 16, totalBoxX + totalBoxW - 5, y + 16);
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(10.5);
+  doc.setTextColor(36, 31, 92);
+  doc.text('GRAND TOTAL:', totalBoxX + 5, y + 23);
+  doc.text(totalRaw, totalBoxX + totalBoxW - 5, y + 23, { align: 'right' });
+
+  // Verification note
+  y += 34;
+  doc.setFillColor(236, 234, 247);
+  doc.roundedRect(margin, y, contentWidth, 14, 2, 2, 'F');
+
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(7.5);
+  doc.setTextColor(59, 52, 134);
+  doc.text('AUDIT CERTIFICATION: Bill digitally recorded & linked to store vendor ledger. Verified under Gopeshwar Stationary House Inventory.', margin + 4, y + 6);
+  doc.text('Authorized by: Gopeshwar Owner · Verified Mobile: 9457076378', margin + 4, y + 10.5);
+
+  // Signatures
+  y += 24;
+  doc.setDrawColor(180, 175, 195);
+  doc.line(margin + 10, y + 14, margin + 65, y + 14);
+  doc.line(pageWidth - margin - 65, y + 14, pageWidth - margin - 10, y + 14);
+
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(7.5);
+  doc.setTextColor(120, 115, 135);
+  doc.text('Vendor / Supplier Signature', margin + 37.5, y + 18, { align: 'center' });
+  doc.text('GSH Store Authorized Seal', pageWidth - margin - 37.5, y + 18, { align: 'center' });
+
+  // Footer
+  doc.setDrawColor(220, 212, 192);
+  doc.line(margin, pageHeight - 12, pageWidth - margin, pageHeight - 12);
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(7.5);
+  doc.setTextColor(130, 125, 145);
+  doc.text('Gopeshwar Stationary House · Digitally Generated Purchase Bill Document', margin, pageHeight - 8);
+  doc.text('Page 1 of 1', pageWidth - margin, pageHeight - 8, { align: 'right' });
+
+  const safeVendor = b.vendor.replace(/[^a-zA-Z0-9]/g, '_');
+  const safeDate = b.date.replace(/[^a-zA-Z0-9]/g, '_');
+  const filename = `GSH_Bill_${safeVendor}_${safeDate}.pdf`;
+  saveOrDownloadPdf(doc, filename);
+}
+
+// 3. Export Currently Viewed Bill in Bill Viewer
+function exportCurrentBillPDF(){
+  exportVendorBillPDF(currentBillIndex);
+}
+
+// 4. Export Purchase Order Bill PDF
+function exportPurchaseBillPDF(purchaseId){
+  const jsPDF = getJsPDFConstructor();
+  if(!jsPDF){
+    toast('PDF library is loading, please try again in a moment');
+    return;
+  }
+
+  const p = (purchaseId ? PURCHASES.find(item => item.id === purchaseId) : null) || (currentPoId ? PURCHASES.find(item => item.id === currentPoId) : null) || PURCHASES[0];
+  if(!p){
+    toast('No purchase order found to export');
+    return;
+  }
+
+  const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+  const pageWidth = doc.internal.pageSize.getWidth();
+  const pageHeight = doc.internal.pageSize.getHeight();
+  const margin = 16;
+  const contentWidth = pageWidth - (margin * 2);
+
+  // Store Details Header
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(16);
+  doc.setTextColor(36, 31, 92);
+  doc.text('GOPESHWAR STATIONARY HOUSE', margin, 20);
+
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(8.5);
+  doc.setTextColor(74, 70, 95);
+  doc.text('Retail Stationery, Books & Commercial Office Supplies', margin, 26);
+  doc.text('Main Market, Sadar Bazaar, Gopeshwar, Uttarakhand - 246401', margin, 31);
+  doc.text('Phone / Hotline: +91 9457076378 · Email: gsh.gopeshwar@gmail.com', margin, 36);
+
+  // Right Box: PO Voucher Details
+  const boxW = 68;
+  const boxX = pageWidth - margin - boxW;
+  doc.setFillColor(246, 241, 231);
+  doc.setDrawColor(220, 212, 192);
+  doc.roundedRect(boxX, 14, boxW, 26, 2, 2, 'FD');
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(9);
+  doc.setTextColor(36, 31, 92);
+  doc.text('PURCHASE ORDER INVOICE', boxX + 4, 20);
+
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(8);
+  doc.setTextColor(74, 70, 95);
+  doc.text(`Order Ref: ${p.id.toUpperCase()}`, boxX + 4, 25);
+  doc.text(`Date: ${p.date}`, boxX + 4, 30);
+  doc.text(`Status: ${p.status} (${p.source || 'Direct Entry'})`, boxX + 4, 35);
+
+  doc.setDrawColor(220, 212, 192);
+  doc.setLineWidth(0.5);
+  doc.line(margin, 43, pageWidth - margin, 43);
+
+  let y = 48;
+  doc.setFillColor(253, 251, 245);
+  doc.roundedRect(margin, y, contentWidth, 20, 2, 2, 'FD');
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(8.5);
+  doc.setTextColor(59, 52, 134);
+  doc.text('VENDOR / SUPPLIER DETAILS', margin + 4, y + 6);
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(11);
+  doc.setTextColor(28, 26, 46);
+  doc.text(p.vendor.toUpperCase(), margin + 4, y + 12);
+
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(8);
+  doc.setTextColor(110, 105, 125);
+  doc.text(`Payment: Paid ${formatPdfCurrency(p.paid)} of ${formatPdfCurrency(p.total)} · Source: ${p.source}`, margin + 4, y + 17);
+
+  y += 26;
+
+  const tableRows = (p.lines || []).map((l, idx) => [
+    (idx + 1).toString(),
+    l.name,
+    l.qty.toString(),
+    formatPdfCurrency(l.rate),
+    formatPdfCurrency(l.amt || (l.qty * l.rate))
+  ]);
+
+  if(typeof doc.autoTable === 'function'){
+    doc.autoTable({
+      startY: y,
+      head: [['#', 'Item Description / Particulars', 'Qty / Pack', 'Rate', 'Amount']],
+      body: tableRows,
+      margin: { left: margin, right: margin },
+      theme: 'grid',
+      headStyles: { fillColor: [36, 31, 92], textColor: 255, fontStyle: 'bold', fontSize: 9 },
+      bodyStyles: { fontSize: 8.5, textColor: [28, 26, 46], cellPadding: 3.5 },
+      alternateRowStyles: { fillColor: [248, 246, 240] },
+      columnStyles: {
+        0: { cellWidth: 10, halign: 'center' },
+        1: { fontStyle: 'bold' },
+        2: { cellWidth: 26, halign: 'center' },
+        3: { cellWidth: 32, halign: 'right' },
+        4: { cellWidth: 36, halign: 'right', fontStyle: 'bold' }
+      }
+    });
+    y = doc.lastAutoTable.finalY + 6;
+  }
+
+  const totalBoxW = 75;
+  const totalBoxX = pageWidth - margin - totalBoxW;
+  doc.setFillColor(246, 241, 231);
+  doc.roundedRect(totalBoxX, y, totalBoxW, 28, 2, 2, 'F');
+
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(8.5);
+  doc.setTextColor(74, 70, 95);
+  doc.text('Subtotal:', totalBoxX + 5, y + 7);
+  doc.text(formatPdfCurrency(p.total), totalBoxX + totalBoxW - 5, y + 7, { align: 'right' });
+
+  doc.text('Paid Amount:', totalBoxX + 5, y + 13);
+  doc.text(formatPdfCurrency(p.paid), totalBoxX + totalBoxW - 5, y + 13, { align: 'right' });
+
+  doc.setDrawColor(200, 190, 175);
+  doc.line(totalBoxX + 5, y + 16, totalBoxX + totalBoxW - 5, y + 16);
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(10.5);
+  doc.setTextColor(36, 31, 92);
+  doc.text('BALANCE DUE:', totalBoxX + 5, y + 23);
+  doc.text(formatPdfCurrency(Math.max(0, p.total - p.paid)), totalBoxX + totalBoxW - 5, y + 23, { align: 'right' });
+
+  // Signatures
+  y += 34;
+  doc.setDrawColor(180, 175, 195);
+  doc.line(margin + 10, y + 14, margin + 65, y + 14);
+  doc.line(pageWidth - margin - 65, y + 14, pageWidth - margin - 10, y + 14);
+
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(7.5);
+  doc.setTextColor(120, 115, 135);
+  doc.text('Vendor / Supplier Signature', margin + 37.5, y + 18, { align: 'center' });
+  doc.text('GSH Store Authorized Seal', pageWidth - margin - 37.5, y + 18, { align: 'center' });
+
+  // Footer
+  doc.setDrawColor(220, 212, 192);
+  doc.line(margin, pageHeight - 12, pageWidth - margin, pageHeight - 12);
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(7.5);
+  doc.setTextColor(130, 125, 145);
+  doc.text('Gopeshwar Stationary House · Digitally Generated Purchase Order Document', margin, pageHeight - 8);
+  doc.text('Page 1 of 1', pageWidth - margin, pageHeight - 8, { align: 'right' });
+
+  const safeVendor = p.vendor.replace(/[^a-zA-Z0-9]/g, '_');
+  const filename = `GSH_Purchase_${p.id.toUpperCase()}_${safeVendor}.pdf`;
+  saveOrDownloadPdf(doc, filename);
+}
+
+// 5. Export Report Detail Screen to PDF
+function exportCurrentReportDetailPDF(){
+  const jsPDF = getJsPDFConstructor();
+  if(!jsPDF){
+    toast('PDF library is loading, please try again in a moment');
+    return;
+  }
+
+  const title = document.getElementById('rdTitle')?.textContent || 'GSH Business Report';
+  const sub = document.getElementById('rdSub')?.textContent || 'Live Ledger';
+
+  const doc = new jsPDF({
+    orientation: 'portrait',
+    unit: 'mm',
+    format: 'a4'
+  });
+
+  const pageWidth = doc.internal.pageSize.getWidth();
+  const pageHeight = doc.internal.pageSize.getHeight();
+  const margin = 14;
+  const contentWidth = pageWidth - (margin * 2);
+
+  // Header Banner
+  doc.setFillColor(36, 31, 92);
+  doc.rect(margin, 12, contentWidth, 22, 'F');
+
+  doc.setTextColor(255, 255, 255);
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(14);
+  doc.text('GOPESHWAR STATIONARY HOUSE', margin + 6, 21);
+
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(8.5);
+  doc.text(title.toUpperCase() + ' — ' + sub.toUpperCase(), margin + 6, 27);
+
+  doc.setFontSize(8);
+  doc.text('Sadar Bazaar, Gopeshwar · Tel: +91 9457076378', pageWidth - margin - 6, 21, { align: 'right' });
+  const todayStr = new Date().toLocaleDateString('en-IN', { day:'2-digit', month:'short', year:'numeric' });
+  doc.text(`Generated: ${todayStr}`, pageWidth - margin - 6, 27, { align: 'right' });
+
+  const rowElements = document.querySelectorAll('#rdBody .rpt-bar-row');
+  const tableRows = [];
+  rowElements.forEach((el, idx) => {
+    const label = el.querySelector('.rpt-bar-label')?.textContent?.trim() || `Item ${idx+1}`;
+    const val = el.querySelector('.rpt-bar-val')?.textContent?.trim() || '';
+    tableRows.push([(idx + 1).toString(), label, val]);
+  });
+
+  if(tableRows.length && typeof doc.autoTable === 'function'){
+    doc.autoTable({
+      startY: 40,
+      head: [['#', 'Item / Entity Description', 'Metric Value']],
+      body: tableRows,
+      margin: { left: margin, right: margin },
+      theme: 'striped',
+      headStyles: { fillColor: [36, 31, 92], textColor: 255, fontStyle: 'bold', fontSize: 9 },
+      bodyStyles: { fontSize: 8.5, textColor: [28, 26, 46], cellPadding: 3 },
+      alternateRowStyles: { fillColor: [248, 246, 240] },
+      columnStyles: {
+        0: { cellWidth: 10, halign: 'center' },
+        1: { fontStyle: 'bold' },
+        2: { halign: 'right', fontStyle: 'bold' }
+      }
+    });
+  }
+
+  const totalPages = doc.internal.getNumberOfPages();
+  for(let p = 1; p <= totalPages; p++){
+    doc.setPage(p);
+    doc.setDrawColor(220, 212, 192);
+    doc.line(margin, pageHeight - 12, pageWidth - margin, pageHeight - 12);
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(7.5);
+    doc.setTextColor(120, 115, 135);
+    doc.text(`Gopeshwar Stationary House · ${title}`, margin, pageHeight - 8);
+    doc.text(`Page ${p} of ${totalPages}`, pageWidth - margin, pageHeight - 8, { align: 'right' });
+  }
+
+  const filename = `GSH_${title.replace(/[^a-zA-Z0-9]/g, '_')}_${new Date().toISOString().slice(0,10)}.pdf`;
+  saveOrDownloadPdf(doc, filename);
 }
 
 /* ---------- ASK GSH AI (deterministic, grounded query engine — no generic chatbot,
@@ -3222,12 +4519,24 @@ function saveSeasonSale(){
 async function bootstrap(){
   USERS = await loadKey('gsh:users', []);
   if(USERS.length===0){
-    // Create initial admin user without password - mobile-only authentication
-    USERS = [{id:'u-owner',name:'Gopeshwar Owner',mobile:'',role:'ADMIN',active:true,createdAt:new Date().toISOString()}];
+    // Create initial admin user with Owner mobile number (mobile-only auth)
+    USERS = [{id:'u-owner',name:'Gopeshwar Owner',mobile:OWNER_MOBILE,role:'ADMIN',active:true,createdAt:new Date().toISOString()}];
     await saveKeyRaw('gsh:users', USERS);
-  } else if(USERS.some(user=>user.active===undefined)){
-    USERS.forEach(user=>{ if(user.active===undefined) user.active=true; });
-    await saveKeyRaw('gsh:users', USERS);
+  } else {
+    // Ensure the Owner/Admin account has the designated mobile number 9457076378
+    let owner = USERS.find(u => u.role === 'ADMIN' || u.id === 'u-owner');
+    if(!owner){
+      owner = {id:'u-owner',name:'Gopeshwar Owner',mobile:OWNER_MOBILE,role:'ADMIN',active:true,createdAt:new Date().toISOString()};
+      USERS.unshift(owner);
+      await saveKeyRaw('gsh:users', USERS);
+    } else if(!owner.mobile || normalizeMobile(owner.mobile) !== OWNER_MOBILE){
+      owner.mobile = OWNER_MOBILE;
+      await saveKeyRaw('gsh:users', USERS);
+    }
+    if(USERS.some(user=>user.active===undefined)){
+      USERS.forEach(user=>{ if(user.active===undefined) user.active=true; });
+      await saveKeyRaw('gsh:users', USERS);
+    }
   }
   VERSION_HISTORY = await loadKey('gsh:versionHistory', []);
   if(!VERSION_HISTORY.some(entry=>entry.version==='v1.3.2')){

@@ -22,8 +22,21 @@ const root = resolve(import.meta.dirname, '..');
 const src = resolve(root, 'preview', 'index.html');
 const outDir = resolve(root, 'dist');
 const outFile = resolve(outDir, 'index.html');
-const otaManifestUrl = process.env.OTA_MANIFEST_URL || '';
-const otaEnabled = process.env.OTA_ENABLED !== 'false';
+const envManifest = process.env.OTA_MANIFEST_URL?.trim();
+const PRODUCTION_MANIFEST_URL = 'https://github.com/sachingupta-ERP/gsh-app/releases/latest/download/manifest.json';
+
+function isValidProductionUrl(url) {
+  if (!url || typeof url !== 'string') return false;
+  if (!url.startsWith('https://')) return false;
+  const lower = url.toLowerCase();
+  if (lower.includes('localhost') || lower.includes('127.0.0.1') || lower.includes('0.0.0.0') || lower.includes('.run.app') || lower.includes('ai.studio') || lower.includes('secret')) {
+    return false;
+  }
+  return true;
+}
+
+const otaManifestUrl = isValidProductionUrl(envManifest) ? envManifest : PRODUCTION_MANIFEST_URL;
+const otaEnabled = process.env.OTA_ENABLED !== 'false' && process.env.OTA_ENABLED !== '0';
 
 if (!existsSync(src)) {
   console.error(`Build failed: expected the app at ${src} but it does not exist.`);
