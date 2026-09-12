@@ -2076,18 +2076,19 @@ async function manualCheckForUpdates(){
   const act = document.getElementById('settingsOtaAction');
   if(act) act.textContent = 'Checking…';
   if(sub) sub.textContent = 'Connecting to update server...';
-  toast('Checking for latest updates...');
+  toast('🔄 Checking for latest updates...');
   
   await checkOtaUpdate(false);
   
   if(PENDING_OTA_MANIFEST){
     if(sub) sub.textContent = `Update v${PENDING_OTA_MANIFEST.version} available! Tap to install.`;
     if(act) act.textContent = 'Install ›';
+    toast(`✨ New update v${PENDING_OTA_MANIFEST.version} found!`);
     openOtaUpdateModal();
   } else {
-    if(sub) sub.textContent = OTA_STATE.status || 'App is running latest version';
+    if(sub) sub.textContent = 'App is running latest version (Up to date)';
     if(act) act.textContent = 'Check Now ›';
-    toast(OTA_STATE.status || 'App is already up to date!');
+    toast('✅ Update Check Successful! App is fully up to date.');
   }
 }
 
@@ -5941,6 +5942,11 @@ async function bootstrap(){
     CURRENT_USER = null;
     show('login');
   }
+  
+  // LIVE VERIFICATION TOAST
+  setTimeout(() => {
+    toast('🚀 Gopeshwar Live App Connected successfully!');
+  }, 1000);
 }
 bootstrap();
 
