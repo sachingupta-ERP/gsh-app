@@ -1,6 +1,6 @@
 {
   "name": "gopeshwar-stationary-house",
-  "version": "1.4.0",
+  "version": "1.4.2",
   "private": true,
   "description": "GSH — AI-powered retail intelligence for Gopeshwar Stationary House. Android-first, web-secondary.",
   "scripts": {

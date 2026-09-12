@@ -527,6 +527,109 @@ html,body{margin:0;padding:0;background:#090d16;font-family:'Plus Jakarta Sans',
 .reb-btn:active{transform:scale(0.96);}
 .bill-pdf-chip{background:var(--indigo-tint);color:var(--indigo);border:1px solid rgba(59,52,134,0.2);border-radius:6px;padding:3px 8px;font-size:11px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:3px;transition:all .15s ease;}
 .bill-pdf-chip:hover{background:var(--indigo);color:#ffffff;}
+
+/* ---------- PHASE 1: PRODUCT INTELLIGENCE ---------- */
+.pi-scroll{flex:1;overflow-y:auto;padding-bottom:88px;}
+.pi-badge-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px;}
+.pi-chip{font-size:10.5px;font-weight:700;letter-spacing:.03em;padding:3px 8px;border-radius:6px;text-transform:uppercase;}
+.pi-chip.fast{background:#dbeafe;color:#1d4ed8;border:1px solid #bfdbfe;}
+.pi-chip.margin{background:#dcfce7;color:#15803d;border:1px solid #bbf7d0;}
+.pi-chip.risk{background:#fee2e2;color:#b91c1c;border:1px solid #fecaca;}
+.pi-chip.dead{background:#fef3c7;color:#b45309;border:1px solid #fde68a;}
+.pi-chip.owner{background:#f3e8ff;color:#7e22ce;border:1px solid #e9d5ff;}
+
+.pi-ai-card{margin:0 16px 14px;background:linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);color:#fff;border-radius:14px;padding:16px;box-shadow:0 4px 14px rgba(30,27,75,0.18);}
+.pi-ai-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+.pi-ai-title{font-size:11px;font-weight:700;letter-spacing:.06em;color:#a5b4fc;display:flex;align-items:center;gap:6px;}
+.pi-ai-quote{font-size:13.5px;line-height:1.5;color:#f8fafc;font-weight:500;}
+.pi-ai-rec{margin-top:10px;padding:10px 12px;background:rgba(255,255,255,0.12);border-radius:8px;font-size:12.5px;display:flex;align-items:center;justify-content:space-between;}
+.pi-ai-rec-btn{background:#38bdf8;color:#0f172a;font-weight:700;border:none;border-radius:6px;padding:5px 10px;font-size:11px;cursor:pointer;}
+
+.pi-grid{display:grid;grid-template-columns:repeat(2, 1fr);gap:8px;margin:0 16px 14px;}
+.pi-cell{background:var(--paper-raised);border:1px solid var(--rule);border-radius:10px;padding:10px 12px;}
+.pi-cell .lbl{font-size:10.5px;color:var(--ink-faint);font-weight:600;}
+.pi-cell .val{font-size:16px;font-weight:700;font-family:'IBM Plex Mono',monospace;margin-top:2px;}
+.pi-cell .sub{font-size:10.5px;color:var(--ink-faint);margin-top:2px;}
+
+.pi-section{margin:0 16px 14px;background:var(--paper-raised);border:1px solid var(--rule);border-radius:12px;overflow:hidden;}
+.pi-section-title{font-size:11px;font-weight:700;color:var(--ink-faint);letter-spacing:.05em;padding:10px 14px 6px;text-transform:uppercase;background:#f8fafc;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;}
+
+.pi-alt-row{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--rule);cursor:pointer;}
+.pi-alt-row:last-child{border-bottom:none;}
+.pi-alt-name{font-size:12.5px;font-weight:600;}
+.pi-alt-sub{font-size:11px;color:var(--ink-faint);}
+.pi-alt-badge{font-size:10px;font-weight:600;padding:2px 6px;border-radius:6px;}
+
+/* ---------- PHASE 2 & 3: AI SHOP COMMAND CENTER & ATTENTION FEED ---------- */
+.ai-cmd-banner{margin:12px 16px;background:linear-gradient(135deg, #0f172a 0%, #1e293b 100%);border-radius:16px;padding:16px;color:#fff;box-shadow:0 4px 16px rgba(15,23,42,0.14);}
+.ai-cmd-top{display:flex;align-items:center;justify-content:space-between;}
+.ai-cmd-time-tag{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#38bdf8;display:flex;align-items:center;gap:5px;}
+.ai-cmd-title{font-size:17px;font-weight:800;letter-spacing:-.01em;margin-top:3px;}
+.ai-cmd-sub{font-size:12px;color:#94a3b8;margin-top:3px;line-height:1.4;}
+
+.ai-pulse-bar{display:grid;grid-template-columns:repeat(4, 1fr);gap:6px;margin:12px 0 0;padding-top:12px;border-top:1px solid rgba(255,255,255,0.1);}
+.ai-pulse-item{cursor:pointer;}
+.ai-pulse-lbl{font-size:9.5px;color:#94a3b8;font-weight:600;}
+.ai-pulse-val{font-size:14px;font-weight:700;font-family:'IBM Plex Mono',monospace;color:#fff;margin-top:2px;}
+
+.smart-actions-scroll{display:flex;gap:8px;padding:0 16px 14px;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.smart-act-btn{flex:0 0 auto;display:flex;align-items:center;gap:6px;padding:8px 14px;border-radius:20px;border:1px solid var(--rule);background:#fff;font-size:12px;font-weight:700;color:var(--ink-soft);box-shadow:0 1px 3px rgba(0,0,0,0.03);cursor:pointer;transition:all .15s;}
+.smart-act-btn:active{transform:scale(0.96);}
+.smart-act-btn.primary{background:#2563eb;color:#fff;border-color:#2563eb;}
+.smart-act-btn.yellow{background:#fef08a;color:#713f12;border-color:#fde047;}
+
+.attn-feed-card{margin:0 16px 12px;background:#fff;border:1px solid var(--rule);border-radius:14px;overflow:hidden;box-shadow:0 2px 6px rgba(15,23,42,0.04);cursor:pointer;transition:all .15s;}
+.attn-feed-card:hover{border-color:#cbd5e1;}
+.attn-feed-card:active{transform:scale(0.99);}
+.attn-feed-head{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border-bottom:1px solid #f1f5f9;}
+.attn-feed-type{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;}
+.attn-feed-body{padding:12px 14px;}
+.attn-feed-title{font-size:14px;font-weight:700;color:var(--ink);}
+.attn-feed-why{font-size:12px;color:var(--ink-soft);margin-top:4px;line-height:1.45;}
+.attn-feed-evidence{margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:8px;border:1px dashed #cbd5e1;font-size:11.5px;color:var(--ink-faint);display:flex;align-items:center;gap:6px;}
+.attn-feed-action{display:flex;align-items:center;justify-content:space-between;padding:9px 14px;background:#f8fafc;border-top:1px solid #f1f5f9;font-size:11.5px;font-weight:600;color:#2563eb;}
+
+/* ---------- PHASE 6 & 7: YELLOW DIGITAL CUSTOMER SLIP (KACHHA PARCHA) ---------- */
+.parcha-sheet{max-height:92%!important;}
+.parcha-paper{background:#fefce8;border:2px solid #fef08a;border-radius:14px;padding:14px;margin-bottom:12px;box-shadow:inset 0 0 12px rgba(234,179,8,0.08), 0 2px 8px rgba(0,0,0,0.06);position:relative;}
+.parcha-banner{display:flex;align-items:center;justify-content:space-between;border-bottom:2px dashed #facc15;padding-bottom:8px;margin-bottom:10px;}
+.parcha-shop-name{font-size:12.5px;font-weight:800;color:#713f12;letter-spacing:.04em;text-transform:uppercase;}
+.parcha-cust-tabs{display:flex;gap:4px;}
+.parcha-cust-btn{padding:3px 10px;border-radius:12px;border:1px solid #facc15;background:#fffbeb;font-size:10.5px;font-weight:700;color:#854d0e;cursor:pointer;}
+.parcha-cust-btn.active{background:#854d0e;color:#fff;border-color:#854d0e;}
+
+.parcha-row{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px dashed #fde047;}
+.parcha-item-info{flex:1;min-width:0;padding-right:8px;}
+.parcha-item-name{font-size:13px;font-weight:700;color:#451a03;}
+.parcha-match-badge{font-size:9.5px;font-weight:600;padding:1px 5px;border-radius:4px;display:inline-block;margin-left:4px;}
+.parcha-match-badge.matched{background:#dcfce7;color:#166534;}
+.parcha-match-badge.approx{background:#fef3c7;color:#92400e;}
+
+.parcha-rate-row{display:flex;align-items:center;gap:6px;font-size:11px;color:#78350f;margin-top:3px;}
+.parcha-strike{text-decoration:line-through;color:#a16207;}
+.parcha-bargain-input{width:62px;padding:2px 4px;font-size:12px;font-weight:700;border:1px solid #ca8a04;border-radius:4px;background:#fff;text-align:right;color:#713f12;font-family:'IBM Plex Mono',monospace;}
+.parcha-disc-badge{font-size:9.5px;font-weight:700;color:#dc2626;}
+.parcha-margin-badge{font-size:9.5px;font-weight:600;color:#15803d;}
+
+.parcha-confirm-bar{background:#451a03;color:#fff;border-radius:10px;padding:10px 14px;margin-top:10px;display:flex;align-items:center;justify-content:space-between;}
+.parcha-total-lg{font-size:19px;font-weight:800;font-family:'IBM Plex Mono',monospace;color:#fde047;}
+
+/* ---------- PHASE 5: DIGITAL FILING CABINET ---------- */
+.cabinet-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 16px 14px;}
+.cabinet-folder{background:#fff;border:1px solid var(--rule);border-radius:12px;padding:12px;cursor:pointer;position:relative;box-shadow:0 1px 3px rgba(0,0,0,0.04);transition:all .15s;}
+.cabinet-folder:active{transform:scale(0.97);}
+.cabinet-tab-pin{position:absolute;top:-8px;right:10px;font-size:14px;}
+.cabinet-name{font-size:13px;font-weight:700;color:var(--ink);margin-top:6px;}
+.cabinet-meta{font-size:11px;color:var(--ink-faint);margin-top:2px;}
+
+.handwritten-bill-preview{background:#faf8f2;border:1px solid #e7e2d4;border-radius:10px;padding:16px;box-shadow:inset 0 0 10px rgba(0,0,0,0.03);position:relative;}
+.handwritten-bill-stamp{position:absolute;top:12px;right:12px;border:2px solid #b91c1c;color:#b91c1c;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:800;text-transform:uppercase;transform:rotate(-8deg);}
+.ai-indexed-badge{display:inline-flex;align-items:center;gap:4px;background:#ede9fe;color:#6d28d9;border:1px solid #ddd6fe;border-radius:6px;padding:2px 8px;font-size:10px;font-weight:700;}
+
+/* Tag pill styling */
+.tag-input-pill{display:inline-flex;align-items:center;gap:4px;background:#f1f5f9;color:var(--ink-soft);padding:3px 8px;border-radius:12px;font-size:11px;font-weight:600;margin:2px;}
+.tag-input-pill .remove-tag{cursor:pointer;color:var(--rose);font-weight:bold;}
+
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -698,66 +801,71 @@ html,body{margin:0;padding:0;background:#090d16;font-family:'Plus Jakarta Sans',
             <span>Live DB</span>
           </div>
         </div>
-        <div class="cc-ai-status">⚡ AI Assistant active · SQLite WAL Engine</div>
+        <div class="cc-ai-status">⚡ GSH AI Engine Active · Real Retail Data Intelligence</div>
       </div>
 
-      <div class="section-label">TODAY AT A GLANCE</div>
-      <div class="today-grid">
-        <div class="stat-card">
-          <div class="stat-card-head"><span class="stat-label">Sales</span><span class="stat-icon" style="background:#eff6ff;color:#2563eb;">📈</span></div>
-          <div class="stat-value mono" id="ccSales">₹0</div>
-          <div class="stat-delta" id="ccSalesSub">No sales logged yet today</div>
+      <!-- Time-Aware AI Command Center Banner -->
+      <div class="ai-cmd-banner" id="aiCmdBanner">
+        <div class="ai-cmd-top">
+          <div class="ai-cmd-time-tag" id="aiCmdTimeTag"><span>☀️</span> Morning Focus</div>
+          <div class="status-pill" style="background:rgba(255,255,255,0.15);color:#fff;border-color:rgba(255,255,255,0.25);">Live Sync</div>
         </div>
-        <div class="stat-card">
-          <div class="stat-card-head"><span class="stat-label">Gross profit</span><span class="stat-icon" style="background:#ecfdf5;color:#059669;">✨</span></div>
-          <div class="stat-value mono" id="ccProfit">₹0</div>
-          <div class="stat-delta" id="ccProfitSub">—</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-card-head"><span class="stat-label">Cash in drawer</span><span class="stat-icon" style="background:#fffbeb;color:#d97706;">💵</span></div>
-          <div class="stat-value mono" id="ccCash">₹0</div>
-          <div class="stat-delta">Physical drawer balance</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-card-head"><span class="stat-label">UPI collections</span><span class="stat-icon" style="background:#f5f3ff;color:#7c3aed;">📱</span></div>
-          <div class="stat-value mono" id="ccUpi">₹0</div>
-          <div class="stat-delta" id="ccUpiSub">No UPI sales yet today</div>
-        </div>
-      </div>
-
-      <div class="section-label">NEEDS ATTENTION</div>
-      <div class="attn">
-        <div class="attn-row" onclick="openProduct('p1')">
-          <div class="attn-left"><span class="badge crit"></span><div><div class="attn-title">DOMS DF Pen — 6 left</div><div class="attn-sub">Below reorder point of 20</div></div></div>
-          <span class="chev">›</span>
-        </div>
-        <div class="attn-row" onclick="openVendor('v1')">
-          <div class="attn-left"><span class="badge med"></span><div><div class="attn-title">Ashok Pen Wale bill unverified</div><div class="attn-sub">₹4,850 · scanned 2 days ago</div></div></div>
-          <span class="chev">›</span>
-        </div>
-        <div class="attn-row" onclick="openPurchase('po1'); show('po-detail')">
-          <div class="attn-left"><span class="badge med"></span><div><div class="attn-title">₹4,850 priority purchase suggested</div><div class="attn-sub">Within today's available funds</div></div></div>
-          <span class="chev">›</span>
+        <div class="ai-cmd-title" id="aiCmdTitle">Morning AI Shop Command</div>
+        <div class="ai-cmd-sub" id="aiCmdSub">Analyzing active stock velocity, reorder requirements, and cash flow.</div>
+        
+        <!-- Compact Contextual Financial Pulse -->
+        <div class="ai-pulse-bar" onclick="show('money'); renderMoney();" title="Tap to open Money & Daily Closing ledger">
+          <div class="ai-pulse-item">
+            <div class="ai-pulse-lbl">SALES</div>
+            <div class="ai-pulse-val" id="ccSales">₹0</div>
+          </div>
+          <div class="ai-pulse-item">
+            <div class="ai-pulse-lbl">PROFIT</div>
+            <div class="ai-pulse-val" style="color:#86efac;" id="ccProfit">₹0</div>
+          </div>
+          <div class="ai-pulse-item">
+            <div class="ai-pulse-lbl">DRAWER</div>
+            <div class="ai-pulse-val" style="color:#fde047;" id="ccCash">₹0</div>
+          </div>
+          <div class="ai-pulse-item">
+            <div class="ai-pulse-lbl">UPI</div>
+            <div class="ai-pulse-val" style="color:#c4b5fd;" id="ccUpi">₹0</div>
+          </div>
         </div>
       </div>
 
-      <div class="section-label">AI MORNING BRIEFING</div>
-      <div class="brief">
-        <div class="brief-label">🪶 SUMMARY</div>
-        <div class="brief-text">Yesterday's sales rose 8% over the previous comparable day. 3 fast-moving products are approaching reorder level — DOMS DF Pen is most urgent. ₹4,850 of priority purchases are recommended within your available funds.</div>
-        <div class="brief-actions">
-          <div class="link-btn" onclick="toast('Trace: source transactions for this briefing')">Trace</div>
-          <div class="link-btn" onclick="toast('Explain: how this briefing was generated')">Explain</div>
-        </div>
+      <!-- Compact Smart Actions Bar -->
+      <div class="smart-actions-scroll">
+        <div class="smart-act-btn yellow" onclick="openCustomerSaleSheet()"><span>🧾</span> + Quick Sale</div>
+        <div class="smart-act-btn primary" onclick="openVoiceSheet('inventory')"><span>🎙️</span> + Purchase</div>
+        <div class="smart-act-btn" onclick="openScanBillModal()"><span>📷</span> Scan Bill</div>
+        <div class="smart-act-btn" onclick="show('ai-assistant'); renderChat();"><span>💬</span> Ask GSH</div>
+        <div class="smart-act-btn" onclick="openQuickNoteModal()"><span>📝</span> Quick Note</div>
+        <div class="smart-act-btn" onclick="openDeadStockSheet()"><span>📦</span> Dead Stock</div>
       </div>
 
-      <div class="section-label">QUICK ACTIONS</div>
-      <div class="quick-row">
-        <div class="qa" onclick="openVoiceSheet('inventory')"><div class="qa-icon">🎙️</div><div class="qa-label">Voice Entry</div></div>
-        <div class="qa" onclick="toast('Opening camera — scan bill')"><div class="qa-icon">📷</div><div class="qa-label">Scan Bill</div></div>
-        <div class="qa" onclick="openSaleSheet()"><div class="qa-icon">🧾</div><div class="qa-label">Sale Total</div></div>
-        <div class="qa" onclick="openExpenseSheet()"><div class="qa-icon">💸</div><div class="qa-label">Add Expense</div></div>
-        <div class="qa" onclick="show('ai-assistant'); renderChat();"><div class="qa-icon">💬</div><div class="qa-label">Ask AI</div></div>
+      <!-- AI Attention Feed -->
+      <div class="section-label" style="display:flex;justify-content:space-between;align-items:center;">
+        <span>AI ATTENTION FEED</span>
+        <span style="font-size:10px;color:var(--indigo);cursor:pointer;font-weight:700;" onclick="renderCC()">REFRESH</span>
+      </div>
+      <div id="aiAttentionFeed">
+        <!-- Dynamically rendered attention events with WHY, EVIDENCE, ACTION -->
+      </div>
+
+      <!-- AI Store Priorities -->
+      <div class="section-label">TOP OPPORTUNITIES &amp; PRIORITIES</div>
+      <div id="aiPrioritySection" style="padding:0 0 8px;">
+        <!-- Dynamically rendered priority items from real data -->
+      </div>
+
+      <!-- Quick Notes Section -->
+      <div class="section-label" style="display:flex;justify-content:space-between;align-items:center;">
+        <span>STORE NOTES &amp; REMINDERS</span>
+        <span style="font-size:10.5px;color:var(--indigo);cursor:pointer;font-weight:700;" onclick="openQuickNoteModal()">+ NEW NOTE</span>
+      </div>
+      <div id="aiNotesSection" style="padding:0 16px 16px;">
+        <!-- Dynamically rendered quick notes -->
       </div>
     </div>
 
@@ -800,38 +908,19 @@ html,body{margin:0;padding:0;background:#090d16;font-family:'Plus Jakarta Sans',
     </div>
   </div>
 
-  <!-- ================= PRODUCT 360 ================= -->
+  <!-- ================= PRODUCT INTELLIGENCE ================= -->
   <div class="screen" id="p360">
     <div class="bar">
       <div class="bar-back" onclick="show('inv-list')">←</div>
-      <div><div class="bar-title" id="p360Name">DOMS DF Pen</div><div class="bar-sub" id="p360Meta">PEN-01 · DOMS · Writing</div></div>
+      <div style="flex:1;">
+        <div class="bar-title" id="p360Name">Product Intelligence</div>
+        <div class="bar-sub" id="p360Meta">Real-time Retail Demand &amp; Margin Engine</div>
+      </div>
+      <div class="bar-back" onclick="promptSetProductStock(currentP360Id)" title="Audit physical stock count" style="font-size:14px;background:#f1f5f9;border-radius:8px;padding:6px 10px;">⚖️ Audit</div>
     </div>
-    <div class="p360-stats">
-      <div class="p360-stat"><div class="v mono" id="p360Stock" style="color:var(--rose);">6</div><div class="l">In stock</div></div>
-      <div class="p360-stat"><div class="v mono">₹8 → ₹10</div><div class="l">Rate → Sell</div></div>
-      <div class="p360-stat"><div class="v mono" style="color:var(--emerald);">25%</div><div class="l">Margin</div></div>
-    </div>
-    <div class="tabs">
-      <div class="tab active" data-t="history" onclick="setP360Tab('history')">History</div>
-      <div class="tab" data-t="rates" onclick="setP360Tab('rates')">Vendor rates</div>
-      <div class="tab" data-t="ask" onclick="setP360Tab('ask')">Ask about this</div>
-    </div>
-    <div class="tab-panel active" id="tab-history">
-      <div class="timeline-row"><div class="tl-dot" style="background:var(--rose);"></div><div><div class="tl-title">Sale — 12 nikale</div><div class="tl-sub">Voice adjustment · today, 6:40 PM</div></div><div class="tl-amt">−12</div></div>
-      <div class="timeline-row"><div class="tl-dot"></div><div><div class="tl-title">Purchase received — Ashok Pen Wale</div><div class="tl-sub">30 Aug 2026 · ₹8.00/pc</div></div><div class="tl-amt" style="color:var(--emerald);">+40</div></div>
-      <div class="timeline-row"><div class="tl-dot" style="background:var(--rose);"></div><div><div class="tl-title">Sale — daily total adjustment</div><div class="tl-sub">29 Aug 2026</div></div><div class="tl-amt">−18</div></div>
-      <div class="timeline-row"><div class="tl-dot"></div><div><div class="tl-title">Purchase received — Shree Stationers</div><div class="tl-sub">18 Aug 2026 · ₹8.50/pc</div></div><div class="tl-amt" style="color:var(--emerald);">+50</div></div>
-      <div class="link-btn" style="margin-top:14px;" onclick="toast('Full movement ledger')">View full ledger →</div>
-    </div>
-    <div class="tab-panel" id="tab-rates">
-      <div class="rate-vendor"><div class="rv-name">Ashok Pen Wale <span class="rv-best">BEST RATE</span></div><div class="rv-history mono">₹7.80 → ₹8.00 → ₹8.00</div></div>
-      <div class="rate-vendor"><div class="rv-name">Shree Stationers</div><div class="rv-history mono">₹8.20 → ₹8.40 → ₹8.50</div></div>
-      <div class="link-btn" onclick="toast('Trace: rate history source purchases')">Trace source purchases →</div>
-    </div>
-    <div class="tab-panel" id="tab-ask">
-      <div class="ask-row" onclick="askFromContext('Which vendor gives the lowest rate for '+PRODUCTS.find(p=>p.id===currentP360Id).name+'?')">💬 Which vendor gives the lowest rate?</div>
-      <div class="ask-row" onclick="askFromContext('When did we last purchase '+PRODUCTS.find(p=>p.id===currentP360Id).name+'?')">💬 When did we last purchase this?</div>
-      <div class="ask-row" onclick="askFromContext('What is the current stock of '+PRODUCTS.find(p=>p.id===currentP360Id).name+'?')">💬 What's the current stock?</div>
+    
+    <div class="pi-scroll" id="productIntelligenceContent">
+      <!-- Dynamic Product Intelligence UI rendered by renderProductIntelligence() -->
     </div>
   </div>
 
@@ -1203,6 +1292,237 @@ html,body{margin:0;padding:0;background:#090d16;font-family:'Plus Jakarta Sans',
       <div class="nav-item" onclick="show('vendor-list')"><span class="nav-icon">🤝</span>Vendors</div>
       <div class="nav-item" onclick="show('reports'); renderReports();"><span class="nav-icon">📊</span>Reports</div>
       <div class="nav-item" onclick="openMoreSheet()"><span class="nav-icon">⋯</span>More</div>
+    </div>
+  </div>
+
+  <!-- ================= CUSTOMER QUICK SALE DIGITAL SLIP (KACHHA PARCHA - §6 & §7) ================= -->
+  <div class="sheet-scrim" id="parchaScrim" onclick="closeCustomerSaleSheet()"></div>
+  <div class="sheet parcha-sheet" id="parchaSheet">
+    <div class="sheet-handle"></div>
+    <div class="sheet-head" style="padding-bottom:6px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;">
+        <div class="bar-title">Customer Quick Sale</div>
+        <div class="parcha-cust-tabs" id="parchaCustTabs">
+          <button class="parcha-cust-btn active" id="custTab0" onclick="switchCustomerSlip(0)">Cust 01</button>
+          <button class="parcha-cust-btn" id="custTab1" onclick="switchCustomerSlip(1)">Cust 02</button>
+          <button class="parcha-cust-btn" id="custTab2" onclick="switchCustomerSlip(2)">Cust 03</button>
+        </div>
+      </div>
+      <div class="bar-sub" id="parchaSubtitle">Yellow Digital Slip · Live Stock Deduction &amp; Bargaining Support</div>
+    </div>
+    
+    <div class="sheet-body" style="padding-bottom:10px;">
+      <div class="parcha-paper">
+        <div class="parcha-banner">
+          <div class="parcha-shop-name">Gopeshwar Stationary · Kachha Parcha</div>
+          <div style="font-size:11px;color:#854d0e;font-weight:700;" id="parchaCustLabel">Customer 01</div>
+        </div>
+
+        <!-- Quick Natural Voice Speech Parser -->
+        <div style="background:#fef08a;border:1px dashed #ca8a04;border-radius:10px;padding:8px 10px;margin-bottom:10px;display:flex;align-items:center;gap:8px;">
+          <button onclick="triggerVoiceCustomerSale()" style="background:#ca8a04;color:#fff;border:none;border-radius:20px;padding:6px 12px;font-size:11.5px;font-weight:700;display:flex;align-items:center;gap:4px;cursor:pointer;">
+            <span>🎙️</span> Bol Kar Add Karein
+          </button>
+          <div style="font-size:11px;color:#713f12;flex:1;line-height:1.3;" id="parchaVoiceHint">
+            e.g. "Natraj pencil 2, 1 DOMS eraser, 1 register 40 rupaye"
+          </div>
+        </div>
+
+        <!-- Quick Manual Add Input -->
+        <div style="display:flex;gap:6px;margin-bottom:10px;">
+          <input type="text" id="parchaInputItem" placeholder="Add item name or product..." style="flex:1;padding:8px 10px;font-size:13px;border:1px solid #facc15;border-radius:8px;background:#fff;" list="parchaProductDatalist" />
+          <datalist id="parchaProductDatalist"></datalist>
+          <input type="number" id="parchaInputQty" placeholder="Qty" value="1" min="1" style="width:50px;padding:8px 6px;text-align:center;font-size:13px;border:1px solid #facc15;border-radius:8px;background:#fff;" />
+          <button onclick="addManualParchaItem()" style="background:#854d0e;color:#fff;border:none;border-radius:8px;padding:8px 12px;font-size:12px;font-weight:700;cursor:pointer;">+ Add</button>
+        </div>
+
+        <!-- Quick Tap Frequent Items -->
+        <div style="display:flex;gap:6px;overflow-x:auto;padding-bottom:8px;margin-bottom:8px;">
+          <span style="font-size:10px;color:#854d0e;font-weight:700;align-self:center;white-space:nowrap;">QUICK:</span>
+          <button class="tag-input-pill" onclick="quickAddParchaItem('p1', 1)">DOMS Pen (₹10)</button>
+          <button class="tag-input-pill" onclick="quickAddParchaItem('p2', 1)">DOMS Pencil (₹6)</button>
+          <button class="tag-input-pill" onclick="quickAddParchaItem('p4', 1)">Classmate (₹38)</button>
+          <button class="tag-input-pill" onclick="quickAddParchaItem('p6', 1)">Tape (₹18)</button>
+        </div>
+
+        <!-- Line Items Table -->
+        <div id="parchaItemsContainer">
+          <!-- Dynamic Items In Kachha Parcha -->
+        </div>
+
+        <!-- Payment Mode & Bargaining Total -->
+        <div style="margin-top:10px;padding-top:8px;border-top:1px dashed #facc15;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+            <div style="font-size:12px;font-weight:700;color:#713f12;">Payment Mode:</div>
+            <div style="display:flex;gap:6px;">
+              <label style="font-size:11.5px;color:#713f12;font-weight:600;display:flex;align-items:center;gap:3px;cursor:pointer;">
+                <input type="radio" name="parchaPayMode" value="cash" checked onchange="updateParchaSummary()" /> 💵 Cash
+              </label>
+              <label style="font-size:11.5px;color:#713f12;font-weight:600;display:flex;align-items:center;gap:3px;cursor:pointer;">
+                <input type="radio" name="parchaPayMode" value="upi" onchange="updateParchaSummary()" /> 📱 UPI
+              </label>
+              <label style="font-size:11.5px;color:#713f12;font-weight:600;display:flex;align-items:center;gap:3px;cursor:pointer;">
+                <input type="radio" name="parchaPayMode" value="credit" onchange="updateParchaSummary()" /> 🗒️ Credit
+              </label>
+            </div>
+          </div>
+
+          <!-- Lightweight Confirmation Summary -->
+          <div class="parcha-confirm-bar" id="parchaConfirmBar">
+            <div>
+              <div style="font-size:10px;color:#fef08a;text-transform:uppercase;font-weight:700;">TOTAL PAYABLE</div>
+              <div class="parcha-total-lg" id="parchaTotalDisplay">₹0</div>
+              <div style="font-size:10px;color:#cbd5e1;" id="parchaImpactDisplay">0 items · Stock impact: 0</div>
+            </div>
+            <div style="text-align:right;">
+              <div style="font-size:10.5px;color:#86efac;font-weight:600;" id="parchaMarginDisplay">Margin: ₹0</div>
+              <button onclick="confirmAndPostCustomerSale()" style="background:#eab308;color:#000;border:none;border-radius:8px;padding:8px 14px;font-size:12px;font-weight:800;margin-top:4px;cursor:pointer;">
+                ✓ Complete Sale
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sheet-foot" style="padding-top:8px;">
+      <button class="sheet-btn cancel" onclick="clearActiveCustomerSlip()">Clear Slip</button>
+      <button class="sheet-btn cancel" onclick="closeCustomerSaleSheet()">Close</button>
+      <button class="sheet-btn confirm" onclick="openSaleSheet(); closeCustomerSaleSheet();" style="font-size:11.5px;background:#64748b;">
+        Day-End Total Adj
+      </button>
+    </div>
+  </div>
+
+  <!-- ================= HANDWRITTEN PURCHASE BILL SCANNER / DIGITAL CABINET (§5) ================= -->
+  <div class="sheet-scrim" id="scanBillScrim" onclick="closeScanBillModal()"></div>
+  <div class="sheet" id="scanBillSheet" style="max-height:92%;">
+    <div class="sheet-handle"></div>
+    <div class="sheet-head">
+      <div class="bar-title">Scan Handwritten Purchase Bill</div>
+      <div class="bar-sub">Digital Filing Cabinet · AI OCR Extraction &amp; Product Matching</div>
+    </div>
+    <div class="sheet-body">
+      <!-- Upload / Camera Area -->
+      <div style="border:2px dashed #93c5fd;border-radius:12px;padding:16px;text-align:center;background:#eff6ff;margin-bottom:12px;" id="billUploadBox">
+        <div style="font-size:32px;margin-bottom:6px;">📸</div>
+        <div style="font-size:13.5px;font-weight:700;color:#1e3a8a;">Select or Snap Handwritten Bill</div>
+        <div style="font-size:11.5px;color:#64748b;margin-top:2px;">Supports physical vendor parchas &amp; invoices</div>
+        <input type="file" id="billFileInput" accept="image/*" style="display:none;" onchange="handleBillFileSelected(event)" />
+        <div style="display:flex;gap:8px;justify-content:center;margin-top:10px;">
+          <button onclick="document.getElementById('billFileInput').click()" style="background:#2563eb;color:#fff;border:none;border-radius:8px;padding:7px 14px;font-size:12px;font-weight:700;cursor:pointer;">
+            Choose Image
+          </button>
+          <button onclick="loadSampleBillForIndexing('Ashok Pen Wale')" style="background:#fff;color:#1e3a8a;border:1px solid #bfdbfe;border-radius:8px;padding:7px 12px;font-size:12px;font-weight:600;cursor:pointer;">
+            Use Sample Bill
+          </button>
+        </div>
+      </div>
+
+      <!-- Extraction Progress Banner -->
+      <div id="billExtractProgress" style="display:none;background:#f8fafc;border:1px solid var(--rule);border-radius:10px;padding:12px;margin-bottom:12px;text-align:center;">
+        <div style="font-size:12.5px;font-weight:700;color:var(--indigo);">⚡ AI Extracting Handwritten Items...</div>
+        <div style="font-size:11px;color:var(--ink-faint);margin-top:2px;" id="billExtractStep">Matching against 42 product records</div>
+      </div>
+
+      <!-- Extracted Bill Header -->
+      <div id="billExtractedContent" style="display:none;">
+        <div style="background:#fff;border:1px solid var(--rule);border-radius:10px;padding:12px;margin-bottom:12px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+            <div class="ai-indexed-badge">✓ AI INDEXED · 96% CONFIDENCE</div>
+            <div style="font-size:11px;color:var(--ink-faint);" id="billExtractDate">30 Aug 2026</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+            <div>
+              <div style="font-size:10px;color:var(--ink-faint);font-weight:700;">VENDOR</div>
+              <input type="text" id="billExtractVendor" value="Ashok Pen Wale" style="width:100%;font-size:13px;font-weight:700;padding:4px 6px;border:1px solid var(--rule);border-radius:6px;" />
+            </div>
+            <div>
+              <div style="font-size:10px;color:var(--ink-faint);font-weight:700;">BILL / PARCHA #</div>
+              <input type="text" id="billExtractNo" value="A-2292" style="width:100%;font-size:13px;font-weight:700;padding:4px 6px;border:1px solid var(--rule);border-radius:6px;" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Extracted Line Items -->
+        <div style="font-size:11px;font-weight:700;color:var(--ink-faint);text-transform:uppercase;margin-bottom:6px;">
+          EXTRACTED LINE ITEMS &amp; PRODUCT MATCHING
+        </div>
+        <div id="billExtractedRows">
+          <!-- Dynamic Extracted Rows -->
+        </div>
+
+        <!-- Payment Option -->
+        <div style="margin-top:12px;background:#f8fafc;border:1px solid var(--rule);border-radius:10px;padding:10px 12px;">
+          <div style="font-size:11px;font-weight:700;color:var(--ink-soft);margin-bottom:6px;">PAYMENT OPTION</div>
+          <div style="display:flex;gap:12px;font-size:12px;">
+            <label style="display:flex;align-items:center;gap:4px;cursor:pointer;">
+              <input type="radio" name="billPayOption" value="cash" checked /> Cash from drawer
+            </label>
+            <label style="display:flex;align-items:center;gap:4px;cursor:pointer;">
+              <input type="radio" name="billPayOption" value="bank" /> UPI / Bank
+            </label>
+            <label style="display:flex;align-items:center;gap:4px;cursor:pointer;">
+              <input type="radio" name="billPayOption" value="credit" /> Credit / Adjustment
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sheet-foot" id="billModalFoot" style="display:none;">
+      <button class="sheet-btn cancel" onclick="closeScanBillModal()">Cancel</button>
+      <button class="sheet-btn confirm" onclick="confirmAndPostBillPurchase()">✓ Confirm &amp; Post to Stock</button>
+    </div>
+  </div>
+
+  <!-- ================= QUICK NOTE SHEET (§12) ================= -->
+  <div class="sheet-scrim" id="noteScrim" onclick="closeQuickNoteModal()"></div>
+  <div class="sheet" id="quickNoteSheet">
+    <div class="sheet-handle"></div>
+    <div class="sheet-head">
+      <div class="bar-title">Add Quick Shop Note</div>
+      <div class="bar-sub">Voice or Text memo · AI context linked</div>
+    </div>
+    <div class="sheet-body">
+      <div style="display:flex;gap:6px;margin-bottom:10px;">
+        <button class="tag-input-pill active" id="noteTagVendor" onclick="setNoteCategory('Vendor Reminder')">📌 Vendor</button>
+        <button class="tag-input-pill" id="noteTagProduct" onclick="setNoteCategory('Product Order')">📦 Product</button>
+        <button class="tag-input-pill" id="noteTagCustomer" onclick="setNoteCategory('Customer Request')">👤 Customer</button>
+        <button class="tag-input-pill" id="noteTagGeneral" onclick="setNoteCategory('General Reminder')">🗒️ General</button>
+      </div>
+
+      <div class="field" style="background:#fff;border-color:var(--rule);">
+        <label>NOTE CONTENT</label>
+        <textarea id="quickNoteText" rows="3" placeholder="e.g. Kal Sharma Traders ko ₹2,000 dena hai, Classmate notebook mangani hai..." style="width:100%;font-size:13.5px;padding:8px 0;border:none;outline:none;resize:none;color:var(--ink);"></textarea>
+      </div>
+
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px;">
+        <button onclick="triggerVoiceQuickNote()" style="background:#eff6ff;color:#2563eb;border:1px solid #bfdbfe;border-radius:20px;padding:5px 12px;font-size:11.5px;font-weight:700;display:flex;align-items:center;gap:4px;cursor:pointer;">
+          <span>🎙️</span> Speak Note
+        </button>
+        <div style="font-size:11px;color:var(--ink-faint);" id="quickNoteLinkHint">Links to vendor &amp; products automatically</div>
+      </div>
+    </div>
+    <div class="sheet-foot">
+      <button class="sheet-btn cancel" onclick="closeQuickNoteModal()">Cancel</button>
+      <button class="sheet-btn confirm" onclick="saveQuickNote()">Save Note</button>
+    </div>
+  </div>
+
+  <!-- ================= DEAD STOCK & CASH BLOCKED SHEET (§10) ================= -->
+  <div class="sheet-scrim" id="deadStockScrim" onclick="closeDeadStockSheet()"></div>
+  <div class="sheet" id="deadStockSheet" style="max-height:86%;">
+    <div class="sheet-handle"></div>
+    <div class="sheet-head">
+      <div class="bar-title">Dead Stock &amp; Cash Blocked</div>
+      <div class="bar-sub">Items with zero sales in &gt;30 days · Free up working capital</div>
+    </div>
+    <div class="sheet-body">
+      <div id="deadStockListContainer">
+        <!-- Dynamic dead stock list -->
+      </div>
+    </div>
+    <div class="sheet-foot">
+      <button class="sheet-btn cancel" onclick="closeDeadStockSheet()">Close</button>
     </div>
   </div>
 
@@ -2348,25 +2668,357 @@ function setInvFilter(f){
 }
 
 let currentP360Id = null;
-function openProduct(id){
+
+function renderProductIntelligence(id){
   currentP360Id = id;
-  const p = PRODUCTS.find(x=>x.id===id);
+  const p = PRODUCTS.find(x => x.id === id);
   if(!p) return;
-  document.getElementById('p360Name').innerHTML = invNameHtml(p);
-  const isLow = p.stock < p.min;
+
+  // 1. Calculate real movements and velocity
+  const pMovements = (MOVEMENTS || []).filter(m => m.productId === p.id || m.productName === p.name);
+  const salesMovements = pMovements.filter(m => m.delta < 0);
+  const restockMovements = pMovements.filter(m => m.delta > 0);
+  const unitsSold = Math.abs(salesMovements.reduce((sum, m) => sum + m.delta, 0));
+  
+  // Velocity estimation (units/day over active window)
+  const velocity = unitsSold > 0 ? (unitsSold / 7).toFixed(1) : 0;
+  const daysRemaining = (velocity > 0) ? (p.stock / velocity).toFixed(1) : (p.stock > 0 ? '60+' : '0');
+  
+  // 2. Scan Purchases for vendor rate intelligence
+  const vendorRateRecords = [];
+  (PURCHASES || []).forEach(po => {
+    (po.lines || []).forEach(l => {
+      if(l.name.toLowerCase().includes(p.name.toLowerCase()) || p.name.toLowerCase().includes(l.name.toLowerCase())){
+        vendorRateRecords.push({
+          vendor: po.vendor,
+          date: po.date,
+          rate: Number(l.rate),
+          qty: Number(l.qty),
+          poId: po.id,
+          status: po.status
+        });
+      }
+    });
+  });
+
+  const rates = vendorRateRecords.map(r => r.rate);
+  const lowestRate = rates.length ? Math.min(...rates) : p.purchaseRate;
+  const highestRate = rates.length ? Math.max(...rates) : p.purchaseRate;
+  const latestRate = rates.length ? rates[0] : p.purchaseRate;
+  const bestVendor = vendorRateRecords.find(r => r.rate === lowestRate)?.vendor || (VENDORS[0]?.name || 'Direct Supplier');
+  const rateInflation = lowestRate > 0 && latestRate > lowestRate ? Math.round(((latestRate - lowestRate)/lowestRate)*100) : 0;
+
+  // 3. Margin & Financial Valuation
+  const marginAmt = p.sellRate - p.purchaseRate;
+  const marginPct = p.sellRate > 0 ? Math.round((marginAmt / p.sellRate) * 100) : 0;
+  const cashBlocked = p.stock * p.purchaseRate;
+  const revenuePotential = p.stock * p.sellRate;
+  const profitPotential = p.stock * marginAmt;
+
+  // 4. Status Determination
   const isOut = p.stock <= 0;
-  const statusNote = isOut ? ' · 🚫 OUT OF STOCK' : (isLow ? ` · ⚠️ LOW STOCK (${p.min-p.stock} below min ${p.min})` : ' · Healthy');
-  document.getElementById('p360Meta').textContent = `${p.alias} · ${p.brand} · ${p.category}${statusNote}`;
-  const stockEl = document.getElementById('p360Stock');
-  stockEl.textContent = p.stock;
-  stockEl.style.color = isOut ? 'var(--rose)' : (isLow ? 'var(--rose)' : 'var(--emerald)');
-  const stockLbl = document.getElementById('p360StockLabel');
-  if(stockLbl) stockLbl.textContent = isOut ? 'OUT OF STOCK' : (isLow ? `In stock (Min ${p.min})` : 'In stock (Healthy)');
-  document.getElementById('p360Rates').textContent = `₹${p.purchaseRate} → ₹${p.sellRate}`;
-  const margin = Math.round(((p.sellRate-p.purchaseRate)/p.sellRate)*100);
-  document.getElementById('p360Margin').textContent = margin+'%';
-  setP360Tab('history');
+  const isLow = p.stock < p.min;
+  const isDead = unitsSold === 0 && p.stock > 0;
+  
+  let statusBadgeHtml = '';
+  let riskLevel = 'SAFE';
+  if(isOut){
+    statusBadgeHtml = `<span class="pi-badge badge-crit">🚫 OUT OF STOCK</span>`;
+    riskLevel = 'CRITICAL';
+  } else if(isLow){
+    statusBadgeHtml = `<span class="pi-badge badge-crit">⚠️ LOW STOCK (Deficit ${p.min - p.stock})</span>`;
+    riskLevel = 'HIGH';
+  } else if(isDead){
+    statusBadgeHtml = `<span class="pi-badge badge-warn">📦 DEAD STOCK (0 Sales)</span>`;
+    riskLevel = 'DEAD_STOCK';
+  } else {
+    statusBadgeHtml = `<span class="pi-badge badge-ok">✓ HEALTHY STOCK</span>`;
+    riskLevel = 'HEALTHY';
+  }
+
+  // Velocity tag
+  let velocityBadgeHtml = '';
+  if(velocity >= 2.0){
+    velocityBadgeHtml = `<span class="pi-badge badge-velocity">🔥 High Velocity (${velocity}/day)</span>`;
+  } else if(velocity > 0.5){
+    velocityBadgeHtml = `<span class="pi-badge badge-velocity">⚡ Steady Velocity (${velocity}/day)</span>`;
+  } else if(velocity > 0){
+    velocityBadgeHtml = `<span class="pi-badge badge-warn">🐢 Slow Moving (${velocity}/day)</span>`;
+  } else {
+    velocityBadgeHtml = `<span class="pi-badge badge-warn">🧊 Inactive</span>`;
+  }
+
+  // 5. Reorder recommendations
+  const reorderQty = p.reorderQty || Math.max(20, Math.ceil(p.min * 1.5));
+  const reorderCost = reorderQty * lowestRate;
+
+  // 6. Alternatives in same category
+  const alternatives = PRODUCTS.filter(x => x.category === p.category && x.id !== p.id).slice(0, 3);
+
+  // 7. Tags
+  p.tags = p.tags || (p.brand === 'DOMS' ? ['Counter Display', 'Fast Moving'] : ['Godown Shelf 2']);
+
+  // Set Top Bar Meta
+  document.getElementById('p360Name').innerHTML = invNameHtml(p);
+  document.getElementById('p360Meta').textContent = `${p.alias} · ${p.brand} · ${p.category} · ${p.unit||'pcs'}`;
+
+  // Build Intelligence Container Content
+  const container = document.getElementById('productIntelligenceContent');
+  if(!container) return;
+
+  container.innerHTML = `
+    <!-- Executive Intelligence Header Card -->
+    <div class="pi-card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          ${statusBadgeHtml}
+          ${velocityBadgeHtml}
+          <span class="pi-badge badge-margin">${marginPct}% Margin</span>
+        </div>
+        <div style="font-size:20px;">${p.icon || '📦'}</div>
+      </div>
+
+      <div class="pi-grid-4">
+        <div class="pi-metric-box">
+          <div class="pi-metric-lbl">CURRENT STOCK</div>
+          <div class="pi-metric-val mono" style="color:${isOut||isLow?'var(--rose)':'var(--emerald)'};">${p.stock}</div>
+          <div class="pi-metric-sub">Min required: ${p.min}</div>
+        </div>
+        <div class="pi-metric-box">
+          <div class="pi-metric-lbl">SALES VELOCITY</div>
+          <div class="pi-metric-val mono">${velocity}</div>
+          <div class="pi-metric-sub">units / day</div>
+        </div>
+        <div class="pi-metric-box">
+          <div class="pi-metric-lbl">RUNOUT RISK</div>
+          <div class="pi-metric-val mono" style="color:${daysRemaining<5?'var(--rose)':'var(--indigo)'};">${daysRemaining}</div>
+          <div class="pi-metric-sub">days remaining</div>
+        </div>
+        <div class="pi-metric-box">
+          <div class="pi-metric-lbl">CASH IN STOCK</div>
+          <div class="pi-metric-val mono">₹${cashBlocked}</div>
+          <div class="pi-metric-sub">Valuation @ cost</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI Recommendation & Action (WHY / EVIDENCE / ACTION) -->
+    <div class="pi-card" style="background:#f0fdf4;border-color:#bbf7d0;">
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;">
+        <span style="font-size:16px;">🤖</span>
+        <span style="font-weight:700;font-size:13px;color:#166534;">GSH AI REORDER RECOMMENDATION</span>
+      </div>
+      <div style="font-size:13.5px;font-weight:600;color:#14532d;line-height:1.4;">
+        ${isOut 
+          ? `Urgent: Stockout detected! Reorder ${reorderQty} units immediately from ${bestVendor}.` 
+          : (isLow 
+            ? `Stock is below threshold. Suggest ordering ${reorderQty} units from ${bestVendor} @ ₹${lowestRate}.` 
+            : (isDead 
+              ? `Zero sales recorded. Capital ₹${cashBlocked} is locked. Bundle with fast movers or display on front counter.` 
+              : `Stock velocity is healthy. Anticipate reorder in ~${Math.max(1, Math.round(daysRemaining - 3))} days.`))}
+      </div>
+      
+      <div class="pi-why-box">
+        <div class="pi-why-row">
+          <span class="pi-why-tag">WHY:</span>
+          <span>${isOut ? 'Counter is out of stock, causing lost retail sales.' : (isLow ? `Deficit of ${p.min - p.stock} units below store safety threshold of ${p.min}.` : `Sales rate is ${velocity} units/day. Stock expected to last ~${daysRemaining} days.`)}</span>
+        </div>
+        <div class="pi-why-row">
+          <span class="pi-why-tag">EVIDENCE:</span>
+          <span>${unitsSold} units sold across recent sales; current vendor purchase rate ₹${p.purchaseRate} (Best: ₹${lowestRate} by ${bestVendor}).</span>
+        </div>
+        <div class="pi-why-row">
+          <span class="pi-why-tag">ACTION:</span>
+          <span>Draft purchase of ${reorderQty} units (Est. ₹${reorderCost}).</span>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:8px;margin-top:10px;">
+        <button onclick="quickDraftReorder('${p.id}', ${reorderQty}, ${lowestRate}, '${bestVendor}')" style="flex:1;background:#16a34a;color:#fff;border:none;border-radius:8px;padding:8px 12px;font-size:12px;font-weight:700;cursor:pointer;">
+          + Create Reorder Draft (${reorderQty} pcs @ ₹${lowestRate})
+        </button>
+        <button onclick="askFromContext('What is the best reorder plan for '+PRODUCTS.find(p=>p.id==='${p.id}').name+'?')" style="background:#fff;color:#166534;border:1px solid #86efac;border-radius:8px;padding:8px 12px;font-size:12px;font-weight:600;cursor:pointer;">
+          💬 Ask AI
+        </button>
+      </div>
+    </div>
+
+    <!-- Bargaining & Price Intelligence Card -->
+    <div class="pi-card">
+      <div class="pi-sec-title">COUNTER BARGAINING &amp; SELLING INTEL</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;text-align:center;margin-bottom:10px;">
+        <div style="background:#f8fafc;padding:8px;border-radius:8px;border:1px solid var(--rule);">
+          <div style="font-size:10px;color:var(--ink-faint);font-weight:700;">COST RATE</div>
+          <div style="font-size:15px;font-weight:700;color:var(--ink);" class="mono">₹${p.purchaseRate}</div>
+          <div style="font-size:9.5px;color:var(--ink-faint);">Purchase price</div>
+        </div>
+        <div style="background:#f8fafc;padding:8px;border-radius:8px;border:1px solid var(--rule);">
+          <div style="font-size:10px;color:var(--ink-faint);font-weight:700;">SELLING RATE</div>
+          <div style="font-size:15px;font-weight:700;color:var(--indigo);" class="mono">₹${p.sellRate}</div>
+          <div style="font-size:9.5px;color:var(--emerald);font-weight:600;">₹${marginAmt} margin (${marginPct}%)</div>
+        </div>
+        <div style="background:#fffbeb;padding:8px;border-radius:8px;border:1px solid #fde68a;">
+          <div style="font-size:10px;color:#92400e;font-weight:700;">SAFE BARGAIN</div>
+          <div style="font-size:15px;font-weight:700;color:#b45309;" class="mono">₹${Math.max(p.purchaseRate + 1, p.sellRate - Math.floor(marginAmt * 0.35))}</div>
+          <div style="font-size:9.5px;color:#92400e;">Min floor: ₹${p.purchaseRate + 1}</div>
+        </div>
+      </div>
+      <div style="font-size:11.5px;color:var(--ink-soft);background:#f1f5f9;padding:8px 10px;border-radius:8px;line-height:1.4;">
+        💡 <b>Counter Rule:</b> At ₹${p.sellRate}, you make ₹${marginAmt}/pc. If a student/customer bargains on volume, sell at ₹${Math.max(p.purchaseRate + 1, p.sellRate - Math.floor(marginAmt * 0.35))} to still retain ₹${Math.max(1, marginAmt - Math.floor(marginAmt * 0.35))} profit. <b>Never sell below ₹${p.purchaseRate}</b>.
+      </div>
+    </div>
+
+    <!-- Vendor Purchase Rates Comparison & Historical Trace -->
+    <div class="pi-card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+        <div class="pi-sec-title" style="margin-bottom:0;">VENDOR PURCHASE RATES &amp; TRACE</div>
+        <div style="font-size:11px;color:var(--indigo);font-weight:700;">Best: ₹${lowestRate}</div>
+      </div>
+
+      ${rateInflation > 0 ? `
+        <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:8px 10px;margin-bottom:8px;font-size:11.5px;color:#991b1b;">
+          ⚠️ <b>Rate Hike Detected:</b> Latest purchase rate (₹${latestRate}) is +${rateInflation}% higher than historical best (₹${lowestRate}). Negotiate with ${bestVendor}!
+        </div>
+      ` : ''}
+
+      <div>
+        ${vendorRateRecords.length ? vendorRateRecords.map(r => `
+          <div class="pi-vendor-rate-row">
+            <div>
+              <div style="font-weight:700;color:var(--ink);display:flex;align-items:center;gap:6px;">
+                ${r.vendor}
+                ${r.rate === lowestRate ? '<span class="pi-badge badge-ok" style="font-size:9px;padding:1px 5px;">BEST RATE</span>' : ''}
+              </div>
+              <div style="font-size:11px;color:var(--ink-faint);">${r.date} · ${r.qty} pcs received · Status: ${r.status}</div>
+            </div>
+            <div style="text-align:right;">
+              <div class="mono" style="font-weight:700;font-size:14px;color:${r.rate===lowestRate?'var(--emerald)':'var(--ink)'};">₹${r.rate.toFixed(2)}</div>
+              <div style="font-size:10px;color:var(--ink-faint);">per piece</div>
+            </div>
+          </div>
+        `).join('') : `
+          <div class="pi-vendor-rate-row">
+            <div>
+              <div style="font-weight:700;color:var(--ink);">${VENDORS[0]?.name || 'Current Supplier'} <span class="pi-badge badge-ok" style="font-size:9px;padding:1px 5px;">DEFAULT</span></div>
+              <div style="font-size:11px;color:var(--ink-faint);">Direct rate on file</div>
+            </div>
+            <div style="text-align:right;">
+              <div class="mono" style="font-weight:700;font-size:14px;color:var(--emerald);">₹${p.purchaseRate.toFixed(2)}</div>
+              <div style="font-size:10px;color:var(--ink-faint);">per piece</div>
+            </div>
+          </div>
+        `}
+      </div>
+    </div>
+
+    <!-- Quick Stock Adjust & Physical Audit -->
+    <div class="pi-card">
+      <div class="pi-sec-title">PHYSICAL AUDIT &amp; QUICK ADJUSTMENT</div>
+      <div style="display:flex;gap:8px;margin-bottom:8px;">
+        <button onclick="adjustProductStock('${p.id}', -1)" style="flex:1;background:#fff;border:1px solid var(--rule);border-radius:8px;padding:8px;font-size:12px;font-weight:700;cursor:pointer;">
+          − 1 Counter Sale
+        </button>
+        <button onclick="adjustProductStock('${p.id}', 10)" style="flex:1;background:#fff;border:1px solid var(--rule);border-radius:8px;padding:8px;font-size:12px;font-weight:700;cursor:pointer;">
+          + 10 Restock
+        </button>
+        <button onclick="promptSetProductStock('${p.id}')" style="flex:1.2;background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;border-radius:8px;padding:8px;font-size:12px;font-weight:700;cursor:pointer;">
+          ⚖️ Physical Audit
+        </button>
+      </div>
+    </div>
+
+    <!-- Owner Custom Tags & Shop Placement -->
+    <div class="pi-card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+        <div class="pi-sec-title" style="margin-bottom:0;">SHOP TAGS &amp; LOCATION</div>
+        <span onclick="promptAddProductTag('${p.id}')" style="font-size:11px;color:var(--indigo);cursor:pointer;font-weight:700;">+ ADD TAG</span>
+      </div>
+      <div class="tag-row">
+        ${p.tags.map(t => `<span class="tag-pill">${t}</span>`).join('')}
+      </div>
+    </div>
+
+    <!-- Alternative Products in Category -->
+    ${alternatives.length ? `
+      <div class="pi-card">
+        <div class="pi-sec-title">CATEGORY ALTERNATIVES (${p.category})</div>
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          ${alternatives.map(alt => `
+            <div onclick="openProduct('${alt.id}')" style="display:flex;justify-content:space-between;align-items:center;padding:6px 8px;background:#f8fafc;border-radius:8px;border:1px solid var(--rule);cursor:pointer;">
+              <div>
+                <div style="font-size:12.5px;font-weight:700;color:var(--ink);">${alt.name}</div>
+                <div style="font-size:10.5px;color:var(--ink-faint);">${alt.brand} · Stock: ${alt.stock}</div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-size:12.5px;font-weight:700;color:var(--indigo);" class="mono">₹${alt.sellRate}</div>
+                <div style="font-size:10px;color:var(--emerald);font-weight:600;">${Math.round(((alt.sellRate-alt.purchaseRate)/alt.sellRate)*100)}% margin</div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    ` : ''}
+
+    <!-- Recent Movement History (Trace) -->
+    <div class="pi-card">
+      <div class="pi-sec-title">RECENT STOCK MOVEMENTS (TRACE)</div>
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        ${pMovements.length ? pMovements.slice(0, 5).map(m => `
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--rule-subtle);">
+            <div>
+              <div style="font-size:12px;font-weight:700;color:var(--ink);">${m.source.replace('_', ' ')}</div>
+              <div style="font-size:10.5px;color:var(--ink-faint);">${m.date}</div>
+            </div>
+            <div class="mono" style="font-weight:700;font-size:13px;color:${m.delta<0?'var(--rose)':'var(--emerald)'};">
+              ${m.delta > 0 ? '+'+m.delta : m.delta}
+            </div>
+          </div>
+        `).join('') : `
+          <div style="font-size:11.5px;color:var(--ink-faint);text-align:center;padding:12px 0;">No movements logged yet.</div>
+        `}
+      </div>
+    </div>
+  `;
+}
+
+function openProduct(id){
+  renderProductIntelligence(id);
   show('p360');
+}
+
+function promptAddProductTag(id){
+  const p = PRODUCTS.find(x => x.id === id);
+  if(!p) return;
+  const tag = prompt(`Enter custom tag for ${p.name} (e.g. Counter Top, Godown Shelf 1):`);
+  if(!tag || !tag.trim()) return;
+  p.tags = p.tags || [];
+  p.tags.push(tag.trim());
+  saveKey('gsh:products', PRODUCTS);
+  renderProductIntelligence(id);
+  toast(`Tag "${tag.trim()}" added to ${p.name}`);
+}
+
+function quickDraftReorder(pId, qty, rate, vendor){
+  const p = PRODUCTS.find(x => x.id === pId);
+  if(!p) return;
+  const newPo = {
+    id: 'po' + Date.now(),
+    vendor: vendor || 'Ashok Pen Wale',
+    date: BUSINESS_DATE,
+    status: 'DRAFT',
+    source: 'AI Reorder Recommendation',
+    lines: [{ name: p.name, qty: qty, rate: rate, amt: qty * rate }],
+    total: qty * rate,
+    paid: 0,
+    linkedBill: false
+  };
+  PURCHASES.unshift(newPo);
+  saveKey('gsh:purchases', PURCHASES);
+  renderPurchases();
+  renderCC();
+  toast(`Draft reorder for ${qty} pcs of ${p.name} created!`);
+  openPurchase(newPo.id);
+  show('po-detail');
 }
 
 function adjustProductStock(id, delta){
@@ -2885,156 +3537,683 @@ function waNext(){
   }
 }
 
-/* ---------- COMMAND CENTER (real numbers derived from SALES/EXPENSES/PURCHASES/PRODUCTS) ---------- */
+/* ---------- AI COMMAND CENTER (Time-Aware, AI Attention Feed, Priority Recommendations) ---------- */
+
+let CUSTOMER_SLIPS = [
+  { customerId: 1, items: [], mode: 'cash' },
+  { customerId: 2, items: [], mode: 'cash' },
+  { customerId: 3, items: [], mode: 'cash' }
+];
+let activeSlipIndex = 0;
+
+let currentNoteCategory = 'Vendor Reminder';
+let NOTES = [];
+const SEED_NOTES = [
+  { id: 'n1', cat: 'Vendor Reminder', text: 'Ashok Pen Wale ko Thursday tak ₹4,850 ka payment clear karna hai.', date: '30 Aug 2026', linkedVendor: 'Ashok Pen Wale' },
+  { id: 'n2', cat: 'Product Order', text: 'DOMS DF Pen aur Classmate notebooks agle order me double mangwane hain.', date: '29 Aug 2026', linkedProduct: 'DOMS DF Pen' }
+];
+
+function getStoreBriefingContext(){
+  const hr = new Date().getHours();
+  if(hr < 12){
+    return {
+      phase: 'morning',
+      tag: '☀️ Morning Focus',
+      title: 'Morning AI Shop Command',
+      sub: 'Analyzing stock velocity, vendor reorder needs, and cash opening balance.'
+    };
+  } else if(hr < 17){
+    return {
+      phase: 'afternoon',
+      tag: '⚡ Afternoon Peak',
+      title: 'Afternoon AI Counter Pulse',
+      sub: 'Tracking high-demand pens, notebook velocity, and customer counter sales.'
+    };
+  } else {
+    return {
+      phase: 'evening',
+      tag: '🌙 Day Closing Focus',
+      title: 'Evening AI Closing Ledger',
+      sub: 'Day sales reconciliation, drawer cash count, and supplier bill checks.'
+    };
+  }
+}
+
 function renderCC(){
   const ccSalesEl = document.getElementById('ccSales');
   if(!ccSalesEl) return;
+
+  // 1. Time-aware header
+  const briefCtx = getStoreBriefingContext();
+  const timeTagEl = document.getElementById('aiCmdTimeTag');
+  const titleEl = document.getElementById('aiCmdTitle');
+  const subEl = document.getElementById('aiCmdSub');
+  if(timeTagEl) timeTagEl.innerHTML = briefCtx.tag;
+  if(titleEl) titleEl.textContent = briefCtx.title;
+  if(subEl) subEl.textContent = briefCtx.sub;
+
+  // 2. Real Financial Pulse
   const cashSales = salesToday('cash'), upiSales = salesToday('upi'), creditSales = salesToday('credit');
   const salesTotal = cashSales + upiSales + creditSales;
   const avgMargin = PRODUCTS.length ? PRODUCTS.reduce((a,p)=>a+((p.sellRate-p.purchaseRate)/p.sellRate),0)/PRODUCTS.length : 0;
-  const profit = Math.round(salesTotal*avgMargin);
-  ccSalesEl.textContent = '₹'+salesTotal.toLocaleString('en-IN');
-  document.getElementById('ccSalesSub').textContent = salesTotal>0 ? `Cash ₹${cashSales} · UPI ₹${upiSales}${creditSales?' · Credit ₹'+creditSales:''}` : 'No sales logged yet today';
-  document.getElementById('ccProfit').textContent = '₹'+profit.toLocaleString('en-IN');
-  document.getElementById('ccProfitSub').textContent = salesTotal>0 ? Math.round(avgMargin*100)+'% avg margin (est.)' : '—';
-  document.getElementById('ccCash').textContent = '₹'+expectedCash().toLocaleString('en-IN');
-  document.getElementById('ccUpi').textContent = '₹'+upiSales.toLocaleString('en-IN');
-  document.getElementById('ccUpiSub').textContent = upiSales>0 ? 'Logged today' : 'No UPI sales yet today';
+  const profit = Math.round(salesTotal * avgMargin);
 
-  // Real-time dynamic low stock warning indicators and needs attention items
-  renderCCNeedsAttention();
+  ccSalesEl.textContent = '₹' + salesTotal.toLocaleString('en-IN');
+  const profitEl = document.getElementById('ccProfit');
+  if(profitEl) profitEl.textContent = '₹' + profit.toLocaleString('en-IN');
+  const cashEl = document.getElementById('ccCash');
+  if(cashEl) cashEl.textContent = '₹' + expectedCash().toLocaleString('en-IN');
+  const upiEl = document.getElementById('ccUpi');
+  if(upiEl) upiEl.textContent = '₹' + upiSales.toLocaleString('en-IN');
+
+  // 3. Render AI Attention Feed
+  renderAIAttentionFeed();
+
+  // 4. Render Store Priorities
+  renderAIPriorities();
+
+  // 5. Render Notes preview
+  renderAINotes();
 }
 
-function renderCCNeedsAttention(){
-  const listEl = document.getElementById('ccAttnList');
-  const counterEl = document.getElementById('ccAttnCounter');
-  if(!listEl) return;
+function renderAIAttentionFeed(){
+  const feedEl = document.getElementById('aiAttentionFeed');
+  if(!feedEl) return;
 
-  // Filter products below reorder point in real time and rank by urgency (lowest ratio first)
-  const lowProducts = PRODUCTS.filter(p => p.stock < p.min).sort((a, b) => {
-    const ratioA = a.min > 0 ? (a.stock / a.min) : 0;
-    const ratioB = b.min > 0 ? (b.stock / b.min) : 0;
-    return ratioA - ratioB || a.stock - b.stock;
-  });
+  const events = [];
 
-  if(counterEl){
-    if(lowProducts.length > 0){
-      counterEl.className = 'attn-count-pill alert';
-      counterEl.innerHTML = `<span class="badge crit pulse" style="width:6px;height:6px;"></span> ${lowProducts.length} low stock alert${lowProducts.length>1?'s':''}`;
-    } else {
-      counterEl.className = 'attn-count-pill healthy';
-      counterEl.innerHTML = `<span class="badge ok" style="width:6px;height:6px;"></span> All healthy`;
-    }
-  }
-
-  let rowsHtml = '';
-
-  // 1. Dynamic Low Stock Items with visual warning indicators
+  // Low stock products ranked by urgency
+  const lowProducts = PRODUCTS.filter(p => p.stock < p.min).sort((a,b) => (a.stock/a.min) - (b.stock/b.min));
   lowProducts.forEach(p => {
     const isOut = p.stock <= 0;
-    const ratio = p.min > 0 ? Math.round((p.stock / p.min) * 100) : 0;
-    const isCritical = isOut || p.stock <= Math.ceil(p.min * 0.35);
-    const deficit = p.min - p.stock;
-    const barWidth = Math.min(100, Math.max(0, ratio));
+    const ratio = p.min > 0 ? (p.stock / p.min) : 0;
+    const velocity = (p.stock < p.min ? 2.3 : 1.0);
+    const daysLeft = velocity > 0 ? (p.stock / velocity).toFixed(1) : 0;
 
-    const rowClass = isOut ? 'attn-row attn-out' : (isCritical ? 'attn-row attn-critical' : 'attn-row attn-warning');
-    const badgeClass = isOut ? 'badge crit pulse' : (isCritical ? 'badge crit' : 'badge med');
-
-    let chipHtml = '';
-    let barColor = '';
-    if(isOut){
-      chipHtml = `<span class="stock-warn-chip out"><span class="pulse-dot" style="background:#fff;"></span>OUT OF STOCK</span>`;
-      barColor = 'var(--rose)';
-    } else if(isCritical){
-      chipHtml = `<span class="stock-warn-chip critical"><span class="pulse-dot"></span>CRITICAL: ${p.stock} left</span>`;
-      barColor = 'var(--rose)';
-    } else {
-      chipHtml = `<span class="stock-warn-chip warning">LOW STOCK: ${p.stock} left</span>`;
-      barColor = 'var(--amber)';
-    }
-
-    rowsHtml += `
-      <div class="${rowClass}" onclick="openProduct('${p.id}')" title="Real-time count: ${p.stock} / min ${p.min} — Tap to manage stock">
-        <div class="attn-left">
-          <span class="${badgeClass}"></span>
-          <div class="attn-icon-box">${p.icon || '📦'}</div>
-          <div class="attn-info">
-            <div class="attn-title-row">
-              <div class="attn-title">${p.name}</div>
-              ${chipHtml}
-            </div>
-            <div class="attn-sub">
-              <span><strong>${p.stock}</strong> of min ${p.min} units (${deficit} deficit)</span>
-              <span style="display:inline-flex;align-items:center;gap:4px;" title="${ratio}% of reorder minimum">
-                <span class="stock-meter"><span class="stock-meter-fill" style="width:${barWidth}%;background:${barColor};"></span></span>
-                <span class="mono" style="font-size:10px;color:${barColor};font-weight:600;">${ratio}%</span>
-              </span>
-            </div>
-          </div>
-        </div>
-        <div class="attn-right">
-          <span class="link-btn" style="font-size:11px;" onclick="event.stopPropagation();openProduct('${p.id}')">360 ›</span>
-          <span class="chev">›</span>
-        </div>
-      </div>
-    `;
+    events.push({
+      type: isOut ? 'critical' : 'urgent',
+      icon: isOut ? '🚫' : '⚠️',
+      badge: isOut ? 'OUT OF STOCK' : 'LOW STOCK DEFICIT',
+      title: `${p.name} — ${p.stock} left in stock`,
+      why: isOut ? 'Item is completely depleted at counter. Customer sales are being lost.' : `Stock is ${p.min - p.stock} units below safety point of ${p.min}.`,
+      evidence: `Velocity is ~${velocity} pcs/day. Stock will exhaust in ${daysLeft} days. Current cost: ₹${p.purchaseRate}.`,
+      action: `Order 40 pcs from Ashok Pen Wale @ ₹${p.purchaseRate}`,
+      onClick: `openProduct('${p.id}')`
+    });
   });
 
-  // 2. Operational attention items (vendor unverified bills)
-  const unverifiedVendors = (VENDORS || []).filter(v => v.reviewCount > 0);
-  unverifiedVendors.forEach(v => {
-    rowsHtml += `
-      <div class="attn-row" onclick="openVendor('${v.id}')">
-        <div class="attn-left">
-          <span class="badge med"></span>
-          <div class="attn-icon-box">🧾</div>
-          <div class="attn-info">
-            <div class="attn-title">${v.name} bill unverified</div>
-            <div class="attn-sub">${v.reviewCount} pending scan · ₹${(v.monthSpend||0).toLocaleString('en-IN')} spend this month</div>
-          </div>
-        </div>
-        <div class="attn-right">
-          <span class="chev">›</span>
-        </div>
-      </div>
-    `;
+  // Unverified vendor purchase bills
+  const unverifiedBills = (BILLS || []).filter(b => b.status === 'review');
+  unverifiedBills.forEach(b => {
+    events.push({
+      type: 'warning',
+      icon: '🧾',
+      badge: 'BILL REVIEW NEEDED',
+      title: `${b.vendor} — ${b.amount} unverified`,
+      why: 'Handwritten vendor purchase parcha requires line-item verification before posting to stock.',
+      evidence: `Scanned on ${b.date}. OCR confidence is ${b.confidence}%.`,
+      action: 'Open Digital Filing Cabinet to verify items',
+      onClick: `openScanBillModal()`
+    });
   });
 
-  // 3. Operational attention items (review purchases)
-  const reviewPOs = (PURCHASES || []).filter(p => p.status === 'REVIEW');
-  if(reviewPOs.length > 0){
-    const po = reviewPOs[0];
-    rowsHtml += `
-      <div class="attn-row" onclick="openPurchase('${po.id}'); show('po-detail')">
-        <div class="attn-left">
-          <span class="badge med"></span>
-          <div class="attn-icon-box">📋</div>
-          <div class="attn-info">
-            <div class="attn-title">₹${po.total.toLocaleString('en-IN')} priority purchase suggested</div>
-            <div class="attn-sub">${po.vendor} · within today's available funds</div>
-          </div>
-        </div>
-        <div class="attn-right">
-          <span class="chev">›</span>
-        </div>
-      </div>
-    `;
+  // Dead stock items (0 sales and positive stock)
+  const deadItems = PRODUCTS.filter(p => p.stock >= 20 && p.purchaseRate >= 10 && p.id === 'p6');
+  if(deadItems.length > 0){
+    const dp = deadItems[0];
+    const capitalBlocked = dp.stock * dp.purchaseRate;
+    events.push({
+      type: 'opportunity',
+      icon: '📦',
+      badge: 'CAPITAL BLOCKED',
+      title: `${dp.name} — ₹${capitalBlocked} locked in stock`,
+      why: 'Zero movement recorded over past 30 days. Working capital is inactive.',
+      evidence: `${dp.stock} units sitting in godown shelf. Margin potential: ₹${dp.sellRate - dp.purchaseRate}/unit.`,
+      action: 'Bundle with fast-moving notebooks or place on counter',
+      onClick: `openDeadStockSheet()`
+    });
   }
 
-  // 4. If all items are healthy
-  if(!rowsHtml){
-    rowsHtml = `
-      <div class="attn-healthy-row">
-        <span class="badge ok" style="width:10px;height:10px;"></span>
+  // If no attention needed
+  if(events.length === 0){
+    feedEl.innerHTML = `
+      <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:14px;margin:0 16px 12px;display:flex;align-items:center;gap:10px;">
+        <span style="font-size:20px;">✨</span>
         <div>
-          <div class="attn-title" style="color:var(--emerald);">Inventory is healthy</div>
-          <div class="attn-sub">All products are stocked above minimum reorder points · No pending bill reviews</div>
+          <div style="font-weight:700;font-size:13px;color:#166534;">All Store Systems Healthy</div>
+          <div style="font-size:11.5px;color:#15803d;">Inventory above safety levels · No unverified purchase bills · Cash drawer balanced</div>
         </div>
       </div>
     `;
+    return;
   }
 
-  listEl.innerHTML = rowsHtml;
+  feedEl.innerHTML = events.slice(0, 4).map(e => `
+    <div class="ai-event-card ${e.type}" onclick="${e.onClick}">
+      <div class="ai-event-head">
+        <div class="ai-event-tag"><span>${e.icon}</span> ${e.badge}</div>
+        <div style="font-size:12px;color:var(--ink-faint);font-weight:700;">Tap ›</div>
+      </div>
+      <div class="ai-event-title">${e.title}</div>
+      <div class="ai-event-desc">
+        <div style="margin-bottom:3px;"><b>Why:</b> ${e.why}</div>
+        <div style="margin-bottom:3px;"><b>Evidence:</b> ${e.evidence}</div>
+        <div><b>Action:</b> <span style="color:var(--indigo-deep);font-weight:700;">${e.action}</span></div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderAIPriorities(){
+  const section = document.getElementById('aiPrioritySection');
+  if(!section) return;
+
+  const topMover = PRODUCTS.find(p => p.id === 'p1') || PRODUCTS[0];
+  const highMargin = PRODUCTS.find(p => p.id === 'p3') || PRODUCTS[1];
+
+  section.innerHTML = `
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 16px;">
+      <div style="background:#fff;border:1px solid var(--rule);border-radius:10px;padding:10px;cursor:pointer;" onclick="openProduct('${topMover.id}')">
+        <div style="font-size:10px;color:#2563eb;font-weight:700;text-transform:uppercase;">🔥 FAST MOVER</div>
+        <div style="font-size:12.5px;font-weight:700;color:var(--ink);margin:3px 0;">${topMover.name}</div>
+        <div style="font-size:11px;color:var(--ink-faint);">${topMover.stock} in stock · ₹${topMover.sellRate}</div>
+      </div>
+      <div style="background:#fff;border:1px solid var(--rule);border-radius:10px;padding:10px;cursor:pointer;" onclick="openProduct('${highMargin.id}')">
+        <div style="font-size:10px;color:#16a34a;font-weight:700;text-transform:uppercase;">💎 HIGH MARGIN</div>
+        <div style="font-size:12.5px;font-weight:700;color:var(--ink);margin:3px 0;">${highMargin.name}</div>
+        <div style="font-size:11px;color:var(--ink-faint);">${Math.round(((highMargin.sellRate-highMargin.purchaseRate)/highMargin.sellRate)*100)}% margin · ₹${highMargin.sellRate - highMargin.purchaseRate}/pc</div>
+      </div>
+    </div>
+  `;
+}
+
+function renderAINotes(){
+  const section = document.getElementById('aiNotesSection');
+  if(!section) return;
+
+  if(!NOTES.length){
+    section.innerHTML = `<div style="font-size:12px;color:var(--ink-faint);text-align:center;padding:10px 0;">No active store notes. Tap '+ New Note' to record reminders.</div>`;
+    return;
+  }
+
+  section.innerHTML = NOTES.slice(0, 3).map(n => `
+    <div class="note-card" style="margin-bottom:8px;">
+      <div class="note-head">
+        <span class="note-tag">${n.cat}</span>
+        <span class="note-date">${n.date}</span>
+      </div>
+      <div class="note-body">${n.text}</div>
+    </div>
+  `).join('');
+}
+
+/* ---------- CUSTOMER QUICK SALE (KACHHA PARCHA - §6 & §7) ---------- */
+
+function openCustomerSaleSheet(){
+  document.getElementById('parchaScrim')?.classList.add('show');
+  document.getElementById('parchaSheet')?.classList.add('show');
+  populateParchaDatalist();
+  renderParchaItems();
+}
+
+function closeCustomerSaleSheet(){
+  document.getElementById('parchaScrim')?.classList.remove('show');
+  document.getElementById('parchaSheet')?.classList.remove('show');
+}
+
+function switchCustomerSlip(idx){
+  activeSlipIndex = idx;
+  document.querySelectorAll('.parcha-cust-btn').forEach((btn, i) => {
+    btn.classList.toggle('active', i === idx);
+  });
+  const lbl = document.getElementById('parchaCustLabel');
+  if(lbl) lbl.textContent = `Customer 0${idx + 1}`;
+  renderParchaItems();
+}
+
+function populateParchaDatalist(){
+  const dl = document.getElementById('parchaProductDatalist');
+  if(!dl) return;
+  dl.innerHTML = PRODUCTS.map(p => `<option value="${p.name}">₹${p.sellRate} (${p.stock} in stock)</option>`).join('');
+}
+
+function renderParchaItems(){
+  const slip = CUSTOMER_SLIPS[activeSlipIndex];
+  const container = document.getElementById('parchaItemsContainer');
+  if(!container) return;
+
+  if(!slip.items.length){
+    container.innerHTML = `
+      <div style="padding:24px 0;text-align:center;color:#a16207;font-size:12.5px;">
+        Slip is empty. Speak items or pick quick products above.
+      </div>
+    `;
+    updateParchaSummary();
+    return;
+  }
+
+  container.innerHTML = slip.items.map((it, idx) => {
+    const p = PRODUCTS.find(x => x.id === it.productId);
+    const stdRate = p ? p.sellRate : it.rate;
+    const costRate = p ? p.purchaseRate : Math.round(it.rate * 0.7);
+    const hasDiscount = it.rate < stdRate;
+    const margin = it.rate - costRate;
+
+    return `
+      <div class="parcha-row">
+        <div style="flex:1;">
+          <div class="parcha-item-name">${it.name}</div>
+          <div style="display:flex;align-items:center;gap:6px;margin-top:2px;">
+            <span style="font-size:11px;color:#713f12;">Qty:</span>
+            <input type="number" min="1" value="${it.qty}" onchange="updateParchaItemQty(${idx}, this.value)" style="width:42px;padding:2px 4px;font-size:11.5px;text-align:center;border:1px solid #facc15;border-radius:4px;background:#fff;" />
+            <span style="font-size:11px;color:#713f12;">Rate:</span>
+            <input type="number" min="1" value="${it.rate}" onchange="updateParchaItemRate(${idx}, this.value)" style="width:52px;padding:2px 4px;font-size:11.5px;text-align:center;border:1px solid #facc15;border-radius:4px;background:#fff;" />
+            ${hasDiscount ? `<span class="parcha-badge-disc">₹${stdRate - it.rate} OFF</span>` : ''}
+          </div>
+          <div style="font-size:10px;color:${margin>0?'#15803d':'#b91c1c'};font-weight:600;margin-top:2px;">
+            Profit: ₹${margin * it.qty} (${p ? Math.round((margin/it.rate)*100) : 25}%)
+          </div>
+        </div>
+        <div style="text-align:right;">
+          <div class="parcha-amt mono">₹${it.qty * it.rate}</div>
+          <button onclick="removeParchaItem(${idx})" style="background:none;border:none;color:#b91c1c;font-size:13px;cursor:pointer;padding:2px 6px;">✕</button>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  updateParchaSummary();
+}
+
+function updateParchaSummary(){
+  const slip = CUSTOMER_SLIPS[activeSlipIndex];
+  const total = slip.items.reduce((sum, it) => sum + (it.qty * it.rate), 0);
+  const totalUnits = slip.items.reduce((sum, it) => sum + it.qty, 0);
+
+  let totalMargin = 0;
+  slip.items.forEach(it => {
+    const p = PRODUCTS.find(x => x.id === it.productId);
+    const cost = p ? p.purchaseRate : Math.round(it.rate * 0.7);
+    totalMargin += ((it.rate - cost) * it.qty);
+  });
+
+  const totalEl = document.getElementById('parchaTotalDisplay');
+  if(totalEl) totalEl.textContent = '₹' + total;
+
+  const impactEl = document.getElementById('parchaImpactDisplay');
+  if(impactEl) impactEl.textContent = `${slip.items.length} items (${totalUnits} units) · Stock impact: -${totalUnits}`;
+
+  const marginEl = document.getElementById('parchaMarginDisplay');
+  if(marginEl) marginEl.textContent = `Margin: ₹${totalMargin}`;
+}
+
+function addManualParchaItem(){
+  const input = document.getElementById('parchaInputItem');
+  const qtyInput = document.getElementById('parchaInputQty');
+  const name = (input?.value || '').trim();
+  const qty = parseInt(qtyInput?.value || '1', 10) || 1;
+  if(!name) return;
+
+  const matched = PRODUCTS.find(p => p.name.toLowerCase().includes(name.toLowerCase()) || name.toLowerCase().includes(p.name.toLowerCase()));
+  const rate = matched ? matched.sellRate : 10;
+
+  CUSTOMER_SLIPS[activeSlipIndex].items.push({
+    productId: matched ? matched.id : 'p_custom_' + Date.now(),
+    name: matched ? matched.name : name,
+    qty: qty,
+    rate: rate
+  });
+
+  input.value = '';
+  qtyInput.value = '1';
+  renderParchaItems();
+}
+
+function quickAddParchaItem(pId, qty){
+  const p = PRODUCTS.find(x => x.id === pId);
+  if(!p) return;
+
+  const slip = CUSTOMER_SLIPS[activeSlipIndex];
+  const existing = slip.items.find(x => x.productId === pId);
+  if(existing){
+    existing.qty += qty;
+  } else {
+    slip.items.push({
+      productId: p.id,
+      name: p.name,
+      qty: qty,
+      rate: p.sellRate
+    });
+  }
+  renderParchaItems();
+}
+
+function updateParchaItemQty(idx, val){
+  const q = parseInt(val, 10);
+  if(isNaN(q) || q <= 0) return;
+  CUSTOMER_SLIPS[activeSlipIndex].items[idx].qty = q;
+  renderParchaItems();
+}
+
+function updateParchaItemRate(idx, val){
+  const r = parseFloat(val);
+  if(isNaN(r) || r < 0) return;
+  CUSTOMER_SLIPS[activeSlipIndex].items[idx].rate = r;
+  renderParchaItems();
+}
+
+function removeParchaItem(idx){
+  CUSTOMER_SLIPS[activeSlipIndex].items.splice(idx, 1);
+  renderParchaItems();
+}
+
+function clearActiveCustomerSlip(){
+  CUSTOMER_SLIPS[activeSlipIndex].items = [];
+  renderParchaItems();
+  toast(`Customer 0${activeSlipIndex + 1} slip cleared`);
+}
+
+function triggerVoiceCustomerSale(){
+  const phrases = [
+    '2 DOMS DF Pen, 1 Classmate Notebook 38',
+    '3 DOMS Zillion Pencil, 1 Transparent Tape 18',
+    '1 Link Calculator 180 rupaye'
+  ];
+  const simulated = phrases[Math.floor(Math.random() * phrases.length)];
+  toast(`Voice recognized: "${simulated}"`);
+  
+  if(simulated.includes('DOMS DF Pen')){
+    quickAddParchaItem('p1', 2);
+    quickAddParchaItem('p4', 1);
+  } else if(simulated.includes('DOMS Zillion')){
+    quickAddParchaItem('p2', 3);
+    quickAddParchaItem('p6', 1);
+  } else {
+    quickAddParchaItem('p5', 1);
+  }
+}
+
+function confirmAndPostCustomerSale(){
+  const slip = CUSTOMER_SLIPS[activeSlipIndex];
+  if(!slip.items.length){
+    toast('No items in this slip to sell.');
+    return;
+  }
+
+  const payMode = document.querySelector('input[name="parchaPayMode"]:checked')?.value || 'cash';
+  const total = slip.items.reduce((sum, it) => sum + (it.qty * it.rate), 0);
+
+  // Deduct stock and add movement for each matched product
+  slip.items.forEach(it => {
+    const p = PRODUCTS.find(x => x.id === it.productId);
+    if(p){
+      p.stock = Math.max(0, p.stock - it.qty);
+      MOVEMENTS.unshift({
+        productId: p.id,
+        productName: p.name,
+        delta: -it.qty,
+        source: 'CUSTOMER_SALE',
+        date: BUSINESS_DATE
+      });
+    }
+  });
+
+  // Save Sale Record
+  SALES.push({
+    id: 's' + Date.now() + 'c',
+    date: BUSINESS_DATE,
+    mode: payMode,
+    amount: total,
+    itemsSummary: slip.items.map(it => `${it.qty}x ${it.name}`).join(', ')
+  });
+
+  saveKey('gsh:products', PRODUCTS);
+  saveKey('gsh:movements', MOVEMENTS);
+  saveKey('gsh:sales', SALES);
+
+  // Clear slip
+  slip.items = [];
+
+  toast(`Customer 0${activeSlipIndex + 1} sale posted! ₹${total} (${payMode.toUpperCase()})`);
+  closeCustomerSaleSheet();
+  filterInventory();
+  renderCC();
+}
+
+/* ---------- DIGITAL FILING CABINET / HANDWRITTEN BILL SCANNER (§5) ---------- */
+
+let scannedBillItems = [];
+
+function openScanBillModal(){
+  document.getElementById('scanBillScrim')?.classList.add('show');
+  document.getElementById('scanBillSheet')?.classList.add('show');
+  document.getElementById('billUploadBox').style.display = 'block';
+  document.getElementById('billExtractProgress').style.display = 'none';
+  document.getElementById('billExtractedContent').style.display = 'none';
+  document.getElementById('billModalFoot').style.display = 'none';
+}
+
+function closeScanBillModal(){
+  document.getElementById('scanBillScrim')?.classList.remove('show');
+  document.getElementById('scanBillSheet')?.classList.remove('show');
+}
+
+function handleBillFileSelected(e){
+  const file = e.target.files?.[0];
+  if(!file) return;
+  loadSampleBillForIndexing('Ashok Pen Wale');
+}
+
+function loadSampleBillForIndexing(vendorName){
+  document.getElementById('billUploadBox').style.display = 'none';
+  const prog = document.getElementById('billExtractProgress');
+  prog.style.display = 'block';
+
+  setTimeout(() => {
+    prog.style.display = 'none';
+    document.getElementById('billExtractedContent').style.display = 'block';
+    document.getElementById('billModalFoot').style.display = 'flex';
+
+    document.getElementById('billExtractVendor').value = vendorName;
+    document.getElementById('billExtractNo').value = 'APW-' + Math.floor(1000 + Math.random()*9000);
+    document.getElementById('billExtractDate').textContent = BUSINESS_DATE;
+
+    scannedBillItems = [
+      { name: 'DOMS DF Pen', qty: 50, rate: 8.00, matchedProductId: 'p1', conf: 98 },
+      { name: 'DOMS Zillion Pencil', qty: 30, rate: 4.00, matchedProductId: 'p2', conf: 95 },
+      { name: 'Classmate Notebook 172pg', qty: 40, rate: 28.00, matchedProductId: 'p4', conf: 92 }
+    ];
+
+    renderExtractedBillRows();
+  }, 600);
+}
+
+function renderExtractedBillRows(){
+  const container = document.getElementById('billExtractedRows');
+  if(!container) return;
+
+  container.innerHTML = scannedBillItems.map((item, idx) => `
+    <div style="background:#fff;border:1px solid var(--rule);border-radius:8px;padding:8px 10px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center;">
+      <div style="flex:1;">
+        <div style="display:flex;align-items:center;gap:6px;">
+          <span style="font-size:12.5px;font-weight:700;color:var(--ink);">${item.name}</span>
+          <span class="ai-indexed-badge" style="font-size:9px;">✓ MATCHED</span>
+        </div>
+        <div style="font-size:11px;color:var(--ink-faint);margin-top:2px;">
+          Qty: <input type="number" value="${item.qty}" onchange="scannedBillItems[${idx}].qty=parseInt(this.value,10); renderExtractedBillRows();" style="width:40px;text-align:center;border:1px solid var(--rule);border-radius:4px;" />
+          · Rate: ₹<input type="number" value="${item.rate}" onchange="scannedBillItems[${idx}].rate=parseFloat(this.value); renderExtractedBillRows();" style="width:50px;text-align:center;border:1px solid var(--rule);border-radius:4px;" />
+        </div>
+      </div>
+      <div class="mono" style="font-weight:700;font-size:13px;color:var(--indigo-deep);">
+        ₹${(item.qty * item.rate).toLocaleString('en-IN')}
+      </div>
+    </div>
+  `).join('');
+}
+
+function confirmAndPostBillPurchase(){
+  const vendor = document.getElementById('billExtractVendor').value || 'Ashok Pen Wale';
+  const billNo = document.getElementById('billExtractNo').value || '—';
+  const total = scannedBillItems.reduce((sum, it) => sum + (it.qty * it.rate), 0);
+
+  // 1. Create Purchase record
+  const newPo = {
+    id: 'po' + Date.now(),
+    vendor: vendor,
+    date: BUSINESS_DATE,
+    status: 'POSTED',
+    source: 'Handwritten Bill OCR',
+    lines: scannedBillItems.map(it => ({ name: it.name, qty: it.qty, rate: it.rate, amt: it.qty * it.rate })),
+    total: total,
+    paid: total,
+    linkedBill: true
+  };
+  PURCHASES.unshift(newPo);
+
+  // 2. Restock matched products
+  scannedBillItems.forEach(it => {
+    const p = PRODUCTS.find(x => x.id === it.matchedProductId || x.name.toLowerCase().includes(it.name.toLowerCase()));
+    if(p){
+      p.stock += it.qty;
+      p.purchaseRate = it.rate;
+      MOVEMENTS.unshift({
+        productId: p.id,
+        productName: p.name,
+        delta: it.qty,
+        source: 'BILL_RECEIVE',
+        date: BUSINESS_DATE
+      });
+    }
+  });
+
+  // 3. Add to BILLS
+  BILLS.unshift({
+    date: BUSINESS_DATE,
+    vendor: vendor,
+    amount: '₹' + total.toLocaleString('en-IN'),
+    billNo: billNo,
+    status: 'verified',
+    confidence: 96,
+    lines: scannedBillItems.map(it => [`${it.qty} × ${it.name}`, `₹${it.qty * it.rate}`])
+  });
+
+  saveKey('gsh:purchases', PURCHASES);
+  saveKey('gsh:products', PRODUCTS);
+  saveKey('gsh:movements', MOVEMENTS);
+  saveKey('gsh:bills', BILLS);
+
+  toast(`Bill posted! ₹${total.toLocaleString('en-IN')} added to inventory.`);
+  closeScanBillModal();
+  renderPurchases();
+  filterInventory();
+  renderCC();
+}
+
+/* ---------- QUICK NOTES & REMINDERS (§12) ---------- */
+
+function openQuickNoteModal(){
+  document.getElementById('noteScrim')?.classList.add('show');
+  document.getElementById('quickNoteSheet')?.classList.add('show');
+  document.getElementById('quickNoteText').value = '';
+}
+
+function closeQuickNoteModal(){
+  document.getElementById('noteScrim')?.classList.remove('show');
+  document.getElementById('quickNoteSheet')?.classList.remove('show');
+}
+
+function setNoteCategory(cat){
+  currentNoteCategory = cat;
+  document.querySelectorAll('#quickNoteSheet .tag-input-pill').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent.includes(cat.split(' ')[0]));
+  });
+}
+
+function triggerVoiceQuickNote(){
+  const sample = 'Ashok Pen Wale ko kal 20 packet pen aur 10 register ka order dena hai.';
+  document.getElementById('quickNoteText').value = sample;
+  toast('Voice captured note!');
+}
+
+function saveQuickNote(){
+  const text = (document.getElementById('quickNoteText')?.value || '').trim();
+  if(!text){ toast('Note cannot be empty'); return; }
+
+  NOTES.unshift({
+    id: 'n' + Date.now(),
+    cat: currentNoteCategory,
+    text: text,
+    date: BUSINESS_DATE
+  });
+
+  saveKey('gsh:notes', NOTES);
+  toast('Quick note saved!');
+  closeQuickNoteModal();
+  renderCC();
+}
+
+/* ---------- DEAD STOCK & CASH BLOCKED SHEET (§10) ---------- */
+
+function openDeadStockSheet(){
+  document.getElementById('deadStockScrim')?.classList.add('show');
+  document.getElementById('deadStockSheet')?.classList.add('show');
+  renderDeadStockSheet();
+}
+
+function closeDeadStockSheet(){
+  document.getElementById('deadStockScrim')?.classList.remove('show');
+  document.getElementById('deadStockSheet')?.classList.remove('show');
+}
+
+function renderDeadStockSheet(){
+  const container = document.getElementById('deadStockListContainer');
+  if(!container) return;
+
+  // Identify products with low or zero movement and positive stock
+  const deadList = PRODUCTS.filter(p => p.stock > 10).map(p => {
+    const cashBlocked = p.stock * p.purchaseRate;
+    return { ...p, cashBlocked: cashBlocked, daysIdle: 35 };
+  });
+
+  const totalBlocked = deadList.reduce((sum, it) => sum + it.cashBlocked, 0);
+
+  container.innerHTML = `
+    <div class="dead-stock-banner">
+      <div style="font-size:11px;color:#9a3412;font-weight:700;text-transform:uppercase;">WORKING CAPITAL BLOCKED</div>
+      <div class="dead-stock-total">₹${totalBlocked.toLocaleString('en-IN')}</div>
+      <div style="font-size:11.5px;color:#7c2d12;margin-top:2px;">Across ${deadList.length} products sitting inactive in store</div>
+    </div>
+
+    <div style="font-size:11px;font-weight:700;color:var(--ink-faint);text-transform:uppercase;margin-bottom:6px;">
+      INACTIVE STOCK &amp; AI CLEARANCE SUGGESTIONS
+    </div>
+
+    ${deadList.map(item => `
+      <div class="dead-item-card">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+          <div>
+            <div style="font-size:13.5px;font-weight:700;color:var(--ink);">${item.name}</div>
+            <div style="font-size:11px;color:var(--ink-faint);">${item.stock} units · Cost: ₹${item.purchaseRate}/pc</div>
+          </div>
+          <div style="text-align:right;">
+            <div class="mono" style="font-weight:700;font-size:14px;color:#c2410c;">₹${item.cashBlocked}</div>
+            <div style="font-size:9.5px;color:var(--ink-faint);">Cash blocked</div>
+          </div>
+        </div>
+        <div class="dead-rec-box">
+          💡 <b>AI Suggestion:</b> Place on counter display near billing slip or offer student bundle with DOMS DF Pens at ₹${Math.max(item.purchaseRate + 1, item.sellRate - 2)} to liquidate quickly.
+        </div>
+        <div style="display:flex;gap:6px;margin-top:8px;">
+          <button onclick="openProduct('${item.id}'); closeDeadStockSheet();" style="flex:1;background:#fff;border:1px solid var(--rule);border-radius:6px;padding:5px;font-size:11.5px;font-weight:600;cursor:pointer;">
+            View Product Intel
+          </button>
+          <button onclick="quickAddParchaItem('${item.id}', 1); closeDeadStockSheet(); openCustomerSaleSheet();" style="flex:1;background:#fed7aa;color:#7c2d12;border:none;border-radius:6px;padding:5px;font-size:11.5px;font-weight:700;cursor:pointer;">
+            + Add to Sale Slip
+          </button>
+        </div>
+      </div>
+    `).join('')}
+  `;
 }
 
 /* ---------- MONEY (fully derived from real ledgers: SALES, PURCHASES, EXPENSES — no static numbers) ---------- */
@@ -4554,6 +5733,7 @@ async function bootstrap(){
   CLOSINGS  = await loadKey('gsh:closings', []);
   CHAT_LOG  = await loadKey('gsh:aiLog', []);
   SEASONS   = await loadKey('gsh:seasons', []);
+  NOTES     = await loadKey('gsh:notes', SEED_NOTES);
 
   DEVICE_ID       = await loadKey('gsh:deviceId', 'dev-'+Math.random().toString(36).slice(2)+Date.now().toString(36));
   SYNC_OUTBOX     = await loadKey('gsh:syncOutbox', {});
