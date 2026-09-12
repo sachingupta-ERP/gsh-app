@@ -1105,74 +1105,84 @@ html,body{margin:0;padding:0;background:#090d16;font-family:'Plus Jakarta Sans',
       <div class="more-row" onclick="closeMoreSheet(); openSettings()"><div class="more-icon">⚙️</div><div><div class="more-title">Settings</div><div class="more-sub">Users, passwords, app controls</div></div></div>
       <div class="more-row" onclick="openSyncSheet()"><div class="more-icon">🔄</div><div id="syncStatusRow"><div class="more-title">Sync status</div><div class="more-sub">Checking…</div></div></div>
     </div>
+  </div>
 
-    <!-- ================= SETTINGS ================= -->
-    <div class="screen" id="settings">
-      <div class="bar"><div class="bar-back" onclick="show('cc')">←</div><div><div class="bar-title">Settings</div><div class="bar-sub">Account and access controls</div></div></div>
-      <div class="cc-scroll">
-        <div class="settings-section">
-          <div class="settings-section-title">CURRENT ACCOUNT</div>
-          <div class="settings-user" id="currentUserRow"></div>
-        </div>
-        <div class="settings-section">
-          <div class="settings-section-title">SECURITY & ACCESS</div>
-          <div class="settings-action" onclick="openConfigurePIN()">
-            <div>
-              <div style="font-weight:600;">🔒 6-Digit PIN Protection</div>
-              <div style="font-size:11px;color:var(--ink-faint);margin-top:2px;" id="pinStatusDesc">Direct mobile login active · Tap to configure PIN</div>
-            </div>
-            <span style="color:var(--indigo);font-weight:600;font-size:12px;" id="pinStatusAction">Set PIN ›</span>
+  <!-- ================= SETTINGS ================= -->
+  <div class="screen" id="settings">
+    <div class="bar"><div class="bar-back" onclick="show('cc')">←</div><div><div class="bar-title">Settings</div><div class="bar-sub">Account and access controls</div></div></div>
+    <div class="cc-scroll">
+      <div class="settings-section">
+        <div class="settings-section-title">CURRENT ACCOUNT</div>
+        <div class="settings-user" id="currentUserRow"></div>
+      </div>
+      <div class="settings-section">
+        <div class="settings-section-title">SECURITY & ACCESS</div>
+        <div class="settings-action" onclick="openConfigurePIN()">
+          <div>
+            <div style="font-weight:600;">🔒 6-Digit PIN Protection</div>
+            <div style="font-size:11px;color:var(--ink-faint);margin-top:2px;" id="pinStatusDesc">Direct mobile login active · Tap to configure PIN</div>
           </div>
-          <div class="settings-action" onclick="toggleBiometricSetting()">
-            <div>
-              <div style="font-weight:600;">👆 Biometric / Fingerprint</div>
-              <div style="font-size:11px;color:var(--ink-faint);margin-top:2px;" id="biometricStatusDesc">Biometric sensor hardware check</div>
-            </div>
-            <span style="color:var(--indigo);font-weight:600;font-size:12px;" id="biometricStatusBadge">Test Sensor ›</span>
+          <span style="color:var(--indigo);font-weight:600;font-size:12px;" id="pinStatusAction">Set PIN ›</span>
+        </div>
+        <div class="settings-action" onclick="toggleBiometricSetting()">
+          <div>
+            <div style="font-weight:600;">👆 Biometric / Fingerprint</div>
+            <div style="font-size:11px;color:var(--ink-faint);margin-top:2px;" id="biometricStatusDesc">Biometric sensor hardware check</div>
           </div>
-        </div>
-        <div class="settings-section">
-          <div class="settings-section-title">PRODUCTION DATABASE</div>
-          <div class="settings-action" onclick="openSyncSheet()">
-            <div>
-              <div style="font-weight:600;">🗄️ SQLite 3 Engine (WAL Mode)</div>
-              <div style="font-size:11px;color:var(--ink-faint);margin-top:2px;">All modules synchronized · Local-first persistence</div>
-            </div>
-            <span style="color:var(--emerald);font-weight:700;font-size:11.5px;">Active ✓</span>
-          </div>
-        </div>
-        <div class="settings-section" id="usersSection">
-          <div class="settings-section-title">USERS</div>
-          <div id="usersList"></div>
-          <div class="settings-action" onclick="openCreateEmployee()">+ Create employee</div>
-        </div>
-        <div class="settings-section" id="versionHistorySection">
-          <div class="settings-section-title">VERSION HISTORY</div>
-          <div id="versionHistoryList"></div>
-        </div>
-        <div class="settings-section">
-          <div class="settings-section-title">SESSION</div>
-          <div class="settings-action danger" onclick="logoutUser()">Log out</div>
+          <span style="color:var(--indigo);font-weight:600;font-size:12px;" id="biometricStatusBadge">Test Sensor ›</span>
         </div>
       </div>
-    </div>
-
-    <div class="sheet-scrim" id="authSheetScrim" onclick="closeAuthSheet()"></div>
-    <div class="sheet" id="authSheet">
-      <div class="sheet-handle"></div>
-      <div class="sheet-head"><div class="bar-title" id="authSheetTitle">Create employee</div><div class="bar-sub" id="authSheetSub">Access is recorded locally until the server auth API is connected.</div></div>
-      <div class="sheet-body">
-        <div id="employeeFields">
-          <div class="field" style="background:var(--paper-raised);border-color:var(--rule);"><label>NAME</label><input id="employeeName" style="color:var(--ink);" /></div>
-          <div class="field" style="background:var(--paper-raised);border-color:var(--rule);"><label>MOBILE NUMBER</label><input id="employeeMobile" type="tel" style="color:var(--ink);" maxlength="10" /></div>
-          <div class="field" style="background:var(--paper-raised);border-color:var(--rule);"><label>ROLE</label><select id="employeeRole" style="width:100%;border:0;background:transparent;color:var(--ink);font:inherit;"><option value="EMPLOYEE">Employee</option><option value="ADMIN">Owner</option></select></div>
-          <div class="field" style="background:var(--paper-raised);border-color:var(--rule);"><label><input id="employeeActive" type="checkbox" checked style="width:auto;margin-right:8px;" />ACTIVE</label></div>
-          <div class="auth-note">Only registered users can login with their mobile number.</div>
+      <div class="settings-section">
+        <div class="settings-section-title">APP UPDATES &amp; SYSTEM</div>
+        <div class="settings-action" onclick="manualCheckForUpdates()">
+          <div>
+            <div style="font-weight:600;">🚀 App Updates &amp; Live OTA</div>
+            <div style="font-size:11px;color:var(--ink-faint);margin-top:2px;" id="settingsOtaSub">Tap to check for new features &amp; updates</div>
+          </div>
+          <span style="color:var(--indigo);font-weight:600;font-size:12px;" id="settingsOtaAction">Check Now ›</span>
         </div>
-        <div class="err" id="authSheetErr"></div>
       </div>
-      <div class="sheet-foot"><button class="sheet-btn cancel" onclick="closeAuthSheet()">Cancel</button><button class="sheet-btn confirm" id="authSheetAction" onclick="submitAuthSheet()">Create employee</button></div>
+      <div class="settings-section">
+        <div class="settings-section-title">PRODUCTION DATABASE</div>
+        <div class="settings-action" onclick="openSyncSheet()">
+          <div>
+            <div style="font-weight:600;">🗄️ SQLite 3 Engine (WAL Mode)</div>
+            <div style="font-size:11px;color:var(--ink-faint);margin-top:2px;">All modules synchronized · Local-first persistence</div>
+          </div>
+          <span style="color:var(--emerald);font-weight:700;font-size:11.5px;">Active ✓</span>
+        </div>
+      </div>
+      <div class="settings-section" id="usersSection">
+        <div class="settings-section-title">USERS</div>
+        <div id="usersList"></div>
+        <div class="settings-action" onclick="openCreateEmployee()">+ Create employee</div>
+      </div>
+      <div class="settings-section" id="versionHistorySection">
+        <div class="settings-section-title">VERSION HISTORY</div>
+        <div id="versionHistoryList"></div>
+      </div>
+      <div class="settings-section">
+        <div class="settings-section-title">SESSION</div>
+        <div class="settings-action danger" onclick="logoutUser()">Log out</div>
+      </div>
     </div>
+  </div>
+
+  <div class="sheet-scrim" id="authSheetScrim" onclick="closeAuthSheet()"></div>
+  <div class="sheet" id="authSheet">
+    <div class="sheet-handle"></div>
+    <div class="sheet-head"><div class="bar-title" id="authSheetTitle">Create employee</div><div class="bar-sub" id="authSheetSub">Access is recorded locally until the server auth API is connected.</div></div>
+    <div class="sheet-body">
+      <div id="employeeFields">
+        <div class="field" style="background:var(--paper-raised);border-color:var(--rule);"><label>NAME</label><input id="employeeName" style="color:var(--ink);" /></div>
+        <div class="field" style="background:var(--paper-raised);border-color:var(--rule);"><label>MOBILE NUMBER</label><input id="employeeMobile" type="tel" style="color:var(--ink);" maxlength="10" /></div>
+        <div class="field" style="background:var(--paper-raised);border-color:var(--rule);"><label>ROLE</label><select id="employeeRole" style="width:100%;border:0;background:transparent;color:var(--ink);font:inherit;"><option value="EMPLOYEE">Employee</option><option value="ADMIN">Owner</option></select></div>
+        <div class="field" style="background:var(--paper-raised);border-color:var(--rule);"><label><input id="employeeActive" type="checkbox" checked style="width:auto;margin-right:8px;" />ACTIVE</label></div>
+        <div class="auth-note">Only registered users can login with their mobile number.</div>
+      </div>
+      <div class="err" id="authSheetErr"></div>
+    </div>
+    <div class="sheet-foot"><button class="sheet-btn cancel" onclick="closeAuthSheet()">Cancel</button><button class="sheet-btn confirm" id="authSheetAction" onclick="submitAuthSheet()">Create employee</button></div>
   </div>
 
   <!-- ================= PURCHASE LIST ================= -->
@@ -1787,6 +1797,54 @@ html,body{margin:0;padding:0;background:#090d16;font-family:'Plus Jakarta Sans',
     </div>
   </div>
 
+  <!-- ================= NOTIFICATION BANNER (Top floating alert when update is available) ================= -->
+  <div id="otaUpdateBanner" style="display:none;position:absolute;top:12px;left:12px;right:12px;background:linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);color:#ffffff;padding:12px 14px;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,0.35);z-index:9999;border:1px solid rgba(255,255,255,0.15);cursor:pointer;animation:slideDown 0.3s ease;" onclick="openOtaUpdateModal()">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <div style="font-size:22px;line-height:1;">🚀</div>
+      <div style="flex:1;">
+        <div style="font-weight:700;font-size:13px;display:flex;align-items:center;gap:6px;">
+          <span>New Update Available!</span>
+          <span id="otaBannerBadge" style="background:#4338ca;color:#e0e7ff;font-size:10.5px;padding:2px 7px;border-radius:10px;font-family:monospace;">v...</span>
+        </div>
+        <div style="font-size:11.5px;color:#cbd5e1;margin-top:2px;" id="otaBannerDesc">Naye features &amp; updates taiyaar hain · Tap to update now</div>
+      </div>
+      <button style="background:rgba(255,255,255,0.18);color:#fff;border:none;border-radius:8px;padding:6px 12px;font-size:11.5px;font-weight:700;cursor:pointer;">Update ›</button>
+    </div>
+  </div>
+
+  <!-- ================= UPDATE CONFIRMATION MODAL ================= -->
+  <div class="sheet-scrim" id="otaModalScrim" onclick="closeOtaUpdateModal()"></div>
+  <div class="sheet" id="otaUpdateModal" style="max-height:85%;">
+    <div class="sheet-handle"></div>
+    <div class="sheet-head">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+        <div style="font-size:26px;">✨</div>
+        <div>
+          <div class="bar-title">App Update Available</div>
+          <div class="bar-sub" id="otaModalVersion">Version info loading...</div>
+        </div>
+      </div>
+    </div>
+    <div class="sheet-body">
+      <div style="background:var(--paper-raised);border:1px solid var(--rule);border-radius:12px;padding:14px;margin-bottom:14px;">
+        <div style="font-size:11px;font-weight:700;color:var(--ink-faint);letter-spacing:0.5px;margin-bottom:6px;">WHAT'S NEW &amp; FEATURES</div>
+        <div id="otaModalNotes" style="font-size:13px;line-height:1.5;color:var(--ink);">
+          Naye improvements, speed optimization aur features is update mein shamil hain.
+        </div>
+      </div>
+      <div style="font-size:12px;color:var(--ink-soft);line-height:1.5;margin-bottom:12px;">
+        Update install karne ke liye neeche <b>"Update Now"</b> button par tap karein. App turant restart hokar naye features ke sath chalu ho jayegi.
+      </div>
+      <div id="otaInstallProgress" style="display:none;background:#f1f5f9;border-radius:8px;padding:10px 14px;font-size:12.5px;color:#1e293b;margin-bottom:12px;text-align:center;font-weight:600;">
+        ⏳ Installing update... Please wait a moment.
+      </div>
+    </div>
+    <div class="sheet-foot">
+      <button class="sheet-btn cancel" onclick="closeOtaUpdateModal()">Later</button>
+      <button class="sheet-btn confirm" id="otaModalConfirmBtn" onclick="applyOtaUpdateFromModal()">Update Now 🚀</button>
+    </div>
+  </div>
+
 </div>
 
 <script>
@@ -1941,7 +1999,98 @@ async function sha256Hex(buffer){
   const digest = await crypto.subtle.digest('SHA-256', buffer);
   return Array.from(new Uint8Array(digest)).map(b=>b.toString(16).padStart(2,'0')).join('');
 }
-async function checkOtaUpdate(autoApply = true){
+let PENDING_OTA_MANIFEST = null;
+
+function showOtaNotificationBanner(manifest){
+  PENDING_OTA_MANIFEST = manifest;
+  const banner = document.getElementById('otaUpdateBanner');
+  const badge = document.getElementById('otaBannerBadge');
+  const desc = document.getElementById('otaBannerDesc');
+  if(!banner) return;
+  if(badge) badge.textContent = `v${manifest.version}`;
+  if(desc) desc.textContent = manifest.notes || 'Naye features & updates taiyaar hain · Tap to install';
+  banner.style.display = 'block';
+}
+
+function hideOtaNotificationBanner(){
+  const banner = document.getElementById('otaUpdateBanner');
+  if(banner) banner.style.display = 'none';
+}
+
+function openOtaUpdateModal(){
+  const modal = document.getElementById('otaUpdateModal');
+  const scrim = document.getElementById('otaModalScrim');
+  const verEl = document.getElementById('otaModalVersion');
+  const notesEl = document.getElementById('otaModalNotes');
+  const progressEl = document.getElementById('otaInstallProgress');
+  const confirmBtn = document.getElementById('otaModalConfirmBtn');
+  if(progressEl) progressEl.style.display = 'none';
+  if(confirmBtn) { confirmBtn.disabled = false; confirmBtn.textContent = 'Update Now 🚀'; }
+  if(PENDING_OTA_MANIFEST){
+    if(verEl) verEl.textContent = `Version ${PENDING_OTA_MANIFEST.version} is ready to install`;
+    if(notesEl) notesEl.innerHTML = PENDING_OTA_MANIFEST.notes ? `• ${PENDING_OTA_MANIFEST.notes}` : '• Naye improvements, stability aur fast performance features is update mein shamil hain.';
+  }
+  if(modal) modal.classList.add('show');
+  if(scrim) scrim.classList.add('show');
+}
+
+function closeOtaUpdateModal(){
+  const modal = document.getElementById('otaUpdateModal');
+  const scrim = document.getElementById('otaModalScrim');
+  if(modal) modal.classList.remove('show');
+  if(scrim) scrim.classList.remove('show');
+}
+
+async function applyOtaUpdateFromModal(){
+  const updater = otaPlugin();
+  const progressEl = document.getElementById('otaInstallProgress');
+  const confirmBtn = document.getElementById('otaModalConfirmBtn');
+  if(!updater || !OTA_STATE.bundle?.id){
+    toast('Updater not ready. Rechecking updates...');
+    checkOtaUpdate(false);
+    return;
+  }
+  try {
+    if(progressEl) progressEl.style.display = 'block';
+    if(confirmBtn) { confirmBtn.disabled = true; confirmBtn.textContent = 'Installing...'; }
+    OTA_STATE.status = 'Installing update...';
+    renderOtaStatus();
+    await updater.next({id: OTA_STATE.bundle.id});
+    OTA_STATE.status = 'Update installed! Restarting app...';
+    renderOtaStatus();
+    toast('Update installed! Restarting...');
+    setTimeout(() => {
+      updater.reload();
+    }, 800);
+  } catch(err){
+    console.error('Failed to apply update', err);
+    toast('Update install error: ' + (err.message || 'unknown'));
+    if(progressEl) progressEl.style.display = 'none';
+    if(confirmBtn) { confirmBtn.disabled = false; confirmBtn.textContent = 'Retry Update'; }
+  }
+}
+
+async function manualCheckForUpdates(){
+  const sub = document.getElementById('settingsOtaSub');
+  const act = document.getElementById('settingsOtaAction');
+  if(act) act.textContent = 'Checking…';
+  if(sub) sub.textContent = 'Connecting to update server...';
+  toast('Checking for latest updates...');
+  
+  await checkOtaUpdate(false);
+  
+  if(PENDING_OTA_MANIFEST){
+    if(sub) sub.textContent = `Update v${PENDING_OTA_MANIFEST.version} available! Tap to install.`;
+    if(act) act.textContent = 'Install ›';
+    openOtaUpdateModal();
+  } else {
+    if(sub) sub.textContent = OTA_STATE.status || 'App is running latest version';
+    if(act) act.textContent = 'Check Now ›';
+    toast(OTA_STATE.status || 'App is already up to date!');
+  }
+}
+
+async function checkOtaUpdate(autoApply = false){
   if(!OTA_ENABLED || !OTA_MANIFEST_URL || OTA_STATE.disabled || OTA_CHECK_IN_FLIGHT) return;
   const updater = otaPlugin();
   if(!updater){ OTA_STATE.status = 'native updater unavailable'; renderOtaStatus(); return; }
@@ -1981,14 +2130,16 @@ async function checkOtaUpdate(autoApply = true){
     OTA_STATE.bundle = { ...bundle, version: manifest.version };
     OTA_STATE.status = `Update ${manifest.version} is ready`;
     
-    // Automatically apply update if enabled
+    // Show notification banner so user can tap and update
+    showOtaNotificationBanner(manifest);
+    
+    // Automatically apply update if explicitly requested
     if(autoApply && !OTA_STATE.disabled){
       OTA_STATE.status = `Installing update ${manifest.version}...`;
       renderOtaStatus();
       await updater.next({id: OTA_STATE.bundle.id});
       OTA_STATE.status = `Update ${manifest.version} installed`;
       renderOtaStatus();
-      // Reload app to apply update
       setTimeout(() => updater.reload(), 1000);
     }
   } catch(error){
@@ -2598,7 +2749,17 @@ async function toggleBiometricSetting(){
   }
 }
 
-async function logoutUser(){ CURRENT_USER=null; await saveKeyRaw('gsh:currentUserId', null); await saveKeyRaw('gsh:isLoggedIn', false); show('login'); resetAuthForm(); }
+async function logoutUser(){
+  CURRENT_USER = null;
+  AUTH_USER = null;
+  AUTH_MOBILE = '';
+  AUTH_PIN = '';
+  await saveKeyRaw('gsh:currentUserId', null);
+  await saveKeyRaw('gsh:isLoggedIn', false);
+  toast('Logged out successfully');
+  show('pinLoginScreen');
+  if(typeof resetAuthFlow === 'function') resetAuthFlow();
+}
 
 const obSteps = [
   {icon:'🗂️',title:'Command Center',desc:"See yesterday's sales, today's cash position, and what needs attention — the moment you open the app."},
