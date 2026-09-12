@@ -2752,14 +2752,19 @@ async function toggleBiometricSetting(){
 
 async function logoutUser(){
   CURRENT_USER = null;
-  AUTH_USER = null;
-  AUTH_MOBILE = '';
+  AUTH_USER = USERS[0] || null;
+  AUTH_MOBILE = AUTH_USER ? AUTH_USER.mobile : '';
   AUTH_PIN = '';
   await saveKeyRaw('gsh:currentUserId', null);
   await saveKeyRaw('gsh:isLoggedIn', false);
   toast('Logged out successfully');
-  show('pinLoginScreen');
-  if(typeof resetAuthFlow === 'function') resetAuthFlow();
+  if(AUTH_USER && AUTH_USER.pinHash){
+    initializePINLoginScreen();
+    show('pinLoginScreen');
+  } else {
+    resetAuthFlow();
+    show('login');
+  }
 }
 
 const obSteps = [
