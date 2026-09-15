@@ -49,4 +49,21 @@ const html = readFileSync(src, 'utf8')
   .replaceAll('__GSH_OTA_ENABLED__', String(otaEnabled));
 writeFileSync(outFile, html);
 
-console.log(`Built web app: ${src} -> ${outFile}`);
+// Copy PWA assets
+const pwaAssets = [
+  'manifest.webmanifest',
+  'sw.js',
+  'icon.svg',
+  'icon-192.png',
+  'icon-512.png',
+  'apple-touch-icon.png'
+];
+
+for (const asset of pwaAssets) {
+  const assetSrc = resolve(root, 'preview', asset);
+  if (existsSync(assetSrc)) {
+    writeFileSync(resolve(outDir, asset), readFileSync(assetSrc));
+  }
+}
+
+console.log(`Built web app and copied PWA assets: ${src} -> ${outFile}`);

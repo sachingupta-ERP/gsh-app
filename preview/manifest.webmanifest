@@ -1,0 +1,62 @@
+{
+  "id": "/",
+  "name": "Gopeshwar Stationary House",
+  "short_name": "GSH App",
+  "description": "Retail billing, stock manager, and ledger intelligence for Gopeshwar Stationary House.",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0f172a",
+  "theme_color": "#1e3a8a",
+  "categories": ["business", "finance", "productivity"],
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Quick Bill",
+      "short_name": "Bill",
+      "description": "Start a new customer billing",
+      "url": "/?action=bill",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Galla & Cash",
+      "short_name": "Financials",
+      "description": "Open Cash Register & Financials",
+      "url": "/?action=money",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Vendors & Purchases",
+      "short_name": "Vendors",
+      "description": "View Vendors and Purchase Bills",
+      "url": "/?action=vendors",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

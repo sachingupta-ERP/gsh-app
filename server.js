@@ -62,8 +62,28 @@ app.get('/api/v1/sync/pull', (req, res) => {
 // Documents endpoint for unified documents module
 app.get('/api/v1/documents', (req, res) => {
   try {
-    const rows = db.prepare('SELECT id, title, type, file_size, mime_type, linked_entity_type, linked_entity_id, created_at FROM documents ORDER BY created_at DESC').all();
+    const linkedId = req.query.linkedEntityId;
+    let query = 'SELECT id, title, type, file_size, mime_type, linked_entity_type, linked_entity_id, created_at FROM documents';
+    let params = [];
+    if (linkedId) {
+      query += ' WHERE linked_entity_id = ?';
+      params.push(linkedId);
+    }
+    query += ' ORDER BY created_at DESC';
+    const rows = db.prepare(query).all(...params);
     res.json({ documents: rows });
+  } catch (err) {
+    res.status(500).json({ error: { message: err.message } });
+  }
+});
+
+app.get('/api/v1/documents/:id', (req, res) => {
+  try {
+    const doc = db.prepare('SELECT * FROM documents WHERE id = ?').get(req.params.id);
+    if (!doc) {
+      return res.status(404).json({ error: { message: 'Document not found' } });
+    }
+    res.json({ document: doc });
   } catch (err) {
     res.status(500).json({ error: { message: err.message } });
   }
@@ -87,9 +107,131 @@ app.post('/api/v1/documents', (req, res) => {
   }
 });
 
+// Lazy-initialized Gemini Client for production AI extraction
+let geminiClient = null;
+function getGeminiClient() {
+  if (!geminiClient) {
+    const apiKey = process.env.GEMINI_API_KEY;
+    if (!apiKey) {
+      throw new Error('GEMINI_API_KEY environment variable is missing');
+    }
+    const { GoogleGenAI } = require('@google/genai');
+    geminiClient = new GoogleGenAI({ apiKey });
+  }
+  return geminiClient;
+}
+
+// Real OCR endpoint using Gemini 3.8 Flash
+app.post('/api/v1/ai/extract-bill', async (req, res) => {
+  const { imageBase64, mimeType, vendorContext } = req.body || {};
+  if (!imageBase64) {
+    return res.status(400).json({ error: { message: 'imageBase64 is required' } });
+  }
+
+  // Clean data URL prefix if present
+  let cleanBase64 = imageBase64;
+  let resolvedMime = mimeType || 'image/jpeg';
+  if (imageBase64.includes('base64,')) {
+    const parts = imageBase64.split('base64,');
+    cleanBase64 = parts[1];
+    const mimeMatch = parts[0].match(/data:([^;]+);/);
+    if (mimeMatch) resolvedMime = mimeMatch[1];
+  }
+
+  try {
+    const ai = getGeminiClient();
+    const prompt = `You are an expert OCR & retail billing assistant for "Gopeshwar Stationary House".
+Analyze this uploaded vendor bill, handwritten parcha, or invoice document.
+Extract the structured purchase bill information accurately.
+${vendorContext ? `Vendor Context hint: ${vendorContext}` : ''}
+
+Respond ONLY with valid JSON in this exact structure without markdown formatting or code fences:
+{
+  "vendor": "Name of the vendor/supplier",
+  "billNo": "Bill number, voucher number or invoice number, or '-' if not present",
+  "billDate": "YYYY-MM-DD or readable date from bill",
+  "total": 0,
+  "confidence": 95,
+  "items": [
+    {
+      "name": "Item or product description",
+      "qty": 10,
+      "rate": 15.0,
+      "amount": 150.0
+    }
+  ]
+}
+
+Ensure numeric values for total, qty, rate, amount, and confidence (0-100). If handwritten text is faint, make the best conservative estimate and lower the confidence score.`;
+
+    const response = await ai.models.generateContent({
+      model: 'gemini-3.8-flash',
+      contents: [
+        {
+          role: 'user',
+          parts: [
+            { text: prompt },
+            {
+              inlineData: {
+                data: cleanBase64,
+                mimeType: resolvedMime
+              }
+            }
+          ]
+        }
+      ]
+    });
+
+    let rawText = response.text ? response.text.trim() : '';
+    if (rawText.startsWith('```json')) {
+      rawText = rawText.replace(/^```json\s*/, '').replace(/\s*```$/, '');
+    } else if (rawText.startsWith('```')) {
+      rawText = rawText.replace(/^```\s*/, '').replace(/\s*```$/, '');
+    }
+
+    const parsed = JSON.parse(rawText);
+    res.json({ success: true, extraction: parsed });
+  } catch (err) {
+    console.error('Gemini OCR extraction failed:', err);
+    res.status(200).json({
+      success: false,
+      error: { message: err.message || 'AI extraction failed' },
+      fallback: true
+    });
+  }
+});
+
 // Serve dist directory if present, otherwise preview
 const distDir = path.resolve(__dirname, 'dist');
 const previewDir = path.resolve(__dirname, 'preview');
+
+// PWA Service Worker & Manifest headers
+app.get('/sw.js', (req, res) => {
+  const filePath = fs.existsSync(path.join(distDir, 'sw.js'))
+    ? path.join(distDir, 'sw.js')
+    : path.join(previewDir, 'sw.js');
+  if (fs.existsSync(filePath)) {
+    res.setHeader('Content-Type', 'application/javascript');
+    res.setHeader('Service-Worker-Allowed', '/');
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+    res.sendFile(filePath);
+  } else {
+    res.status(404).send('SW Not Found');
+  }
+});
+
+app.get(['/manifest.webmanifest', '/manifest.json'], (req, res) => {
+  const filePath = fs.existsSync(path.join(distDir, 'manifest.webmanifest'))
+    ? path.join(distDir, 'manifest.webmanifest')
+    : path.join(previewDir, 'manifest.webmanifest');
+  if (fs.existsSync(filePath)) {
+    res.setHeader('Content-Type', 'application/manifest+json');
+    res.setHeader('Cache-Control', 'public, max-age=3600');
+    res.sendFile(filePath);
+  } else {
+    res.status(404).send('Manifest Not Found');
+  }
+});
 
 if (fs.existsSync(distDir)) {
   app.use(express.static(distDir));

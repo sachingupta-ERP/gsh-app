@@ -5,9 +5,9 @@ const config: CapacitorConfig = {
   appName: 'Gopeshwar Stationary House',
   webDir: 'dist',
   server: {
-    androidScheme: 'https',
-    url: 'https://ais-dev-3f3vdkcaxgdjgpysyzcljb-180280940936.asia-east1.run.app',
-    cleartext: true
+    url: 'https://ais-pre-3f3vdkcaxgdjgpysyzcljb-180280940936.asia-east1.run.app',
+    cleartext: true,
+    androidScheme: 'https'
   },
   android: {
     allowMixedContent: false,
